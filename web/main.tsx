@@ -80,7 +80,7 @@ function Catalog({ kind, offset, q }: { kind: Kind; offset: number; q: string })
     {!data ? <Notice error={error} retry={retry} /> : <>
       {rows.length ? <ul className="course-list">{rows.map((row) => <li key={row.id}>
         <a className="course-link" href={`#/${kind}/${row.id}`}>
-          <div><h2>{row.name}</h2><p className="metadata">{row.department}</p>{row.id < 0 && <Demo />}</div>
+          <div><h2>{row.name}</h2>{row.department !== '待核实' && <p className="metadata">{row.department}</p>}{row.id < 0 && <Demo />}</div>
           <span className="link-label" aria-hidden="true">→</span>
         </a>
       </li>)}</ul> : <p className="notice">{q ? '没有找到匹配结果' : `暂无${labels[kind]}`}</p>}
@@ -107,7 +107,7 @@ function Detail({ kind, id }: { kind: Kind; id: string }) {
     <a className="back-link" href={`#/${kind}`}>← 返回{labels[kind]}列表</a>
     {!row ? <Notice error={error} retry={retry} /> :
       <div className="page-heading">
-        <h1>{row.name}</h1><p>{row.department}</p>
+        <h1>{row.name}</h1>{row.department !== '待核实' && <p>{row.department}</p>}
         {data?.course?.code && <p>课程代码：{data.course.code}</p>}
         {profile && <a href={profile} target="_blank" rel="noopener noreferrer">官网主页 ↗</a>}
         {row.id < 0 && <Demo />}

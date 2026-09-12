@@ -1,0 +1,120 @@
+{
+  "teachers": [
+    {
+      "id": 1,
+      "name": "陈凯",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/chenkai12/zh_CN/index.htm"
+    },
+    {
+      "id": 2,
+      "name": "陈思彤",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/chensitong/zh_CN/index.htm"
+    },
+    {
+      "id": 3,
+      "name": "刘源远",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/liuyuanyuan/zh_CN/index.htm"
+    },
+    {
+      "id": 4,
+      "name": "胡朝明",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 5,
+      "name": "王希俊",
+      "department": "待核实",
+      "profile_url": null
+    },
+    {
+      "id": 6,
+      "name": "王洪",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wh/zh_CN/index.htm"
+    },
+    {
+      "id": 7,
+      "name": "朱威夫",
+      "department": "马克思主义学院",
+      "profile_url": null
+    },
+    {
+      "id": 8,
+      "name": "高正波",
+      "department": "马克思主义学院",
+      "profile_url": "https://faculty.csu.edu.cn/gaozhengbo/zh_CN/index.htm"
+    },
+    {
+      "id": 9,
+      "name": "王洪桥",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wanghongqiao/zh_CN/index.htm"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "多元统计分析",
+      "code": null,
+      "department": "待核实"
+    },
+    {
+      "id": 2,
+      "name": "复变函数",
+      "code": null,
+      "department": "待核实"
+    },
+    {
+      "id": 3,
+      "name": "随机过程",
+      "code": null,
+      "department": "待核实"
+    },
+    {
+      "id": 4,
+      "name": "统计数据分析",
+      "code": null,
+      "department": "待核实"
+    },
+    {
+      "id": 5,
+      "name": "形势与政策",
+      "code": null,
+      "department": "待核实"
+    },
+    {
+      "id": 6,
+      "name": "统计机器学习基础",
+      "code": null,
+      "department": "待核实"
+    },
+    {
+      "id": 7,
+      "name": "回归分析",
+      "code": null,
+      "department": "待核实"
+    },
+    {
+      "id": 8,
+      "name": "改革开放史",
+      "code": null,
+      "department": "待核实"
+    },
+    {
+      "id": 9,
+      "name": "毛泽东思想和中国特色社会主义理论体系概论",
+      "code": null,
+      "department": "待核实"
+    },
+    {
+      "id": 10,
+      "name": "贝叶斯统计",
+      "code": null,
+      "department": "待核实"
+    }
+  ]
+}
