@@ -108,6 +108,10 @@ npx wrangler d1 migrations apply DB --remote
 npm run deploy
 ```
 
+部署命令加载专用网络配置，禁用 HTTP 持久连接和 TLS 会话复用，避免本机网络下上传请求挂起，HTTPS 证书校验仍然开启。该配置仅影响部署 CLI，不影响网站运行。
+
+需要代理时，在本地 `.env.deploy` 中设置 `CSU_DEPLOY_PROXY=http://127.0.0.1:你的代理端口`。该文件已被 Git 忽略；没有配置时使用环境中的 HTTP(S) 代理或直连。不要提交代理凭据。
+
 登录会打开浏览器授权；`--remote` 会修改线上数据库，部署会将 Worker 发布至 Cloudflare。不要将本地演示数据导入线上。不要将 API token、密码或其他 secret 写入代码或提交到 Git；本地 secret 使用 `.dev.vars`，线上使用 Wrangler 的 secret 配置。
 
 ## 浏览性能与验证
