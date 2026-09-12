@@ -21,6 +21,12 @@ header { background: #fafafa; border-bottom: 1px solid var(--border); }
 .primary-nav a { color: var(--muted); text-decoration: none; padding: .25rem 0; border-bottom: 2px solid transparent; }
 .primary-nav a[aria-current] { color: var(--accent); border-color: var(--accent); }
 .search { display: flex; gap: .5rem; margin-bottom: 1rem; }
+.search-home { min-height: calc(80svh - 8rem); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.search-home .page-heading { margin-bottom: 1.75rem; text-align: center; }
+.search-home h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 600; letter-spacing: -.035em; }
+.search-home .search { width: 100%; max-width: 38rem; gap: .65rem; }
+.search-home .search input { max-width: none; padding: .8rem 1rem; border-radius: 6px; }
+.search-home .search button { padding-inline: 1.25rem; border-radius: 6px; flex-shrink: 0; }
 .category-filter { display: flex; gap: .5rem; margin-bottom: 1rem; }
 .category-filter a { padding: .3rem .85rem; border: 1px solid var(--border); border-radius: 4px; background: #fff; color: inherit; text-decoration: none; font-size: .875rem; }
 .category-filter a[aria-current] { background: var(--accent); border-color: var(--accent); color: #fff; }

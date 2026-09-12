@@ -40,8 +40,8 @@ function Catalog({ kind, offset, q, category }: { kind: Kind; offset: number; q:
   const showResults = kind === 'courses' || q.trim().length > 0;
   const { data, error, retry } = useData<CatalogData>(showResults ? `/api/${kind}?limit=${pageSize}&offset=${offset}&q=${encodeURIComponent(q.trim())}${filter}` : null);
   const rows = data?.[kind] ?? [];
-  return <>
-    <div className="page-heading"><h1>{labels[kind]}</h1></div>
+  return <div className={!showResults ? 'search-home' : undefined}>
+    <div className="page-heading"><h1>{!showResults ? 'rateMyProfCSU' : labels[kind]}</h1></div>
     {kind === 'courses' && <nav className="category-filter" aria-label="课程类型">{[['', '全部'], ...Object.entries(categories)].map(([value, label]) =>
       <a key={value} href={`#/courses?q=${encodeURIComponent(q)}${value ? `&category=${value}` : ''}`} aria-current={category === value ? 'page' : undefined}>{label}</a>
     )}</nav>}
@@ -62,7 +62,7 @@ function Catalog({ kind, offset, q, category }: { kind: Kind; offset: number; q:
       </li>)}</ul> : <p className="notice">{q ? '没有找到匹配结果' : `暂无${labels[kind]}`}</p>}
       <Pager page={data} href={(value) => `#/${kind}?offset=${value}&q=${encodeURIComponent(q)}${filter}`} />
     </>)}
-  </>;
+  </div>;
 }
 
 // 仅允许 HTTPS 链接，避免把资料字段变成可执行 URL。
