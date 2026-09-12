@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
+import { useData } from './use-data';
+import { Reviews } from './reviews';
 
 type Course = { id: number; code: string | null; name: string; department: string };
 type Teacher = { id: number; name: string; department: string; profile_url: string | null };
@@ -10,38 +12,6 @@ type CatalogData = Page & { courses?: Course[]; teachers?: Teacher[] };
 type Details = { course?: Course; teacher?: Teacher };
 const pageSize = 20;
 
-// 页面切换时取消旧请求，避免慢请求把新页面的数据覆盖。
-function useData<T>(url: string) {
-  const [attempt, setAttempt] = useState(0);
-  const [state, setState] = useState<{ data?: T; error?: string }>({});
-  useEffect(() => {
-    const controller = new AbortController();
-    let timedOut = false;
-    const timeout = window.setTimeout(() => {
-      timedOut = true;
-      controller.abort();
-    }, 20000);
-    setState({});
-    void (async () => {
-      try {
-        const response = await fetch(url, { signal: controller.signal });
-        if (!response.ok) throw new Error(response.status === 404 ? '没有找到这条记录。' : '暂时无法加载，请稍后重试。');
-        const data = await response.json() as T;
-        if (!controller.signal.aborted) setState({ data });
-      } catch (error) {
-        if (timedOut) setState({ error: '连接超时，请重试。' });
-        else if (!controller.signal.aborted) setState({ error: error instanceof Error ? error.message : '网络连接失败，请重试。' });
-      } finally {
-        window.clearTimeout(timeout);
-      }
-    })();
-    return () => {
-      window.clearTimeout(timeout);
-      controller.abort();
-    };
-  }, [url, attempt]);
-  return { ...state, retry: () => setAttempt((value) => value + 1) };
-}
 
 function Notice({ error, retry }: { error?: string; retry: () => void }) {
   return error
@@ -106,12 +76,12 @@ function Detail({ kind, id }: { kind: Kind; id: string }) {
   return <>
     <a className="back-link" href={`#/${kind}`}>← 返回{labels[kind]}列表</a>
     {!row ? <Notice error={error} retry={retry} /> :
-      <div className="page-heading">
+      <><div className="page-heading">
         <h1>{row.name}</h1>{row.department !== '待核实' && <p>{row.department}</p>}
         {data?.course?.code && <p>课程代码：{data.course.code}</p>}
         {profile && <a href={profile} target="_blank" rel="noopener noreferrer">官网主页 ↗</a>}
         {row.id < 0 && <Demo />}
-      </div>}
+      </div><Reviews kind={kind} id={id} name={row.name} /></>}
   </>;
 }
 

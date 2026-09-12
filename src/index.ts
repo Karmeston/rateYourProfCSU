@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import reviews from './reviews.ts';
 
 const app = new Hono<{ Bindings: Env }>();
 type Course = { id: number; code: string | null; name: string; department: string };
@@ -68,6 +69,8 @@ app.get('/api/teachers/:id', async (c) => {
   c.header('Cache-Control', 'private, max-age=60');
   return c.json({ teacher });
 });
+
+app.route('/api', reviews);
 
 app.onError((error, c) => {
   console.error('Request failed', error);

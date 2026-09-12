@@ -54,7 +54,53 @@ h4 { font-size: 1rem; font-weight: 600; margin: 0; }
 .pagination a { padding: .4rem .75rem; background: #fff; border: 1px solid var(--border); border-radius: 4px; text-decoration: none; }
 .pagination a:hover { background: #f9f9f9; }
 .pagination > span { color: var(--muted); }
+button:disabled { opacity: .5; cursor: default; }
+.primary-button { color: #fff; background: var(--accent); border-color: var(--accent); }
+.primary-button:hover:not(:disabled) { background: #005a9e; }
+.reviews { margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+.reviews-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.rating-summary { display: flex; gap: 3rem; align-items: center; padding: 1.5rem 0 2rem; }
+.rating-score { display: flex; flex-direction: column; align-items: center; min-width: 7rem; gap: .2rem; }
+.rating-score strong { font-size: 3.25rem; font-weight: 600; line-height: 1.2; }
+.rating-score > span:last-child { font-size: .8125rem; color: var(--muted); }
+.stars { display: inline-block; position: relative; color: #b8b8b8; font-size: 1.1rem; line-height: 1.5; white-space: nowrap; }
+.stars-fill { position: absolute; left: 0; top: 0; overflow: hidden; color: #976000; }
+.rating-distribution { flex: 1; max-width: 25rem; }
+.rating-row { display: flex; align-items: center; gap: .65rem; font-size: .75rem; color: var(--muted); margin: .25rem 0; }
+.rating-row > span:first-child { width: 2rem; }
+.rating-row > span:last-child { min-width: 1.5rem; text-align: right; }
+.rating-track { height: 5px; border-radius: 3px; background: #ddd; flex: 1; overflow: hidden; }
+.rating-track > div { height: 100%; background: var(--accent); border-radius: inherit; }
+.review-list-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: .75rem; }
+.review-list-heading h3 { font-size: 1rem; font-weight: 600; margin: 0; }
+.review-list-heading > span, .review-meta, .review-empty { font-size: .875rem; color: var(--muted); }
+.review-list { list-style: none; padding: 0; margin: 0; }
+.review-list li { border: 1px solid var(--border); border-radius: 4px; background: #fff; padding: 1rem 1.25rem; margin-bottom: .75rem; }
+.review-meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .25rem; }
+.review-body { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: .5rem; }
+.review-empty { padding: 1.25rem 0; }
+.review-dialog { border: 1px solid #ccc; border-radius: 8px; padding: 1.5rem; width: min(32rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); overflow-y: auto; color: inherit; background: #fafafa; box-shadow: 0 12px 40px #0003; }
+.review-dialog::backdrop { background: #0005; }
+.review-dialog h2 { font-size: 1.25rem; margin-bottom: .75rem; }
+.review-target { font-size: .875rem; color: var(--muted); margin-bottom: 1rem; overflow-wrap: anywhere; }
+.rating-picker { border: 0; padding: 0; margin: 0 0 1rem; }
+.rating-picker legend, .comment-label { font-size: .875rem; }
+.rating-picker > div { display: flex; gap: .25rem; }
+.rating-picker label { position: relative; cursor: pointer; }
+.rating-picker input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.rating-picker label > span { display: block; font-size: 2rem; line-height: 44px; width: 44px; text-align: center; color: #b8b8b8; border-radius: 4px; }
+.rating-picker label > span.selected { color: #976000; }
+.rating-picker input:focus-visible + span { outline: 2px solid var(--accent); }
+.rating-picker label:hover > span { background: #eee; }
+.review-dialog textarea { display: block; width: 100%; resize: vertical; margin-top: .4rem; padding: .75rem; font: inherit; color: inherit; border: 1px solid #bbb; border-radius: 4px; background: #fff; }
+.review-dialog textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.character-count { font-size: .75rem; text-align: right; color: var(--muted); }
+.form-error { color: #a4262c; font-size: .875rem; }
+.form-actions { display: flex; justify-content: flex-end; gap: .5rem; margin-top: 1rem; }
 @media (max-width: 600px) {
+  .rating-summary { gap: 1.25rem; }
+  .rating-score { min-width: 5rem; }
+  .rating-score strong { font-size: 2.75rem; }
   .header-inner { padding: .85rem 1rem; }
   main { padding: 1.25rem 1rem 2rem; }
   .course-link, .teacher-list li { padding: .85rem 1rem; }
