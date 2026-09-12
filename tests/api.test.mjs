@@ -78,6 +78,24 @@ test('独立教师与课程浏览 API（临时 D1）', async (t) => {
     }
   });
 
+  await t.test('分类筛选与搜索组合，排除课程不会从详情或搜索重新出现', async () => {
+    await DB.prepare('UPDATE courses SET category=? WHERE id=?').bind('major', 1).run();
+    await DB.prepare('UPDATE courses SET category=? WHERE id=?').bind('elective', 2).run();
+    for (const [category, id] of [['major', 1], ['elective', 2]]) {
+      const response = await request(`/api/courses?category=${category}`);
+      assert.equal(response.status, 200);
+      assert.deepEqual((await response.json()).courses.map((row) => row.id), [id]);
+    }
+    const search = await (await request('/api/courses?category=elective&q=' + encodeURIComponent('数学'))).json();
+    assert.equal(search.courses.length, 0);
+    for (const query of ['category=other', 'category=', 'category=major&category=elective']) assert.equal((await request('/api/courses?' + query)).status, 400);
+    assert.equal((await request('/api/teachers?category=major')).status, 400);
+    await DB.prepare('UPDATE courses SET is_listed=0 WHERE id=?').bind(2).run();
+    assert.equal((await request('/api/courses/2')).status, 404);
+    assert.equal((await (await request('/api/courses?category=elective')).json()).courses.length, 0);
+    assert.equal((await (await request('/api/courses?q=' + encodeURIComponent('概率'))).json()).courses.length, 0);
+  });
+
   await t.test('数据库故障不泄露 SQL、不缓存错误', async () => {
     t.mock.method(console, 'error', () => {});
     for (const kind of ['teachers', 'courses']) {

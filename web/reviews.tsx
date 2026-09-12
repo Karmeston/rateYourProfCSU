@@ -14,7 +14,7 @@ function Stars({ rating }: { rating: number }) {
   </span>;
 }
 
-function ReviewForm({ endpoint, name, close }: { endpoint: string; name: string; close: () => void }) {
+function ReviewForm({ endpoint, name, close, published }: { endpoint: string; name: string; close: () => void; published: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const requestId = useRef(crypto.randomUUID());
   const controller = useRef<AbortController | null>(null);
@@ -30,7 +30,7 @@ function ReviewForm({ endpoint, name, close }: { endpoint: string; name: string;
   const changed = () => { requestId.current = crypto.randomUUID(); setError(''); };
   return <dialog ref={dialog} className="review-dialog" aria-labelledby="review-form-title" onCancel={(event) => { if (sending) event.preventDefault(); }} onClose={close}>
     <h2 id="review-form-title">{submitted ? '已提交' : '写评价'}</h2>
-    {submitted ? <><p role="status">审核通过后展示。</p><button className="primary-button" onClick={() => dialog.current?.close()}>完成</button></> :
+    {submitted ? <><p role="status">评价已发布。</p><button className="primary-button" onClick={() => dialog.current?.close()}>完成</button></> :
       <form onSubmit={async (event) => {
         event.preventDefault();
         if (controller.current || sending) return;
@@ -46,6 +46,7 @@ function ReviewForm({ endpoint, name, close }: { endpoint: string; name: string;
             throw new Error(result?.error ?? '提交失败，请重试。');
           }
           setSubmitted(true);
+          published();
         } catch (cause) {
           setError(abort.signal.aborted ? '提交结果未确认，请重试；原样重试不会重复提交。' : cause instanceof TypeError ? '网络连接失败，请重试。' : cause instanceof Error ? cause.message : '提交失败，请重试。');
         } finally { window.clearTimeout(timeout); controller.current = null; setSending(false); }
@@ -62,7 +63,7 @@ function ReviewForm({ endpoint, name, close }: { endpoint: string; name: string;
         <textarea id="review-body" required maxLength={2000} rows={6} value={body} disabled={sending} onChange={(event) => { changed(); setBody(event.target.value); }} />
         <p className="character-count">{body.length} / 2000</p>
         {error && <p className="form-error" role="alert">{error}</p>}
-        <div className="form-actions"><button type="button" disabled={sending} onClick={() => dialog.current?.close()}>取消</button><button type="submit" className="primary-button" disabled={sending}>{sending ? '提交中…' : '提交审核'}</button></div>
+        <div className="form-actions"><button type="button" disabled={sending} onClick={() => dialog.current?.close()}>取消</button><button type="submit" className="primary-button" disabled={sending}>{sending ? '提交中…' : '提交评价'}</button></div>
       </form>}
   </dialog>;
 }
@@ -92,6 +93,6 @@ export function Reviews({ kind, id, name }: { kind: 'teachers' | 'courses'; id: 
       </li>)}</ul> : <p className="review-empty">{offset ? '本页暂无评论' : '暂无评论'}</p>}
       {(offset > 0 || data.hasMore) && <nav className="pagination" aria-label="评论分页"><button disabled={!offset} onClick={() => setOffset(Math.max(0, offset - 20))}>上一页</button><span>第 {offset / 20 + 1} 页</span><button disabled={!data.hasMore} onClick={() => setOffset(offset + 20)}>下一页</button></nav>}
     </>}
-    {writing && <ReviewForm endpoint={endpoint} name={name} close={() => { setWriting(false); writeButton.current?.focus(); }} />}
+    {writing && <ReviewForm endpoint={endpoint} name={name} published={() => { setOffset(0); retry(); }} close={() => { setWriting(false); writeButton.current?.focus(); }} />}
   </section>;
 }

@@ -33,22 +33,25 @@ test('星级与评论（临时 D1，不向线上写测试评价）', async (t) =
     }
   });
 
-  await t.test('提交默认待审核，同编号原样重试不重复，不允许覆盖', async () => {
+  await t.test('验证阶段直接发布，同编号原样重试不重复，不允许覆盖', async () => {
     for (const kind of ['teachers', 'courses']) {
       const table = kind === 'teachers' ? 'teacher_reviews' : 'course_reviews';
       const data = { id: randomUUID(), rating: 4, body: '  例题讲解清楚。  ' };
       assert.equal((await submit(kind, data)).status, 202);
       assert.equal((await submit(kind, data)).status, 202);
       const stored = await DB.prepare(`SELECT * FROM ${table} WHERE id=?`).bind(data.id).first();
-      assert.equal(stored.status, 'pending');
+      assert.equal(stored.status, 'published');
       assert.equal(stored.body, '例题讲解清楚。');
       assert.ok(Number.isFinite(Date.parse(stored.created_at)));
       assert.equal((await DB.prepare(`SELECT count(*) AS n FROM ${table}`).first()).n, 1);
       assert.equal((await submit(kind, { ...data, rating: 1 })).status, 409);
       assert.equal((await submit(kind, data, 2)).status, 409);
       const visible = await (await request(`/api/${kind}/1/reviews`)).json();
-      assert.equal(visible.summary.count, 0);
-      assert.deepEqual(visible.reviews, []);
+      assert.equal(visible.summary.count, 1);
+      assert.equal(visible.summary.average, 4);
+      assert.equal(visible.reviews[0].body, '例题讲解清楚。');
+      // 后续统计用例仍覆盖待审核内容不可见的约束。
+      await DB.prepare(`UPDATE ${table} SET status='pending' WHERE id=?`).bind(data.id).run();
     }
   });
 
@@ -92,6 +95,12 @@ test('星级与评论（临时 D1，不向线上写测试评价）', async (t) =
       assert.equal((await request(`/api/${kind}/1/reviews`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{' })).status, 400);
       assert.equal((await request(`/api/${kind}/1/reviews`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: 'a'.repeat(9000) })).status, 413);
     }
+  });
+
+  await t.test('退出目录的课程不能读取或提交评价', async () => {
+    await DB.prepare('UPDATE courses SET is_listed=0 WHERE id=?').bind(2).run();
+    assert.equal((await request('/api/courses/2/reviews')).status, 404);
+    assert.equal((await submit('courses', { id: randomUUID(), rating: 5, body: '不应写入' }, 2)).status, 404);
   });
 
   await t.test('数据库同样约束星级、正文与外键', async () => {

@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 export const catalog = JSON.parse(readFileSync(new URL('../data/initial-catalog.json', import.meta.url), 'utf8'));
 const fields = {
   teachers: ['id', 'name', 'department', 'profile_url'],
-  courses: ['id', 'name', 'department', 'code'],
+  courses: ['id', 'name', 'department', 'code', 'category', 'is_listed'],
 };
 
 // query(sql, params) 返回行数组；调用方选择本地数据库或远程 D1。
@@ -20,6 +20,7 @@ export async function importInitialCatalog(query) {
       if (typeof row.name !== 'string' || !row.name.trim() || row.name.length > 100 || names.has(row.name)) throw new Error('目录名称无效或重复');
       if (typeof row.department !== 'string' || !row.department.trim() || row.department.length > 100) throw new Error('学院字段无效');
       if (table === 'courses' && row.code !== null && (typeof row.code !== 'string' || !row.code.trim() || row.code.length > 64)) throw new Error('课程代码无效');
+      if (table === 'courses' && (![null, 'major', 'elective'].includes(row.category) || ![0, 1].includes(row.is_listed))) throw new Error('课程分类无效');
       if (table === 'teachers' && row.profile_url !== null) {
         const url = new URL(row.profile_url);
         if (url.protocol !== 'https:' || url.hostname !== 'faculty.csu.edu.cn' || row.profile_url.length > 2048) throw new Error('官网链接无效');

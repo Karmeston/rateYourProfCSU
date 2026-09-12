@@ -60,61 +60,81 @@
       "id": 1,
       "name": "多元统计分析",
       "code": null,
-      "department": "待核实"
+      "department": "待核实",
+      "category": "major",
+      "is_listed": 1
     },
     {
       "id": 2,
       "name": "复变函数",
       "code": null,
-      "department": "待核实"
+      "department": "待核实",
+      "category": "major",
+      "is_listed": 1
     },
     {
       "id": 3,
       "name": "随机过程",
       "code": null,
-      "department": "待核实"
+      "department": "待核实",
+      "category": "major",
+      "is_listed": 1
     },
     {
       "id": 4,
       "name": "统计数据分析",
       "code": null,
-      "department": "待核实"
+      "department": "待核实",
+      "category": "major",
+      "is_listed": 1
     },
     {
       "id": 5,
       "name": "形势与政策",
       "code": null,
-      "department": "待核实"
+      "department": "待核实",
+      "category": null,
+      "is_listed": 0
     },
     {
       "id": 6,
       "name": "统计机器学习基础",
       "code": null,
-      "department": "待核实"
+      "department": "待核实",
+      "category": "major",
+      "is_listed": 1
     },
     {
       "id": 7,
       "name": "回归分析",
       "code": null,
-      "department": "待核实"
+      "department": "待核实",
+      "category": "major",
+      "is_listed": 1
     },
     {
       "id": 8,
       "name": "改革开放史",
       "code": null,
-      "department": "待核实"
+      "department": "待核实",
+      "category": null,
+      "is_listed": 0
     },
     {
       "id": 9,
       "name": "毛泽东思想和中国特色社会主义理论体系概论",
       "code": null,
-      "department": "待核实"
+      "department": "待核实",
+      "category": null,
+      "is_listed": 0
     },
     {
       "id": 10,
       "name": "贝叶斯统计",
       "code": null,
-      "department": "待核实"
+      "department": "待核实",
+      "category": "major",
+      "is_listed": 1
     }
   ]
 }

@@ -19,6 +19,8 @@ test('首批目录导入后可重跑，不需要学期、不重复教师', async
   assert.equal((await importInitialCatalog(query)).inserted, 0);
   assert.equal(db.prepare('SELECT count(*) AS n FROM teachers').get().n, 9);
   assert.equal(db.prepare('SELECT count(*) AS n FROM courses').get().n, 10);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM courses WHERE is_listed=1 AND category=?').get('major').n, 7);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM courses WHERE is_listed=0').get().n, 3);
   assert.equal(db.prepare('SELECT count(*) AS n FROM terms').get().n, 0);
   assert.equal(db.prepare('SELECT count(*) AS n FROM course_offerings').get().n, 0);
 });

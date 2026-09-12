@@ -41,6 +41,7 @@ reviews.use('*', async (c, next) => {
 });
 
 for (const { kind, table, foreignKey } of targets) {
+  const visibility = kind === 'courses' ? ' AND is_listed = 1' : '';
   // 表名仅来自上面的固定配置，所有外部值都使用参数绑定。
   reviews.get(`/${kind}/:id/reviews`, async (c) => {
     const rawId = c.req.param('id');
@@ -53,7 +54,7 @@ for (const { kind, table, foreignKey } of targets) {
     }
     const id = Number(rawId);
     const offset = Number(rawOffset);
-    const target = await c.env.DB.prepare(`SELECT id FROM ${kind} WHERE id = ?`).bind(id).first();
+    const target = await c.env.DB.prepare(`SELECT id FROM ${kind} WHERE id = ?${visibility}`).bind(id).first();
     if (!target) return c.json({ error: '评价对象不存在' }, 404);
     const [counts, entries] = await c.env.DB.batch([
       c.env.DB.prepare(`SELECT rating, count(*) AS count FROM ${table} WHERE ${foreignKey} = ? AND status = 'published' GROUP BY rating`).bind(id),
@@ -85,10 +86,11 @@ for (const { kind, table, foreignKey } of targets) {
     }
     const id = Number(rawId);
     const body = data.body.trim();
-    const target = await c.env.DB.prepare(`SELECT id FROM ${kind} WHERE id = ?`).bind(id).first();
+    const target = await c.env.DB.prepare(`SELECT id FROM ${kind} WHERE id = ?${visibility}`).bind(id).first();
     if (!target) return c.json({ error: '评价对象不存在' }, 404);
     // 同一个提交 ID 重试不会重复写入；不允许客户端指定审核状态。
-    await c.env.DB.prepare(`INSERT INTO ${table} (id, ${foreignKey}, rating, body) VALUES (?, ?, ?, ?) ON CONFLICT(id) DO NOTHING`).bind(data.id, id, data.rating, body).run();
+    // 验证阶段直接公开，保留状态字段供以后启用审核。
+    await c.env.DB.prepare(`INSERT INTO ${table} (id, ${foreignKey}, rating, body, status) VALUES (?, ?, ?, ?, 'published') ON CONFLICT(id) DO NOTHING`).bind(data.id, id, data.rating, body).run();
     const stored = await c.env.DB.prepare(`SELECT ${foreignKey} AS target_id, rating, body FROM ${table} WHERE id = ?`).bind(data.id).first<{ target_id: number; rating: number; body: string }>();
     if (!stored || stored.target_id !== id || stored.rating !== data.rating || stored.body !== body) return c.json({ error: '提交编号冲突，请重新打开评价表单' }, 409);
     return c.json({ received: true }, 202);
