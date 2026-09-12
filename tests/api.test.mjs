@@ -1,83 +1,92 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { test } from 'node:test';
 import { getPlatformProxy } from 'wrangler';
 import app from '../src/index.ts';
 
-test('只读浏览 API（独立的临时 D1，不修改开发数据库）', async (t) => {
+test('独立教师与课程浏览 API（临时 D1）', async (t) => {
   const platform = await getPlatformProxy({ persist: false });
   t.after(() => platform.dispose());
   const { DB } = platform.env;
-  for (const file of ['../migrations/0001_core.sql', '../seeds/local.sql']) {
-    const sql = readFileSync(new URL(file, import.meta.url), 'utf8');
-    // 当前迁移与 seed 均无字符串内分号或触发器；逐语句交给真实本地 D1。
-    for (const statement of sql.split(';').filter((part) => part.trim())) {
-      await DB.prepare(statement).run();
-    }
+  const migrations = new URL('../migrations/', import.meta.url);
+  for (const file of readdirSync(migrations).filter((name) => name.endsWith('.sql')).sort()) {
+    const sql = readFileSync(new URL(file, migrations), 'utf8');
+    for (const statement of sql.split(';').filter((part) => part.trim())) await DB.prepare(statement).run();
+  }
+  // 无授课关系、无学期，也可以建立和浏览这两类资料。
+  for (const [id, name] of [[1, '同名教师'], [2, '同名教师']]) {
+    await DB.prepare('INSERT INTO teachers (id, name, department) VALUES (?, ?, ?)').bind(id, name, '测试学院').run();
+  }
+  await DB.prepare('UPDATE teachers SET profile_url = ? WHERE id = ?').bind('https://faculty.csu.edu.cn/example/', 1).run();
+  for (const [id, name] of [[1, '数学分析'], [2, '概率论']]) {
+    await DB.prepare('INSERT INTO courses (id, name, department) VALUES (?, ?, ?)').bind(id, name, '测试学院').run();
   }
   const request = (path) => app.request(path, {}, platform.env);
 
-  await t.test('课程分页不重复，标记是否还有下一页', async () => {
-    const first = await request('/api/courses?limit=1');
-    assert.equal(first.status, 200);
-    assert.equal(first.headers.get('Cache-Control'), 'private, max-age=60');
-    const a = await first.json();
-    const b = await (await request('/api/courses?limit=1&offset=1')).json();
-    assert.equal(a.courses.length, 1);
-    assert.equal(a.hasMore, true);
-    assert.equal(b.hasMore, false);
-    assert.notEqual(a.courses[0].id, b.courses[0].id);
-    assert.deepEqual((await (await request('/api/courses?offset=100')).json()).courses, []);
+  await t.test('两类列表均可分页，同名教师保留独立 ID', async () => {
+    for (const kind of ['teachers', 'courses']) {
+      const first = await request(`/api/${kind}?limit=1`);
+      assert.equal(first.status, 200);
+      assert.equal(first.headers.get('Cache-Control'), 'private, max-age=60');
+      const a = await first.json();
+      const b = await (await request(`/api/${kind}?limit=1&offset=1`)).json();
+      assert.equal(a[kind].length, 1);
+      assert.equal(a.hasMore, true);
+      assert.equal(b.hasMore, false);
+      assert.notEqual(a[kind][0].id, b[kind][0].id);
+    }
   });
 
-  await t.test('授课记录保留跨学期与不同教师，按新学期优先排列', async () => {
-    const response = await request('/api/courses/-1/offerings');
-    assert.equal(response.status, 200);
-    assert.equal(response.headers.get('Cache-Control'), 'private, max-age=60');
-    const body = await response.json();
-    assert.equal(body.course.id, -1);
-    assert.equal(body.offerings.length, 3);
-    assert.deepEqual(body.offerings.map((row) => row.start_year), [2026, 2026, 2025]);
-    assert.equal(new Set(body.offerings.map((row) => row.teacher_id)).size, 2);
-    const page = await (await request('/api/courses/-1/offerings?limit=1&offset=2')).json();
-    assert.equal(page.offerings[0].start_year, 2025);
-    assert.equal(page.hasMore, false);
+  await t.test('独立详情不需要学期或授课记录，返回官网链接', async () => {
+    const teacher = await (await request('/api/teachers/1')).json();
+    assert.equal(teacher.teacher.profile_url, 'https://faculty.csu.edu.cn/example/');
+    assert.deepEqual(Object.keys(teacher), ['teacher']);
+    const course = await (await request('/api/courses/1')).json();
+    assert.equal(course.course.name, '数学分析');
+    assert.deepEqual(Object.keys(course), ['course']);
+    for (const table of ['terms', 'course_offerings']) {
+      assert.equal((await DB.prepare(`SELECT count(*) AS n FROM ${table}`).first()).n, 0);
+    }
+    assert.equal((await request('/api/courses/1/offerings')).status, 404);
   });
 
-  await t.test('不存在的课程与无授课记录的课程可区分', async () => {
-    const missing = await request('/api/courses/999/offerings');
-    assert.equal(missing.status, 404);
-    assert.equal(missing.headers.get('Cache-Control'), null);
-    await DB.prepare('INSERT INTO courses (id, name, department) VALUES (?, ?, ?)').bind(100, '空课程', '测试学院').run();
-    const response = await request('/api/courses/100/offerings');
-    assert.equal(response.status, 200);
-    assert.deepEqual((await response.json()).offerings, []);
-  });
-
-  await t.test('拒绝非法、重复及未知参数，包括 SQL 注入形式', async () => {
-    for (const query of ['limit=0', 'limit=101', 'limit=1.5', 'offset=-1', 'offset=100001', 'limit=', 'limit=1&limit=2', 'q=test', 'offset=1%20OR%201=1']) {
-      for (const path of ['/api/courses', '/api/courses/-1/offerings']) {
-        assert.equal((await request(`${path}?${query}`)).status, 400, `${path}?${query}`);
+  await t.test('搜索按字面匹配，注入字符串与通配符不扩大结果', async () => {
+    const found = await (await request('/api/courses?q=' + encodeURIComponent('数学'))).json();
+    assert.deepEqual(found.courses.map((row) => row.name), ['数学分析']);
+    for (const kind of ['teachers', 'courses']) {
+      for (const q of ["' OR 1=1 --", '%', '_', '不存在']) {
+        const response = await request(`/api/${kind}?q=${encodeURIComponent(q)}`);
+        assert.equal(response.status, 200);
+        assert.deepEqual((await response.json())[kind], []);
       }
     }
-    for (const id of ['0', '1.5', 'abc', '9007199254740992', '1%20OR%201=1']) {
-      assert.equal((await request(`/api/courses/${id}/offerings`)).status, 400);
+  });
+
+  await t.test('拒绝非法参数，不存在的详情返回 404', async () => {
+    for (const kind of ['teachers', 'courses']) {
+      for (const query of ['limit=0', 'limit=101', 'limit=1.5', 'offset=-1', 'offset=100001', 'limit=', 'limit=1&limit=2', 'q=a&q=b', 'q=' + 'a'.repeat(101), 'other=x']) {
+        assert.equal((await request(`/api/${kind}?${query}`)).status, 400);
+      }
+      for (const id of ['0', '1.5', 'abc', '9007199254740992', '1%20OR%201=1']) {
+        assert.equal((await request(`/api/${kind}/${id}`)).status, 400);
+      }
+      assert.equal((await request(`/api/${kind}/1?term=2026`)).status, 400);
+      const missing = await request(`/api/${kind}/999`);
+      assert.equal(missing.status, 404);
+      assert.equal(missing.headers.get('Cache-Control'), null);
+      assert.equal((await app.request(`/api/${kind}`, { method: 'POST' }, platform.env)).status, 404);
     }
   });
 
-  await t.test('无写入路由，数据库错误不向客户端暴露 SQL', async () => {
-    assert.equal((await app.request('/api/courses', { method: 'POST' }, platform.env)).status, 404);
-    const original = console.error;
+  await t.test('数据库故障不泄露 SQL、不缓存错误', async () => {
     t.mock.method(console, 'error', () => {});
-    try {
-      const response = await app.request('/api/courses', {}, {
+    for (const kind of ['teachers', 'courses']) {
+      const response = await app.request(`/api/${kind}`, {}, {
         DB: { prepare() { throw new Error('private SQL details'); } },
       });
       assert.equal(response.status, 500);
       assert.equal(response.headers.get('Cache-Control'), null);
       assert.deepEqual(await response.json(), { error: '服务暂时不可用，请稍后重试' });
-    } finally {
-      console.error = original;
     }
   });
 });

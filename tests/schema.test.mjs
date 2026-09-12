@@ -5,6 +5,7 @@ import { test } from 'node:test';
 
 const schema = readFileSync(new URL('../migrations/0001_core.sql', import.meta.url), 'utf8');
 const seed = readFileSync(new URL('../seeds/local.sql', import.meta.url), 'utf8');
+const profileMigration = readFileSync(new URL('../migrations/0002_teacher_profile.sql', import.meta.url), 'utf8');
 
 function database(t) {
   const db = new DatabaseSync(':memory:');
@@ -15,12 +16,23 @@ function database(t) {
   return db;
 }
 
-test('同一教师同一课程跨学期独立保存，同学期不重复', (t) => {
+test('历史授课数据约束仍然保留', (t) => {
   const db = database(t);
   const records = db.prepare('SELECT term_id FROM course_offerings WHERE course_id = ? AND teacher_id = ?').all(-1, -1);
   assert.equal(records.length, 2);
   assert.equal(new Set(records.map((row) => row.term_id)).size, 2);
   assert.throws(() => db.prepare('INSERT INTO course_offerings (course_id, teacher_id, term_id) VALUES (?, ?, ?)').run(-1, -1, -1), /UNIQUE/);
+});
+
+test('官网字段迁移保留已有资料和历史记录', (t) => {
+  const db = database(t);
+  const before = db.prepare('SELECT * FROM teachers ORDER BY id').all();
+  db.exec(profileMigration);
+  assert.deepEqual(db.prepare('SELECT id, name, department FROM teachers ORDER BY id').all(), before);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM course_offerings').get().n, 4);
+  assert.equal(db.prepare('SELECT profile_url FROM teachers WHERE id = -1').get().profile_url, null);
+  assert.throws(() => db.prepare('UPDATE teachers SET profile_url = ? WHERE id = ?').run('javascript:alert(1)', -1), /CHECK/);
+  db.prepare('UPDATE teachers SET profile_url = ? WHERE id = ?').run('https://faculty.csu.edu.cn/example/', -1);
 });
 
 test('授课记录必须引用存在的课程、教师和学期，禁止删除被引用记录', (t) => {

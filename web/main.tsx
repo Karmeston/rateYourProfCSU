@@ -3,10 +3,11 @@ import { createRoot } from 'react-dom/client';
 import './style.css';
 
 type Course = { id: number; code: string | null; name: string; department: string };
-type Offering = { id: number; teacher_id: number; teacher_name: string; teacher_department: string; term_id: number; start_year: number; semester: number };
+type Teacher = { id: number; name: string; department: string; profile_url: string | null };
+type Kind = 'teachers' | 'courses';
 type Page = { limit: number; offset: number; hasMore: boolean };
-type Courses = Page & { courses: Course[] };
-type Details = Page & { course: Course; offerings: Offering[] };
+type CatalogData = Page & { courses?: Course[]; teachers?: Teacher[] };
+type Details = { course?: Course; teacher?: Teacher };
 const pageSize = 20;
 
 // 页面切换时取消旧请求，避免慢请求把新页面的数据覆盖。
@@ -24,7 +25,7 @@ function useData<T>(url: string) {
     void (async () => {
       try {
         const response = await fetch(url, { signal: controller.signal });
-        if (!response.ok) throw new Error(response.status === 404 ? '没有找到这门课程。' : '暂时无法加载，请稍后重试。');
+        if (!response.ok) throw new Error(response.status === 404 ? '没有找到这条记录。' : '暂时无法加载，请稍后重试。');
         const data = await response.json() as T;
         if (!controller.signal.aborted) setState({ data });
       } catch (error) {
@@ -61,51 +62,56 @@ function Demo() {
   return <span className="badge">虚构演示数据</span>;
 }
 
-function Catalog({ offset }: { offset: number }) {
-  const { data, error, retry } = useData<Courses>(`/api/courses?limit=${pageSize}&offset=${offset}`);
+const labels = { teachers: '教师', courses: '课程' };
+
+function Catalog({ kind, offset, q }: { kind: Kind; offset: number; q: string }) {
+  const { data, error, retry } = useData<CatalogData>(`/api/${kind}?limit=${pageSize}&offset=${offset}&q=${encodeURIComponent(q)}`);
+  const rows = data?.[kind] ?? [];
   return <>
-    <div className="page-heading"><h1>课程</h1></div>
+    <div className="page-heading"><h1>{labels[kind]}</h1></div>
+    <form className="search" role="search" onSubmit={(event) => {
+      event.preventDefault();
+      const query = String(new FormData(event.currentTarget).get('q') ?? '').trim();
+      window.location.hash = `#/${kind}?q=${encodeURIComponent(query)}`;
+    }}>
+      <input name="q" type="search" maxLength={100} defaultValue={q} aria-label={`搜索${labels[kind]}`} placeholder={`搜索${labels[kind]}`} />
+      <button type="submit">搜索</button>
+    </form>
     {!data ? <Notice error={error} retry={retry} /> : <>
-      {data.courses.length ? <ul className="course-list">{data.courses.map((course) => <li key={course.id}>
-        <a className="course-link" href={`#/courses/${course.id}`}>
-          <div><p className="metadata">{course.department}</p><h2>{course.name}</h2>
-            <p className="metadata">课程代码：{course.code ?? '暂无'}</p>{course.id < 0 && <Demo />}</div>
+      {rows.length ? <ul className="course-list">{rows.map((row) => <li key={row.id}>
+        <a className="course-link" href={`#/${kind}/${row.id}`}>
+          <div><h2>{row.name}</h2><p className="metadata">{row.department}</p>{row.id < 0 && <Demo />}</div>
           <span className="link-label" aria-hidden="true">→</span>
         </a>
-      </li>)}</ul> : <p className="notice">暂无课程</p>}
-      <Pager page={data} href={(value) => `#/?offset=${value}`} />
+      </li>)}</ul> : <p className="notice">{q ? '没有找到匹配结果' : `暂无${labels[kind]}`}</p>}
+      <Pager page={data} href={(value) => `#/${kind}?offset=${value}&q=${encodeURIComponent(q)}`} />
     </>}
   </>;
 }
 
-function CourseDetail({ id, offset }: { id: string; offset: number }) {
-  const { data, error, retry } = useData<Details>(`/api/courses/${id}/offerings?limit=${pageSize}&offset=${offset}`);
+// 仅允许 HTTPS 链接，避免把资料字段变成可执行 URL。
+function profileLink(value: string | null | undefined) {
+  if (!value) return null;
+  try { const url = new URL(value); return url.protocol === 'https:' ? url.href : null; }
+  catch { return null; }
+}
+
+function Detail({ kind, id }: { kind: Kind; id: string }) {
+  const { data, error, retry } = useData<Details>(`/api/${kind}/${id}`);
+  const row = kind === 'teachers' ? data?.teacher : data?.course;
+  const profile = profileLink(data?.teacher?.profile_url);
   useEffect(() => {
-    if (data) document.title = `${data.course.name} · 课前了解`;
-  }, [data]);
-  const groups = new Map<number, Offering[]>();
-  for (const row of data?.offerings ?? []) {
-    const group = groups.get(row.term_id) ?? [];
-    group.push(row);
-    groups.set(row.term_id, group);
-  }
+    if (row) document.title = `${row.name} · rateMyProfCSU`;
+  }, [row]);
   return <>
-    <a className="back-link" href="#/">← 返回课程列表</a>
-    {!data ? <Notice error={error} retry={retry} /> : <>
-      <div className="page-heading"><p className="eyebrow">{data.course.department}</p>
-        <h1>{data.course.name}</h1><p>课程代码：{data.course.code ?? '暂无'}</p>
-        {data.course.id < 0 && <Demo />}</div>
-      <h2>授课教师</h2>
-      {!data.offerings.length && <p className="notice">暂无授课记录</p>}
-      {[...groups.entries()].map(([termId, rows]) => <section className="term" key={termId} aria-labelledby={`term-${termId}`}>
-        <h3 id={`term-${termId}`}>{rows[0].start_year}–{rows[0].start_year + 1} 学年 <span>第{rows[0].semester === 1 ? '一' : '二'}学期</span></h3>
-        <ul className="teacher-list">{rows.map((row) => <li key={row.id}>
-          <div><h4>{row.teacher_name}</h4><p className="metadata">{row.teacher_department}</p></div>
-          <span className="empty-label">暂无教学体验</span>
-        </li>)}</ul>
-      </section>)}
-      <Pager page={data} href={(value) => `#/courses/${id}?offset=${value}`} />
-    </>}
+    <a className="back-link" href={`#/${kind}`}>← 返回{labels[kind]}列表</a>
+    {!row ? <Notice error={error} retry={retry} /> :
+      <div className="page-heading">
+        <h1>{row.name}</h1><p>{row.department}</p>
+        {data?.course?.code && <p>课程代码：{data.course.code}</p>}
+        {profile && <a href={profile} target="_blank" rel="noopener noreferrer">官网主页 ↗</a>}
+        {row.id < 0 && <Demo />}
+      </div>}
   </>;
 }
 
@@ -117,21 +123,33 @@ function App() {
     window.addEventListener('hashchange', onChange);
     return () => window.removeEventListener('hashchange', onChange);
   }, []);
+  const [path, query = ''] = hash.slice(1).split('?');
+  const match = /^\/(teachers|courses)(?:\/(-?[1-9]\d*))?$/.exec(path);
+  const kind: Kind = match?.[1] === 'courses' ? 'courses' : 'teachers';
+  const params = new URLSearchParams(query);
+  const value = params.get('offset') ?? '0';
+  const offset = Number(value);
+  const q = params.get('q') ?? '';
+  const valid = /^(0|[1-9]\d*)$/.test(value) && Number.isSafeInteger(offset) && offset <= 100000
+    && q.length <= 100 && (!match?.[2] || Number.isSafeInteger(Number(match[2])));
   useEffect(() => {
-    document.title = '课程浏览 · 课前了解';
     main.current?.focus();
     window.scrollTo(0, 0);
   }, [hash]);
-  const [path, query = ''] = hash.slice(1).split('?');
-  const match = /^\/courses\/(-?[1-9]\d*)$/.exec(path);
-  const value = new URLSearchParams(query).get('offset') ?? '0';
-  const offset = Number(value);
-  const valid = /^(0|[1-9]\d*)$/.test(value) && Number.isSafeInteger(offset) && offset <= 100000;
+  useEffect(() => {
+    if (!match?.[2]) document.title = `${labels[kind]} · rateMyProfCSU`;
+  }, [hash, kind]);
   return <>
-    <header><div className="header-inner"><a className="brand" href="#/">课前了解</a></div></header>
+    <header><div className="header-inner">
+      <a className="brand" href="#/teachers">rateMyProfCSU</a>
+      <nav className="primary-nav" aria-label="浏览分类">
+        <a href="#/teachers" aria-current={kind === 'teachers' ? 'page' : undefined}>教师</a>
+        <a href="#/courses" aria-current={kind === 'courses' ? 'page' : undefined}>课程</a>
+      </nav>
+    </div></header>
     <main ref={main} tabIndex={-1} key={hash}>
-      {!valid || (path !== '/' && !match) ? <div className="notice"><h1>页面不存在</h1><a href="#/">返回课程列表</a></div>
-        : match ? <CourseDetail id={match[1]} offset={offset} /> : <Catalog offset={offset} />}
+      {!valid || (path !== '/' && !match) ? <div className="notice"><h1>页面不存在</h1><a href="#/teachers">返回列表</a></div>
+        : match?.[2] ? <Detail kind={kind} id={match[2]} /> : <Catalog kind={kind} offset={offset} q={q} />}
     </main>
   </>;
 }

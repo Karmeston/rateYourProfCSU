@@ -1,14 +1,26 @@
-# rateYourProfCSU
+# rateMyProfCSU
 
-面向中南大学学生的非官方课程与教师教学体验信息平台，帮助学生了解具体课程中的教学风格，不做教师好坏排行榜。
+面向中南大学学生的教师与课程评价平台，采用两个独立入口：
+- 教师：按教师浏览，未来直接评价教师，课程与修读时间由评论者自行叙述。
+- 课程：按课程浏览，未来直接评价课程，任课教师可在正文补充。
 
-## 当前阶段
+目前实现独立列表、名称搜索、分页、详情及教师官网链接。评论功能尚未实现，不显示不可用的投稿按钮。
 
-已有 React 课程列表、按学期分组的授课记录页面，以及 Hono 只读 API 和 D1 核心模型。前后端一起部署到 Cloudflare Workers。暂未实现评价系统；健康检查仅检查服务响应，不检查数据库。
+## 技术与目录
+
+TypeScript、React、Vite、Hono、Cloudflare Workers、D1；不依赖常驻进程或线上本地磁盘。
+
+- `web/`：前端页面、系统字体样式、静态资源缓存。
+- `src/index.ts`：只读 API、服务端输入验证、参数化 SQL。
+- `migrations/`：按顺序执行的迁移，已应用文件不修改。
+- `seeds/local.sql`：虚构演示资料，仅用于本地。
+- `tests/`：临时 D1 API 测试及 SQLite 约束和迁移测试。
+- `data/`：已整理的官网来源资料，不自动导入数据库。
+- `scripts/cloudflare-network.cjs`：部署 CLI 的本机网络兼容配置。
 
 ## 本地运行
 
-推荐使用 Node.js 24 LTS（API 测试直接运行 TypeScript，需要 Node.js 22.18 或更新版本），在项目目录运行：
+使用 Node.js 24（至少 22.18）：
 
 ```sh
 npm ci
@@ -17,111 +29,51 @@ npm run db:seed:local
 npm run dev
 ```
 
-打开终端显示的本地地址（通常为 http://localhost:8787）。首页显示课程列表，`/api/health` 返回 `{"status":"ok"}`。演示数据仅用于本地；修改前端后需重新运行 dev 构建。
-
-本地开发无需登录 Cloudflare，无需配置 token，也无需创建 D1 数据库。Wrangler 使用本地 Workers 运行时。
+打开终端显示的地址，通常为 http://localhost:8787。演示数据可选，负数 ID 会显示演示标记。修改前端后重新运行 dev 构建。
 
 ```sh
 npm run typecheck
 npm run build
+npm test
 ```
 
-分别检查 TypeScript 和执行本地打包；`build` 使用 dry-run，不会部署。
+build 仅打包和 dry-run，不发布。测试不修改开发数据库。生成的类型、构建产物、依赖和本地配置不提交 Git。
 
-## 文件说明
+## API
 
-- `src/index.ts`：Worker 入口、只读 API、参数验证和错误处理。
-- `web/`：React 页面、系统字体样式和静态资源缓存规则。
-- `worker-configuration.d.ts`：`npm run types` 自动生成的 Workers/D1 类型，不提交 Git；类型检查会先生成它。
-- `wrangler.jsonc`：Worker 名称、入口和运行时兼容日期。
-- `tsconfig.json`：TypeScript 严格类型检查配置。
-- `.gitignore`：忽略依赖、构建产物和本地敏感配置。
-- `migrations/0001_core.sql`：四张核心表的建表迁移。
-- `seeds/local.sql`：全部虚构的本地演示数据，独立于迁移。
-- `tests/schema.test.mjs`：使用 Node.js 内存 SQLite 验证模型约束，不修改本地 D1。
-- `tests/api.test.mjs`：使用独立临时 D1 验证 API；`npm test` 运行全部测试，不修改开发数据库。
-
-## 浏览 API
-
-先按下节完成本地建表和演示数据导入，再执行 `npm run dev`。浏览器可直接打开：
-
-- http://localhost:8787/api/courses ：课程列表。
-- http://localhost:8787/api/courses/-1/offerings ：演示课程的授课教师与学期。
-- http://localhost:8787/api/courses?limit=1&offset=0 ：分页示例。
-
-| GET 接口 | JSON 返回字段 |
+| GET 接口 | 返回 |
 | --- | --- |
-| `/api/courses` | `courses`、`limit`、`offset`、`hasMore` |
-| `/api/courses/:id/offerings` | `course`、`offerings`、`limit`、`offset`、`hasMore` |
+| `/api/teachers` | teachers、limit、offset、q、hasMore |
+| `/api/courses` | courses、limit、offset、q、hasMore |
+| `/api/teachers/:id` | teacher |
+| `/api/courses/:id` | course |
+| `/api/health` | status，仅检查服务响应 |
 
-两个接口均只接受可选整数参数 `limit`（默认 20，范围 1–100）和 `offset`（默认 0，范围 0–100000）；重复或未知参数返回 400。下一页把 offset 增加 limit；hasMore 表示是否仍有下一页。课程按 ID 升序，授课记录按学年、学期降序，同学期按授课记录 ID 升序。
+列表支持 limit（1–100，默认20）、offset（0–100000，默认0）、q（最多100字符的名称搜索），按 ID 升序。搜索字面匹配，百分号和下划线不是通配符。详情不接受查询参数。重复、未知或非法参数返回400，不存在的详情返回404，数据库故障返回通用500，详细错误仅记服务端日志。没有写入 HTTP 接口。
 
-授课记录字段为 `id`、`teacher_id`、`teacher_name`、`teacher_department`、`term_id`、`start_year`、`semester`。不同学期的记录分别返回。课程 ID 必须为非零安全整数，支持演示数据的负数 ID。
+旧的 `/api/courses/:id/offerings` 已移除。
 
-非法输入返回 400，课程不存在返回 404，存在但无授课记录返回 200 和空数组。数据库异常返回 500 和通用提示，详细错误只记入服务端日志。请求参数经过服务端验证和 SQL 参数绑定；没有写入数据的 HTTP 接口。
+## 数据模型
 
-## 本地数据库
+`teachers` 与 `courses` 各自独立，创建和浏览不依赖授课关系或学期。
+教师可同名，以 ID 区分；官网链接可为空，前端仅允许 HTTPS。
+课程代码可为空，已知代码唯一。
 
-在项目目录执行（无需 Cloudflare 登录）：
-
-```sh
-npm run db:migrate:local
-npm run db:seed:local
-npm run test:db
-```
-
-第一条命令创建表，Wrangler 会记录已应用迁移，重复执行不会重新建表。第二条是可选的演示数据导入，可以重复执行；仅供空的本地开发数据库使用，不用于线上数据库。第三条运行约束测试，需要 Node.js 22.13 或更新版本（推荐 Node.js 24 LTS）。
-
-所有数据库脚本均显式使用 `--local`，状态保存在被 Git 忽略的 `.wrangler/` 中。这只是本地模拟器的存储方式，线上应用通过 D1 绑定访问数据库，不依赖 Worker 本地磁盘。
-
-| 表 | 内容 | 约束 |
-| --- | --- | --- |
-| `courses` | 名称、课程代码、所属学院 | 已知课程代码唯一，未知可为 NULL |
-| `teachers` | 姓名、所属学院 | 允许同名，以 ID 区分 |
-| `terms` | 学年开始年份、学期序号 | 年份与学期组合唯一 |
-| `course_offerings` | 课程 ID、教师 ID、学期 ID | 三者组合唯一，均有外键 |
-
-`start_year = 2026, semester = 1` 表示 2026–2027 学年第一学期。当前仅支持两个常规学期，同一教师同一课程同一学期的多个教学班暂时合并为一条授课记录；若之后需要短学期或区分教学班，再通过新迁移扩展。
-
-未来每条教学体验关联 `course_offerings.id`，因此可以按具体课程和学期查看。外键禁止删除仍被授课记录引用的课程、教师或学期，避免误删关联数据。数据库约束不能替代 API 的服务端输入验证。
-
-演示数据包含同一教师跨两个学期教授同一课程、同一课程由不同教师授课的情况。可查看关联结果：
-
-```sh
-npx wrangler d1 execute DB --local --command "SELECT c.name AS course, t.name AS teacher, s.start_year, s.semester FROM course_offerings o JOIN courses c ON c.id = o.course_id JOIN teachers t ON t.id = o.teacher_id JOIN terms s ON s.id = o.term_id ORDER BY c.id, s.start_year, s.semester, t.id;"
-```
-
-迁移应用后，后续表结构变化应新增迁移文件，不修改已应用迁移。
+初版的 `terms`、`course_offerings` 表及其数据暂时保留，避免破坏已应用迁移；当前页面与 API 不再使用它们。未来评论分别关联教师或课程，不关联授课记录，也不强制填写学期。评论表留待评论功能单独实现。
 
 ## 部署
 
-当前 `wrangler.jsonc` 已绑定本项目的真实 D1，数据库已建表。首次在新电脑部署时先登录有权限的 Cloudflare 账户：
+`wrangler.jsonc` 已绑定本项目 D1。首次部署需登录相应 Cloudflare 账户。新增迁移先应用，再发布：
 
 ```sh
-npx wrangler login
-```
-
-有新增迁移时应用线上迁移，再发布：
-
-```sh
-npx wrangler d1 migrations apply DB --remote
+node --env-file-if-exists=.env.deploy --require ./scripts/cloudflare-network.cjs ./node_modules/wrangler/bin/wrangler.js d1 migrations apply DB --remote
 npm run deploy
 ```
 
-部署命令加载专用网络配置，禁用 HTTP 持久连接和 TLS 会话复用，避免本机网络下上传请求挂起，HTTPS 证书校验仍然开启。该配置仅影响部署 CLI，不影响网站运行。
+远程迁移会修改线上数据库，不要导入本地演示数据。迁移应在发布依赖新字段的 Worker 前执行。
 
-需要代理时，在本地 `.env.deploy` 中设置 `CSU_DEPLOY_PROXY=http://127.0.0.1:你的代理端口`。该文件已被 Git 忽略；没有配置时使用环境中的 HTTP(S) 代理或直连。不要提交代理凭据。
+部署命令禁用 HTTP 持久连接和 TLS 会话复用，HTTPS 证书校验保持开启。此配置仅影响 CLI。需要代理时，在被 Git 忽略的 `.env.deploy` 中设置 `CSU_DEPLOY_PROXY=http://127.0.0.1:你的代理端口`；未配置时使用 HTTP(S) 代理环境变量或直连。不要提交凭据、token 或 secret。
 
-登录会打开浏览器授权；`--remote` 会修改线上数据库，部署会将 Worker 发布至 Cloudflare。不要将本地演示数据导入线上。不要将 API token、密码或其他 secret 写入代码或提交到 Git；本地 secret 使用 `.dev.vars`，线上使用 Wrangler 的 secret 配置。
+## 性能
 
-## 浏览性能与验证
-
-页面使用系统字体，无远程字体、图片或 UI 组件库。带内容哈希的 JS/CSS 缓存一年，HTML 每次重新验证；成功的浏览 API 响应在浏览器缓存 60 秒，因此数据更新最多有一分钟延迟。请求等待 20 秒后显示重试按钮，切页会取消旧请求。
-
-运行 `npm run typecheck`、`npm run build` 和 `npm test` 验证类型、构建、数据库约束及 API。构建会清理 `dist/client` 中旧的产物。
-
-教师来源资料保存在 `data/`，尚未据此导入授课记录。实际授课数据待确认；评价、审核、举报和反滥用留待后续独立步骤。
-
-参考：[Hono Workers 入门](https://hono.dev/docs/getting-started/cloudflare-workers)、[Wrangler 配置](https://developers.cloudflare.com/workers/wrangler/configuration/)。
-
-数据库参考：[D1 本地开发](https://developers.cloudflare.com/d1/best-practices/local-development/)、[迁移](https://developers.cloudflare.com/d1/reference/migrations/)、[外键](https://developers.cloudflare.com/d1/sql-api/foreign-keys/)。
+使用系统字体，无远程字体、图片或 UI 组件库。搜索点击提交后请求。带哈希的 JS/CSS 缓存一年，HTML 重新验证；成功的 API 响应在浏览器缓存60秒。请求20秒超时，可重试，切页取消旧请求。
