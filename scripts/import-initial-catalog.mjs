@@ -7,11 +7,11 @@ const fields = {
 };
 
 // query(sql, params) 返回行数组；调用方选择本地数据库或远程 D1。
-// 只支持已核对的首批目录，不是通用文件上传接口。
-export async function importInitialCatalog(query) {
+// 只用于本地维护者提供的已核对目录，不是通用文件上传接口。
+export async function importInitialCatalog(query, source = catalog) {
   const pending = [];
   for (const [table, columns] of Object.entries(fields)) {
-    const rows = catalog[table];
+    const rows = source[table];
     const ids = new Set();
     const names = new Set();
     const existing = await query(`SELECT ${columns.join(', ')} FROM ${table}`, []);
@@ -23,7 +23,7 @@ export async function importInitialCatalog(query) {
       if (table === 'courses' && (![null, 'major', 'elective'].includes(row.category) || ![0, 1].includes(row.is_listed))) throw new Error('课程分类无效');
       if (table === 'teachers' && row.profile_url !== null) {
         const url = new URL(row.profile_url);
-        if (url.protocol !== 'https:' || url.hostname !== 'faculty.csu.edu.cn' || row.profile_url.length > 2048) throw new Error('官网链接无效');
+        if (url.protocol !== 'https:' || !['faculty.csu.edu.cn', 'math.csu.edu.cn'].includes(url.hostname) || row.profile_url.length > 2048) throw new Error('官网链接无效');
       }
       ids.add(row.id);
       names.add(row.name);
@@ -34,8 +34,15 @@ export async function importInitialCatalog(query) {
     }
   }
   // 全部预检完成后才开始写入。无覆盖操作；中途网络失败可核对后重跑。
-  for (const { table, columns, row } of pending) {
-    await query(`INSERT INTO ${table} (${columns.join(', ')}) VALUES (${columns.map(() => '?').join(', ')})`, columns.map((column) => row[column]));
+  for (const [table, columns] of Object.entries(fields)) {
+    const rows = pending.filter((item) => item.table === table).map((item) => item.row);
+    // 每批最多96个绑定参数，减少跨网请求，同时不超过D1参数限制。
+    const batchSize = Math.floor(96 / columns.length);
+    for (let offset = 0; offset < rows.length; offset += batchSize) {
+      const batch = rows.slice(offset, offset + batchSize);
+      const placeholders = batch.map(() => `(${columns.map(() => '?').join(', ')})`).join(', ');
+      await query(`INSERT INTO ${table} (${columns.join(', ')}) VALUES ${placeholders}`, batch.flatMap((row) => columns.map((column) => row[column])));
+    }
   }
-  return { inserted: pending.length, teachers: catalog.teachers.length, courses: catalog.courses.length };
+  return { inserted: pending.length, teachers: source.teachers.length, courses: source.courses.length };
 }

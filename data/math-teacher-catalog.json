@@ -1,0 +1,695 @@
+{
+  "teachers": [
+    {
+      "id": 100,
+      "name": "岑秀丽",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/cenxiuli/zh_CN/index.htm"
+    },
+    {
+      "id": 101,
+      "name": "谌昭",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/chenzhao/zh_CN/index.htm"
+    },
+    {
+      "id": 102,
+      "name": "陈海波",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/chenhaibo/zh_CN/index.htm"
+    },
+    {
+      "id": 103,
+      "name": "陈和柏",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/chenhebai/zh_CN/index.htm"
+    },
+    {
+      "id": 1,
+      "name": "陈凯",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/chenkai12/zh_CN/index.htm"
+    },
+    {
+      "id": 104,
+      "name": "陈明",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 2,
+      "name": "陈思彤",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/chensitong/zh_CN/index.htm"
+    },
+    {
+      "id": 105,
+      "name": "邓松海",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/dengsonghai/zh_CN/index.htm"
+    },
+    {
+      "id": 106,
+      "name": "邓卫军",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 107,
+      "name": "邓又军",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/dengyoujun/zh_CN/index.htm"
+    },
+    {
+      "id": 108,
+      "name": "丁士锋",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 109,
+      "name": "董国志",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/dongguozhi/zh_CN/index.htm"
+    },
+    {
+      "id": 110,
+      "name": "方秋莲",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/fangqiulian/zh_CN/index.htm"
+    },
+    {
+      "id": 111,
+      "name": "冯立华",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/fenglihua/zh_CN/index.htm"
+    },
+    {
+      "id": 112,
+      "name": "甘四清",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/gansiqing/zh_CN/index.htm"
+    },
+    {
+      "id": 113,
+      "name": "郭骥",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/guoji/zh_CN/index.htm"
+    },
+    {
+      "id": 114,
+      "name": "郭铁信",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/guotiexin/zh_CN/index.htm"
+    },
+    {
+      "id": 115,
+      "name": "郭尧琦",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/guoyaoqi/zh_CN/index.htm"
+    },
+    {
+      "id": 116,
+      "name": "郝晨旭",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/haochenxu/zh_CN/index.htm"
+    },
+    {
+      "id": 117,
+      "name": "何伟",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/hewei/zh_CN/index.htm"
+    },
+    {
+      "id": 118,
+      "name": "何智敏",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/hezhimin/zh_CN/index.htm"
+    },
+    {
+      "id": 119,
+      "name": "贺兵",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/hebing/zh_CN/index.htm"
+    },
+    {
+      "id": 120,
+      "name": "贺福利",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/hefuli/zh_CN/index.htm"
+    },
+    {
+      "id": 121,
+      "name": "胡烨耀",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/huyeyao/zh_CN/index.htm"
+    },
+    {
+      "id": 4,
+      "name": "胡朝明",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 122,
+      "name": "胡志",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/huzhi/zh_CN/index.htm"
+    },
+    {
+      "id": 123,
+      "name": "焦勇",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/jiaoyong/zh_CN/index.htm"
+    },
+    {
+      "id": 124,
+      "name": "李江涛",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/lijiangtao12/zh_CN/index.htm"
+    },
+    {
+      "id": 125,
+      "name": "李小爱",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/lixiaoai/zh_CN/index.htm"
+    },
+    {
+      "id": 126,
+      "name": "李欣叶",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/lixinye/zh_CN/index.htm"
+    },
+    {
+      "id": 127,
+      "name": "李英",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 128,
+      "name": "李振振",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/lizhenzhen12/zh_CN/index.htm"
+    },
+    {
+      "id": 129,
+      "name": "李志保",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/lizhibao/zh_CN/index.htm"
+    },
+    {
+      "id": 130,
+      "name": "李周欣",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/lizhouxin/zh_CN/index.htm"
+    },
+    {
+      "id": 131,
+      "name": "梁瑞喜",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/liangruixi/zh_CN/index.htm"
+    },
+    {
+      "id": 132,
+      "name": "刘诚",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/liucheng/zh_CN/index.htm"
+    },
+    {
+      "id": 133,
+      "name": "刘红娟",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 134,
+      "name": "刘路",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/liujiayi/en/index.htm"
+    },
+    {
+      "id": 135,
+      "name": "刘桥",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/liuqiao/en/index.htm"
+    },
+    {
+      "id": 136,
+      "name": "刘圣军",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/liushengjun/zh_CN/index.htm"
+    },
+    {
+      "id": 137,
+      "name": "刘心歌",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/liuxinge/zh_CN/index.htm"
+    },
+    {
+      "id": 138,
+      "name": "刘新儒",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/liuxinru/zh_CN/index.htm"
+    },
+    {
+      "id": 3,
+      "name": "刘源远",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/liuyuanyuan/zh_CN/index.htm"
+    },
+    {
+      "id": 139,
+      "name": "龙珑",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/longlong/zh_CN/index.htm"
+    },
+    {
+      "id": 140,
+      "name": "鲁卢",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/lulu/zh_CN/lwcg/99943/list/index.htm"
+    },
+    {
+      "id": 141,
+      "name": "陆长青",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/luchangqing/zh_CN/index.htm"
+    },
+    {
+      "id": 142,
+      "name": "吕骏",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/lvjun/zh_CN/index.htm"
+    },
+    {
+      "id": 143,
+      "name": "马攀",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/mapan/zh_CN/index.htm"
+    },
+    {
+      "id": 144,
+      "name": "苗存强",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/miaocunqiang/zh_CN/index.htm"
+    },
+    {
+      "id": 145,
+      "name": "宁家福",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/ningjiafu/zh_CN/index.htm"
+    },
+    {
+      "id": 146,
+      "name": "牛原玲",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/niuyuanling/zh_CN/index.htm"
+    },
+    {
+      "id": 147,
+      "name": "潘克家",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 148,
+      "name": "彭君",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/pengjun2/zh_CN/index.htm"
+    },
+    {
+      "id": 149,
+      "name": "彭丽华",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/penglihua/zh_CN/index.htm"
+    },
+    {
+      "id": 150,
+      "name": "乔艺晓",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/qiaoyixiao/zh_CN/index/214174/list/index.htm"
+    },
+    {
+      "id": 151,
+      "name": "秦栋栋",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/qindongdong/zh_CN/index.htm"
+    },
+    {
+      "id": 152,
+      "name": "曲扬",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/quyang/zh_CN/index.htm"
+    },
+    {
+      "id": 153,
+      "name": "任叶庆",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/renyeqing/zh_CN/index.htm"
+    },
+    {
+      "id": 154,
+      "name": "石坐顺华",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/shizuoshunhua/zh_CN/index.htm"
+    },
+    {
+      "id": 155,
+      "name": "宋林昊",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/songlinhao/zh_CN/index/208792/list/index.htm"
+    },
+    {
+      "id": 156,
+      "name": "唐立",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/tangli1/zh_CN/index.htm"
+    },
+    {
+      "id": 157,
+      "name": "唐美兰",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/tangmeilan/zh_CN/index.htm"
+    },
+    {
+      "id": 158,
+      "name": "唐先华",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/tangxianhua/zh_CN/index.htm"
+    },
+    {
+      "id": 159,
+      "name": "汪泓泽",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wanghongze/zh_CN/index.htm"
+    },
+    {
+      "id": 6,
+      "name": "王洪",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wh/zh_CN/index.htm"
+    },
+    {
+      "id": 9,
+      "name": "王洪桥",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wanghongqiao/zh_CN/index.htm"
+    },
+    {
+      "id": 160,
+      "name": "王凯",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wangkai12/zh_CN/index.htm"
+    },
+    {
+      "id": 161,
+      "name": "王理",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wangli12345678/zh_CN/index/164258/list/index.htm"
+    },
+    {
+      "id": 162,
+      "name": "王璐",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wanglu/zh_CN/index.htm"
+    },
+    {
+      "id": 163,
+      "name": "王明",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wangming/zh_CN/index.htm"
+    },
+    {
+      "id": 164,
+      "name": "王炜飚",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wangweibiao/zh_CN/index.htm"
+    },
+    {
+      "id": 165,
+      "name": "王小捷",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wangxiaojie/zh_CN/index.htm"
+    },
+    {
+      "id": 166,
+      "name": "温哲鑫",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wenzhexin1/zh_CN/index.htm"
+    },
+    {
+      "id": 167,
+      "name": "吴锦标",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wujinbiao/zh_CN/index.htm"
+    },
+    {
+      "id": 168,
+      "name": "吴恋",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wulian/zh_CN/index.htm"
+    },
+    {
+      "id": 169,
+      "name": "吴晓春",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wuxiaochun/zh_CN/index.htm"
+    },
+    {
+      "id": 170,
+      "name": "吴玉锋",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/wuyufeng/zh_CN/index.htm"
+    },
+    {
+      "id": 171,
+      "name": "向淑晃",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/xiangshuhuang/zh_CN/index.htm"
+    },
+    {
+      "id": 172,
+      "name": "肖莉",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 173,
+      "name": "谢广亨",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/xieguangheng1/zh_CN/index.htm"
+    },
+    {
+      "id": 174,
+      "name": "谢维洪",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/xieweihong/zh_CN/index.htm"
+    },
+    {
+      "id": 175,
+      "name": "熊春河",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/xiongchunhe/zh_CN/index.htm"
+    },
+    {
+      "id": 176,
+      "name": "徐宇锋",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/xuyufeng/zh_CN/index.htm"
+    },
+    {
+      "id": 177,
+      "name": "杨德生",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 178,
+      "name": "杨东辉",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/yangdonghui/zh_CN/index.htm"
+    },
+    {
+      "id": 179,
+      "name": "杨柳青",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/yangliuqing/zh_CN/index.htm"
+    },
+    {
+      "id": 180,
+      "name": "杨蕊",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/yangrui/zh_CN/index.htm"
+    },
+    {
+      "id": 181,
+      "name": "杨淑平",
+      "department": "数学与统计学院",
+      "profile_url": "https://math.csu.edu.cn/info/1616/6044.htm"
+    },
+    {
+      "id": 182,
+      "name": "杨文胜",
+      "department": "数学与统计学院",
+      "profile_url": "https://math.csu.edu.cn/info/1616/6034.htm"
+    },
+    {
+      "id": 183,
+      "name": "杨志红",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/yangzhihong12/zh_CN/index.htm"
+    },
+    {
+      "id": 184,
+      "name": "尹智",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/yinzhi/zh_CN/index.htm"
+    },
+    {
+      "id": 185,
+      "name": "应金勇",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/yingjinyong/zh_CN/index.htm"
+    },
+    {
+      "id": 186,
+      "name": "运东方",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/yundongfang/zh_CN/index.htm"
+    },
+    {
+      "id": 187,
+      "name": "张宏伟",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/zhanghongwei"
+    },
+    {
+      "id": 188,
+      "name": "张炜",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/zhangwei/zh_CN/index.htm"
+    },
+    {
+      "id": 189,
+      "name": "张晓江",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/zhangxiaojiang/zh_CN/index.htm"
+    },
+    {
+      "id": 190,
+      "name": "张胥",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/zhangxu/zh_CN/index.htm"
+    },
+    {
+      "id": 191,
+      "name": "郑洲顺",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/zhengzhoushun/zh_CN/index.htm"
+    },
+    {
+      "id": 192,
+      "name": "周德俭",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/zhoudejian/zh_CN/index.htm"
+    },
+    {
+      "id": 193,
+      "name": "周华成",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/zhouhuacheng/zh_CN/index.htm"
+    },
+    {
+      "id": 194,
+      "name": "周清平",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/zhouqingping/zh_CN/index.htm"
+    },
+    {
+      "id": 195,
+      "name": "周岳",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/zhouyue"
+    },
+    {
+      "id": 196,
+      "name": "Dmitriy Zanin",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 197,
+      "name": "邓淋穗",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 198,
+      "name": "郭孔华",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 199,
+      "name": "罗思捷",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/luosijie/zh_CN/index.htm"
+    },
+    {
+      "id": 200,
+      "name": "乔一坤",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 201,
+      "name": "唐长洋",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/tangchangyang/zh_CN/index.htm"
+    },
+    {
+      "id": 202,
+      "name": "许灏",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/xuhao/zh_CN/index.htm"
+    },
+    {
+      "id": 203,
+      "name": "杨孟",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 204,
+      "name": "杨晓霞",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 205,
+      "name": "张奥",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 206,
+      "name": "赵承东",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 207,
+      "name": "朱世华",
+      "department": "数学与统计学院",
+      "profile_url": null
+    },
+    {
+      "id": 208,
+      "name": "邹勇攀",
+      "department": "数学与统计学院",
+      "profile_url": "https://faculty.csu.edu.cn/zouyongpan/zh_CN/index.htm"
+    }
+  ],
+  "courses": []
+}

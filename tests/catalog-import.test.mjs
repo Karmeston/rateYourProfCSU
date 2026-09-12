@@ -32,3 +32,18 @@ test('预检发现 ID 冲突时，不写入其余目录', async (t) => {
   assert.equal(db.prepare('SELECT count(*) AS n FROM teachers').get().n, 0);
   assert.equal(db.prepare('SELECT name FROM courses WHERE id=1').get().name, '已有课程');
 });
+
+test('补齐数统院名单保留原教师 ID 与评价，重复运行不增员', async (t) => {
+  const db = database(t);
+  const query = async (sql, params) => db.prepare(sql).all(...params);
+  await importInitialCatalog(query);
+  db.prepare('INSERT INTO teacher_reviews (id, teacher_id, rating, body) VALUES (?, ?, ?, ?)').run('existing-review', 1, 4, '已有评价');
+  const source = JSON.parse(readFileSync(new URL('../data/math-teacher-catalog.json', import.meta.url), 'utf8'));
+  assert.equal((await importInitialCatalog(query, source)).inserted, 109);
+  assert.equal((await importInitialCatalog(query, source)).inserted, 0);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM teachers').get().n, 118);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM teachers WHERE department=?').get('数学与统计学院').n, 115);
+  assert.equal(db.prepare('SELECT name FROM teachers WHERE id=1').get().name, '陈凯');
+  assert.equal(db.prepare('SELECT teacher_id FROM teacher_reviews WHERE id=?').get('existing-review').teacher_id, 1);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM courses').get().n, 10);
+});
