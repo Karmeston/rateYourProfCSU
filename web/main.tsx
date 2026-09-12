@@ -37,7 +37,8 @@ const categories = { major: '专业课', elective: '公选课' };
 
 function Catalog({ kind, offset, q, category }: { kind: Kind; offset: number; q: string; category: string }) {
   const filter = kind === 'courses' && category ? `&category=${category}` : '';
-  const { data, error, retry } = useData<CatalogData>(`/api/${kind}?limit=${pageSize}&offset=${offset}&q=${encodeURIComponent(q)}${filter}`);
+  const showResults = kind === 'courses' || q.trim().length > 0;
+  const { data, error, retry } = useData<CatalogData>(showResults ? `/api/${kind}?limit=${pageSize}&offset=${offset}&q=${encodeURIComponent(q.trim())}${filter}` : null);
   const rows = data?.[kind] ?? [];
   return <>
     <div className="page-heading"><h1>{labels[kind]}</h1></div>
@@ -52,7 +53,7 @@ function Catalog({ kind, offset, q, category }: { kind: Kind; offset: number; q:
       <input name="q" type="search" maxLength={100} defaultValue={q} aria-label={`搜索${labels[kind]}`} placeholder={`搜索${labels[kind]}`} />
       <button type="submit">搜索</button>
     </form>
-    {!data ? <Notice error={error} retry={retry} /> : <>
+    {showResults && (!data ? <Notice error={error} retry={retry} /> : <>
       {rows.length ? <ul className="course-list">{rows.map((row) => <li key={row.id}>
         <a className="course-link" href={`#/${kind}/${row.id}`}>
           <div><h2>{row.name}</h2>{'category' in row && row.category && <p className="metadata">{categories[row.category]}</p>}{row.department !== '待核实' && <p className="metadata">{row.department}</p>}{row.id < 0 && <Demo />}</div>
@@ -60,7 +61,7 @@ function Catalog({ kind, offset, q, category }: { kind: Kind; offset: number; q:
         </a>
       </li>)}</ul> : <p className="notice">{q ? '没有找到匹配结果' : `暂无${labels[kind]}`}</p>}
       <Pager page={data} href={(value) => `#/${kind}?offset=${value}&q=${encodeURIComponent(q)}${filter}`} />
-    </>}
+    </>)}
   </>;
 }
 
@@ -79,7 +80,7 @@ function Detail({ kind, id }: { kind: Kind; id: string }) {
     if (row) document.title = `${row.name} · rateMyProfCSU`;
   }, [row]);
   return <>
-    <a className="back-link" href={`#/${kind}`}>← 返回{labels[kind]}列表</a>
+    <a className="back-link" href={`#/${kind}`}>← {kind === 'teachers' ? '返回教师搜索' : '返回课程列表'}</a>
     {!row ? <Notice error={error} retry={retry} /> :
       <><div className="page-heading">
         <h1>{row.name}</h1>{row.department !== '待核实' && <p>{row.department}</p>}

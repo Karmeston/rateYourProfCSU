@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 
 // 页面切换时取消旧请求，避免慢请求把新页面的数据覆盖。
-export function useData<T>(url: string) {
+export function useData<T>(url: string | null) {
   const [attempt, setAttempt] = useState(0);
   const [state, setState] = useState<{ data?: T; error?: string }>({});
   useEffect(() => {
+    if (url === null) { setState({}); return; }
     const controller = new AbortController();
     let timedOut = false;
     const timeout = window.setTimeout(() => {
