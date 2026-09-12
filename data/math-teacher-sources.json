@@ -1,0 +1,990 @@
+{
+  "college": "中南大学数学与统计学院",
+  "checked_on": "2026-09-12",
+  "scope": "学院师资队伍页面列示人员；不代表已核实当前在职或授课状态",
+  "verification": "通过网页检索服务打开官方目录链接，可能使用缓存；page_available 仅表示返回个人页面，不保证学生网络实时可达。未采集照片、联系方式、履历或评价。",
+  "teachers": [
+    {
+      "name": "岑秀丽",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/cenxiuli/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "谌昭",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/chenzhao/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "review_note": "页面标题使用英文名或别名；对应关系依据学院直接链接"
+    },
+    {
+      "name": "陈海波",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/chenhaibo/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "陈和柏",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/chenhebai/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "陈凯",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/chenkai12/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "陈明",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/chenming/zh_CN/index.htm",
+      "profile_status": "official_error_page",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "陈思彤",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/chensitong/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "邓松海",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/dengsonghai/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "邓卫军",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/dengweijun/zh_CN/index.htm",
+      "profile_status": "official_error_page",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "邓又军",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/dengyoujun/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "丁士锋",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://math.csu.edu.cn/info/1616/6045.htm",
+      "profile_status": "fetch_inconsistent",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "董国志",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/dongguozhi/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "方秋莲",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/fangqiulian/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "review_note": "页面标题使用英文名或别名；对应关系依据学院直接链接"
+    },
+    {
+      "name": "冯立华",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/fenglihua/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "甘四清",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/gansiqing/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "郭骥",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/guoji/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "郭铁信",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/guotiexin/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "郭尧琦",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/guoyaoqi/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "郝晨旭",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/haochenxu/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "何伟",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/hewei/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "何智敏",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/hezhimin/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "贺兵",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/hebing/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "贺福利",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/hefuli/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "胡烨耀",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/huyeyao/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "胡朝明",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/huchaoming/zh_CN/index.htm",
+      "profile_status": "official_error_page",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "胡志",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/huzhi/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "焦勇",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/jiaoyong/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "李江涛",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/lijiangtao12/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "李小爱",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/lixiaoai/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "李欣叶",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/lixinye/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "李英",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/liying/zh_CN/index.htm",
+      "profile_status": "official_error_page",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "李振振",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/lizhenzhen12/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "李志保",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/lizhibao/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "李周欣",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/lizhouxin/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "梁瑞喜",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/liangruixi/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "刘诚",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/liucheng/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "刘红娟",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/liuhongjuan/zh_CN/index.htm",
+      "profile_status": "official_error_page",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "刘路",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/liujiayi/en/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "review_note": "页面标题使用英文名或别名；对应关系依据学院直接链接"
+    },
+    {
+      "name": "刘桥",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/liuqiao/en/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "review_note": "页面标题使用英文名或别名；对应关系依据学院直接链接"
+    },
+    {
+      "name": "刘圣军",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/liushengjun/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "刘心歌",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/liuxinge/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "刘新儒",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/liuxinru/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "刘源远",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/liuyuanyuan/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "龙珑",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/longlong/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "鲁卢",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/lulu/zh_CN/lwcg/99943/list/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "review_note": "学院链接指向论文栏目，尚未确认首页地址"
+    },
+    {
+      "name": "陆长青",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/luchangqing/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "吕骏",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/lvjun/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "马攀",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/mapan/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "苗存强",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/miaocunqiang/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "宁家福",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/ningjiafu/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "牛原玲",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/niuyuanling/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "潘克家",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/pankejia/zh_CN/index.htm",
+      "profile_status": "fetch_failed",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "彭君",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/pengjun2/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "彭丽华",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/penglihua/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "乔艺晓",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/qiaoyixiao/zh_CN/index/214174/list/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "秦栋栋",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/qindongdong/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "曲扬",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/quyang/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "任叶庆",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/renyeqing/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "石坐顺华",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/shizuoshunhua/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "宋林昊",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/songlinhao/zh_CN/index/208792/list/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "唐立",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/tangli1/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "唐美兰",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/tangmeilan/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "唐先华",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/tangxianhua/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "汪泓泽",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wanghongze/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "王洪",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wh/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "王洪桥",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wanghongqiao/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "王凯",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wangkai12/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "王理",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wangli12345678/zh_CN/index/164258/list/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "王璐",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wanglu/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "王明",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wangming/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "王炜飚",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wangweibiao/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "王小捷",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wangxiaojie/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "温哲鑫",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wenzhexin1/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "吴锦标",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wujinbiao/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "吴恋",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wulian/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "吴晓春",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wuxiaochun/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "吴玉锋",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/wuyufeng/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "向淑晃",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/xiangshuhuang/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "肖莉",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/xiaoli/zh_CN/index.htm",
+      "profile_status": "official_error_page",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "谢广亨",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/xieguangheng1/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "谢维洪",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/xieweihong/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "熊春河",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/xiongchunhe/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "徐宇锋",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/xuyufeng/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "杨德生",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/yangdesheng/zh_CN/index.htm",
+      "profile_status": "official_error_page",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "杨东辉",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/yangdonghui/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "杨柳青",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/yangliuqing/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "杨蕊",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/yangrui/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "杨淑平",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://math.csu.edu.cn/info/1616/6044.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "杨文胜",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://math.csu.edu.cn/info/1616/6034.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "杨志红",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/yangzhihong12/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "尹智",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/yinzhi/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "应金勇",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/yingjinyong/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "运东方",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/yundongfang/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "张宏伟",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zhanghongwei",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "张炜",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zhangwei/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "张晓江",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zhangxiaojiang/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "张胥",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zhangxu/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "郑洲顺",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zhengzhoushun/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "周德俭",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zhoudejian/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "周华成",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zhouhuacheng/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "周清平",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zhouqingping/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "周岳",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zhouyue",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "Dmitriy Zanin",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": null,
+      "profile_status": "not_linked",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "邓淋穗",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": null,
+      "profile_status": "not_linked",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "郭孔华",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": null,
+      "profile_status": "not_linked",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "罗思捷",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/luosijie/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "profile_source_url": "https://faculty.csu.edu.cn/xyjslist.jsp?id=1008&lang=zh_CN&st=0&urltype=tsites.CollegeTeacherList&wbtreeid=1001",
+      "match_basis": "same_name_in_same_college_directory"
+    },
+    {
+      "name": "乔一坤",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": null,
+      "profile_status": "not_linked",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "唐长洋",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/tangchangyang/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "profile_source_url": "https://faculty.csu.edu.cn/xyjslist.jsp?id=1008&lang=zh_CN&st=0&urltype=tsites.CollegeTeacherList&wbtreeid=1001",
+      "match_basis": "same_name_in_same_college_directory"
+    },
+    {
+      "name": "许灏",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/xuhao/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "profile_source_url": "https://faculty.csu.edu.cn/xyjslist.jsp?id=1008&lang=zh_CN&st=0&urltype=tsites.CollegeTeacherList&wbtreeid=1001",
+      "match_basis": "same_name_in_same_college_directory"
+    },
+    {
+      "name": "杨孟",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": null,
+      "profile_status": "not_linked",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "杨晓霞",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": null,
+      "profile_status": "not_linked",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "张奥",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zhangao/en/index.htm",
+      "profile_status": "fetch_failed",
+      "checked_on": "2026-09-12",
+      "profile_source_url": "https://faculty.csu.edu.cn/xyjslist.jsp?id=1008&lang=zh_CN&st=0&urltype=tsites.CollegeTeacherList&wbtreeid=1001",
+      "match_basis": "same_name_in_same_college_directory"
+    },
+    {
+      "name": "赵承东",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": null,
+      "profile_status": "not_linked",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "朱世华",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": null,
+      "profile_status": "not_linked",
+      "checked_on": "2026-09-12"
+    },
+    {
+      "name": "邹勇攀",
+      "department": "数学与统计学院",
+      "source_url": "https://math.csu.edu.cn/szdw.htm",
+      "profile_url": "https://faculty.csu.edu.cn/zouyongpan/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "profile_source_url": "https://faculty.csu.edu.cn/xyjslist.jsp?id=1008&lang=zh_CN&st=0&urltype=tsites.CollegeTeacherList&wbtreeid=1001",
+      "match_basis": "same_name_in_same_college_directory"
+    }
+  ],
+  "additional_directory_entries_pending_review": [
+    {
+      "name": "戴斌祥",
+      "department": "数学与统计学院",
+      "source_url": "https://faculty.csu.edu.cn/xyjslist.jsp?id=1008&lang=zh_CN&st=0&urltype=tsites.CollegeTeacherList&wbtreeid=1001",
+      "profile_url": "https://faculty.csu.edu.cn/daibinxiang/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "review_reason": "仅见于学校个人主页目录，未见于本次学院师资队伍名单；暂不并入"
+    },
+    {
+      "name": "巩佳佳",
+      "department": "数学与统计学院",
+      "source_url": "https://faculty.csu.edu.cn/xyjslist.jsp?id=1008&lang=zh_CN&st=0&urltype=tsites.CollegeTeacherList&wbtreeid=1001",
+      "profile_url": "https://faculty.csu.edu.cn/gongjiajia/zh_CN/index.htm",
+      "profile_status": "fetch_failed",
+      "checked_on": "2026-09-12",
+      "review_reason": "仅见于学校个人主页目录，未见于本次学院师资队伍名单；暂不并入"
+    },
+    {
+      "name": "侯木舟",
+      "department": "数学与统计学院",
+      "source_url": "https://faculty.csu.edu.cn/xyjslist.jsp?id=1008&lang=zh_CN&st=0&urltype=tsites.CollegeTeacherList&wbtreeid=1001",
+      "profile_url": "https://faculty.csu.edu.cn/houmuzhou/en/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "review_reason": "仅见于学校个人主页目录，未见于本次学院师资队伍名单；暂不并入"
+    },
+    {
+      "name": "刘再明",
+      "department": "数学与统计学院",
+      "source_url": "https://faculty.csu.edu.cn/xyjslist.jsp?id=1008&lang=zh_CN&st=0&urltype=tsites.CollegeTeacherList&wbtreeid=1001",
+      "profile_url": "https://faculty.csu.edu.cn/liuzaiming/zh_CN/index.htm",
+      "profile_status": "page_available",
+      "checked_on": "2026-09-12",
+      "review_reason": "仅见于学校个人主页目录，未见于本次学院师资队伍名单；暂不并入"
+    },
+    {
+      "name": "万中",
+      "department": "数学与统计学院",
+      "source_url": "https://faculty.csu.edu.cn/xyjslist.jsp?id=1008&lang=zh_CN&st=0&urltype=tsites.CollegeTeacherList&wbtreeid=1001",
+      "profile_url": null,
+      "profile_status": "fetch_failed",
+      "checked_on": "2026-09-12",
+      "review_reason": "仅见于学校个人主页目录，未见于本次学院师资队伍名单；暂不并入"
+    }
+  ]
+}

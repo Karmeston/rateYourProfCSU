@@ -1,0 +1,33 @@
+{
+  "name": "rate-your-prof-csu",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build:client && wrangler dev --local",
+    "build:client": "vite build web --outDir ../dist/client --emptyOutDir",
+    "types": "wrangler types",
+    "typecheck": "npm run types && tsc --noEmit && tsc -p web/tsconfig.json",
+    "build": "npm run build:client && wrangler deploy --dry-run --outdir dist/worker",
+    "deploy": "npm run build:client && wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:seed:local": "wrangler d1 execute DB --local --file seeds/local.sql",
+    "test:db": "node --test tests/schema.test.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "hono": "^4.13.7",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0",
+    "wrangler": "^4.131.1"
+  }
+}

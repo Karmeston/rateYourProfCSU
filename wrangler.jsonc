@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rate-your-prof-csu",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-11",
+  "assets": {
+    "directory": "./dist/client",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "rate-your-prof-csu",
+      "database_id": "d7a3e1dd-ac0d-4dcd-904b-d162c917e91c",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
