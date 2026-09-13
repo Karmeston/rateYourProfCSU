@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { browserId } from './browser-id';
 
 // 页面切换时取消旧请求，避免慢请求把新页面的数据覆盖。
 export function useData<T>(url: string | null) {
@@ -15,7 +16,7 @@ export function useData<T>(url: string | null) {
     setState({});
     void (async () => {
       try {
-        const response = await fetch(url, { signal: controller.signal });
+        const response = await fetch(url, { signal: controller.signal, headers: url.includes('/reviews') ? { 'X-Browser-ID': browserId() } : undefined });
         if (!response.ok) throw new Error(response.status === 404 ? '没有找到这条记录。' : '暂时无法加载，请稍后重试。');
         const data = await response.json() as T;
         if (!controller.signal.aborted) setState({ data });

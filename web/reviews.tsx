@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useData } from './use-data';
+import { ReviewInteractions } from './review-interactions';
 
-type Review = { id: string; rating: number; body: string; created_at: string };
+type Review = { id: string; rating: number; body: string; created_at: string; likes:number;dislikes:number;myVote:number;replyCount:number };
 type ReviewPage = {
   reviews: Review[];
   summary: { average: number | null; count: number; distribution: { rating: number; count: number }[] };
@@ -90,6 +91,7 @@ export function Reviews({ kind, id, name }: { kind: 'teachers' | 'courses'; id: 
       {data.reviews.length ? <ul className="review-list">{data.reviews.map((row) => <li key={row.id}>
         <div className="review-meta"><span>匿名用户</span><time dateTime={row.created_at}>{new Date(row.created_at).toLocaleDateString('zh-CN')}</time></div>
         <Stars rating={row.rating} /><p className="review-body">{row.body}</p>
+        <ReviewInteractions endpoint={`${endpoint}/${row.id}`} initial={row} />
       </li>)}</ul> : <p className="review-empty">{offset ? '本页暂无评论' : '暂无评论'}</p>}
       {(offset > 0 || data.hasMore) && <nav className="pagination" aria-label="评论分页"><button disabled={!offset} onClick={() => setOffset(Math.max(0, offset - 20))}>上一页</button><span>第 {offset / 20 + 1} 页</span><button disabled={!data.hasMore} onClick={() => setOffset(offset + 20)}>下一页</button></nav>}
     </>}

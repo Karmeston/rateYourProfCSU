@@ -1,4 +1,6 @@
 import { Hono } from 'hono';
+import { readBody } from './request-body.ts';
+import interactions from './review-interactions.ts';
 
 const reviews = new Hono<{ Bindings: Env }>();
 const pageSize = 20;
@@ -9,31 +11,6 @@ const targets = [
 type Review = { id: string; rating: number; body: string; created_at: string };
 type RatingCount = { rating: number; count: number };
 
-// 不信任 Content-Length，按实际读取字节限制请求体。
-async function readBody(request: Request) {
-  if (!request.body) return { error: '请填写评价', status: 400 as const };
-  const reader = request.body.getReader();
-  const chunks: Uint8Array[] = [];
-  let size = 0;
-  try {
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) break;
-      size += value.byteLength;
-      if (size > 8192) {
-        await reader.cancel();
-        return { error: '评价内容过长', status: 413 as const };
-      }
-      chunks.push(value);
-    }
-    const bytes = new Uint8Array(size);
-    let offset = 0;
-    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
-    return { value: JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes)) as unknown };
-  } catch {
-    return { error: '请求格式不正确', status: 400 as const };
-  } finally { reader.releaseLock(); }
-}
 
 reviews.use('*', async (c, next) => {
   c.header('Cache-Control', 'no-store');
@@ -58,7 +35,12 @@ for (const { kind, table, foreignKey } of targets) {
     if (!target) return c.json({ error: '评价对象不存在' }, 404);
     const [counts, entries] = await c.env.DB.batch([
       c.env.DB.prepare(`SELECT rating, count(*) AS count FROM ${table} WHERE ${foreignKey} = ? AND status = 'published' GROUP BY rating`).bind(id),
-      c.env.DB.prepare(`SELECT id, rating, body, created_at FROM ${table} WHERE ${foreignKey} = ? AND status = 'published' ORDER BY created_at DESC, id DESC LIMIT ? OFFSET ?`).bind(id, pageSize + 1, offset),
+      c.env.DB.prepare(`SELECT r.id, r.rating, r.body, r.created_at,
+        (SELECT count(*) FROM ${table.slice(0, -1)}_votes v WHERE v.review_id=r.id AND v.value=1) AS likes,
+        (SELECT count(*) FROM ${table.slice(0, -1)}_votes v WHERE v.review_id=r.id AND v.value=-1) AS dislikes,
+        coalesce((SELECT value FROM ${table.slice(0, -1)}_votes v WHERE v.review_id=r.id AND v.voter_id=?),0) AS myVote,
+        (SELECT count(*) FROM ${table.slice(0, -1)}_replies p WHERE p.review_id=r.id AND p.status='published') AS replyCount
+        FROM ${table} r WHERE ${foreignKey} = ? AND status = 'published' ORDER BY created_at DESC, id DESC LIMIT ? OFFSET ?`).bind(c.req.header('X-Browser-ID') ?? '', id, pageSize + 1, offset),
     ]);
     const histogram = counts.results as RatingCount[];
     const count = histogram.reduce((sum, row) => sum + row.count, 0);
@@ -97,4 +79,5 @@ for (const { kind, table, foreignKey } of targets) {
   });
 }
 
+reviews.route('/', interactions);
 export default reviews;

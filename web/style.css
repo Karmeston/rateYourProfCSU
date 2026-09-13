@@ -106,6 +106,14 @@ button:disabled { opacity: .5; cursor: default; }
 .character-count { font-size: .75rem; text-align: right; color: var(--muted); }
 .form-error { color: #a4262c; font-size: .875rem; }
 .form-actions { display: flex; justify-content: flex-end; gap: .5rem; margin-top: 1rem; }
+.review-actions { display: flex; gap: .5rem; margin-top: 1rem; flex-wrap: wrap; }
+.review-actions button { font-size: .8125rem; padding: .3rem .7rem; }
+.review-actions button[aria-pressed="true"] { color: var(--accent); background: #e8f2fa; border-color: var(--accent); }
+.reply-panel { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: .875rem; }
+.reply-list { list-style: none; padding: 0; margin: 0 0 1rem; }
+.review-list .reply-list li { padding: .75rem 0; border: 0; border-radius: 0; border-bottom: 1px solid var(--border); margin: 0; }
+.reply-panel textarea { display:block; width:100%; resize:vertical; margin-top:.4rem; padding:.6rem; border:1px solid #bbb; border-radius:4px; font:inherit; }
+.reply-panel textarea:focus-visible { outline:2px solid var(--accent); }
 @media (max-width: 600px) {
   .rating-summary { gap: 1.25rem; }
   .rating-score { min-width: 5rem; }
