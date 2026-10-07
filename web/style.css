@@ -15,8 +15,8 @@ button { font: inherit; cursor: pointer; padding: .4rem 1rem; color: #242424; bo
 button:hover { background: #f9f9f9; }
 button:active { background: #eee; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-header { background: #fafafa; border-bottom: 1px solid var(--border); }
-.header-inner { max-width: 960px; margin: auto; padding: .85rem 2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+header { background: #111e30; color: #f7f9fc; }
+.header-inner { max-width: 1100px; margin: auto; padding: 1.4rem 2rem; display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; }
 .primary-nav { display: flex; gap: 1.25rem; }
 .primary-nav a { color: var(--muted); text-decoration: none; padding: .25rem 0; border-bottom: 2px solid transparent; }
 .primary-nav a[aria-current] { color: var(--accent); border-color: var(--accent); }
@@ -32,7 +32,7 @@ header { background: #fafafa; border-bottom: 1px solid var(--border); }
 .category-filter a[aria-current] { background: var(--accent); border-color: var(--accent); color: #fff; }
 .search input { min-width: 0; flex: 1; max-width: 28rem; font: inherit; color: inherit; background: #fff; border: 1px solid #ccc; border-bottom-color: #888; border-radius: 4px; padding: .4rem .75rem; }
 .search input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-.brand { color: inherit; font-size: 1rem; font-weight: 600; text-decoration: none; }
+.brand { color: inherit; font-size: clamp(1.75rem, 4vw, 2.35rem); font-weight: 800; letter-spacing: -.035em; text-decoration: none; }
 main { max-width: 960px; min-height: 65vh; margin: auto; padding: 2rem 2rem 3rem; overflow-wrap: anywhere; }
 main:focus { outline: none; }
 .page-heading { margin-bottom: 1.5rem; }
@@ -48,6 +48,18 @@ p { margin: .25rem 0; }
 .course-link:active { background: #edf3f8; }
 .course-link:focus-visible { outline-offset: -3px; }
 .link-label { color: var(--muted); flex-shrink: 0; }
+.course-home > .search { max-width: 42rem; margin: 3.5rem auto 1.5rem; }
+.course-home > .search input { max-width: none; padding: .85rem 1rem; }
+.course-home > .category-filter { justify-content: center; margin-bottom: 2.5rem; }
+.course-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; border: 0; background: transparent; }
+.course-grid li, .course-grid li + li { border: 1px solid var(--border); border-radius: 6px; background: #fff; }
+.course-grid .course-link { height: 100%; min-height: 9rem; }
+.catalog-rating { margin-left: auto; flex-shrink: 0; text-align: right; display: flex; flex-direction: column; gap: .15rem; }
+.catalog-rating strong { color: #815400; font-size: 1.15rem; font-weight: 600; }
+@media (max-width: 680px) {
+  .course-grid { grid-template-columns: 1fr; }
+  .course-home > .search { margin-top: 2rem; }
+}
 .badge { display: inline-block; color: #765119; background: #fff2d8; padding: .1rem .5rem; border-radius: 3px; font-size: .75rem; margin-top: .4rem; }
 .back-link { display: inline-block; margin-bottom: 1.25rem; font-size: .875rem; text-decoration: none; }
 .back-link:hover { text-decoration: underline; }

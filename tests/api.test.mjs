@@ -23,6 +23,22 @@ test('独立教师与课程浏览 API（临时 D1）', async (t) => {
   }
   const request = (path) => app.request(path, {}, platform.env);
 
+  await t.test('课程评分按独立课程 ID 汇总，同名不同学院不混分，未评分为空', async () => {
+    await DB.prepare("INSERT INTO courses (id,name,department) VALUES (3,'数学分析','另一学院')").run();
+    for (const [id, course, rating, status] of [['a', 1, 3, 'published'], ['b', 1, 5, 'published'], ['c', 1, 1, 'pending'], ['d', 3, 2, 'published']]) {
+      await DB.prepare('INSERT INTO course_reviews (id,course_id,rating,body,status) VALUES (?,?,?,?,?)').bind(id, course, rating, '测试', status).run();
+    }
+    const { courses } = await (await request('/api/courses')).json();
+    assert.equal(courses[0].average, 4);
+    assert.equal(courses[0].reviewCount, 2);
+    assert.equal(courses[1].average, null);
+    assert.equal(courses[1].reviewCount, 0);
+    assert.equal(courses[2].average, 2);
+    assert.equal(courses[2].department, '另一学院');
+    await DB.prepare('DELETE FROM course_reviews').run();
+    await DB.prepare('DELETE FROM courses WHERE id=3').run();
+  });
+
   await t.test('两类列表均可分页，同名教师保留独立 ID', async () => {
     for (const kind of ['teachers', 'courses']) {
       const first = await request(`/api/${kind}?limit=1`);

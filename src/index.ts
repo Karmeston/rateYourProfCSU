@@ -38,7 +38,10 @@ app.get('/api/courses', async (c) => {
   const page = browseQuery(c.req.queries(), true);
   if (!page) return c.json({ error: '查询参数不合法' }, 400);
   const { results } = await c.env.DB.prepare(
-    'SELECT id, code, name, department, category FROM courses WHERE is_listed = 1 AND instr(name, ?) > 0 AND (? = ? OR category = ?) ORDER BY id ASC LIMIT ? OFFSET ?',
+    `SELECT id, code, name, department, category,
+      (SELECT avg(rating) FROM course_reviews r WHERE r.course_id=courses.id AND r.status='published') AS average,
+      (SELECT count(*) FROM course_reviews r WHERE r.course_id=courses.id AND r.status='published') AS reviewCount
+      FROM courses WHERE is_listed = 1 AND instr(name, ?) > 0 AND (? = ? OR category = ?) ORDER BY id ASC LIMIT ? OFFSET ?`,
   ).bind(page.q, page.category, '', page.category, page.limit + 1, page.offset).all<Course>();
   c.header('Cache-Control', 'private, max-age=60');
   return c.json({ courses: results.slice(0, page.limit), ...page, hasMore: results.length > page.limit });

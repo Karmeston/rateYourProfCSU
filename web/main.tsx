@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 import { useData } from './use-data';
-import { Reviews } from './reviews';
+import { Reviews, Stars } from './reviews';
 import { teacherPagesEnabled } from './features';
 
-type Course = { id: number; code: string | null; name: string; department: string; category: 'major' | 'elective' | null };
+type Course = { id: number; code: string | null; name: string; department: string; category: 'major' | 'elective' | null; average: number | null; reviewCount: number };
 type Teacher = { id: number; name: string; department: string; profile_url: string | null };
 type Kind = 'teachers' | 'courses';
 type Page = { limit: number; offset: number; hasMore: boolean };
@@ -36,14 +36,14 @@ function Demo() {
 const labels = { teachers: '教师', courses: '课程' };
 const categories = { major: '专业课', elective: '公选课' };
 
-function Catalog({ kind, offset, q, category }: { kind: Kind; offset: number; q: string; category: string }) {
+function Catalog({ kind, offset, q, category, home = false }: { kind: Kind; offset: number; q: string; category: string; home?: boolean }) {
   const filter = kind === 'courses' && category ? `&category=${category}` : '';
   const showResults = kind === 'courses' || q.trim().length > 0;
   const { data, error, retry } = useData<CatalogData>(showResults ? `/api/${kind}?limit=${pageSize}&offset=${offset}&q=${encodeURIComponent(q.trim())}${filter}` : null);
   const rows = data?.[kind] ?? [];
-  return <div className={!showResults ? 'search-home' : undefined}>
-    <div className="page-heading"><h1>{!showResults ? 'rateMyProfCSU' : labels[kind]}</h1></div>
-    {kind === 'courses' && <nav className="category-filter" aria-label="课程类型">{[['', '全部'], ...Object.entries(categories)].map(([value, label]) =>
+  return <div className={home ? 'course-home' : !showResults ? 'search-home' : undefined}>
+    {!home && <div className="page-heading"><h1>{!showResults ? 'rateMyProfCSU' : labels[kind]}</h1></div>}
+    {kind === 'courses' && !home && <nav className="category-filter" aria-label="课程类型">{[['', '全部'], ...Object.entries(categories)].map(([value, label]) =>
       <a key={value} href={`#/courses?q=${encodeURIComponent(q)}${value ? `&category=${value}` : ''}`} aria-current={category === value ? 'page' : undefined}>{label}</a>
     )}</nav>}
     <form className="search" role="search" onSubmit={(event) => {
@@ -54,11 +54,14 @@ function Catalog({ kind, offset, q, category }: { kind: Kind; offset: number; q:
       <input name="q" type="search" maxLength={100} defaultValue={q} aria-label={`搜索${labels[kind]}`} placeholder={`搜索${labels[kind]}`} />
       <button type="submit">搜索</button>
     </form>
+    {home && <nav className="category-filter" aria-label="课程类型"><a href="#/courses">全部课程</a><a href="#/courses?category=major">专业课</a><a href="#/courses?category=elective">公选课</a></nav>}
     {showResults && (!data ? <Notice error={error} retry={retry} /> : <>
-      {rows.length ? <ul className="course-list">{rows.map((row) => <li key={row.id}>
+      {rows.length ? <ul className={home ? 'course-list course-grid' : 'course-list'}>{rows.map((row) => <li key={row.id}>
         <a className="course-link" href={`#/${kind}/${row.id}`}>
-          <div><h2>{row.name}</h2>{'category' in row && row.category && <p className="metadata">{categories[row.category]}</p>}{row.department !== '待核实' && <p className="metadata">{row.department}</p>}{row.id < 0 && <Demo />}</div>
-          <span className="link-label" aria-hidden="true">→</span>
+          <div><h2>{row.name}</h2>{'category' in row && row.category && <p className="metadata">{categories[row.category]}</p>}<p className="metadata">{row.department === '待核实' ? '开课学院待核实' : row.department}</p>{row.id < 0 && <Demo />}</div>
+          {'average' in row ? <div className="catalog-rating" aria-label={row.average === null ? '暂无评分' : `${row.average.toFixed(1)} 分，${row.reviewCount} 条评价`}>
+            {row.average === null ? <span className="metadata">暂无评分</span> : <><strong>{row.average.toFixed(1)}</strong><Stars rating={row.average} /><span className="metadata">{row.reviewCount} 条评价</span></>}
+          </div> : <span className="link-label" aria-hidden="true">→</span>}
         </a>
       </li>)}</ul> : <p className="notice">{q ? '没有找到匹配结果' : `暂无${labels[kind]}`}</p>}
       <Pager page={data} href={(value) => `#/${kind}?offset=${value}&q=${encodeURIComponent(q)}${filter}`} />
@@ -94,7 +97,7 @@ function Detail({ kind, id }: { kind: Kind; id: string }) {
 }
 
 function App() {
-  const home = teacherPagesEnabled ? '#/teachers' : '#/courses';
+  const home = teacherPagesEnabled ? '#/teachers' : '#/';
   function visibleHash() {
     const current = window.location.hash;
     if (!current || current === '#/' || (!teacherPagesEnabled && /^#\/teachers(?:[/?]|$)/.test(current))) {
@@ -112,7 +115,7 @@ function App() {
   }, []);
   const [path, query = ''] = hash.slice(1).split('?');
   const match = /^\/(teachers|courses)(?:\/(-?[1-9]\d*))?$/.exec(path);
-  const kind: Kind = match?.[1] === 'courses' ? 'courses' : 'teachers';
+  const kind: Kind = match?.[1] === 'teachers' && teacherPagesEnabled ? 'teachers' : 'courses';
   const params = new URLSearchParams(query);
   const value = params.get('offset') ?? '0';
   const offset = Number(value);
@@ -130,14 +133,14 @@ function App() {
   return <>
     <header><div className="header-inner">
       <a className="brand" href={home}>rateMyProfCSU</a>
-      <nav className="primary-nav" aria-label="浏览分类">
+      {teacherPagesEnabled && <nav className="primary-nav" aria-label="浏览分类">
         {teacherPagesEnabled && <a href="#/teachers" aria-current={kind === 'teachers' ? 'page' : undefined}>教师</a>}
         <a href="#/courses" aria-current={kind === 'courses' ? 'page' : undefined}>课程</a>
-      </nav>
+      </nav>}
     </div></header>
     <main ref={main} tabIndex={-1} key={hash}>
       {!valid || (path !== '/' && !match) ? <div className="notice"><h1>页面不存在</h1><a href={home}>返回列表</a></div>
-        : match?.[2] ? <Detail kind={kind} id={match[2]} /> : <Catalog kind={kind} offset={offset} q={q} category={category} />}
+        : match?.[2] ? <Detail kind={kind} id={match[2]} /> : <Catalog kind={kind} offset={offset} q={q} category={category} home={path === '/'} />}
     </main>
   </>;
 }
