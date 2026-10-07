@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './style.css';
 import { useData } from './use-data';
 import { Reviews } from './reviews';
+import { teacherPagesEnabled } from './features';
 
 type Course = { id: number; code: string | null; name: string; department: string; category: 'major' | 'elective' | null };
 type Teacher = { id: number; name: string; department: string; profile_url: string | null };
@@ -88,15 +89,24 @@ function Detail({ kind, id }: { kind: Kind; id: string }) {
         {data?.course?.code && <p>课程代码：{data.course.code}</p>}
         {profile && <a href={profile} target="_blank" rel="noopener noreferrer">官网主页 ↗</a>}
         {row.id < 0 && <Demo />}
-      </div><Reviews kind={kind} id={id} name={row.name} /></>}
+      </div>{(kind === 'courses' || teacherPagesEnabled) && <Reviews kind={kind} id={id} name={row.name} />}</>}
   </>;
 }
 
 function App() {
-  const [hash, setHash] = useState(window.location.hash || '#/');
+  const home = teacherPagesEnabled ? '#/teachers' : '#/courses';
+  function visibleHash() {
+    const current = window.location.hash;
+    if (!current || current === '#/' || (!teacherPagesEnabled && /^#\/teachers(?:[/?]|$)/.test(current))) {
+      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}${home}`);
+      return home;
+    }
+    return current;
+  }
+  const [hash, setHash] = useState(visibleHash);
   const main = useRef<HTMLElement>(null);
   useEffect(() => {
-    const onChange = () => setHash(window.location.hash || '#/');
+    const onChange = () => setHash(visibleHash());
     window.addEventListener('hashchange', onChange);
     return () => window.removeEventListener('hashchange', onChange);
   }, []);
@@ -119,14 +129,14 @@ function App() {
   }, [hash, kind]);
   return <>
     <header><div className="header-inner">
-      <a className="brand" href="#/teachers">rateMyProfCSU</a>
+      <a className="brand" href={home}>rateMyProfCSU</a>
       <nav className="primary-nav" aria-label="浏览分类">
-        <a href="#/teachers" aria-current={kind === 'teachers' ? 'page' : undefined}>教师</a>
+        {teacherPagesEnabled && <a href="#/teachers" aria-current={kind === 'teachers' ? 'page' : undefined}>教师</a>}
         <a href="#/courses" aria-current={kind === 'courses' ? 'page' : undefined}>课程</a>
       </nav>
     </div></header>
     <main ref={main} tabIndex={-1} key={hash}>
-      {!valid || (path !== '/' && !match) ? <div className="notice"><h1>页面不存在</h1><a href="#/teachers">返回列表</a></div>
+      {!valid || (path !== '/' && !match) ? <div className="notice"><h1>页面不存在</h1><a href={home}>返回列表</a></div>
         : match?.[2] ? <Detail kind={kind} id={match[2]} /> : <Catalog kind={kind} offset={offset} q={q} category={category} />}
     </main>
   </>;
