@@ -42,6 +42,7 @@ function Catalog({ kind, offset, q, category, home = false }: { kind: Kind; offs
   const { data, error, retry } = useData<CatalogData>(showResults ? `/api/${kind}?limit=${pageSize}&offset=${offset}&q=${encodeURIComponent(q.trim())}${filter}` : null);
   const rows = data?.[kind] ?? [];
   return <div className={home ? 'course-home' : !showResults ? 'search-home' : undefined}>
+    <section className={home ? 'search-home course-home-search' : undefined} aria-label={home ? '课程搜索' : undefined}>
     {!home && <div className="page-heading"><h1>{!showResults ? 'rateMyProfCSU' : labels[kind]}</h1></div>}
     {kind === 'courses' && !home && <nav className="category-filter" aria-label="课程类型">{[['', '全部'], ...Object.entries(categories)].map(([value, label]) =>
       <a key={value} href={`#/courses?q=${encodeURIComponent(q)}${value ? `&category=${value}` : ''}`} aria-current={category === value ? 'page' : undefined}>{label}</a>
@@ -54,7 +55,8 @@ function Catalog({ kind, offset, q, category, home = false }: { kind: Kind; offs
       <input name="q" type="search" maxLength={100} defaultValue={q} aria-label={`搜索${labels[kind]}`} placeholder={`搜索${labels[kind]}`} />
       <button type="submit">搜索</button>
     </form>
-    {home && <nav className="category-filter" aria-label="课程类型"><a href="#/courses">全部课程</a><a href="#/courses?category=major">专业课</a><a href="#/courses?category=elective">公选课</a></nav>}
+    {home && <nav className="category-filter" aria-label="课程类型"><a href="#/courses?offset=0">全部课程</a><a href="#/courses?category=major">专业课</a><a href="#/courses?category=elective">公选课</a></nav>}
+    </section>
     {showResults && (!data ? <Notice error={error} retry={retry} /> : <>
       {rows.length ? <ul className={home ? 'course-list course-grid' : 'course-list'}>{rows.map((row) => <li key={row.id}>
         <a className="course-link" href={`#/${kind}/${row.id}`}>
@@ -64,9 +66,13 @@ function Catalog({ kind, offset, q, category, home = false }: { kind: Kind; offs
           </div> : <span className="link-label" aria-hidden="true">→</span>}
         </a>
       </li>)}</ul> : <p className="notice">{q ? '没有找到匹配结果' : `暂无${labels[kind]}`}</p>}
-      <Pager page={data} href={(value) => `#/${kind}?offset=${value}&q=${encodeURIComponent(q)}${filter}`} />
+      <Pager page={data} href={(value) => home ? `#/?offset=${value}` : `#/${kind}?offset=${value}&q=${encodeURIComponent(q)}${filter}`} />
     </>)}
   </div>;
+}
+
+function Home({ offset }: { offset: number }) {
+  return <Catalog kind="courses" offset={offset} q="" category="" home />;
 }
 
 // 仅允许 HTTPS 链接，避免把资料字段变成可执行 URL。
@@ -84,7 +90,7 @@ function Detail({ kind, id }: { kind: Kind; id: string }) {
     if (row) document.title = `${row.name} · rateMyProfCSU`;
   }, [row]);
   return <>
-    <a className="back-link" href={`#/${kind}`}>← {kind === 'teachers' ? '返回教师搜索' : '返回课程列表'}</a>
+    <a className="back-link" href={kind === 'teachers' ? '#/teachers' : '#/'}>← {kind === 'teachers' ? '返回教师搜索' : '返回首页'}</a>
     {!row ? <Notice error={error} retry={retry} /> :
       <><div className="page-heading">
         <h1>{row.name}</h1>{row.department !== '待核实' && <p>{row.department}</p>}
@@ -100,7 +106,7 @@ function App() {
   const home = teacherPagesEnabled ? '#/teachers' : '#/';
   function visibleHash() {
     const current = window.location.hash;
-    if (!current || current === '#/' || (!teacherPagesEnabled && /^#\/teachers(?:[/?]|$)/.test(current))) {
+    if (!current || current === '#/' || current === '#/courses' || current === '#/courses?' || (!teacherPagesEnabled && /^#\/teachers(?:[/?]|$)/.test(current))) {
       window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}${home}`);
       return home;
     }
@@ -140,7 +146,7 @@ function App() {
     </div></header>
     <main ref={main} tabIndex={-1} key={hash}>
       {!valid || (path !== '/' && !match) ? <div className="notice"><h1>页面不存在</h1><a href={home}>返回列表</a></div>
-        : match?.[2] ? <Detail kind={kind} id={match[2]} /> : <Catalog kind={kind} offset={offset} q={q} category={category} home={path === '/'} />}
+        : path === '/' ? <Home offset={offset} /> : match?.[2] ? <Detail kind={kind} id={match[2]} /> : <><a className="back-link" href={home}>← 返回首页</a><Catalog kind={kind} offset={offset} q={q} category={category} /></>}
     </main>
   </>;
 }
