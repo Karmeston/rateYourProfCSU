@@ -1,0 +1,4222 @@
+{
+  "sources": [
+    {
+      "source_id": "public-electives-2016",
+      "title": "2016版全校性选修课课程教学大纲",
+      "kind": "public_elective_syllabus",
+      "plan_year": 2016,
+      "department": null,
+      "records": 216,
+      "status": "extracted"
+    },
+    {
+      "source_id": "math-syllabi-2016",
+      "title": "2016版数学与统计学院本科课程教学大纲",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "数学与统计学院",
+      "records": 139,
+      "status": "extracted"
+    },
+    {
+      "source_id": "math-strong-2024",
+      "title": "数学与应用数学强基计划培养方案2024版",
+      "kind": "undergraduate_plan",
+      "plan_year": 2024,
+      "department": "数学与统计学院",
+      "records": 68,
+      "status": "extracted"
+    },
+    {
+      "source_id": "mpb-plan",
+      "title": "资源加工与生物工程学院培养方案文件",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "资源加工与生物工程学院",
+      "records": 85,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-8dfd893ab343",
+      "title": "91 土木安全类[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "土木工程学院",
+      "records": 18,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-6c849319d2f0",
+      "title": "92土木工程[2023]培养方案 (整理后hou).doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "土木工程学院",
+      "records": 122,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-5a5f9fae5da8",
+      "title": "93 土木国际[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "土木工程学院",
+      "records": 72,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-dfa6952734b4",
+      "title": "94 工程管理[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "土木工程学院",
+      "records": 79,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-15d88ce79494",
+      "title": "95 铁道工程[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "土木工程学院",
+      "records": 90,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-bafef26670dd",
+      "title": "96 工程力学[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "土木工程学院",
+      "records": 70,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-d074c979a16c",
+      "title": "97 消防工程[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "土木工程学院",
+      "records": 79,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-23efa57cbce2",
+      "title": "65 材料科学与工程[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "材料科学与工程学院",
+      "records": 122,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-1688a94e15eb",
+      "title": "汉语言文学[2023]培养方案 (5).doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "人文学院",
+      "records": 108,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-9e2a14c52e1f",
+      "title": "英语[2023]培养方案.pdf",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "外国语学院",
+      "records": 102,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-8440d0cc9c70",
+      "title": "电气工程及其自动化[2025]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2025,
+      "department": "电气工程学院",
+      "records": 65,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-9f5450b2c617",
+      "title": "电子信息科学与技术2023培养方案 PDF",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "电子信息学院",
+      "records": 72,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-b3dcca77cbca",
+      "title": "66 材料国际[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "材料科学与工程学院",
+      "records": 77,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c0c406750ca6",
+      "title": "哲学[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2018,
+      "department": "人文学院",
+      "records": 83,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-0b602b01a46c",
+      "title": "哲学[2023]培养方案 (1).doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "人文学院",
+      "records": 79,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f1fb1d716543",
+      "title": "材料科学与工程（强基）[2024]培养方案-20240628.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2024,
+      "department": "材料科学与工程学院",
+      "records": 71,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-74714abbb2e3",
+      "title": "67 材料科学与工程卓越人才培养[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "材料科学与工程学院",
+      "records": 73,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-8b9664d6b291",
+      "title": "PDF 文件",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "电气工程学院",
+      "records": 92,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-fa04fc70721f",
+      "title": "日语[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "外国语学院",
+      "records": 90,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-de96a7cf476f",
+      "title": "粉体材料科学与工程[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 96,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-dec425db17cc",
+      "title": "粉体材料科学与工程卓越人才培养[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 71,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-3107c1a058b1",
+      "title": "生物信息学专业本科培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2025,
+      "department": "生命科学学院",
+      "records": 65,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f9d09c856bfd",
+      "title": "2025版能源与动力工程专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2025,
+      "department": "能源科学与工程学院",
+      "records": 78,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-fd26805d601a",
+      "title": "33湘雅药学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "湘雅药学院",
+      "records": 43,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-753e0e64f26f",
+      "title": "32护理学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "护理学院",
+      "records": 27,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-20772ef521db",
+      "title": "31医药信息系.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "医药信息系学院",
+      "records": 32,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-1b337acce71f",
+      "title": "30医学检验系.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "医学检验系",
+      "records": 16,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-0971111090eb",
+      "title": "29湘雅公共卫生学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "湘雅公共卫生学院",
+      "records": 42,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-50a0a1e9a062",
+      "title": "28生命科学学院.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "生命科学学院",
+      "records": 66,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-1ad6e3e0cf21",
+      "title": "27湘雅口腔医院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "湘雅口腔医学院（湘雅口腔医院）",
+      "records": 18,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-663905c81f9a",
+      "title": "26基础医学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "基础医学院",
+      "records": 101,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-ca19fcc30831",
+      "title": "25湘雅医学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "湘雅医学院",
+      "records": 25,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-a65ef551efb8",
+      "title": "24信息科学与工程学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "信息科学与工程学院",
+      "records": 363,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-8fec7b137b0e",
+      "title": "23软件学院.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "软件学院",
+      "records": 54,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-9e9e913c1ada",
+      "title": "22 航空航天学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "航空航天学院",
+      "records": 59,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-453509fda8b6",
+      "title": "21 能源科学与工程学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "能源科学与工程学院",
+      "records": 94,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-56fc20fe7576",
+      "title": "20交通运输工程学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "交通运输工程学院",
+      "records": 135,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f0c4fa057be0",
+      "title": "19 土木工程学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "土木工程学院",
+      "records": 218,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-674825f69efb",
+      "title": "18机电工程学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "机电工程学院",
+      "records": 171,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e548698dc90e",
+      "title": "17资源与安全工程学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "资源与安全工程学院",
+      "records": 123,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-944cd2994eb8",
+      "title": "16粉末冶金研究院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "粉末冶金研究院",
+      "records": 90,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-d3c29319ecd9",
+      "title": "15材料科学与工程学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "材料科学与工程学院",
+      "records": 102,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-07b44d2e36c7",
+      "title": "14冶金与环境学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "冶金与环境学院",
+      "records": 135,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-b224005bd1ee",
+      "title": "13资源加工与生物工程学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "资源加工与生物工程学院",
+      "records": 122,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-0768b79a991d",
+      "title": "12地球科学与信息物理学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "地球科学与信息物理学院",
+      "records": 241,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-4b9c2a26ae7b",
+      "title": "11 化学化工学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "化学化工学院",
+      "records": 136,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-3e6cd58ba09e",
+      "title": "10 物理与电子学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "物理与电子学院",
+      "records": 105,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-6c955f018fe0",
+      "title": "8 体育教研部.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "体育教研部",
+      "records": 49,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-9c095516f889",
+      "title": "7 建筑与艺术学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "建筑与艺术学院",
+      "records": 385,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-35a9322558b7",
+      "title": "6 商学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "商学院",
+      "records": 188,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-6e07d144b357",
+      "title": "5 外国语学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "外国语学院",
+      "records": 401,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-280d496e79f5",
+      "title": "无机非金属材料工程- 2023版课程大纲 PDF",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "资源加工与生物工程学院",
+      "records": 21,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-12f5513f518a",
+      "title": "生物技术-2023版课程大纲 PDF",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "资源加工与生物工程学院",
+      "records": 35,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-75c62a50148c",
+      "title": "生物工程-2023版课程大纲 PDF",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "资源加工与生物工程学院",
+      "records": 32,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-054375ef2d17",
+      "title": "矿物加工工程卓越人才培养-2023版课程大纲 PDF",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "资源加工与生物工程学院",
+      "records": 33,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f1c89afbaeb1",
+      "title": "矿物加工工程专业-2023版课程大纲 PDF",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "资源加工与生物工程学院",
+      "records": 30,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-bad8637ec22a",
+      "title": "2025版建筑环境与能源应用工程专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2025,
+      "department": "能源科学与工程学院",
+      "records": 68,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-7a338dfe109b",
+      "title": "2024版建筑环境与能源应用工程专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2024,
+      "department": "能源科学与工程学院",
+      "records": 79,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-451fd5199baa",
+      "title": "4文学与新闻传播学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "文学与新闻传播学院",
+      "records": 166,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-8f960563f1d9",
+      "title": "3 马克思主义学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "马克思主义学院",
+      "records": 56,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-08ff46f3fd6d",
+      "title": "2 公共管理学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "公共管理学院",
+      "records": 150,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-0e981c51b6bc",
+      "title": "1法学院.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2016,
+      "department": "法学院",
+      "records": 88,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e24f3ad9a660-8c5004a3",
+      "title": "会计学[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "商学院",
+      "records": 82,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e24f3ad9a660-d95d66a4",
+      "title": "信息管理与信息系统[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "商学院",
+      "records": 82,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e24f3ad9a660-f4efdebd",
+      "title": "国际经济与贸易[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "商学院",
+      "records": 91,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e24f3ad9a660-3f8aa964",
+      "title": "工商管理(高水平运动)[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "商学院",
+      "records": 56,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e24f3ad9a660-4dfd39a7",
+      "title": "工商管理[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "商学院",
+      "records": 83,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e24f3ad9a660-b7dd1810",
+      "title": "数据科学与商业分析卓越人才培养[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "商学院",
+      "records": 77,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e24f3ad9a660-618bb980",
+      "title": "经济管理类[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "商学院",
+      "records": 21,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e24f3ad9a660-b1b7a733",
+      "title": "金融学[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "商学院",
+      "records": 84,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-eb3a977713b4",
+      "title": "2025版新能源科学与工程专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2025,
+      "department": "能源科学与工程学院",
+      "records": 67,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-1d9019ef60a7",
+      "title": "2024版能源与动力工程专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2024,
+      "department": "能源科学与工程学院",
+      "records": 93,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e8e78a83bb4e",
+      "title": "2024版新能源科学与工程专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2024,
+      "department": "能源科学与工程学院",
+      "records": 77,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-02af2a845c6e",
+      "title": "矿物加工工程卓越人才培养2023版培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "资源加工与生物工程学院",
+      "records": 102,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-4e0642e10b96",
+      "title": "无机非金属材料工程2023版培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "资源加工与生物工程学院",
+      "records": 82,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-37ff7c52da21",
+      "title": "生物工程2023版培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "资源加工与生物工程学院",
+      "records": 85,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-d54c1549bc06",
+      "title": "矿物加工工程2023版培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "资源加工与生物工程学院",
+      "records": 87,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-94a20b7556b9",
+      "title": "1冶金工程卓越人才培养[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "冶金与环境学院",
+      "records": 77,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-7a14468b9e1d",
+      "title": "2环境工程[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "冶金与环境学院",
+      "records": 83,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-4b436fe20fa7",
+      "title": "3新能源材料与器件[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "冶金与环境学院",
+      "records": 98,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-bc3766d0e595",
+      "title": "15冶金工程[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "冶金与环境学院",
+      "records": 112,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f1d9e5c48f87",
+      "title": "采矿工程培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2016,
+      "department": "资源与安全工程学院",
+      "records": 76,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-850f53be10f1",
+      "title": "安全工程培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2016,
+      "department": "资源与安全工程学院",
+      "records": 88,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-6cc4e042cc5f",
+      "title": "城市地下空间工程培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2016,
+      "department": "资源与安全工程学院",
+      "records": 84,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f16060247e95",
+      "title": "2023版能源类专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "能源科学与工程学院",
+      "records": 135,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-8e155ea6b9de",
+      "title": "计算机信息类[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2018,
+      "department": "计算机学院",
+      "records": 22,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-1d0fccb32373",
+      "title": "信息安全[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2018,
+      "department": "计算机学院",
+      "records": 81,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-1f6a7e6907b6",
+      "title": "数据科学与大数据技术[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2018,
+      "department": "计算机学院",
+      "records": 76,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-58faa332e7fa",
+      "title": "软件工程专业[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2018,
+      "department": "计算机学院",
+      "records": 81,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-625e80758e72",
+      "title": "计算机科学与技术专业[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2018,
+      "department": "计算机学院",
+      "records": 87,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e562cbee6c84-d98d26cc",
+      "title": "应用物理学[2024]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2024,
+      "department": "物理学院",
+      "records": 65,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e562cbee6c84-cc64499a",
+      "title": "光电信息科学与工程[2024]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2024,
+      "department": "物理学院",
+      "records": 75,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e562cbee6c84-e282eb58",
+      "title": "应用物理学拔尖人才培养[2024]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2024,
+      "department": "物理学院",
+      "records": 69,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f106ce6c1a8a-5f69cbec",
+      "title": "光电信息科学与工程[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "物理学院",
+      "records": 74,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f106ce6c1a8a-35678d04",
+      "title": "应用物理学[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "物理学院",
+      "records": 64,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f106ce6c1a8a-68fe9ea7",
+      "title": "电子信息科学与技术[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "物理学院",
+      "records": 70,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f106ce6c1a8a-fc15ea54",
+      "title": "应用物理学拔尖人才培养[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "物理学院",
+      "records": 68,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f106ce6c1a8a-73f83f2a",
+      "title": "电子信息类[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "物理学院",
+      "records": 20,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-9dcbd11d",
+      "title": "070102Z10-材料分析测试技术（一）-倪颂-0911定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-6c7b73ee",
+      "title": "070103Z10-材料性能学大纲-陈洁-1016定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-9412280e",
+      "title": "070137Z10-结构化学-吴志彬.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-431ad8aa",
+      "title": "070138Z10-材料科学基础A（一）-李丽娅-0911定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-f86e247e",
+      "title": "070139Z11-认识实习-李松林-0927定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-6b209683",
+      "title": "070140X10-科学素养与科研方法-1016定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-ad1de668",
+      "title": "070141Z20-材料分析测试技术(二)-旷桂超-1016定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-5e5d2a77",
+      "title": "070142Z11-材料科学综合实验-汤中华-1018定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-7f15978d",
+      "title": "070143Z10-粉末冶金原理-马运柱-0911定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-9d59a68e",
+      "title": "070144Z11-工程实践与工程设计-汤中华-0922定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-5fa38121",
+      "title": "070145Z10-计算材料学-孔毅-0920定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-0c063d3f",
+      "title": "070146Z11-专题研究-李凯-1015定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-6a280ca8",
+      "title": "070175X10-粉末冶金和人类文明0918-定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-9edd70c7",
+      "title": "材料科学基础（二）教学大纲-张利军-20240926-最终版.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-3fde0efc",
+      "title": "毕业论文(设计).doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-b184c209",
+      "title": "070118Z10-陶瓷工艺学-20241007.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-71707d06",
+      "title": "070119Z10-材料物理化学A-李松林等4人.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-7ce030fc",
+      "title": "070127Z10-新能源材料与应用-周亮君.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-edffdf63",
+      "title": "070128Z10-压电陶瓷与智能器件-张妍.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-5e317e81",
+      "title": "070129Z10-多孔功能陶瓷与应用-罗行 周学凡.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-84b7d76b",
+      "title": "070151Z11-特种陶瓷综合实验大纲-2024.10.8定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-51413bea",
+      "title": "070152Z10-陶瓷导论-张妍.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-d5f73b2f",
+      "title": "070158Z10-固体物理导论-教学大纲20240920-新版2.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-8c3e6dfc",
+      "title": "070162Z10-能量转换与存储原理及技术-20241008.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-ea1607a0",
+      "title": "070170Z10-先进结构陶瓷与应用-李杨-1006.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-357427b3",
+      "title": "070170Z10-陶瓷薄膜与微系统制造-刘绍军.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-9c56109a",
+      "title": "070114Z10-表面科学与工程-雷永鹏-定稿.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-d468ae12",
+      "title": "070115Z10-材料化学-周忠诚.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-9ccc5bc4",
+      "title": "070126Z10-金属功能材料导论-彭元东 定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-fd9b98ca",
+      "title": "070147Z10-粉末冶金材料学-邹俭鹏.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-68cce7d4",
+      "title": "070148Z10-《增材制造原理》-李瑞迪.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-fe1beef5",
+      "title": "070149Z11-李昆-粉末冶金综合实验-定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-3800cbb9",
+      "title": "070157Z10-材料热力学与动力学-刘树红-定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-135bb875",
+      "title": "070160Z10-材料物理-汪炯-定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-b6cee418",
+      "title": "070166Z10-金属工艺学-李松.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-9caa049a",
+      "title": "070167Z10-粉末冶金摩擦学材料-李专.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-ee762fc8",
+      "title": "070168Z10-材料电化学基础--伍秋美.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-efd24b22",
+      "title": "070169Z10-粉末冶金数字化设计与制造-熊慧文-定稿.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-71dd1153",
+      "title": "070110Z10-复合材料力学-王春齐-20240920.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-9d7669ad",
+      "title": "070119Z10+材料物理化学B-刘芳-20240925.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-7b1bb50f",
+      "title": "070134Z10-高性能纤维及复合材料-于澍-20240925.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-1d041af0",
+      "title": "070135Z10-复合材料结构设计-葛毅成-2024924.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-8dfdae2e",
+      "title": "070136Z10-纳米复合材料-黄苏萍-20240924.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-fd8aa07d",
+      "title": "070153Z11-复合材料综合实验-王雅雷  V5 241005(1).doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-60cf9561",
+      "title": "070154Z10-复合材料原理-李专-20240920.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-8b7d6e48",
+      "title": "070159Z10-复合材料工艺-文青波-20240924.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-94e6eb72",
+      "title": "070165Z10-材料表面与界面工程-岳建岭-20240924.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-276e46d1",
+      "title": "070172Z10-陶瓷基复合材料-王雅雷-20240925.doc",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-c04e8f85de71-717bf734",
+      "title": "070173Z10-金属基复合材料-彭可-20240925.docx",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "粉末冶金研究院",
+      "records": 1,
+      "status": "extracted"
+    },
+    {
+      "source_id": "public-elective-guide-2026-autumn",
+      "title": "2026-2027学年第一学期全校性选修课程网上MOOC学习指南 PDF",
+      "kind": "public_elective_guide",
+      "plan_year": 2026,
+      "department": "本科生院",
+      "records": 0,
+      "status": "no_records"
+    },
+    {
+      "source_id": "source-2c04a5690c1e",
+      "title": "自动化专业2025版培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2025,
+      "department": "自动化学院",
+      "records": 71,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-71fed65f09c7",
+      "title": "自动化卓越人才培养[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "自动化学院",
+      "records": 97,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-8bdc15d0fc55",
+      "title": "自动化与电气类[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "自动化学院",
+      "records": 22,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-6ecc9dad53af",
+      "title": "自动化专业[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "自动化学院",
+      "records": 95,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-fe82a8cf58a8",
+      "title": "人工智能专业[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "自动化学院",
+      "records": 78,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-04d82b6ebd46",
+      "title": "电子信息工程专业[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "自动化学院",
+      "records": 87,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-8772309d4c42",
+      "title": "测控技术与仪器专业2023版培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "自动化学院",
+      "records": 93,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f3d02423ef67",
+      "title": "附件1：课程信息.docx",
+      "kind": "public_elective_list",
+      "plan_year": 2026,
+      "department": "本科生院",
+      "records": 18,
+      "status": "extracted"
+    }
+  ],
+  "code_name_conflicts": [
+    {
+      "key": "csu:130109Z10",
+      "names": [
+        "实变函数",
+        "实变函数A"
+      ],
+      "source_ids": [
+        "math-strong-2024",
+        "math-syllabi-2016"
+      ]
+    },
+    {
+      "key": "csu:130113Z10",
+      "names": [
+        "组合数学",
+        "组合数学纲"
+      ],
+      "source_ids": [
+        "math-strong-2024",
+        "math-syllabi-2016"
+      ]
+    },
+    {
+      "key": "csu:130701X10",
+      "names": [
+        "高等数学A1（一）",
+        "高等数学A2(一)"
+      ],
+      "source_ids": [
+        "math-syllabi-2016",
+        "source-850f53be10f1"
+      ]
+    },
+    {
+      "key": "csu:130701X20",
+      "names": [
+        "高等数学A(二)",
+        "高等数学A1（二）"
+      ],
+      "source_ids": [
+        "math-syllabi-2016",
+        "source-850f53be10f1"
+      ]
+    },
+    {
+      "key": "csu:130702X10",
+      "names": [
+        "高等数学A2(一)",
+        "高等数学A2（一）"
+      ],
+      "source_ids": [
+        "math-syllabi-2016",
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-8e155ea6b9de",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:130702X20",
+      "names": [
+        "高等数学A2(二)",
+        "高等数学A2（二）"
+      ],
+      "source_ids": [
+        "math-syllabi-2016",
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-8e155ea6b9de",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:210103T10",
+      "names": [
+        "思想道德",
+        "思想道德与法治"
+      ],
+      "source_ids": [
+        "math-strong-2024",
+        "mpb-plan",
+        "source-02af2a845c6e",
+        "source-04d82b6ebd46",
+        "source-0b602b01a46c",
+        "source-15d88ce79494",
+        "source-1688a94e15eb",
+        "source-1d9019ef60a7",
+        "source-23efa57cbce2",
+        "source-2c04a5690c1e",
+        "source-3107c1a058b1",
+        "source-37ff7c52da21",
+        "source-4b436fe20fa7",
+        "source-4e0642e10b96",
+        "source-5a5f9fae5da8",
+        "source-6c849319d2f0",
+        "source-6ecc9dad53af",
+        "source-71fed65f09c7",
+        "source-74714abbb2e3",
+        "source-7a14468b9e1d",
+        "source-7a338dfe109b",
+        "source-8440d0cc9c70",
+        "source-8772309d4c42",
+        "source-8b9664d6b291",
+        "source-8bdc15d0fc55",
+        "source-8dfd893ab343",
+        "source-94a20b7556b9",
+        "source-9e2a14c52e1f",
+        "source-9f5450b2c617",
+        "source-b3dcca77cbca",
+        "source-bad8637ec22a",
+        "source-bafef26670dd",
+        "source-bc3766d0e595",
+        "source-d074c979a16c",
+        "source-d54c1549bc06",
+        "source-de96a7cf476f",
+        "source-dec425db17cc",
+        "source-dfa6952734b4",
+        "source-e24f3ad9a660-3f8aa964",
+        "source-e24f3ad9a660-4dfd39a7",
+        "source-e24f3ad9a660-618bb980",
+        "source-e24f3ad9a660-8c5004a3",
+        "source-e24f3ad9a660-b1b7a733",
+        "source-e24f3ad9a660-b7dd1810",
+        "source-e24f3ad9a660-d95d66a4",
+        "source-e24f3ad9a660-f4efdebd",
+        "source-e562cbee6c84-cc64499a",
+        "source-e562cbee6c84-d98d26cc",
+        "source-e562cbee6c84-e282eb58",
+        "source-e8e78a83bb4e",
+        "source-eb3a977713b4",
+        "source-f106ce6c1a8a-35678d04",
+        "source-f106ce6c1a8a-5f69cbec",
+        "source-f106ce6c1a8a-68fe9ea7",
+        "source-f106ce6c1a8a-73f83f2a",
+        "source-f106ce6c1a8a-fc15ea54",
+        "source-f16060247e95",
+        "source-f1fb1d716543",
+        "source-f9d09c856bfd",
+        "source-fa04fc70721f",
+        "source-fe82a8cf58a8"
+      ]
+    },
+    {
+      "key": "csu:950604T10",
+      "names": [
+        "计算机程序设计基础",
+        "计算机程序设计基础（Python）"
+      ],
+      "source_ids": [
+        "mpb-plan",
+        "source-15d88ce79494",
+        "source-1d9019ef60a7",
+        "source-37ff7c52da21",
+        "source-6c849319d2f0",
+        "source-7a14468b9e1d",
+        "source-7a338dfe109b",
+        "source-8dfd893ab343",
+        "source-9e2a14c52e1f",
+        "source-bad8637ec22a",
+        "source-bafef26670dd",
+        "source-d074c979a16c",
+        "source-dfa6952734b4",
+        "source-e562cbee6c84-d98d26cc",
+        "source-e562cbee6c84-e282eb58",
+        "source-e8e78a83bb4e",
+        "source-eb3a977713b4",
+        "source-f106ce6c1a8a-35678d04",
+        "source-f106ce6c1a8a-fc15ea54",
+        "source-f16060247e95",
+        "source-f9d09c856bfd"
+      ]
+    },
+    {
+      "key": "csu:150201X10",
+      "names": [
+        "应用化学专业新生课",
+        "新生课"
+      ],
+      "source_ids": [
+        "mpb-plan",
+        "source-37ff7c52da21",
+        "source-4b9c2a26ae7b",
+        "source-7a14468b9e1d"
+      ]
+    },
+    {
+      "key": "csu:150709X10",
+      "names": [
+        "工科大学化学--物理化学D",
+        "工科大学化学—物理化学D"
+      ],
+      "source_ids": [
+        "mpb-plan",
+        "source-37ff7c52da21",
+        "source-4b9c2a26ae7b"
+      ]
+    },
+    {
+      "key": "csu:030422Z10",
+      "names": [
+        "文献检索与科技论文写",
+        "文献检索与科技论文写作"
+      ],
+      "source_ids": [
+        "mpb-plan",
+        "source-12f5513f518a",
+        "source-37ff7c52da21",
+        "source-75c62a50148c",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:120736Z10",
+      "names": [
+        "结构力学A(一)",
+        "结构力学A（一）"
+      ],
+      "source_ids": [
+        "source-15d88ce79494",
+        "source-6c849319d2f0",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120736Z20",
+      "names": [
+        "结构力学A(二)",
+        "结构力学A（二）"
+      ],
+      "source_ids": [
+        "source-15d88ce79494",
+        "source-6c849319d2f0",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120303Z10",
+      "names": [
+        "交通运输工程导论",
+        "交通运输工程概论"
+      ],
+      "source_ids": [
+        "source-15d88ce79494",
+        "source-6c849319d2f0",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120003Z11",
+      "names": [
+        "专业生产实习",
+        "生产实习"
+      ],
+      "source_ids": [
+        "source-15d88ce79494",
+        "source-5a5f9fae5da8",
+        "source-6c849319d2f0",
+        "source-d074c979a16c",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120204Z11",
+      "names": [
+        "地下建筑规划与设计-课程设计",
+        "地下建筑规划课程设计"
+      ],
+      "source_ids": [
+        "source-6c849319d2f0",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120735Z10",
+      "names": [
+        "理论力学D (一)",
+        "理论力学D（一）"
+      ],
+      "source_ids": [
+        "source-5a5f9fae5da8",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120604Z10",
+      "names": [
+        "工程管理概",
+        "工程管理概论"
+      ],
+      "source_ids": [
+        "source-dfa6952734b4",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120627Z11",
+      "names": [
+        "工程管理专业认识实习",
+        "认识实习"
+      ],
+      "source_ids": [
+        "source-dfa6952734b4",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120633Z11",
+      "names": [
+        "工程管理专业生产实习",
+        "生产实习"
+      ],
+      "source_ids": [
+        "source-dfa6952734b4",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120304Z10",
+      "names": [
+        "高速与重载铁路",
+        "高速及重载铁路"
+      ],
+      "source_ids": [
+        "source-15d88ce79494",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120311Z11",
+      "names": [
+        "铁路选线设计课程设计",
+        "铁路选线课程设计"
+      ],
+      "source_ids": [
+        "source-15d88ce79494",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120313Z11",
+      "names": [
+        "铁道工程实验",
+        "铁道工程试验"
+      ],
+      "source_ids": [
+        "source-15d88ce79494",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:120731Z11",
+      "names": [
+        "工程力学专业认识实习",
+        "认识实习"
+      ],
+      "source_ids": [
+        "source-bafef26670dd",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:121122Z10",
+      "names": [
+        "火灾风险评估与保险",
+        "火灾风险评估及保险"
+      ],
+      "source_ids": [
+        "source-d074c979a16c",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:121137Z11",
+      "names": [
+        "消防工程专业认识实习",
+        "消防工程认识实习"
+      ],
+      "source_ids": [
+        "source-d074c979a16c",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:140102X10",
+      "names": [
+        "大学物理B （一）",
+        "大学物理B(一)",
+        "大学物理B（一）"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-04d82b6ebd46",
+        "source-1d9019ef60a7",
+        "source-23efa57cbce2",
+        "source-3e6cd58ba09e",
+        "source-4b436fe20fa7",
+        "source-4e0642e10b96",
+        "source-6cc4e042cc5f",
+        "source-6ecc9dad53af",
+        "source-71fed65f09c7",
+        "source-74714abbb2e3",
+        "source-7a338dfe109b",
+        "source-850f53be10f1",
+        "source-8772309d4c42",
+        "source-8b9664d6b291",
+        "source-8bdc15d0fc55",
+        "source-94a20b7556b9",
+        "source-b3dcca77cbca",
+        "source-bc3766d0e595",
+        "source-d54c1549bc06",
+        "source-de96a7cf476f",
+        "source-dec425db17cc",
+        "source-e8e78a83bb4e",
+        "source-f16060247e95",
+        "source-f1d9e5c48f87",
+        "source-fe82a8cf58a8"
+      ]
+    },
+    {
+      "key": "csu:140102X20",
+      "names": [
+        "大学物理B(二)",
+        "大学物理B（二）"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-1d9019ef60a7",
+        "source-23efa57cbce2",
+        "source-3e6cd58ba09e",
+        "source-4b436fe20fa7",
+        "source-4e0642e10b96",
+        "source-6cc4e042cc5f",
+        "source-6ecc9dad53af",
+        "source-71fed65f09c7",
+        "source-74714abbb2e3",
+        "source-7a338dfe109b",
+        "source-850f53be10f1",
+        "source-8772309d4c42",
+        "source-8b9664d6b291",
+        "source-94a20b7556b9",
+        "source-b3dcca77cbca",
+        "source-bc3766d0e595",
+        "source-d54c1549bc06",
+        "source-de96a7cf476f",
+        "source-dec425db17cc",
+        "source-e8e78a83bb4e",
+        "source-f16060247e95",
+        "source-f1d9e5c48f87",
+        "source-fe82a8cf58a8"
+      ]
+    },
+    {
+      "key": "csu:150613X10",
+      "names": [
+        "工科大学化学-有机化学基础B",
+        "工科大学化学—有机化学基础B"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-23efa57cbce2",
+        "source-4b9c2a26ae7b",
+        "source-4e0642e10b96",
+        "source-74714abbb2e3",
+        "source-7a14468b9e1d",
+        "source-94a20b7556b9",
+        "source-b3dcca77cbca",
+        "source-bc3766d0e595",
+        "source-d54c1549bc06",
+        "source-f1fb1d716543"
+      ]
+    },
+    {
+      "key": "csu:150708X10",
+      "names": [
+        "工科大学化学-物理化学C",
+        "工科大学化学—物理化学C"
+      ],
+      "source_ids": [
+        "source-23efa57cbce2",
+        "source-4b9c2a26ae7b",
+        "source-74714abbb2e3",
+        "source-b3dcca77cbca",
+        "source-f1fb1d716543"
+      ]
+    },
+    {
+      "key": "csu:150411X11",
+      "names": [
+        "工科大学化学实验-基本操作",
+        "工科大学化学实验—基本操作"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-23efa57cbce2",
+        "source-4b436fe20fa7",
+        "source-4e0642e10b96",
+        "source-74714abbb2e3",
+        "source-94a20b7556b9",
+        "source-b3dcca77cbca",
+        "source-bc3766d0e595",
+        "source-d54c1549bc06",
+        "source-de96a7cf476f",
+        "source-dec425db17cc",
+        "source-f1fb1d716543"
+      ]
+    },
+    {
+      "key": "csu:150415X10",
+      "names": [
+        "工科大学化学-无机与结构化学基础B",
+        "工科大学化学—无机与结构化学基础B"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-23efa57cbce2",
+        "source-4b436fe20fa7",
+        "source-4b9c2a26ae7b",
+        "source-4e0642e10b96",
+        "source-74714abbb2e3",
+        "source-94a20b7556b9",
+        "source-b3dcca77cbca",
+        "source-bc3766d0e595",
+        "source-d54c1549bc06",
+        "source-de96a7cf476f",
+        "source-dec425db17cc",
+        "source-f1fb1d716543"
+      ]
+    },
+    {
+      "key": "csu:060304Z10",
+      "names": [
+        "材料结构分析",
+        "材料结构分析（一）"
+      ],
+      "source_ids": [
+        "source-23efa57cbce2",
+        "source-74714abbb2e3",
+        "source-d3c29319ecd9",
+        "source-f1fb1d716543"
+      ]
+    },
+    {
+      "key": "csu:060304Z20",
+      "names": [
+        "材料结构分析",
+        "材料结构分析（二）"
+      ],
+      "source_ids": [
+        "source-23efa57cbce2",
+        "source-74714abbb2e3",
+        "source-b3dcca77cbca",
+        "source-d3c29319ecd9",
+        "source-f1fb1d716543"
+      ]
+    },
+    {
+      "key": "csu:060241Z10",
+      "names": [
+        "材料工程装备与车间设计B",
+        "材料装备与车间设计B"
+      ],
+      "source_ids": [
+        "source-23efa57cbce2",
+        "source-74714abbb2e3"
+      ]
+    },
+    {
+      "key": "csu:170105X30",
+      "names": [
+        "中国古代文学(三)",
+        "中国古代文学（三）"
+      ],
+      "source_ids": [
+        "source-1688a94e15eb",
+        "source-451fd5199baa"
+      ]
+    },
+    {
+      "key": "csu:170111Z10",
+      "names": [
+        "外国文学史(一)",
+        "外国文学（一）"
+      ],
+      "source_ids": [
+        "source-1688a94e15eb",
+        "source-451fd5199baa"
+      ]
+    },
+    {
+      "key": "csu:170118Z10",
+      "names": [
+        "<诗经>和<楚辞>",
+        "诗经》与《楚辞"
+      ],
+      "source_ids": [
+        "source-1688a94e15eb",
+        "source-451fd5199baa"
+      ]
+    },
+    {
+      "key": "csu:170135Z10",
+      "names": [
+        "《红楼梦》研究",
+        "红楼梦研究"
+      ],
+      "source_ids": [
+        "source-1688a94e15eb",
+        "source-451fd5199baa"
+      ]
+    },
+    {
+      "key": "csu:170141Z10",
+      "names": [
+        "中国古代小说、戏曲专题",
+        "中国古代小说、戏曲专题研究"
+      ],
+      "source_ids": [
+        "source-1688a94e15eb",
+        "source-451fd5199baa"
+      ]
+    },
+    {
+      "key": "csu:180102X10",
+      "names": [
+        "英语分析性阅读(一)",
+        "英语分析性阅读（一）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180104X10",
+      "names": [
+        "英语创造性写作",
+        "语创造性写作"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180110X20",
+      "names": [
+        "英语分析性阅读(二)",
+        "英语分析性阅读（二）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180114X30",
+      "names": [
+        "英语分析性阅读(三)",
+        "英语分析性阅读（三）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180205X20",
+      "names": [
+        "二外(日语)(二)",
+        "二外（日语）（二）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180205X30",
+      "names": [
+        "二外(日语)(三)",
+        "二外（日语）（三）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180205X40",
+      "names": [
+        "二外(日语)(四)",
+        "二外（日语）（四）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180303X10",
+      "names": [
+        "二外(法语)(一)",
+        "二外（法语）（一）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180303X20",
+      "names": [
+        "二外(法语)(二)",
+        "二外（法语）（二）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180303X30",
+      "names": [
+        "二外(法语)(三)",
+        "二外（法语）（三）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180303X40",
+      "names": [
+        "二外(法语)(四)",
+        "二外（法语）（四）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180304X10",
+      "names": [
+        "二外(德语)(一)",
+        "二外德语 （一）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180304X20",
+      "names": [
+        "二外(德语)(二)",
+        "二外德语 （二）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180304X40",
+      "names": [
+        "二外(德语)(四)",
+        "二外德语 （三）",
+        "二外德语 （四）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180305X10",
+      "names": [
+        "二外(俄语)(一)",
+        "英专二外俄语 （一）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180305X20",
+      "names": [
+        "二外(俄语)(二)",
+        "英专二外俄语（二）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180305X30",
+      "names": [
+        "二外(俄语)(三)",
+        "英专二外俄语（三）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180305X40",
+      "names": [
+        "二外(俄语)(四)",
+        "英专二外俄语（四）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180406X10",
+      "names": [
+        "二外(西班牙语)(一)",
+        "二外西班牙语（一）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180406X20",
+      "names": [
+        "二外(西班牙语)(二)",
+        "二外西班牙语（二）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180167Z10",
+      "names": [
+        "国际贸易理论与实务",
+        "国际贸易理论与实务（一）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:180117F11",
+      "names": [
+        "毕业论文",
+        "毕业论文写作"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-9e2a14c52e1f"
+      ]
+    },
+    {
+      "key": "csu:060525Z10",
+      "names": [
+        "材料耐久性",
+        "材料耐久性（全英文）"
+      ],
+      "source_ids": [
+        "source-74714abbb2e3",
+        "source-b3dcca77cbca"
+      ]
+    },
+    {
+      "key": "csu:060527Z10",
+      "names": [
+        "生物材料",
+        "生物材料（英文）"
+      ],
+      "source_ids": [
+        "source-74714abbb2e3",
+        "source-b3dcca77cbca"
+      ]
+    },
+    {
+      "key": "csu:060205Z10",
+      "names": [
+        "模具设计与智能制造",
+        "锻造冲压工艺与模具设计"
+      ],
+      "source_ids": [
+        "source-74714abbb2e3",
+        "source-b3dcca77cbca",
+        "source-d3c29319ecd9"
+      ]
+    },
+    {
+      "key": "csu:210301T10",
+      "names": [
+        "马克思主义基本原理",
+        "马克思主义基本原理概论"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-8f960563f1d9",
+        "source-c0c406750ca6",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:210401T10",
+      "names": [
+        "毛泽东思想与中国特色社会主义理论体系概论",
+        "毛泽东思想和中国特色社会主义理论体系概论"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-8f960563f1d9",
+        "source-c0c406750ca6",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:660001T10",
+      "names": [
+        "体育(一)",
+        "体育（一）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6c955f018fe0",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-8e155ea6b9de",
+        "source-c0c406750ca6",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:660001T20",
+      "names": [
+        "体育(二)",
+        "体育（二）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6c955f018fe0",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-8e155ea6b9de",
+        "source-c0c406750ca6",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:660001T30",
+      "names": [
+        "体育(三)",
+        "体育（三）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6c955f018fe0",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-c0c406750ca6",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:660001T40",
+      "names": [
+        "体育(四)",
+        "体育（四）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6c955f018fe0",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-c0c406750ca6",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:660002T11",
+      "names": [
+        "体育课外测试(一)",
+        "体育课外测试（一）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-c0c406750ca6",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:660002T21",
+      "names": [
+        "体育课外测试(二)",
+        "体育课外测试（二）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-c0c406750ca6",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:660002T31",
+      "names": [
+        "体育课外测试(三)",
+        "体育课外测试（三）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-58faa332e7fa",
+        "source-625e80758e72",
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-c0c406750ca6",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:430401X10",
+      "names": [
+        "思维与论辩",
+        "批判思维与论辩"
+      ],
+      "source_ids": [
+        "source-08ff46f3fd6d",
+        "source-0b602b01a46c",
+        "source-c0c406750ca6"
+      ]
+    },
+    {
+      "key": "csu:060250Z20",
+      "names": [
+        "金属变形物理基础与应用",
+        "金属变形物理基础与应用（二）"
+      ],
+      "source_ids": [
+        "source-f1fb1d716543"
+      ]
+    },
+    {
+      "key": "csu:960005X11",
+      "names": [
+        "数字电子技术课程设计",
+        "数字电子技术课程设计I"
+      ],
+      "source_ids": [
+        "source-8b9664d6b291"
+      ]
+    },
+    {
+      "key": "csu:090410Z10",
+      "names": [
+        "牵引供电系统",
+        "牵引供电系统教"
+      ],
+      "source_ids": [
+        "source-8b9664d6b291",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090428Z10",
+      "names": [
+        "电磁兼容及其应用",
+        "电磁兼容及应用"
+      ],
+      "source_ids": [
+        "source-8b9664d6b291",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:180204X11",
+      "names": [
+        "口语实习",
+        "日语口语实习"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-fa04fc70721f"
+      ]
+    },
+    {
+      "key": "csu:180232Z30",
+      "names": [
+        "日语口语（三）",
+        "日语口语（四）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-fa04fc70721f"
+      ]
+    },
+    {
+      "key": "csu:180231Z10",
+      "names": [
+        "高級日语（一）",
+        "高级日语（一）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-fa04fc70721f"
+      ]
+    },
+    {
+      "key": "csu:180231Z20",
+      "names": [
+        "高級日语（二）",
+        "高级日语（二）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357",
+        "source-fa04fc70721f"
+      ]
+    },
+    {
+      "key": "csu:150608X10",
+      "names": [
+        "工科大学化学-有机化学基础 A",
+        "工科大学化学—有机化学基础A"
+      ],
+      "source_ids": [
+        "source-4b9c2a26ae7b",
+        "source-de96a7cf476f",
+        "source-dec425db17cc"
+      ]
+    },
+    {
+      "key": "csu:150706X10",
+      "names": [
+        "工科大学化学-物理化学A(一)",
+        "工科大学化学—物理化学A(一)"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-4b436fe20fa7",
+        "source-4b9c2a26ae7b",
+        "source-94a20b7556b9",
+        "source-bc3766d0e595",
+        "source-d54c1549bc06",
+        "source-de96a7cf476f",
+        "source-dec425db17cc"
+      ]
+    },
+    {
+      "key": "csu:150706X20",
+      "names": [
+        "工科大学化学-物理化学A(二)",
+        "工科大学化学—物理化",
+        "工科大学化学—物理化学A(二)"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-4b436fe20fa7",
+        "source-4b9c2a26ae7b",
+        "source-94a20b7556b9",
+        "source-bc3766d0e595",
+        "source-d54c1549bc06",
+        "source-de96a7cf476f",
+        "source-dec425db17cc"
+      ]
+    },
+    {
+      "key": "csu:070170Z10",
+      "names": [
+        "先进结构陶瓷与应用",
+        "陶瓷薄膜与微系统制造"
+      ],
+      "source_ids": [
+        "source-c04e8f85de71-357427b3",
+        "source-c04e8f85de71-ea1607a0",
+        "source-de96a7cf476f"
+      ]
+    },
+    {
+      "key": "csu:070176Z11",
+      "names": [
+        "毕业实习与毕业论文(设计)A",
+        "毕业论文（设计）"
+      ],
+      "source_ids": [
+        "source-c04e8f85de71-3fde0efc",
+        "source-de96a7cf476f",
+        "source-dec425db17cc"
+      ]
+    },
+    {
+      "key": "csu:240304Z10",
+      "names": [
+        "3 中国药典委员会. 中国药典（2015年版）. 北京：中国医药科技出版社，2015.",
+        "药物分析A"
+      ],
+      "source_ids": [
+        "source-fd26805d601a"
+      ]
+    },
+    {
+      "key": "csu:230911Z10",
+      "names": [
+        "法医临床学",
+        "法医毒理学"
+      ],
+      "source_ids": [
+        "source-663905c81f9a"
+      ]
+    },
+    {
+      "key": "csu:090200T10",
+      "names": [
+        "计算机程序设计基础",
+        "计算机程序设计基础（C语言）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-625e80758e72",
+        "source-8e155ea6b9de",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090203Z10",
+      "names": [
+        "面向对象编程",
+        "面向对象编程（C++）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-625e80758e72",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090207Z10",
+      "names": [
+        "JAVA语言与系统设计",
+        "Java语言与系统设计"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-1f6a7e6907b6",
+        "source-625e80758e72",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090231Z11",
+      "names": [
+        "应用基础实践二",
+        "应用基础实践二（Web技术+数据库+移动应用开发）"
+      ],
+      "source_ids": [
+        "source-625e80758e72",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090256X10",
+      "names": [
+        "信息安全专业导论",
+        "信息安全导论"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090269Z11",
+      "names": [
+        "信息安全实验课程一",
+        "信息安全实验课程一（网络安全、系统安全）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090270Z11",
+      "names": [
+        "信息安全实验课程二",
+        "信息安全实验课程二（软件安全、Web安全）"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090282Z10",
+      "names": [
+        "RFID与智能卡技术",
+        "RFID及智能卡技术"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090297Z11",
+      "names": [
+        "毕业设计(论文)",
+        "毕业设计（论文）"
+      ],
+      "source_ids": [
+        "source-625e80758e72",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090298Z11",
+      "names": [
+        "毕业实习与设计",
+        "毕业设计"
+      ],
+      "source_ids": [
+        "source-1d0fccb32373",
+        "source-a65ef551efb8",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:090364Z10",
+      "names": [
+        "专业专题",
+        "电子信息工程专业专题"
+      ],
+      "source_ids": [
+        "source-04d82b6ebd46",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:090365Z10",
+      "names": [
+        "传感器与检测技术",
+        "传感器及检测技术"
+      ],
+      "source_ids": [
+        "source-04d82b6ebd46",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:091115X11",
+      "names": [
+        "电工电子实践 B",
+        "电工电子实践B",
+        "电工电子实验B"
+      ],
+      "source_ids": [
+        "source-1d9019ef60a7",
+        "source-4b436fe20fa7",
+        "source-7a338dfe109b",
+        "source-850f53be10f1",
+        "source-a65ef551efb8",
+        "source-e562cbee6c84-d98d26cc",
+        "source-e8e78a83bb4e",
+        "source-f106ce6c1a8a-35678d04",
+        "source-f106ce6c1a8a-5f69cbec",
+        "source-f16060247e95"
+      ]
+    },
+    {
+      "key": "csu:092109Z10",
+      "names": [
+        "分布式系统与云计算",
+        "分布式系统与云计算（强化分布式存储与数据中心技术）"
+      ],
+      "source_ids": [
+        "source-1f6a7e6907b6",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:092113Z10",
+      "names": [
+        "大数据编程",
+        "大数据编程（基于hadoop 和spark）"
+      ],
+      "source_ids": [
+        "source-1f6a7e6907b6",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:092114Z11",
+      "names": [
+        "大数据综合应用实践",
+        "大数据综合应用实践（基于医疗大数据）"
+      ],
+      "source_ids": [
+        "source-1f6a7e6907b6",
+        "source-a65ef551efb8"
+      ]
+    },
+    {
+      "key": "csu:390118X11",
+      "names": [
+        "软件实用技术实习",
+        "软件实用技术实习（Java）"
+      ],
+      "source_ids": [
+        "source-58faa332e7fa",
+        "source-8fec7b137b0e"
+      ]
+    },
+    {
+      "key": "csu:390217X11",
+      "names": [
+        "工程技能实习",
+        "工程技能实习（C++）"
+      ],
+      "source_ids": [
+        "source-58faa332e7fa",
+        "source-8fec7b137b0e"
+      ]
+    },
+    {
+      "key": "csu:390250T10",
+      "names": [
+        "计算机程序设计基础",
+        "计算机程序设计基础（C++）"
+      ],
+      "source_ids": [
+        "source-58faa332e7fa",
+        "source-8fec7b137b0e"
+      ]
+    },
+    {
+      "key": "csu:420101Z10",
+      "names": [
+        "现代探测技术",
+        "自动控制原理"
+      ],
+      "source_ids": [
+        "source-9e9e913c1ada"
+      ]
+    },
+    {
+      "key": "csu:420114Z10",
+      "names": [
+        "嵌入式系统设计与应用",
+        "现代控制理论"
+      ],
+      "source_ids": [
+        "source-9e9e913c1ada"
+      ]
+    },
+    {
+      "key": "csu:420213Z10",
+      "names": [
+        "飞行器气动设计",
+        "飞行器结构设计"
+      ],
+      "source_ids": [
+        "source-9e9e913c1ada"
+      ]
+    },
+    {
+      "key": "csu:420213Z11",
+      "names": [
+        "飞行器气动设计课程设计",
+        "飞行器结构设计课程设计"
+      ],
+      "source_ids": [
+        "source-9e9e913c1ada"
+      ]
+    },
+    {
+      "key": "csu:100134Z11",
+      "names": [
+        "生产实习",
+        "生产实习 A1 组",
+        "生产实习 A2 组",
+        "生产实习 B 组",
+        "生产实习 C 组",
+        "生产实习 D 组"
+      ],
+      "source_ids": [
+        "source-1d9019ef60a7",
+        "source-453509fda8b6",
+        "source-f16060247e95"
+      ]
+    },
+    {
+      "key": "csu:100309Z10",
+      "names": [
+        "建筑冷热源",
+        "热力系统仿真与优化"
+      ],
+      "source_ids": [
+        "source-453509fda8b6"
+      ]
+    },
+    {
+      "key": "csu:100223Z11",
+      "names": [
+        "建环专业综合实验",
+        "建筑环境与能源应用工程专业综合实验"
+      ],
+      "source_ids": [
+        "source-453509fda8b6",
+        "source-7a338dfe109b",
+        "source-f16060247e95"
+      ]
+    },
+    {
+      "key": "csu:110231Z11",
+      "names": [
+        "物流系统仿真课程设计",
+        "物流系统规划课程设计"
+      ],
+      "source_ids": [
+        "source-56fc20fe7576"
+      ]
+    },
+    {
+      "key": "csu:120712X10",
+      "names": [
+        "流体力学B",
+        "流体力学C"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-6cc4e042cc5f",
+        "source-d54c1549bc06",
+        "source-f0c4fa057be0"
+      ]
+    },
+    {
+      "key": "csu:020001T10",
+      "names": [
+        "计算机程序设计基础",
+        "计算机程序设计基础(C++)",
+        "计算机程序设计基础（C++）"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-e548698dc90e",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:020001T11",
+      "names": [
+        "计算机程序设计实践",
+        "计算机程序设计实践(C++)",
+        "计算机程序设计实践（C++）"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-850f53be10f1",
+        "source-e548698dc90e",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:020101X10",
+      "names": [
+        "专业导论（新生课）",
+        "采矿工程专业导论"
+      ],
+      "source_ids": [
+        "source-e548698dc90e",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:020111Z10",
+      "names": [
+        "矿业法律法规",
+        "矿山法律法规"
+      ],
+      "source_ids": [
+        "source-e548698dc90e",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:020117Z10",
+      "names": [
+        "数字化矿山技术",
+        "数字矿山技术"
+      ],
+      "source_ids": [
+        "source-e548698dc90e",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:020120Z10",
+      "names": [
+        "连续采矿技术",
+        "金属矿连续采矿技术"
+      ],
+      "source_ids": [
+        "source-e548698dc90e",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:020133Z11",
+      "names": [
+        "毕业设计",
+        "毕业设计（论文）"
+      ],
+      "source_ids": [
+        "source-e548698dc90e",
+        "source-f1d9e5c48f87"
+      ]
+    },
+    {
+      "key": "csu:020201X10",
+      "names": [
+        "安全工程专业导论（新生课）",
+        "安全工程专业新生课"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020205X10",
+      "names": [
+        "工程CAD",
+        "工程热力学与传热学基础"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020209Z10",
+      "names": [
+        "安全学原理",
+        "职业卫生及工程"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020211Z10",
+      "names": [
+        "安全人机工程",
+        "安全法学"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020212Z10",
+      "names": [
+        "环境工程",
+        "职业卫生及工程"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020214Z10",
+      "names": [
+        "可靠性分析",
+        "安全法学"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020218Z10",
+      "names": [
+        "安全心理学",
+        "机械与电气安全"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020219Z10",
+      "names": [
+        "特种设备安全技术",
+        "组织行为学"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020226Z10",
+      "names": [
+        "公共安全与应急管理",
+        "消防工程"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020227Z10",
+      "names": [
+        "保险学概论",
+        "道路交通安全"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020229Z10",
+      "names": [
+        "公共安全与应急管理",
+        "化工安全技术"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020230Z10",
+      "names": [
+        "矿山安全技术",
+        "道路交通安全"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020235Z10",
+      "names": [
+        "化工安全技术",
+        "爆破材料与起爆技术"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020233Z10",
+      "names": [
+        "安全投入与工程概算",
+        "矿山安全技术"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020238Z11",
+      "names": [
+        "安全人机工程",
+        "安全人机工程课程设计"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020239Z11",
+      "names": [
+        "专业认识实习",
+        "认识实习"
+      ],
+      "source_ids": [
+        "source-850f53be10f1",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020305Z10",
+      "names": [
+        "城市地下工程规划",
+        "城市地下空间规划"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020306Z10",
+      "names": [
+        "地下空间工程减灾防灾",
+        "地下空间工程防灾减灾"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020307Z10",
+      "names": [
+        "地下工程结构设计软件",
+        "工程地质"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020310Z10",
+      "names": [
+        "弹塑性力学",
+        "弹性力学"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020328Z10",
+      "names": [
+        "地下结构可靠度",
+        "地下结构可靠性"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020329Z10",
+      "names": [
+        "有限单元法及其应用",
+        "有限单元法及应用"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020334Z10",
+      "names": [
+        "地下工程施工与机械",
+        "地下工程机械与施工"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020336Z10",
+      "names": [
+        "BIM技术及应用",
+        "建筑BIM技术及应用"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:020347Z11",
+      "names": [
+        "毕业实习与设计",
+        "毕业设计"
+      ],
+      "source_ids": [
+        "source-6cc4e042cc5f",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:010457Z10",
+      "names": [
+        "工程测量",
+        "工程测量学"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-6cc4e042cc5f",
+        "source-e548698dc90e"
+      ]
+    },
+    {
+      "key": "csu:070102Z10",
+      "names": [
+        "材料分析测试技术（一）",
+        "材料科学基础A（一）"
+      ],
+      "source_ids": [
+        "source-944cd2994eb8",
+        "source-c04e8f85de71-9dcbd11d"
+      ]
+    },
+    {
+      "key": "csu:070110Z10",
+      "names": [
+        "复合材料力学",
+        "粉末冶金原理（一）"
+      ],
+      "source_ids": [
+        "source-944cd2994eb8",
+        "source-c04e8f85de71-71dd1153"
+      ]
+    },
+    {
+      "key": "csu:070118Z10",
+      "names": [
+        "粉末冶金模具设计",
+        "陶瓷工艺学"
+      ],
+      "source_ids": [
+        "source-944cd2994eb8",
+        "source-c04e8f85de71-b184c209"
+      ]
+    },
+    {
+      "key": "csu:070119Z10",
+      "names": [
+        "材料物理化学A",
+        "材料物理化学B",
+        "粉末冶金材料原理"
+      ],
+      "source_ids": [
+        "source-944cd2994eb8",
+        "source-c04e8f85de71-71707d06",
+        "source-c04e8f85de71-9d7669ad"
+      ]
+    },
+    {
+      "key": "csu:050103Z10",
+      "names": [
+        "冶金过程原理",
+        "金过程原理"
+      ],
+      "source_ids": [
+        "source-07b44d2e36c7",
+        "source-94a20b7556b9",
+        "source-bc3766d0e595"
+      ]
+    },
+    {
+      "key": "csu:050105Z10",
+      "names": [
+        "冶金专业英语",
+        "冶金专业英语纲"
+      ],
+      "source_ids": [
+        "source-07b44d2e36c7",
+        "source-94a20b7556b9",
+        "source-bc3766d0e595"
+      ]
+    },
+    {
+      "key": "csu:050111Z10",
+      "names": [
+        "冶金研究方法",
+        "冶金试验研究方法"
+      ],
+      "source_ids": [
+        "source-07b44d2e36c7",
+        "source-94a20b7556b9",
+        "source-bc3766d0e595"
+      ]
+    },
+    {
+      "key": "csu:050112Z10",
+      "names": [
+        "冶金设备",
+        "冶金设备及智能控制"
+      ],
+      "source_ids": [
+        "source-07b44d2e36c7",
+        "source-94a20b7556b9",
+        "source-bc3766d0e595"
+      ]
+    },
+    {
+      "key": "csu:050116Z10",
+      "names": [
+        "钢铁冶金学B",
+        "钢铁冶金学II"
+      ],
+      "source_ids": [
+        "source-07b44d2e36c7",
+        "source-bc3766d0e595"
+      ]
+    },
+    {
+      "key": "csu:050133Z10",
+      "names": [
+        "钢铁冶金学A",
+        "钢铁冶金学Ⅰ"
+      ],
+      "source_ids": [
+        "source-07b44d2e36c7",
+        "source-bc3766d0e595"
+      ]
+    },
+    {
+      "key": "csu:050134Z10",
+      "names": [
+        "重金属冶金学",
+        "重金属冶金学B"
+      ],
+      "source_ids": [
+        "source-07b44d2e36c7",
+        "source-bc3766d0e595"
+      ]
+    },
+    {
+      "key": "csu:050138Z10",
+      "names": [
+        "炭素材料",
+        "碳素材料"
+      ],
+      "source_ids": [
+        "source-07b44d2e36c7",
+        "source-bc3766d0e595"
+      ]
+    },
+    {
+      "key": "csu:030209Z11",
+      "names": [
+        "矿物加工实验",
+        "钢铁冶金实验（一）"
+      ],
+      "source_ids": [
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030212Z11",
+      "names": [
+        "11 生产实习",
+        "生产实习"
+      ],
+      "source_ids": [
+        "source-054375ef2d17",
+        "source-b224005bd1ee",
+        "source-f1c89afbaeb1"
+      ]
+    },
+    {
+      "key": "csu:030325Z11",
+      "names": [
+        "无机材料结构分析实验",
+        "毕业设计II"
+      ],
+      "source_ids": [
+        "source-280d496e79f5",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030203Z10",
+      "names": [
+        "烧结球团学",
+        "铁矿造块学"
+      ],
+      "source_ids": [
+        "source-054375ef2d17",
+        "source-b224005bd1ee",
+        "source-f1c89afbaeb1"
+      ]
+    },
+    {
+      "key": "csu:030301Z10",
+      "names": [
+        "结晶学与岩相学",
+        "结晶学基础"
+      ],
+      "source_ids": [
+        "source-280d496e79f5",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030302Z10",
+      "names": [
+        "无机材料科学基础",
+        "无机材料科学基础（一）结构与性质",
+        "无机材料科学基础（二）热力学与动力学"
+      ],
+      "source_ids": [
+        "source-280d496e79f5",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030306Z10",
+      "names": [
+        "无机材料工程基础",
+        "矿物材料加工学"
+      ],
+      "source_ids": [
+        "source-280d496e79f5",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030307Z10",
+      "names": [
+        "无机材料工艺学",
+        "无机材料物理性能"
+      ],
+      "source_ids": [
+        "source-280d496e79f5",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030309Z10",
+      "names": [
+        "无机材料工厂设计",
+        "无机材料研究方法",
+        "材料试验设计"
+      ],
+      "source_ids": [
+        "source-280d496e79f5",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030311Z10",
+      "names": [
+        "材料学概论",
+        "粉体工程"
+      ],
+      "source_ids": [
+        "source-280d496e79f5",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030312Z10",
+      "names": [
+        "新型无机材料",
+        "无机固废循环利用"
+      ],
+      "source_ids": [
+        "source-280d496e79f5",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030324Z11",
+      "names": [
+        "无机材料基础实验",
+        "毕业设计I"
+      ],
+      "source_ids": [
+        "source-280d496e79f5",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030418Z11",
+      "names": [
+        "发酵、分离及工艺实验",
+        "发酵、生化分离及工艺实验"
+      ],
+      "source_ids": [
+        "source-37ff7c52da21",
+        "source-75c62a50148c",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:030430Z10",
+      "names": [
+        "生物冶金原理与技术",
+        "生物冶金原理及技术"
+      ],
+      "source_ids": [
+        "source-37ff7c52da21",
+        "source-75c62a50148c",
+        "source-b224005bd1ee"
+      ]
+    },
+    {
+      "key": "csu:010223Z10",
+      "names": [
+        "地基处理",
+        "桩基工程"
+      ],
+      "source_ids": [
+        "source-0768b79a991d"
+      ]
+    },
+    {
+      "key": "csu:150403X10",
+      "names": [
+        "无机化学B",
+        "无机化学C"
+      ],
+      "source_ids": [
+        "source-4b9c2a26ae7b"
+      ]
+    },
+    {
+      "key": "csu:150404X11",
+      "names": [
+        "工科大学化学实验—基本操作",
+        "无机化学实验B"
+      ],
+      "source_ids": [
+        "source-4b9c2a26ae7b"
+      ]
+    },
+    {
+      "key": "csu:150512X10",
+      "names": [
+        "工科大学化学—化学分析",
+        "生物传感基础"
+      ],
+      "source_ids": [
+        "source-4b9c2a26ae7b"
+      ]
+    },
+    {
+      "key": "csu:150609X11",
+      "names": [
+        "工科大学化学实验—有机化学基础及合成实验",
+        "工科大学化学实验—有机化学基础及合成实验A"
+      ],
+      "source_ids": [
+        "source-4b436fe20fa7",
+        "source-4b9c2a26ae7b"
+      ]
+    },
+    {
+      "key": "csu:150610X11",
+      "names": [
+        "工科大学化学实验—有机化学基础及合成实验",
+        "工科大学化学实验—有机化学基础及合成实验B"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-4b9c2a26ae7b",
+        "source-4e0642e10b96",
+        "source-7a14468b9e1d",
+        "source-94a20b7556b9",
+        "source-bc3766d0e595",
+        "source-d54c1549bc06"
+      ]
+    },
+    {
+      "key": "csu:150707X20",
+      "names": [
+        "工科大学化学--物理化学B（二）",
+        "工科大学化学—物理化学B(二)"
+      ],
+      "source_ids": [
+        "source-4b9c2a26ae7b",
+        "source-4e0642e10b96",
+        "source-7a14468b9e1d"
+      ]
+    },
+    {
+      "key": "csu:140304X10",
+      "names": [
+        "光学",
+        "新生课"
+      ],
+      "source_ids": [
+        "source-3e6cd58ba09e",
+        "source-e562cbee6c84-d98d26cc",
+        "source-e562cbee6c84-e282eb58",
+        "source-f106ce6c1a8a-35678d04",
+        "source-f106ce6c1a8a-fc15ea54"
+      ]
+    },
+    {
+      "key": "csu:140309Z10",
+      "names": [
+        "热力学 统计物理",
+        "热力学与统计物理"
+      ],
+      "source_ids": [
+        "source-3e6cd58ba09e",
+        "source-e562cbee6c84-d98d26cc",
+        "source-e562cbee6c84-e282eb58",
+        "source-f106ce6c1a8a-35678d04",
+        "source-f106ce6c1a8a-fc15ea54"
+      ]
+    },
+    {
+      "key": "csu:190235Z10",
+      "names": [
+        "城市设计",
+        "城市设计原理"
+      ],
+      "source_ids": [
+        "source-9c095516f889"
+      ]
+    },
+    {
+      "key": "csu:190320Z10",
+      "names": [
+        "交互设计",
+        "产品交互设计"
+      ],
+      "source_ids": [
+        "source-9c095516f889"
+      ]
+    },
+    {
+      "key": "csu:190921Z10",
+      "names": [
+        "舞蹈文献与论文写作",
+        "舞蹈音乐赏析与制作"
+      ],
+      "source_ids": [
+        "source-9c095516f889"
+      ]
+    },
+    {
+      "key": "csu:160118Z10",
+      "names": [
+        "中国情境下的人力资源管理实务",
+        "中国文化视域下的组织与人力资源"
+      ],
+      "source_ids": [
+        "source-35a9322558b7",
+        "source-e24f3ad9a660-4dfd39a7"
+      ]
+    },
+    {
+      "key": "csu:160303Z10",
+      "names": [
+        "财务报表分析",
+        "资本运营与公司治理"
+      ],
+      "source_ids": [
+        "source-35a9322558b7",
+        "source-e24f3ad9a660-4dfd39a7",
+        "source-e24f3ad9a660-8c5004a3",
+        "source-e24f3ad9a660-b1b7a733",
+        "source-e24f3ad9a660-d95d66a4",
+        "source-e24f3ad9a660-f4efdebd"
+      ]
+    },
+    {
+      "key": "csu:160304Z10",
+      "names": [
+        "成本会计",
+        "成本会计学"
+      ],
+      "source_ids": [
+        "source-35a9322558b7",
+        "source-e24f3ad9a660-8c5004a3"
+      ]
+    },
+    {
+      "key": "csu:160313Z10",
+      "names": [
+        "资产评估",
+        "资产评估学"
+      ],
+      "source_ids": [
+        "source-35a9322558b7",
+        "source-e24f3ad9a660-8c5004a3"
+      ]
+    },
+    {
+      "key": "csu:160418Z11",
+      "names": [
+        "投融资专题调研",
+        "财务管理专题调研"
+      ],
+      "source_ids": [
+        "source-35a9322558b7"
+      ]
+    },
+    {
+      "key": "csu:160501X10",
+      "names": [
+        "金融学",
+        "金融学B"
+      ],
+      "source_ids": [
+        "source-35a9322558b7",
+        "source-e24f3ad9a660-3f8aa964",
+        "source-e24f3ad9a660-4dfd39a7",
+        "source-e24f3ad9a660-8c5004a3",
+        "source-e24f3ad9a660-d95d66a4",
+        "source-e24f3ad9a660-f4efdebd"
+      ]
+    },
+    {
+      "key": "csu:160524Z10",
+      "names": [
+        "房地产投资与金融",
+        "房地产投资学"
+      ],
+      "source_ids": [
+        "source-35a9322558b7",
+        "source-e24f3ad9a660-b1b7a733"
+      ]
+    },
+    {
+      "key": "csu:160539Z11",
+      "names": [
+        "金融专业实习",
+        "金融学专业实习"
+      ],
+      "source_ids": [
+        "source-35a9322558b7",
+        "source-e24f3ad9a660-b1b7a733"
+      ]
+    },
+    {
+      "key": "csu:160709Z10",
+      "names": [
+        "IT项目管理与实践",
+        "商务智能"
+      ],
+      "source_ids": [
+        "source-35a9322558b7"
+      ]
+    },
+    {
+      "key": "csu:180124Z10",
+      "names": [
+        "语言学研究方法",
+        "音系学入门"
+      ],
+      "source_ids": [
+        "source-6e07d144b357"
+      ]
+    },
+    {
+      "key": "csu:180145Z10",
+      "names": [
+        "美国文学",
+        "美国文学（一）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357"
+      ]
+    },
+    {
+      "key": "csu:180185Z10",
+      "names": [
+        "翻译与技术",
+        "计算机辅助翻译"
+      ],
+      "source_ids": [
+        "source-6e07d144b357"
+      ]
+    },
+    {
+      "key": "csu:180401T10",
+      "names": [
+        "第二外语（西班牙语）",
+        "西班牙语(全校二外)"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-6e07d144b357"
+      ]
+    },
+    {
+      "key": "csu:180408Z10",
+      "names": [
+        "西班牙语高级写作(一)",
+        "高级西班牙语阅读（一）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357"
+      ]
+    },
+    {
+      "key": "csu:180408Z20",
+      "names": [
+        "高级西班牙语写作（二）",
+        "高级西班牙语阅读（二）"
+      ],
+      "source_ids": [
+        "source-6e07d144b357"
+      ]
+    },
+    {
+      "key": "csu:180405Z10",
+      "names": [
+        "西班牙语听力（一）",
+        "轨道运输工程西班牙语"
+      ],
+      "source_ids": [
+        "source-6e07d144b357"
+      ]
+    },
+    {
+      "key": "csu:030476Z10",
+      "names": [
+        "《生物工程数学模型》教学大纲(审核中)",
+        "生物工程数学模型"
+      ],
+      "source_ids": [
+        "source-37ff7c52da21",
+        "source-75c62a50148c"
+      ]
+    },
+    {
+      "key": "csu:030169Z10",
+      "names": [
+        "-矿物加工设备",
+        "资源加工设备A：矿物加工设备"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-054375ef2d17",
+        "source-d54c1549bc06",
+        "source-f1c89afbaeb1"
+      ]
+    },
+    {
+      "key": "csu:030133Z10",
+      "names": [
+        "文献检索与科技写作",
+        "资源加工与生物工程学院"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-054375ef2d17",
+        "source-d54c1549bc06",
+        "source-f1c89afbaeb1"
+      ]
+    },
+    {
+      "key": "csu:170212Z10",
+      "names": [
+        "传播学概论",
+        "新闻采访与写作（一）"
+      ],
+      "source_ids": [
+        "source-451fd5199baa",
+        "source-8f960563f1d9"
+      ]
+    },
+    {
+      "key": "csu:170327Z11",
+      "names": [
+        "毕业论文",
+        "毕业论文（设计）"
+      ],
+      "source_ids": [
+        "source-451fd5199baa"
+      ]
+    },
+    {
+      "key": "csu:210105X10",
+      "names": [
+        "思想政治教育学原理",
+        "比较思想政治教育学"
+      ],
+      "source_ids": [
+        "source-8f960563f1d9"
+      ]
+    },
+    {
+      "key": "csu:430322Z10",
+      "names": [
+        "人力资源管理概论",
+        "劳动关系学"
+      ],
+      "source_ids": [
+        "source-08ff46f3fd6d"
+      ]
+    },
+    {
+      "key": "csu:430211X11",
+      "names": [
+        "农村社区实习",
+        "城市社区实习"
+      ],
+      "source_ids": [
+        "source-08ff46f3fd6d"
+      ]
+    },
+    {
+      "key": "csu:430501Z10",
+      "names": [
+        "儒家管理思想",
+        "教育人类学纲"
+      ],
+      "source_ids": [
+        "source-08ff46f3fd6d"
+      ]
+    },
+    {
+      "key": "csu:430326Z10",
+      "names": [
+        "保险精算",
+        "补充社会保障"
+      ],
+      "source_ids": [
+        "source-08ff46f3fd6d"
+      ]
+    },
+    {
+      "key": "csu:100349S11",
+      "names": [
+        "新能源发电系统课程设",
+        "新能源发电系统课程设计"
+      ],
+      "source_ids": [
+        "source-eb3a977713b4"
+      ]
+    },
+    {
+      "key": "csu:030186Z10",
+      "names": [
+        "资源加工智能检测与智能感知",
+        "选矿过程智能检测与控制"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e"
+      ]
+    },
+    {
+      "key": "csu:030187Z10",
+      "names": [
+        "资源加工数学模型与人工智能",
+        "造块过程智能检测与控制"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e"
+      ]
+    },
+    {
+      "key": "csu:030129Z10",
+      "names": [
+        "资源加工工程设计",
+        "资源加工过程智能控制"
+      ],
+      "source_ids": [
+        "source-02af2a845c6e",
+        "source-d54c1549bc06"
+      ]
+    },
+    {
+      "key": "csu:050355Z11",
+      "names": [
+        "新能源材料与器件基础课程实验-材料科学基",
+        "新能源材料与器件基础课程实验-材料科学基础"
+      ],
+      "source_ids": [
+        "source-4b436fe20fa7"
+      ]
+    },
+    {
+      "key": "csu:020232Z10",
+      "names": [
+        "化工安全技术",
+        "安全科技发展动态"
+      ],
+      "source_ids": [
+        "source-850f53be10f1"
+      ]
+    },
+    {
+      "key": "csu:020243Z11",
+      "names": [
+        "毕业实习与毕业论文",
+        "毕业实习与毕业论文(设计)"
+      ],
+      "source_ids": [
+        "source-850f53be10f1"
+      ]
+    },
+    {
+      "key": "csu:960131Z10",
+      "names": [
+        "冶金过程自动化与智能",
+        "冶金过程自动化与智能化"
+      ],
+      "source_ids": [
+        "source-6ecc9dad53af",
+        "source-71fed65f09c7"
+      ]
+    },
+    {
+      "key": "csu:960006X11",
+      "names": [
+        "数字电子技术课程设计",
+        "数字电子技术课程设计II"
+      ],
+      "source_ids": [
+        "source-04d82b6ebd46"
+      ]
+    }
+  ],
+  "statistics": {
+    "records": 10065,
+    "course_keys": 5548,
+    "elective_keys": 234,
+    "records_by_year": {
+      "2016": 4604,
+      "2024": 597,
+      "2023": 4002,
+      "2025": 414,
+      "2018": 430,
+      "2026": 18
+    },
+    "source_departments": 40
+  }
+}

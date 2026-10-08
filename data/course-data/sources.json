@@ -1,0 +1,2917 @@
+[
+  {
+    "id": "public-electives-2016",
+    "title": "2016版全校性选修课课程教学大纲",
+    "kind": "public_elective_syllabus",
+    "plan_year": 2016,
+    "url": "https://bksy.csu.edu.cn/info/1272/3699.htm",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?owner=1225855846&urltype=news.DownloadAttachUrl&wbfileid=2685932"
+  },
+  {
+    "id": "math-syllabi-2016",
+    "title": "2016版数学与统计学院本科课程教学大纲",
+    "kind": "major_syllabus",
+    "plan_year": 2016,
+    "department": "数学与统计学院",
+    "url": "https://bksy.csu.edu.cn/info/1272/3674.htm",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?owner=1225855846&urltype=news.DownloadAttachUrl&wbfileid=2685907"
+  },
+  {
+    "id": "math-strong-2024",
+    "title": "数学与应用数学强基计划培养方案2024版",
+    "kind": "undergraduate_plan",
+    "plan_year": 2024,
+    "department": "数学与统计学院",
+    "program": "数学与应用数学（强基）",
+    "url": "https://math.csu.edu.cn/info/1727/13486.htm",
+    "file_url": "https://math.csu.edu.cn/__local/1/14/72/C1DDB9BD00FB45D721DA51C8FA7_005556E3_735FC.pdf"
+  },
+  {
+    "id": "civil-plans-index",
+    "title": "土木工程学院2023版本科各专业培养方案",
+    "kind": "index",
+    "department": "土木工程学院",
+    "url": "https://civil.csu.edu.cn/info/1044/11063.htm"
+  },
+  {
+    "id": "materials-2023-page",
+    "title": "材料科学与工程2023培养方案",
+    "kind": "plan_page",
+    "department": "材料科学与工程学院",
+    "program": "材料科学与工程",
+    "plan_year": 2023,
+    "url": "https://mse.csu.edu.cn/info/1016/4033.htm"
+  },
+  {
+    "id": "chinese-2023-page",
+    "title": "汉语言文学2023版培养方案",
+    "kind": "plan_page",
+    "department": "人文学院",
+    "program": "汉语言文学",
+    "plan_year": 2023,
+    "url": "https://clj.csu.edu.cn/info/1021/6186.htm"
+  },
+  {
+    "id": "english-2023-page",
+    "title": "英语2023培养方案",
+    "kind": "plan_page",
+    "department": "外国语学院",
+    "program": "英语",
+    "plan_year": 2023,
+    "url": "https://sfl.csu.edu.cn/info/1232/9528.htm"
+  },
+  {
+    "id": "course-list-index",
+    "title": "本科生院课程规划",
+    "kind": "index",
+    "url": "https://bksy.csu.edu.cn/jgjy/kcjs/kcgh.htm"
+  },
+  {
+    "id": "mpb-plan",
+    "title": "资源加工与生物工程学院培养方案文件",
+    "kind": "undergraduate_plan",
+    "url": "https://mpb.csu.edu.cn/__local/B/F4/F2/FF0DC62CE36406F193B02B69039_690435BF_DDFB9.pdf",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023,
+    "program": "生物技术"
+  },
+  {
+    "id": "bksy-syllabus-index",
+    "url": "https://bksy.csu.edu.cn/jxyz1/kcjs11.htm",
+    "title": "本科生院教学大纲目录",
+    "kind": "index",
+    "department": null
+  },
+  {
+    "id": "bksy-plan-index",
+    "url": "https://bksy.csu.edu.cn/jxyz1/kcjs1.htm",
+    "title": "本科生院培养方案目录",
+    "kind": "index",
+    "department": null
+  },
+  {
+    "id": "business-2023-page",
+    "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+    "title": "商学院2023版本科专业培养方案",
+    "kind": "plan_page",
+    "department": "商学院"
+  },
+  {
+    "id": "foreign-index",
+    "url": "https://sfl.csu.edu.cn/zh2024/rcpy/bk/pyfa.htm",
+    "title": "外国语学院本科培养方案",
+    "kind": "index",
+    "department": "外国语学院"
+  },
+  {
+    "id": "humanities-index",
+    "url": "https://clj.csu.edu.cn/rcpy/bksjy/pyfa.htm",
+    "title": "人文学院本科培养方案",
+    "kind": "index",
+    "department": "人文学院"
+  },
+  {
+    "id": "materials-index",
+    "url": "https://mse.csu.edu.cn/bksjy/pyfa.htm",
+    "title": "材料学院本科培养方案",
+    "kind": "index",
+    "department": "材料科学与工程学院"
+  },
+  {
+    "id": "powder-index",
+    "url": "https://pmri.csu.edu.cn/bksjy/pyfaydg.htm",
+    "title": "粉末冶金研究院本科培养方案",
+    "kind": "index",
+    "department": "粉末冶金研究院"
+  },
+  {
+    "id": "electrical-2025-page",
+    "url": "https://see.csu.edu.cn/info/1126/1308.htm",
+    "title": "电气工程及其自动化2025培养方案",
+    "kind": "plan_page",
+    "department": "电气工程学院"
+  },
+  {
+    "id": "electronics-2023-page",
+    "url": "https://ei.csu.edu.cn/info/1135/1322.htm",
+    "title": "电子信息科学与技术2023培养方案",
+    "kind": "plan_page",
+    "department": "电子信息学院"
+  },
+  {
+    "id": "mpb-index",
+    "url": "https://mpb.csu.edu.cn/bksjy/pyfa/jxdg.htm",
+    "title": "资源加工与生物工程学院教学大纲",
+    "kind": "index",
+    "department": "资源加工与生物工程学院"
+  },
+  {
+    "id": "computer-home",
+    "url": "https://cse.csu.edu.cn/",
+    "title": "计算机学院首页",
+    "kind": "index",
+    "department": "计算机学院"
+  },
+  {
+    "id": "source-8dfd893ab343",
+    "title": "91 土木安全类[2023]培养方案.doc",
+    "url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "civil-plans-index",
+    "file_url": "https://civil.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1746836995&wbfileid=15399517",
+    "department": "土木工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-6c849319d2f0",
+    "title": "92土木工程[2023]培养方案 (整理后hou).doc",
+    "url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "civil-plans-index",
+    "file_url": "https://civil.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1746836995&wbfileid=15399518",
+    "department": "土木工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-5a5f9fae5da8",
+    "title": "93 土木国际[2023]培养方案.doc",
+    "url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "civil-plans-index",
+    "file_url": "https://civil.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1746836995&wbfileid=15399519",
+    "department": "土木工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-dfa6952734b4",
+    "title": "94 工程管理[2023]培养方案.doc",
+    "url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "civil-plans-index",
+    "file_url": "https://civil.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1746836995&wbfileid=15399520",
+    "department": "土木工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-15d88ce79494",
+    "title": "95 铁道工程[2023]培养方案.doc",
+    "url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "civil-plans-index",
+    "file_url": "https://civil.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1746836995&wbfileid=15399521",
+    "department": "土木工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-bafef26670dd",
+    "title": "96 工程力学[2023]培养方案.doc",
+    "url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "civil-plans-index",
+    "file_url": "https://civil.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1746836995&wbfileid=15399522",
+    "department": "土木工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-d074c979a16c",
+    "title": "97 消防工程[2023]培养方案.doc",
+    "url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "civil-plans-index",
+    "file_url": "https://civil.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1746836995&wbfileid=15399523",
+    "department": "土木工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-23efa57cbce2",
+    "title": "65 材料科学与工程[2023]培养方案.doc",
+    "url": "https://mse.csu.edu.cn/info/1016/4033.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "materials-2023-page",
+    "file_url": "https://mse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750475902&wbfileid=13084725",
+    "department": "材料科学与工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-5774b25d32c6",
+    "title": "材料国际[2023]培养方案",
+    "url": "https://mse.csu.edu.cn/info/1016/4034.htm",
+    "kind": "plan_page",
+    "discovered_from": "materials-2023-page",
+    "department": "材料科学与工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-1688a94e15eb",
+    "title": "汉语言文学[2023]培养方案 (5).doc",
+    "url": "https://clj.csu.edu.cn/info/1021/6186.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "chinese-2023-page",
+    "file_url": "https://clj.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1548633481&wbfileid=12272917",
+    "department": "人文学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-9e2a14c52e1f",
+    "title": "英语[2023]培养方案.pdf",
+    "url": "https://sfl.csu.edu.cn/info/1232/9528.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "english-2023-page",
+    "file_url": "https://sfl.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750465025&wbfileid=15373570",
+    "department": "外国语学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-e24f3ad9a660",
+    "title": "商学院2023版度培养方案（适用2023级、2024级本科生）.zip",
+    "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "business-2023-page",
+    "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
+    "department": "商学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-850f9392daf3",
+    "title": "中南大学哲学专业本科培养方案 哲学专业本科培养方案 2023-11-14",
+    "url": "https://clj.csu.edu.cn/info/1021/6189.htm",
+    "kind": "plan_page",
+    "discovered_from": "humanities-index",
+    "department": "人文学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-e6e8f9226777",
+    "title": "中南大学2023哲学专业本科培养方案 哲学专业本科培养方案 2023-11-14",
+    "url": "https://clj.csu.edu.cn/info/1021/6187.htm",
+    "kind": "plan_page",
+    "discovered_from": "humanities-index",
+    "department": "人文学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-e6fd17136448",
+    "title": "材料科学与工程（强基）[2024]培养方案",
+    "url": "https://mse.csu.edu.cn/info/1016/4206.htm",
+    "kind": "plan_page",
+    "discovered_from": "materials-index",
+    "department": "材料科学与工程学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-5521b9e98e45",
+    "title": "材料科学与工程卓越人才培养[2023]培养方案",
+    "url": "https://mse.csu.edu.cn/info/1016/4035.htm",
+    "kind": "plan_page",
+    "discovered_from": "materials-index",
+    "department": "材料科学与工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-8440d0cc9c70",
+    "title": "电气工程及其自动化[2025]培养方案.doc",
+    "url": "https://see.csu.edu.cn/info/1126/1308.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "electrical-2025-page",
+    "file_url": "https://see.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2051321257&wbfileid=18201675",
+    "department": "电气工程学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-d2577547404c",
+    "title": "下一篇: [电气工程及其自动化专业[2023]培养方案]",
+    "url": "https://see.csu.edu.cn/info/1126/1307.htm",
+    "kind": "plan_page",
+    "discovered_from": "electrical-2025-page",
+    "department": "电气工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-9f5450b2c617",
+    "title": "电子信息科学与技术2023培养方案 PDF",
+    "url": "https://ei.csu.edu.cn/info/1135/1322.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "electronics-2023-page",
+    "file_url": "https://ei.csu.edu.cn/__local/1/A5/A3/9CD893665FD2D544721224A2173_41E5BEC3_5C89F.pdf",
+    "department": "电子信息学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-2bfefd2ae56f",
+    "title": "2016版全校性选修课课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3699.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-561e876bda8c",
+    "title": "2016版湘雅药学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3698.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "湘雅药学院"
+  },
+  {
+    "id": "source-3c79704a5dbe",
+    "title": "2016版护理学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3697.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "护理学院"
+  },
+  {
+    "id": "source-be0e5dceb7ff",
+    "title": "2016版医药信息系学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3696.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "医药信息系学院"
+  },
+  {
+    "id": "source-fb88b8256ca4",
+    "title": "2016版医学检验系本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3695.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "医学检验系"
+  },
+  {
+    "id": "source-af4da0515bfd",
+    "title": "2016版湘雅公共卫生学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3694.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "湘雅公共卫生学院"
+  },
+  {
+    "id": "source-266d5fe766a1",
+    "title": "2016版生命科学学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3693.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "生命科学学院"
+  },
+  {
+    "id": "source-a1f738510b0b",
+    "title": "2016版湘雅口腔医学院（湘雅口腔医院）本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3692.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "湘雅口腔医学院（湘雅口腔医院）"
+  },
+  {
+    "id": "source-3f222c5f3680",
+    "title": "2016版基础医学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3691.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "基础医学院"
+  },
+  {
+    "id": "source-281157ca2609",
+    "title": "2016版湘雅医学院本科临床课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3690.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "湘雅医学院"
+  },
+  {
+    "id": "source-1bccc70d786a",
+    "title": "2016版信息科学与工程学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3689.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "信息科学与工程学院"
+  },
+  {
+    "id": "source-0a5d52dfb25a",
+    "title": "2016版软件学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3688.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "软件学院"
+  },
+  {
+    "id": "source-b258a86f4c7f",
+    "title": "2016版航空航天学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3687.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "航空航天学院"
+  },
+  {
+    "id": "source-9dae1352402d",
+    "title": "2016版能源科学与工程学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3686.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "能源科学与工程学院"
+  },
+  {
+    "id": "source-6123bcf5f685",
+    "title": "2016版交通运输工程学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3685.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "bksy-syllabus-index",
+    "plan_year": 2016,
+    "department": "交通运输工程学院"
+  },
+  {
+    "id": "source-b3dcca77cbca",
+    "title": "66 材料国际[2023]培养方案.doc",
+    "url": "https://mse.csu.edu.cn/info/1016/4034.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-5774b25d32c6",
+    "file_url": "https://mse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750475902&wbfileid=13084726",
+    "department": "材料科学与工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-c0c406750ca6",
+    "title": "哲学[2018]培养方案.doc",
+    "url": "https://clj.csu.edu.cn/info/1021/6189.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-850f9392daf3",
+    "file_url": "https://clj.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1548633481&wbfileid=12272929",
+    "department": "人文学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-0b602b01a46c",
+    "title": "哲学[2023]培养方案 (1).doc",
+    "url": "https://clj.csu.edu.cn/info/1021/6187.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-e6e8f9226777",
+    "file_url": "https://clj.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1548633481&wbfileid=12272918",
+    "department": "人文学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-f1fb1d716543",
+    "title": "材料科学与工程（强基）[2024]培养方案-20240628.doc",
+    "url": "https://mse.csu.edu.cn/info/1016/4206.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-e6fd17136448",
+    "file_url": "https://mse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750475902&wbfileid=14895083",
+    "department": "材料科学与工程学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-74714abbb2e3",
+    "title": "67 材料科学与工程卓越人才培养[2023]培养方案.doc",
+    "url": "https://mse.csu.edu.cn/info/1016/4035.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-5521b9e98e45",
+    "file_url": "https://mse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750475902&wbfileid=13084727",
+    "department": "材料科学与工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-8b9664d6b291",
+    "title": "PDF 文件",
+    "url": "https://see.csu.edu.cn/info/1126/1307.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-d2577547404c",
+    "file_url": "https://see.csu.edu.cn/__local/3/F4/5D/E6068A8FC60BF31BFE46C214195_E18C12F1_6BA75.pdf",
+    "department": "电气工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-31438ebd4e8e",
+    "title": "培养方案",
+    "url": "https://mse.csu.edu.cn/yjsjy/pyfa.htm",
+    "kind": "plan_page",
+    "discovered_from": "materials-2023-page",
+    "department": "材料科学与工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-2601da93a44d",
+    "title": "本科生院教学大纲目录 下一页",
+    "url": "https://bksy.csu.edu.cn/jxyz1/kcjs11/3.htm",
+    "kind": "index",
+    "discovered_from": "bksy-syllabus-index"
+  },
+  {
+    "id": "source-0a4c479990fd",
+    "title": "本科生院教学大纲目录 下一页",
+    "url": "https://bksy.csu.edu.cn/jxyz1/kcjs11/1.htm",
+    "kind": "index",
+    "discovered_from": "bksy-syllabus-index"
+  },
+  {
+    "id": "source-e4ced37d17d0",
+    "title": "10 2023-01 2023日语专业本科培养方案",
+    "url": "https://sfl.csu.edu.cn/info/1232/9529.htm",
+    "kind": "plan_page",
+    "discovered_from": "foreign-index",
+    "department": "外国语学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-4e701afa54c4",
+    "title": "人文学院本科培养方案 下一页",
+    "url": "https://clj.csu.edu.cn/rcpy/bksjy/pyfa/1.htm",
+    "kind": "index",
+    "discovered_from": "humanities-index",
+    "department": "人文学院"
+  },
+  {
+    "id": "source-8296b9045dcb",
+    "title": "材料学院本科培养方案 下一页",
+    "url": "https://mse.csu.edu.cn/bksjy/pyfa/1.htm",
+    "kind": "index",
+    "discovered_from": "materials-index",
+    "department": "材料科学与工程学院"
+  },
+  {
+    "id": "source-719830af2bb3",
+    "title": "11-1420242023版粉体材料科学与工程专业培养方案",
+    "url": "https://pmri.csu.edu.cn/info/1048/4305.htm",
+    "kind": "plan_page",
+    "discovered_from": "powder-index",
+    "department": "粉末冶金研究院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-580d868b21e0",
+    "title": "11-1420242023版粉体材料科学与工程卓越人才培养方案",
+    "url": "https://pmri.csu.edu.cn/info/1048/4304.htm",
+    "kind": "plan_page",
+    "discovered_from": "powder-index",
+    "department": "粉末冶金研究院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-5224ed933346",
+    "title": "11-1420242023版专业课程大纲",
+    "url": "https://pmri.csu.edu.cn/info/1048/4479.htm",
+    "kind": "plan_page",
+    "discovered_from": "powder-index",
+    "department": "粉末冶金研究院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-720c8e810949",
+    "title": "培养方案",
+    "url": "https://see.csu.edu.cn/rcpy/bksjy/pyfa.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-d2577547404c",
+    "department": "电气工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "gip-home",
+    "url": "https://gip.csu.edu.cn/index.htm",
+    "title": "地信学院导航",
+    "department": "地球科学与信息物理学院",
+    "kind": "index"
+  },
+  {
+    "id": "auto-home",
+    "url": "https://soa.csu.edu.cn/",
+    "title": "自动化学院导航",
+    "department": "自动化学院",
+    "kind": "index"
+  },
+  {
+    "id": "computer-index",
+    "url": "https://cse.csu.edu.cn/rcpy/bksjy/pyfa.htm",
+    "title": "计算机学院本科培养方案",
+    "department": "计算机学院",
+    "kind": "index",
+    "min_plan_year": 2018
+  },
+  {
+    "id": "life-2025-page",
+    "url": "https://life.csu.edu.cn/info/1059/3502.htm",
+    "title": "生物信息学专业本科培养方案2025版",
+    "department": "生命科学学院",
+    "kind": "plan_page",
+    "plan_year": 2025
+  },
+  {
+    "id": "energy-2025-page",
+    "url": "https://energy.csu.edu.cn/info/1020/3952.htm",
+    "title": "2025版能源与动力工程专业本科培养方案",
+    "department": "能源科学与工程学院",
+    "kind": "plan_page"
+  },
+  {
+    "id": "course-list-page",
+    "url": "https://bksy.csu.edu.cn/info/1190/2958.htm",
+    "title": "课程一览表",
+    "department": null,
+    "kind": "plan_page"
+  },
+  {
+    "id": "source-114db5337c13",
+    "title": "2016版土木工程学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3684.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "土木工程学院"
+  },
+  {
+    "id": "source-5c19bbaea2bc",
+    "title": "2016版机电工程学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3683.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "机电工程学院"
+  },
+  {
+    "id": "source-abc15b9b9e22",
+    "title": "2016版资源与安全工程学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3682.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "资源与安全工程学院"
+  },
+  {
+    "id": "source-d8baf9182fb7",
+    "title": "2016版粉末冶金研究院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3681.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "粉末冶金研究院"
+  },
+  {
+    "id": "source-7c0dbf24ac7b",
+    "title": "2016版材料科学与工程学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3680.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "材料科学与工程学院"
+  },
+  {
+    "id": "source-fdd8c1eaca1c",
+    "title": "2016版冶金与环境学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3679.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "冶金与环境学院"
+  },
+  {
+    "id": "source-a023803cb0c7",
+    "title": "2016版资源加工与生物工程学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3678.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "资源加工与生物工程学院"
+  },
+  {
+    "id": "source-d71a2b2d1977",
+    "title": "2016版地球科学与信息物理学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3677.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "地球科学与信息物理学院"
+  },
+  {
+    "id": "source-ddc16589733d",
+    "title": "2016版化学化工学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3676.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "化学化工学院"
+  },
+  {
+    "id": "source-5453d0205ed5",
+    "title": "2016版物理与电子学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3675.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "物理与电子学院"
+  },
+  {
+    "id": "source-a824918a2962",
+    "title": "2016版数学与统计学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3674.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "数学与统计学院"
+  },
+  {
+    "id": "source-416c33e1bfe5",
+    "title": "2016版体育教研部本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3673.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "体育教研部"
+  },
+  {
+    "id": "source-99e9d37bc2e3",
+    "title": "2016版建筑与艺术学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3672.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "建筑与艺术学院"
+  },
+  {
+    "id": "source-195b00992e8e",
+    "title": "2016版商学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3671.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "商学院"
+  },
+  {
+    "id": "source-e2aca10a454d",
+    "title": "2016版外国语学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3670.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-2601da93a44d",
+    "plan_year": 2016,
+    "department": "外国语学院"
+  },
+  {
+    "id": "source-e7c8a9df222d",
+    "title": "本科生院教学大纲目录 下一页 下一页",
+    "url": "https://bksy.csu.edu.cn/jxyz1/kcjs11/2.htm",
+    "kind": "index",
+    "discovered_from": "source-2601da93a44d"
+  },
+  {
+    "id": "source-fa04fc70721f",
+    "title": "日语[2023]培养方案",
+    "url": "https://sfl.csu.edu.cn/info/1232/9529.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-e4ced37d17d0",
+    "file_url": "https://sfl.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750465025&wbfileid=15373571",
+    "department": "外国语学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-de96a7cf476f",
+    "title": "粉体材料科学与工程[2023]培养方案.doc",
+    "url": "https://pmri.csu.edu.cn/info/1048/4305.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-719830af2bb3",
+    "file_url": "https://pmri.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2117606044&wbfileid=15368695",
+    "department": "粉末冶金研究院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-dec425db17cc",
+    "title": "粉体材料科学与工程卓越人才培养[2023]培养方案.doc",
+    "url": "https://pmri.csu.edu.cn/info/1048/4304.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-580d868b21e0",
+    "file_url": "https://pmri.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2117606044&wbfileid=15368694",
+    "department": "粉末冶金研究院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-c04e8f85de71",
+    "title": "粉冶院2023版专业课程大纲.rar",
+    "url": "https://pmri.csu.edu.cn/info/1048/4479.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-5224ed933346",
+    "file_url": "https://pmri.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2117606044&wbfileid=15398439",
+    "department": "粉末冶金研究院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-de5b5f4f94b1",
+    "title": "无机非金属材料工程- 2023版课程大纲",
+    "url": "https://mpb.csu.edu.cn/info/1044/3869.htm",
+    "kind": "plan_page",
+    "discovered_from": "mpb-index",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-d7cd1d91012b",
+    "title": "生物技术-2023版课程大纲",
+    "url": "https://mpb.csu.edu.cn/info/1044/3868.htm",
+    "kind": "plan_page",
+    "discovered_from": "mpb-index",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-e88db2bf8420",
+    "title": "生物工程-2023版课程大纲",
+    "url": "https://mpb.csu.edu.cn/info/1044/3867.htm",
+    "kind": "plan_page",
+    "discovered_from": "mpb-index",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-69ab97b6d075",
+    "title": "矿物加工工程卓越人才培养-2023版课程大纲",
+    "url": "https://mpb.csu.edu.cn/info/1044/3866.htm",
+    "kind": "plan_page",
+    "discovered_from": "mpb-index",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-faa0d16475d5",
+    "title": "矿物加工工程专业-2023版课程大纲",
+    "url": "https://mpb.csu.edu.cn/info/1044/3865.htm",
+    "kind": "plan_page",
+    "discovered_from": "mpb-index",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-3107c1a058b1",
+    "title": "生物信息学专业本科培养方案.doc",
+    "url": "https://life.csu.edu.cn/info/1059/3502.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "life-2025-page",
+    "file_url": "https://life.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2068444299&wbfileid=18205886",
+    "department": "生命科学学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-656c0965bd65",
+    "title": "2025版建筑环境与能源应用工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/3953.htm",
+    "kind": "plan_page",
+    "discovered_from": "energy-2025-page",
+    "department": "能源科学与工程学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-b465113e67bf",
+    "title": "2024版建筑环境与能源应用工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/4038.htm",
+    "kind": "plan_page",
+    "discovered_from": "energy-2025-page",
+    "department": "能源科学与工程学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-f9d09c856bfd",
+    "title": "2025版能源与动力工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/3952.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "energy-2025-page",
+    "file_url": "https://energy.csu.edu.cn/__local/9/2D/00/81A59972DD282CD49FC09E8B12B_54C944C0_501DD.pdf",
+    "department": "能源科学与工程学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-0324994e6f05",
+    "title": "2016版文学与新闻传播学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3669.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-e7c8a9df222d",
+    "plan_year": 2016,
+    "department": "文学与新闻传播学院"
+  },
+  {
+    "id": "source-a0c2bc3654e3",
+    "title": "2016版马克思主义学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3668.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-e7c8a9df222d",
+    "plan_year": 2016,
+    "department": "马克思主义学院"
+  },
+  {
+    "id": "source-ef3aaf7c4239",
+    "title": "2016版公共管理学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3667.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-e7c8a9df222d",
+    "plan_year": 2016,
+    "department": "公共管理学院"
+  },
+  {
+    "id": "source-100df73a9b55",
+    "title": "2016版法学院本科课程教学大纲",
+    "url": "https://bksy.csu.edu.cn/info/1272/3666.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "source-e7c8a9df222d",
+    "plan_year": 2016,
+    "department": "法学院"
+  },
+  {
+    "id": "source-fd26805d601a",
+    "title": "33湘雅药学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3698.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-561e876bda8c",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685931",
+    "department": "湘雅药学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-753e0e64f26f",
+    "title": "32护理学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3697.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-3c79704a5dbe",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685930",
+    "department": "护理学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-20772ef521db",
+    "title": "31医药信息系.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3696.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-be0e5dceb7ff",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685929",
+    "department": "医药信息系学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-1b337acce71f",
+    "title": "30医学检验系.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3695.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-fb88b8256ca4",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685928",
+    "department": "医学检验系",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-0971111090eb",
+    "title": "29湘雅公共卫生学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3694.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-af4da0515bfd",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685927",
+    "department": "湘雅公共卫生学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-50a0a1e9a062",
+    "title": "28生命科学学院.doc",
+    "url": "https://bksy.csu.edu.cn/info/1272/3693.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-266d5fe766a1",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685926",
+    "department": "生命科学学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-1ad6e3e0cf21",
+    "title": "27湘雅口腔医院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3692.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-a1f738510b0b",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685925",
+    "department": "湘雅口腔医学院（湘雅口腔医院）",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-663905c81f9a",
+    "title": "26基础医学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3691.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-3f222c5f3680",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685924",
+    "department": "基础医学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-ca19fcc30831",
+    "title": "25湘雅医学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3690.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-281157ca2609",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685923",
+    "department": "湘雅医学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-a65ef551efb8",
+    "title": "24信息科学与工程学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3689.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-1bccc70d786a",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685922",
+    "department": "信息科学与工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-8fec7b137b0e",
+    "title": "23软件学院.doc",
+    "url": "https://bksy.csu.edu.cn/info/1272/3688.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-0a5d52dfb25a",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685921",
+    "department": "软件学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-9e9e913c1ada",
+    "title": "22 航空航天学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3687.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-b258a86f4c7f",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685920",
+    "department": "航空航天学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-453509fda8b6",
+    "title": "21 能源科学与工程学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3686.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-9dae1352402d",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685919",
+    "department": "能源科学与工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-56fc20fe7576",
+    "title": "20交通运输工程学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3685.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-6123bcf5f685",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685918",
+    "department": "交通运输工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-f0c4fa057be0",
+    "title": "19 土木工程学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3684.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-114db5337c13",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685917",
+    "department": "土木工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-674825f69efb",
+    "title": "18机电工程学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3683.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-5c19bbaea2bc",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685916",
+    "department": "机电工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-e548698dc90e",
+    "title": "17资源与安全工程学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3682.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-abc15b9b9e22",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685915",
+    "department": "资源与安全工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-944cd2994eb8",
+    "title": "16粉末冶金研究院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3681.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-d8baf9182fb7",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685914",
+    "department": "粉末冶金研究院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-d3c29319ecd9",
+    "title": "15材料科学与工程学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3680.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-7c0dbf24ac7b",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685913",
+    "department": "材料科学与工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-07b44d2e36c7",
+    "title": "14冶金与环境学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3679.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-fdd8c1eaca1c",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685912",
+    "department": "冶金与环境学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-b224005bd1ee",
+    "title": "13资源加工与生物工程学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3678.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-a023803cb0c7",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685911",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-0768b79a991d",
+    "title": "12地球科学与信息物理学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3677.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-d71a2b2d1977",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685910",
+    "department": "地球科学与信息物理学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-4b9c2a26ae7b",
+    "title": "11 化学化工学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3676.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-ddc16589733d",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685909",
+    "department": "化学化工学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-3e6cd58ba09e",
+    "title": "10 物理与电子学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3675.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-5453d0205ed5",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685908",
+    "department": "物理与电子学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-6c955f018fe0",
+    "title": "8 体育教研部.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3673.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-416c33e1bfe5",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685906",
+    "department": "体育教研部",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-9c095516f889",
+    "title": "7 建筑与艺术学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3672.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-99e9d37bc2e3",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685905",
+    "department": "建筑与艺术学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-35a9322558b7",
+    "title": "6 商学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3671.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-195b00992e8e",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685904",
+    "department": "商学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-6e07d144b357",
+    "title": "5 外国语学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3670.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-e2aca10a454d",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685903",
+    "department": "外国语学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-280d496e79f5",
+    "title": "无机非金属材料工程- 2023版课程大纲 PDF",
+    "url": "https://mpb.csu.edu.cn/info/1044/3869.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-de5b5f4f94b1",
+    "file_url": "https://mpb.csu.edu.cn/__local/C/77/4B/B7041407BEB9CF9BDC78BAA780F_A4502974_27ABEE.pdf",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-12f5513f518a",
+    "title": "生物技术-2023版课程大纲 PDF",
+    "url": "https://mpb.csu.edu.cn/info/1044/3868.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-d7cd1d91012b",
+    "file_url": "https://mpb.csu.edu.cn/__local/0/9F/5B/0C78018AE4DD1ECBAF72EFF155C_ABB59EFE_5DC603.pdf",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-75c62a50148c",
+    "title": "生物工程-2023版课程大纲 PDF",
+    "url": "https://mpb.csu.edu.cn/info/1044/3867.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-e88db2bf8420",
+    "file_url": "https://mpb.csu.edu.cn/__local/5/5B/63/5EF1BDB28D9DE754B554DC2C650_88541512_6A4B64.pdf",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-054375ef2d17",
+    "title": "矿物加工工程卓越人才培养-2023版课程大纲 PDF",
+    "url": "https://mpb.csu.edu.cn/info/1044/3866.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-69ab97b6d075",
+    "file_url": "https://mpb.csu.edu.cn/__local/B/48/94/DC405CF6F9EE726735EF688F4C3_DA295468_90FC0F.pdf",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-f1c89afbaeb1",
+    "title": "矿物加工工程专业-2023版课程大纲 PDF",
+    "url": "https://mpb.csu.edu.cn/info/1044/3865.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-faa0d16475d5",
+    "file_url": "https://mpb.csu.edu.cn/__local/5/CB/40/9BCB84ADE37085ABEBDFDDE416C_28D0DA4A_3B89EF.pdf",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-5dd8a05d0996",
+    "title": "2025版新能源科学与工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/3954.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-656c0965bd65",
+    "department": "能源科学与工程学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-bad8637ec22a",
+    "title": "2025版建筑环境与能源应用工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/3953.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-656c0965bd65",
+    "file_url": "https://energy.csu.edu.cn/__local/8/2D/DC/A6FF4B03A272722D91243073385_C516B33C_50CAF.pdf",
+    "department": "能源科学与工程学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-268113b5dbcd",
+    "title": "2024版能源与动力工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/4037.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-b465113e67bf",
+    "department": "能源科学与工程学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-7a338dfe109b",
+    "title": "2024版建筑环境与能源应用工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/4038.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-b465113e67bf",
+    "file_url": "https://energy.csu.edu.cn/__local/F/A7/BC/D2959A25782E7F6EF962C821B98_A692B8CD_5391F.pdf",
+    "department": "能源科学与工程学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-451fd5199baa",
+    "title": "4文学与新闻传播学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3669.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-0324994e6f05",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685902",
+    "department": "文学与新闻传播学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-8f960563f1d9",
+    "title": "3 马克思主义学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3668.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-a0c2bc3654e3",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685901",
+    "department": "马克思主义学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-08ff46f3fd6d",
+    "title": "2 公共管理学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3667.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-ef3aaf7c4239",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685900",
+    "department": "公共管理学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-0e981c51b6bc",
+    "title": "1法学院.docx",
+    "url": "https://bksy.csu.edu.cn/info/1272/3666.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-100df73a9b55",
+    "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685899",
+    "department": "法学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "official-programs-2026",
+    "url": "https://bksy.csu.edu.cn/jxyz1/xyxl.htm",
+    "title": "中南大学本科专业目录2026年8月",
+    "department": null,
+    "kind": "program_index"
+  },
+  {
+    "id": "csu-home",
+    "url": "https://www.csu.edu.cn/",
+    "title": "中南大学学院导航",
+    "department": null,
+    "kind": "university_home"
+  },
+  {
+    "id": "mpb-plans-index",
+    "url": "https://mpb.csu.edu.cn/bksjy/pyfa/gzypyfa.htm",
+    "title": "资源加工与生物工程学院各专业培养方案",
+    "department": "资源加工与生物工程学院",
+    "kind": "index"
+  },
+  {
+    "id": "gip-plans-index",
+    "url": "https://gip.csu.edu.cn/bksjy/pyfa.htm",
+    "title": "地信学院本科培养方案",
+    "department": "地球科学与信息物理学院",
+    "kind": "index"
+  },
+  {
+    "id": "metallurgy-index",
+    "url": "https://smse.csu.edu.cn/jyjx/bksjy/xzfw.htm",
+    "title": "冶金与环境学院本科下载服务",
+    "department": "冶金与环境学院",
+    "kind": "index"
+  },
+  {
+    "id": "metallurgy-teaching-index",
+    "url": "https://smse.csu.edu.cn/jyjx/bksjy/jxdt.htm",
+    "title": "冶金与环境学院本科教学动态",
+    "department": "冶金与环境学院",
+    "kind": "index"
+  },
+  {
+    "id": "home-4a88fa0a5b",
+    "title": "人文学院导航",
+    "department": "人文学院",
+    "url": "https://clj.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-3c3e89883b",
+    "title": "外国语学院导航",
+    "department": "外国语学院",
+    "url": "https://sfl.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-68c6de4789",
+    "title": "建筑与艺术学院导航",
+    "department": "建筑与艺术学院",
+    "url": "https://art.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-021ad6843c",
+    "title": "商学院导航",
+    "department": "商学院",
+    "url": "https://bs.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-6c90aba367",
+    "title": "法学院导航",
+    "department": "法学院",
+    "url": "https://law.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-4592ee3f6e",
+    "title": "马克思主义学院导航",
+    "department": "马克思主义学院",
+    "url": "https://ps.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-6c57d8b7d8",
+    "title": "公共管理学院导航",
+    "department": "公共管理学院",
+    "url": "https://csuspa.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-018649a762",
+    "title": "数学与统计学院导航",
+    "department": "数学与统计学院",
+    "url": "https://math.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-0e05b35e86",
+    "title": "物理学院导航",
+    "department": "物理学院",
+    "url": "https://wl.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-927a0dc807",
+    "title": "化学化工学院导航",
+    "department": "化学化工学院",
+    "url": "https://ccce.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-90c4b47943",
+    "title": "机电工程学院导航",
+    "department": "机电工程学院",
+    "url": "https://cmee.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-d1699baffb",
+    "title": "能源科学与工程学院导航",
+    "department": "能源科学与工程学院",
+    "url": "https://energy.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-c7e9f8c15f",
+    "title": "材料科学与工程学院导航",
+    "department": "材料科学与工程学院",
+    "url": "https://mse.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-94b00ed556",
+    "title": "粉末冶金研究院导航",
+    "department": "粉末冶金研究院",
+    "url": "https://pmri.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-a60a98f345",
+    "title": "交通运输工程学院导航",
+    "department": "交通运输工程学院",
+    "url": "https://stte.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-32973e025c",
+    "title": "土木工程学院导航",
+    "department": "土木工程学院",
+    "url": "https://civil.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-d7f70e4c37",
+    "title": "冶金与环境学院导航",
+    "department": "冶金与环境学院",
+    "url": "https://smse.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-a6c62b250c",
+    "title": "地球科学与信息物理学院导航",
+    "department": "地球科学与信息物理学院",
+    "url": "https://gip.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-556a651040",
+    "title": "资源与安全工程学院导航",
+    "department": "资源与安全工程学院",
+    "url": "https://srse.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-a6c74c3b51",
+    "title": "资源加工与生物工程学院导航",
+    "department": "资源加工与生物工程学院",
+    "url": "https://mpb.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-44545fe817",
+    "title": "电子信息学院导航",
+    "department": "电子信息学院",
+    "url": "https://ei.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-ac14a74dd3",
+    "title": "体育教研部导航",
+    "department": "体育教研部",
+    "url": "https://sports.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-5357098d1d",
+    "title": "湘雅基础医学院导航",
+    "department": "湘雅基础医学院",
+    "url": "https://jcyxy.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-a685e0d812",
+    "title": "湘雅公共卫生学院导航",
+    "department": "湘雅公共卫生学院",
+    "url": "https://sph.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-f7049c97f0",
+    "title": "湘雅护理学院导航",
+    "department": "湘雅护理学院",
+    "url": "https://xynursing.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-e3279a7ad7",
+    "title": "湘雅口腔医学院导航",
+    "department": "湘雅口腔医学院",
+    "url": "https://xykqyy.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-4ee5b6fc7c",
+    "title": "湘雅药学院导航",
+    "department": "湘雅药学院",
+    "url": "https://yxy.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-8f7ba86aa6",
+    "title": "生命科学学院导航",
+    "department": "生命科学学院",
+    "url": "https://life.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "home-48aabbf9c6",
+    "title": "湘雅医学院导航",
+    "department": "湘雅医学院",
+    "url": "https://xysm.csu.edu.cn",
+    "kind": "college_home"
+  },
+  {
+    "id": "source-eb3a977713b4",
+    "title": "2025版新能源科学与工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/3954.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-5dd8a05d0996",
+    "file_url": "https://energy.csu.edu.cn/__local/F/DB/91/033F41348894F438088E055484E_57795A5C_5076C.pdf",
+    "department": "能源科学与工程学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-7ff241075302",
+    "title": "2024版新能源科学与工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/4036.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-268113b5dbcd",
+    "department": "能源科学与工程学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-1d9019ef60a7",
+    "title": "2024版能源与动力工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/4037.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-268113b5dbcd",
+    "file_url": "https://energy.csu.edu.cn/__local/7/2A/D2/29E09246493847F8172AA00B445_7E81B75C_5E763.pdf",
+    "department": "能源科学与工程学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-e3c129b93c08",
+    "title": "矿物加工工程卓越人才培养2023版培养方案",
+    "url": "https://mpb.csu.edu.cn/info/1043/3626.htm",
+    "kind": "plan_page",
+    "discovered_from": "mpb-plans-index",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-393c5cdd53c8",
+    "title": "无机非金属材料工程2023版培养方案",
+    "url": "https://mpb.csu.edu.cn/info/1043/3573.htm",
+    "kind": "plan_page",
+    "discovered_from": "mpb-plans-index",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-69ba41ac38f5",
+    "title": "生物技术2023版培养方案",
+    "url": "https://mpb.csu.edu.cn/info/1043/3572.htm",
+    "kind": "plan_page",
+    "discovered_from": "mpb-plans-index",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-ecad93f3da92",
+    "title": "生物工程2023版培养方案",
+    "url": "https://mpb.csu.edu.cn/info/1043/3571.htm",
+    "kind": "plan_page",
+    "discovered_from": "mpb-plans-index",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-41655243eb26",
+    "title": "矿物加工工程2023版培养方案",
+    "url": "https://mpb.csu.edu.cn/info/1043/3570.htm",
+    "kind": "plan_page",
+    "discovered_from": "mpb-plans-index",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-c53f1db5bf04",
+    "title": "1冶金工程卓越人才培养[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1065/5184.htm",
+    "kind": "plan_page",
+    "discovered_from": "metallurgy-index",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-14812a622ff5",
+    "title": "2环境工程[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1065/5178.htm",
+    "kind": "plan_page",
+    "discovered_from": "metallurgy-index",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-1a00b8c57a24",
+    "title": "3新能源材料与器件[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1065/5175.htm",
+    "kind": "plan_page",
+    "discovered_from": "metallurgy-index",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-34701da776aa",
+    "title": "14冶金工程卓越人才培养[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1058/5182.htm",
+    "kind": "plan_page",
+    "discovered_from": "metallurgy-teaching-index",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-a11b84d4a97a",
+    "title": "15冶金工程[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1058/5179.htm",
+    "kind": "plan_page",
+    "discovered_from": "metallurgy-teaching-index",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-2c6915139e12",
+    "title": "冶金与环境学院本科教学动态 下一页",
+    "url": "https://smse.csu.edu.cn/jyjx/bksjy/jxdt/2.htm",
+    "kind": "index",
+    "discovered_from": "metallurgy-teaching-index",
+    "department": "冶金与环境学院"
+  },
+  {
+    "id": "source-ab9cd6683925",
+    "title": "冶金与环境学院本科教学动态 下一页",
+    "url": "https://smse.csu.edu.cn/jyjx/bksjy/jxdt/1.htm",
+    "kind": "index",
+    "discovered_from": "metallurgy-teaching-index",
+    "department": "冶金与环境学院"
+  },
+  {
+    "id": "source-7fc05d4ce27c",
+    "title": "培养方案",
+    "url": "https://wl.csu.edu.cn/bksjy/pyfa.htm",
+    "kind": "index",
+    "discovered_from": "home-0e05b35e86",
+    "department": "物理学院"
+  },
+  {
+    "id": "source-a6b30683d96d",
+    "title": "培养方案",
+    "url": "https://cmee.csu.edu.cn/bksjy/pyfa.htm",
+    "kind": "index",
+    "discovered_from": "home-90c4b47943",
+    "department": "机电工程学院"
+  },
+  {
+    "id": "source-d11917a3b909",
+    "title": "培养方案",
+    "url": "https://civil.csu.edu.cn/bksjy/pyfa.htm",
+    "kind": "index",
+    "discovered_from": "home-32973e025c",
+    "department": "土木工程学院"
+  },
+  {
+    "id": "source-00d662436e50",
+    "title": "培养方案",
+    "url": "https://srse.csu.edu.cn/jyjx/bksjy/pyfa.htm",
+    "kind": "index",
+    "discovered_from": "home-556a651040",
+    "department": "资源与安全工程学院"
+  },
+  {
+    "id": "source-bc27d989ac83",
+    "title": "培养方案",
+    "url": "https://sph.csu.edu.cn/bksjy1/pyfa.htm",
+    "kind": "index",
+    "discovered_from": "home-a685e0d812",
+    "department": "湘雅公共卫生学院"
+  },
+  {
+    "id": "source-1dce25aefc4d",
+    "title": "2023版能源类专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/3991.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-7ff241075302",
+    "department": "能源科学与工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-e8e78a83bb4e",
+    "title": "2024版新能源科学与工程专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/4036.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-7ff241075302",
+    "file_url": "https://energy.csu.edu.cn/__local/E/47/BF/FC813719C7EC86C562675A8F107_D960AE93_6B235.pdf",
+    "department": "能源科学与工程学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-02af2a845c6e",
+    "title": "矿物加工工程卓越人才培养2023版培养方案",
+    "url": "https://mpb.csu.edu.cn/info/1043/3626.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-e3c129b93c08",
+    "file_url": "https://mpb.csu.edu.cn/__local/9/49/E1/62532079D3C918F12153860651D_DCB4361A_E9834.pdf",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-4e0642e10b96",
+    "title": "无机非金属材料工程2023版培养方案",
+    "url": "https://mpb.csu.edu.cn/info/1043/3573.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-393c5cdd53c8",
+    "file_url": "https://mpb.csu.edu.cn/__local/6/D1/1D/9818ED4594CA2577554289A5609_EC296C0E_CDDBD.pdf",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-37ff7c52da21",
+    "title": "生物工程2023版培养方案",
+    "url": "https://mpb.csu.edu.cn/info/1043/3571.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-ecad93f3da92",
+    "file_url": "https://mpb.csu.edu.cn/__local/6/F3/53/9130454FC207AFD31EBCA5B6B1E_FAF76F09_DF087.pdf",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-d54c1549bc06",
+    "title": "矿物加工工程2023版培养方案",
+    "url": "https://mpb.csu.edu.cn/info/1043/3570.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-41655243eb26",
+    "file_url": "https://mpb.csu.edu.cn/__local/2/5D/A5/68B7446A85B85883182F1B21795_CFCE8FF6_EA36D.pdf",
+    "department": "资源加工与生物工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-94a20b7556b9",
+    "title": "1冶金工程卓越人才培养[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1065/5184.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-c53f1db5bf04",
+    "file_url": "https://smse.csu.edu.cn/__local/4/AA/7C/7221EA067201C821241A4920B09_FBE13B57_4DDA0.pdf",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-7a14468b9e1d",
+    "title": "2环境工程[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1065/5178.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-14812a622ff5",
+    "file_url": "https://smse.csu.edu.cn/__local/3/3C/9B/2A71B139E5C84370965CC3B9AE5_91E09011_44B55.pdf",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-4b436fe20fa7",
+    "title": "3新能源材料与器件[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1065/5175.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-1a00b8c57a24",
+    "file_url": "https://smse.csu.edu.cn/__local/1/23/AE/E2CF6B62CBCFC46EF27E40678B8_A2E8E21A_5CD20.pdf",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-3ccffa542c0f",
+    "title": "环境工程[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1058/5176.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-a11b84d4a97a",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-bc3766d0e595",
+    "title": "15冶金工程[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1058/5179.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-a11b84d4a97a",
+    "file_url": "https://smse.csu.edu.cn/__local/5/B2/20/87A32ED37D57E87D72C10563C52_3D2C0C61_58784.pdf",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-9365a4cb193a",
+    "title": "2新能源材料与器件[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1058/5173.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-2c6915139e12",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-bc2bae50ab96",
+    "title": "计算机信息类[2018]培养方案",
+    "url": "https://cse.csu.edu.cn/info/1053/1602.htm",
+    "kind": "plan_page",
+    "discovered_from": "computer-index",
+    "department": "计算机学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-d1afada769e0",
+    "title": "信息安全专业[2018]培养方案",
+    "url": "https://cse.csu.edu.cn/info/1053/1601.htm",
+    "kind": "plan_page",
+    "discovered_from": "computer-index",
+    "department": "计算机学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-28b956641d07",
+    "title": "数据科学与大数据技术专业[2018]培养方案",
+    "url": "https://cse.csu.edu.cn/info/1053/1599.htm",
+    "kind": "plan_page",
+    "discovered_from": "computer-index",
+    "department": "计算机学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-56eba35ab711",
+    "title": "软件工程专业[2018]培养方案",
+    "url": "https://cse.csu.edu.cn/info/1053/1597.htm",
+    "kind": "plan_page",
+    "discovered_from": "computer-index",
+    "department": "计算机学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-8b07f0c9513e",
+    "title": "计算机科学与技术专业[2018]培养方案",
+    "url": "https://cse.csu.edu.cn/info/1053/1596.htm",
+    "kind": "plan_page",
+    "discovered_from": "computer-index",
+    "department": "计算机学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-2bdf0f0221d7",
+    "title": "2025-06-05 2024版培养方案",
+    "url": "https://wl.csu.edu.cn/info/1020/6817.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-7fc05d4ce27c",
+    "department": "物理学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-476234591773",
+    "title": "2025-06-05 2023版培养方案",
+    "url": "https://wl.csu.edu.cn/info/1020/6816.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-7fc05d4ce27c",
+    "department": "物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-f1d9e5c48f87",
+    "title": "采矿工程培养方案",
+    "url": "https://srse.csu.edu.cn/jyjx/bksjy/pyfa.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-00d662436e50",
+    "file_url": "https://srse.csu.edu.cn/2016ckgc.doc",
+    "department": "资源与安全工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-850f53be10f1",
+    "title": "安全工程培养方案",
+    "url": "https://srse.csu.edu.cn/jyjx/bksjy/pyfa.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-00d662436e50",
+    "file_url": "https://srse.csu.edu.cn/2016aqbk.doc",
+    "department": "资源与安全工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-6cc4e042cc5f",
+    "title": "城市地下空间工程培养方案",
+    "url": "https://srse.csu.edu.cn/jyjx/bksjy/pyfa.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-00d662436e50",
+    "file_url": "https://srse.csu.edu.cn/2016csdxkj.doc",
+    "department": "资源与安全工程学院",
+    "plan_year": 2016
+  },
+  {
+    "id": "source-f16060247e95",
+    "title": "2023版能源类专业本科培养方案",
+    "url": "https://energy.csu.edu.cn/info/1020/3991.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-1dce25aefc4d",
+    "file_url": "https://energy.csu.edu.cn/__local/6/AF/C8/98CDD5833D36268690B2F2155C3_C848B58E_90AC1.pdf",
+    "department": "能源科学与工程学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-8e155ea6b9de",
+    "title": "计算机信息类[2018]培养方案.doc",
+    "url": "https://cse.csu.edu.cn/info/1053/1602.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-bc2bae50ab96",
+    "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078571",
+    "department": "计算机学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-1d0fccb32373",
+    "title": "信息安全[2018]培养方案.doc",
+    "url": "https://cse.csu.edu.cn/info/1053/1601.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-d1afada769e0",
+    "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078570",
+    "department": "计算机学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-1f6a7e6907b6",
+    "title": "数据科学与大数据技术[2018]培养方案.doc",
+    "url": "https://cse.csu.edu.cn/info/1053/1599.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-28b956641d07",
+    "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078568",
+    "department": "计算机学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-58faa332e7fa",
+    "title": "软件工程专业[2018]培养方案.doc",
+    "url": "https://cse.csu.edu.cn/info/1053/1597.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-56eba35ab711",
+    "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078566",
+    "department": "计算机学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-625e80758e72",
+    "title": "计算机科学与技术专业[2018]培养方案.doc",
+    "url": "https://cse.csu.edu.cn/info/1053/1596.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-8b07f0c9513e",
+    "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078565",
+    "department": "计算机学院",
+    "plan_year": 2018
+  },
+  {
+    "id": "source-e562cbee6c84",
+    "title": "2024年度培养方案",
+    "url": "https://wl.csu.edu.cn/info/1020/6817.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-2bdf0f0221d7",
+    "file_url": "https://wl.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750465396&wbfileid=15410705",
+    "department": "物理学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-f106ce6c1a8a",
+    "title": "2023年度培养方案",
+    "url": "https://wl.csu.edu.cn/info/1020/6816.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-476234591773",
+    "file_url": "https://wl.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750465396&wbfileid=18210578",
+    "department": "物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-29f6efe12e09",
+    "title": "本科生教育",
+    "url": "https://clj.csu.edu.cn/rcpy/bksjy/bkzy.htm",
+    "kind": "index",
+    "discovered_from": "home-4a88fa0a5b",
+    "department": "人文学院"
+  },
+  {
+    "id": "source-c1fbbcc80b64",
+    "title": "本科生教育",
+    "url": "https://sfl.csu.edu.cn/zh2024/rcpy/bk/zxxx.htm",
+    "kind": "index",
+    "discovered_from": "home-3c3e89883b",
+    "department": "外国语学院"
+  },
+  {
+    "id": "source-4d65e5515501",
+    "title": "本科生教育",
+    "url": "https://art.csu.edu.cn/rcpy/bksjy.htm",
+    "kind": "index",
+    "discovered_from": "home-68c6de4789",
+    "department": "建筑与艺术学院"
+  },
+  {
+    "id": "source-9b4475bb2332",
+    "title": "本科生培养",
+    "url": "https://law.csu.edu.cn/bkspy.htm",
+    "kind": "index",
+    "discovered_from": "home-6c90aba367",
+    "department": "法学院"
+  },
+  {
+    "id": "source-e7e6609cf48d",
+    "title": "本科生教育",
+    "url": "https://ps.csu.edu.cn/bksjy/bksjy.htm",
+    "kind": "index",
+    "discovered_from": "home-4592ee3f6e",
+    "department": "马克思主义学院"
+  },
+  {
+    "id": "source-cc2cb23f3a44",
+    "title": "本科生教育",
+    "url": "https://math.csu.edu.cn/bksjy.htm",
+    "kind": "index",
+    "discovered_from": "home-018649a762",
+    "department": "数学与统计学院"
+  },
+  {
+    "id": "source-537bd344de57",
+    "title": "本科生教育",
+    "url": "https://wl.csu.edu.cn/bksjy/tzgg.htm",
+    "kind": "index",
+    "discovered_from": "home-0e05b35e86",
+    "department": "物理学院"
+  },
+  {
+    "id": "source-decf3e462a8f",
+    "title": "本科生教育",
+    "url": "https://ccce.csu.edu.cn/bksjy.htm",
+    "kind": "index",
+    "discovered_from": "home-927a0dc807",
+    "department": "化学化工学院"
+  },
+  {
+    "id": "source-3b75605ba398",
+    "title": "本科生教育",
+    "url": "https://cmee.csu.edu.cn/bksjy/xxfb.htm",
+    "kind": "index",
+    "discovered_from": "home-90c4b47943",
+    "department": "机电工程学院"
+  },
+  {
+    "id": "source-ee76a1f06484",
+    "title": "本科生教育",
+    "url": "https://energy.csu.edu.cn/rcpy/bksjy.htm",
+    "kind": "index",
+    "discovered_from": "home-d1699baffb",
+    "department": "能源科学与工程学院"
+  },
+  {
+    "id": "source-22aed6a4e5c1",
+    "title": "本科生教育",
+    "url": "https://pmri.csu.edu.cn/bksjy/zxtz.htm",
+    "kind": "index",
+    "discovered_from": "home-94b00ed556",
+    "department": "粉末冶金研究院"
+  },
+  {
+    "id": "source-96e5158d397a",
+    "title": "本科生教育",
+    "url": "https://stte.csu.edu.cn/rcpy/bkspy1/zxtz.htm",
+    "kind": "index",
+    "discovered_from": "home-a60a98f345",
+    "department": "交通运输工程学院"
+  },
+  {
+    "id": "source-c3d903d4a996",
+    "title": "本科生教育",
+    "url": "https://civil.csu.edu.cn/bksjy.htm",
+    "kind": "index",
+    "discovered_from": "home-32973e025c",
+    "department": "土木工程学院"
+  },
+  {
+    "id": "source-f2fe99c58a66",
+    "title": "本科生教育",
+    "url": "https://smse.csu.edu.cn/jyjx/bksjy.htm",
+    "kind": "index",
+    "discovered_from": "home-d7f70e4c37",
+    "department": "冶金与环境学院"
+  },
+  {
+    "id": "source-afc8a1ada81d",
+    "title": "本科生教育",
+    "url": "https://gip.csu.edu.cn/bksjy/jxdt.htm",
+    "kind": "index",
+    "discovered_from": "home-a6c62b250c",
+    "department": "地球科学与信息物理学院"
+  },
+  {
+    "id": "source-41f93ebd20df",
+    "title": "本科生教育",
+    "url": "https://srse.csu.edu.cn/jyjx/bksjy/tzgg.htm",
+    "kind": "index",
+    "discovered_from": "home-556a651040",
+    "department": "资源与安全工程学院"
+  },
+  {
+    "id": "source-dbf9e9232d3f",
+    "title": "本科生教育",
+    "url": "https://mpb.csu.edu.cn/bksjy/zyjs.htm",
+    "kind": "index",
+    "discovered_from": "home-a6c74c3b51",
+    "department": "资源加工与生物工程学院"
+  },
+  {
+    "id": "source-a0f2da6ad8af",
+    "title": "本科生教育",
+    "url": "https://ei.csu.edu.cn/lbejlm.jsp?urltype=tree.TreeTempUrl&wbtreeid=1133",
+    "kind": "index",
+    "discovered_from": "home-44545fe817",
+    "department": "电子信息学院"
+  },
+  {
+    "id": "source-e23f5b40777e",
+    "title": "本科生培养",
+    "url": "https://sports.csu.edu.cn/rcpy/bkspy.htm",
+    "kind": "index",
+    "discovered_from": "home-ac14a74dd3",
+    "department": "体育教研部"
+  },
+  {
+    "id": "source-bf747a322bb3",
+    "title": "本科生教育",
+    "url": "https://jcyxy.csu.edu.cn/bksjy.htm",
+    "kind": "index",
+    "discovered_from": "home-5357098d1d",
+    "department": "湘雅基础医学院"
+  },
+  {
+    "id": "source-608a5a752588",
+    "title": "本科生教育",
+    "url": "https://sph.csu.edu.cn/bksjy1/jxdt.htm",
+    "kind": "index",
+    "discovered_from": "home-a685e0d812",
+    "department": "湘雅公共卫生学院"
+  },
+  {
+    "id": "source-0ad92da1ba56",
+    "title": "本科生教育",
+    "url": "https://yxy.csu.edu.cn/jyjx/bksjy/zyjs.htm",
+    "kind": "index",
+    "discovered_from": "home-4ee5b6fc7c",
+    "department": "湘雅药学院"
+  },
+  {
+    "id": "source-2568ca990e2e",
+    "title": "本科生培养",
+    "url": "https://life.csu.edu.cn/rcpy/bkspy/bks/pyfa.htm",
+    "kind": "index",
+    "discovered_from": "home-8f7ba86aa6",
+    "department": "生命科学学院"
+  },
+  {
+    "id": "source-3b6b873792f3",
+    "title": "本科生教育",
+    "url": "https://xysm.csu.edu.cn/yxjy/bksjy/tzgg.htm",
+    "kind": "index",
+    "discovered_from": "home-48aabbf9c6",
+    "department": "湘雅医学院"
+  },
+  {
+    "id": "source-3e5d3ab58fa5",
+    "title": "Jul 10,2026 学院召开英语专业2026版培养方案",
+    "url": "https://sfl.csu.edu.cn/info/1447/11841.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-c1fbbcc80b64",
+    "department": "外国语学院",
+    "plan_year": 2026
+  },
+  {
+    "id": "source-4ed2df614139",
+    "title": "本科生教育 下一页",
+    "url": "https://sfl.csu.edu.cn/zh2024/rcpy/bk/zxxx/19.htm",
+    "kind": "index",
+    "discovered_from": "source-c1fbbcc80b64",
+    "department": "外国语学院"
+  },
+  {
+    "id": "source-005b539c21ee",
+    "title": "本科生教育 下一页",
+    "url": "https://sfl.csu.edu.cn/zh2024/rcpy/bk/zxxx/1.htm",
+    "kind": "index",
+    "discovered_from": "source-c1fbbcc80b64",
+    "department": "外国语学院"
+  },
+  {
+    "id": "source-998c4baf8e97",
+    "title": "本科生教育 下一页",
+    "url": "https://art.csu.edu.cn/rcpy/bksjy/6.htm",
+    "kind": "index",
+    "discovered_from": "source-4d65e5515501",
+    "department": "建筑与艺术学院"
+  },
+  {
+    "id": "source-fc65430f8915",
+    "title": "本科生教育 下一页",
+    "url": "https://art.csu.edu.cn/rcpy/bksjy/1.htm",
+    "kind": "index",
+    "discovered_from": "source-4d65e5515501",
+    "department": "建筑与艺术学院"
+  },
+  {
+    "id": "source-90d511581d23",
+    "title": "本科生培养 下一页",
+    "url": "https://law.csu.edu.cn/bkspy/9.htm",
+    "kind": "index",
+    "discovered_from": "source-9b4475bb2332",
+    "department": "法学院"
+  },
+  {
+    "id": "source-96793e000b63",
+    "title": "本科生培养 下一页",
+    "url": "https://law.csu.edu.cn/bkspy/1.htm",
+    "kind": "index",
+    "discovered_from": "source-9b4475bb2332",
+    "department": "法学院"
+  },
+  {
+    "id": "source-4978af065450",
+    "title": "本科生教育 下一页",
+    "url": "https://ps.csu.edu.cn/bksjy/bksjy/33.htm",
+    "kind": "index",
+    "discovered_from": "source-e7e6609cf48d",
+    "department": "马克思主义学院"
+  },
+  {
+    "id": "source-637e6816c3c5",
+    "title": "本科生教育 下一页",
+    "url": "https://ps.csu.edu.cn/bksjy/bksjy/1.htm",
+    "kind": "index",
+    "discovered_from": "source-e7e6609cf48d",
+    "department": "马克思主义学院"
+  },
+  {
+    "id": "source-89ded5c6aac7",
+    "title": "本科生教育 下一页",
+    "url": "https://math.csu.edu.cn/bksjy/5.htm",
+    "kind": "index",
+    "discovered_from": "source-cc2cb23f3a44",
+    "department": "数学与统计学院"
+  },
+  {
+    "id": "source-7e46ce2d641a",
+    "title": "本科生教育 下一页",
+    "url": "https://math.csu.edu.cn/bksjy/1.htm",
+    "kind": "index",
+    "discovered_from": "source-cc2cb23f3a44",
+    "department": "数学与统计学院"
+  },
+  {
+    "id": "source-88b2692cfb12",
+    "title": "本科生教育 下一页",
+    "url": "https://wl.csu.edu.cn/bksjy/tzgg/3.htm",
+    "kind": "index",
+    "discovered_from": "source-537bd344de57",
+    "department": "物理学院"
+  },
+  {
+    "id": "source-407c888fffb2",
+    "title": "本科生教育 下一页",
+    "url": "https://wl.csu.edu.cn/bksjy/tzgg/1.htm",
+    "kind": "index",
+    "discovered_from": "source-537bd344de57",
+    "department": "物理学院"
+  },
+  {
+    "id": "source-b280e08b1572",
+    "title": "本科生教育 下一页",
+    "url": "https://cmee.csu.edu.cn/bksjy/xxfb/7.htm",
+    "kind": "index",
+    "discovered_from": "source-3b75605ba398",
+    "department": "机电工程学院"
+  },
+  {
+    "id": "source-50b73504770f",
+    "title": "本科生教育 下一页",
+    "url": "https://cmee.csu.edu.cn/bksjy/xxfb/1.htm",
+    "kind": "index",
+    "discovered_from": "source-3b75605ba398",
+    "department": "机电工程学院"
+  },
+  {
+    "id": "source-442da8d04aa6",
+    "title": "本科生教育 下一页",
+    "url": "https://energy.csu.edu.cn/rcpy/bksjy/1.htm",
+    "kind": "index",
+    "discovered_from": "source-ee76a1f06484",
+    "department": "能源科学与工程学院"
+  },
+  {
+    "id": "source-9464d8570476",
+    "title": "本科生教育 下一页",
+    "url": "https://stte.csu.edu.cn/rcpy/bkspy1/zxtz/1.htm",
+    "kind": "index",
+    "discovered_from": "source-96e5158d397a",
+    "department": "交通运输工程学院"
+  },
+  {
+    "id": "source-8733175f76ed",
+    "title": "本科生教育 下一页",
+    "url": "https://smse.csu.edu.cn/jyjx/bksjy/5.htm",
+    "kind": "index",
+    "discovered_from": "source-f2fe99c58a66",
+    "department": "冶金与环境学院"
+  },
+  {
+    "id": "source-1de738d3ff9c",
+    "title": "本科生教育 下一页",
+    "url": "https://smse.csu.edu.cn/jyjx/bksjy/1.htm",
+    "kind": "index",
+    "discovered_from": "source-f2fe99c58a66",
+    "department": "冶金与环境学院"
+  },
+  {
+    "id": "source-c44b4c3d2b9c",
+    "title": "本科生教育 下一页",
+    "url": "https://gip.csu.edu.cn/bksjy/jxdt/3.htm",
+    "kind": "index",
+    "discovered_from": "source-afc8a1ada81d",
+    "department": "地球科学与信息物理学院"
+  },
+  {
+    "id": "source-7f975c590c77",
+    "title": "本科生教育 下一页",
+    "url": "https://gip.csu.edu.cn/bksjy/jxdt/1.htm",
+    "kind": "index",
+    "discovered_from": "source-afc8a1ada81d",
+    "department": "地球科学与信息物理学院"
+  },
+  {
+    "id": "source-80af3f4bec83",
+    "title": "本科生教育 下一页",
+    "url": "https://srse.csu.edu.cn/jyjx/bksjy/tzgg/5.htm",
+    "kind": "index",
+    "discovered_from": "source-41f93ebd20df",
+    "department": "资源与安全工程学院"
+  },
+  {
+    "id": "source-bd8531749df0",
+    "title": "本科生教育 下一页",
+    "url": "https://srse.csu.edu.cn/jyjx/bksjy/tzgg/1.htm",
+    "kind": "index",
+    "discovered_from": "source-41f93ebd20df",
+    "department": "资源与安全工程学院"
+  },
+  {
+    "id": "source-416b745c73b2",
+    "title": "本科生培养 下一页",
+    "url": "https://sports.csu.edu.cn/rcpy/bkspy/1.htm",
+    "kind": "index",
+    "discovered_from": "source-e23f5b40777e",
+    "department": "体育教研部"
+  },
+  {
+    "id": "source-21ce6cf7c6c0",
+    "title": "本科生教育 下一页",
+    "url": "https://jcyxy.csu.edu.cn/bksjy/8.htm",
+    "kind": "index",
+    "discovered_from": "source-bf747a322bb3",
+    "department": "湘雅基础医学院"
+  },
+  {
+    "id": "source-c4d5cd66f696",
+    "title": "本科生教育 下一页",
+    "url": "https://jcyxy.csu.edu.cn/bksjy/1.htm",
+    "kind": "index",
+    "discovered_from": "source-bf747a322bb3",
+    "department": "湘雅基础医学院"
+  },
+  {
+    "id": "source-ca0fa6a46c62",
+    "title": "本科生教育 下一页",
+    "url": "https://sph.csu.edu.cn/bksjy1/jxdt/1.htm",
+    "kind": "index",
+    "discovered_from": "source-608a5a752588",
+    "department": "湘雅公共卫生学院"
+  },
+  {
+    "id": "source-ecf1b6b1facd",
+    "title": "本科生教育 下一页",
+    "url": "https://xysm.csu.edu.cn/yxjy/bksjy/tzgg/30.htm",
+    "kind": "index",
+    "discovered_from": "source-3b6b873792f3",
+    "department": "湘雅医学院"
+  },
+  {
+    "id": "source-940ff40de75d",
+    "title": "本科生教育 下一页",
+    "url": "https://xysm.csu.edu.cn/yxjy/bksjy/tzgg/1.htm",
+    "kind": "index",
+    "discovered_from": "source-3b6b873792f3",
+    "department": "湘雅医学院"
+  },
+  {
+    "id": "source-8345fda780f8",
+    "url": "https://soa.csu.edu.cn/jyjx/bksjy/pyfa.htm",
+    "title": "自动化学院培养方案目录",
+    "kind": "index",
+    "department": "自动化学院"
+  },
+  {
+    "id": "source-ff55dcb9601d",
+    "url": "https://oa.csu.edu.cn/con/PDFPage?JLNM=C2A7465AF8944A2D8B8BBD47419A99D1&YWMC=ZNDX_ZHBG_GGTZ",
+    "title": "2026-2027第一学期全校性选修课程网上MOOC学习指南",
+    "kind": "access_check",
+    "department": "本科生院"
+  },
+  {
+    "id": "source-7b003f52f27d",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://sfl.csu.edu.cn/zh2024/rcpy/bk/zxxx/18.htm",
+    "kind": "index",
+    "discovered_from": "source-4ed2df614139",
+    "department": "外国语学院"
+  },
+  {
+    "id": "source-119d4c1525c3",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://art.csu.edu.cn/rcpy/bksjy/5.htm",
+    "kind": "index",
+    "discovered_from": "source-998c4baf8e97",
+    "department": "建筑与艺术学院"
+  },
+  {
+    "id": "source-16b2d7dc1c64",
+    "title": "本科生培养 下一页 下一页",
+    "url": "https://law.csu.edu.cn/bkspy/8.htm",
+    "kind": "index",
+    "discovered_from": "source-90d511581d23",
+    "department": "法学院"
+  },
+  {
+    "id": "source-2fb928f49f84",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://ps.csu.edu.cn/bksjy/bksjy/32.htm",
+    "kind": "index",
+    "discovered_from": "source-4978af065450",
+    "department": "马克思主义学院"
+  },
+  {
+    "id": "source-e3d2eda2cbf8",
+    "title": "数学与应用数学专业强基计划培养方案",
+    "url": "https://math.csu.edu.cn/info/1727/13486.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-89ded5c6aac7",
+    "department": "数学与统计学院",
+    "plan_year": 2024
+  },
+  {
+    "id": "source-2e84c359d73d",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://math.csu.edu.cn/bksjy/4.htm",
+    "kind": "index",
+    "discovered_from": "source-89ded5c6aac7",
+    "department": "数学与统计学院"
+  },
+  {
+    "id": "source-07d804c5010e",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://wl.csu.edu.cn/bksjy/tzgg/2.htm",
+    "kind": "index",
+    "discovered_from": "source-88b2692cfb12",
+    "department": "物理学院"
+  },
+  {
+    "id": "source-9a3098e3ab24",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://cmee.csu.edu.cn/bksjy/xxfb/6.htm",
+    "kind": "index",
+    "discovered_from": "source-b280e08b1572",
+    "department": "机电工程学院"
+  },
+  {
+    "id": "source-58dad005f441",
+    "title": "3冶金工程卓越人才培养[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1059/5183.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8733175f76ed",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-d29be1ad2be9",
+    "title": "5冶金工程[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1059/6433.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8733175f76ed",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-ae5f84cf27df",
+    "title": "8环境工程[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1059/5177.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8733175f76ed",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-7d734e078ad4",
+    "title": "11新能源材料与器件[2023]培养方案",
+    "url": "https://smse.csu.edu.cn/info/1059/5174.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8733175f76ed",
+    "department": "冶金与环境学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-3ba3d90e55fa",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://smse.csu.edu.cn/jyjx/bksjy/4.htm",
+    "kind": "index",
+    "discovered_from": "source-8733175f76ed",
+    "department": "冶金与环境学院"
+  },
+  {
+    "id": "source-43b34bda2ced",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://gip.csu.edu.cn/bksjy/jxdt/2.htm",
+    "kind": "index",
+    "discovered_from": "source-c44b4c3d2b9c",
+    "department": "地球科学与信息物理学院"
+  },
+  {
+    "id": "source-80b963d76d6a",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://srse.csu.edu.cn/jyjx/bksjy/tzgg/4.htm",
+    "kind": "index",
+    "discovered_from": "source-80af3f4bec83",
+    "department": "资源与安全工程学院"
+  },
+  {
+    "id": "source-e8ce1ae13e48",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://jcyxy.csu.edu.cn/bksjy/7.htm",
+    "kind": "index",
+    "discovered_from": "source-21ce6cf7c6c0",
+    "department": "湘雅基础医学院"
+  },
+  {
+    "id": "source-b1449d63555b",
+    "title": "本科生教育 下一页 下一页",
+    "url": "https://xysm.csu.edu.cn/yxjy/bksjy/tzgg/29.htm",
+    "kind": "index",
+    "discovered_from": "source-ecf1b6b1facd",
+    "department": "湘雅医学院"
+  },
+  {
+    "id": "source-0cf2ce710dbf",
+    "title": "自动化专业2025版培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/9061.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8345fda780f8",
+    "department": "自动化学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-368ef452e57d",
+    "title": "自动化卓越人才培养[2023]培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7806.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8345fda780f8",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-0f10d09f8a2a",
+    "title": "自动化与电气类[2023]培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7805.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8345fda780f8",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-b264479e15bd",
+    "title": "自动化专业[2023]培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7804.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8345fda780f8",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-fd0a686366d4",
+    "title": "人工智能专业[2023]培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7803.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8345fda780f8",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-70a9064f3053",
+    "title": "电子信息工程专业[2023]培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7802.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8345fda780f8",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-331366412a61",
+    "title": "测控技术与仪器专业2023版培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7800.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-8345fda780f8",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "public-elective-guide-2026-autumn",
+    "title": "2026-2027学年第一学期全校性选修课程网上MOOC学习指南 PDF",
+    "url": "https://oa.csu.edu.cn/con/PDFPage?JLNM=C2A7465AF8944A2D8B8BBD47419A99D1&YWMC=ZNDX_ZHBG_GGTZ",
+    "file_url": "https://oa.csu.edu.cn/con/xnbg/loadContentPdf/C2A7465AF8944A2D8B8BBD47419A99D1",
+    "kind": "public_elective_guide",
+    "department": "本科生院",
+    "plan_year": 2026,
+    "discovered_from": "source-ff55dcb9601d"
+  },
+  {
+    "id": "source-0fadaa57dd4f",
+    "title": "本科生教育 下一页 下一页 下一页",
+    "url": "https://sfl.csu.edu.cn/zh2024/rcpy/bk/zxxx/17.htm",
+    "kind": "index",
+    "discovered_from": "source-7b003f52f27d",
+    "department": "外国语学院"
+  },
+  {
+    "id": "source-83c777edcc05",
+    "title": "本科生教育 下一页 下一页 下一页",
+    "url": "https://art.csu.edu.cn/rcpy/bksjy/4.htm",
+    "kind": "index",
+    "discovered_from": "source-119d4c1525c3",
+    "department": "建筑与艺术学院"
+  },
+  {
+    "id": "source-82bdb879c6d1",
+    "title": "本科生培养 下一页 下一页 下一页",
+    "url": "https://law.csu.edu.cn/bkspy/7.htm",
+    "kind": "index",
+    "discovered_from": "source-16b2d7dc1c64",
+    "department": "法学院"
+  },
+  {
+    "id": "source-747c5f775f26",
+    "title": "本科生教育 下一页 下一页 下一页",
+    "url": "https://ps.csu.edu.cn/bksjy/bksjy/31.htm",
+    "kind": "index",
+    "discovered_from": "source-2fb928f49f84",
+    "department": "马克思主义学院"
+  },
+  {
+    "id": "source-26f46aaadfcb",
+    "title": "数统院开展教育思想大讨论推进2023版本科人才培养方案",
+    "url": "https://math.csu.edu.cn/info/1728/11723.htm",
+    "kind": "plan_page",
+    "discovered_from": "source-2e84c359d73d",
+    "department": "数学与统计学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-f703b47572c2",
+    "title": "本科生教育 下一页 下一页 下一页",
+    "url": "https://math.csu.edu.cn/bksjy/3.htm",
+    "kind": "index",
+    "discovered_from": "source-2e84c359d73d",
+    "department": "数学与统计学院"
+  },
+  {
+    "id": "source-e3fb95c314ed",
+    "title": "本科生教育 下一页 下一页 下一页",
+    "url": "https://cmee.csu.edu.cn/bksjy/xxfb/5.htm",
+    "kind": "index",
+    "discovered_from": "source-9a3098e3ab24",
+    "department": "机电工程学院"
+  },
+  {
+    "id": "source-147ec6213a28",
+    "title": "本科生教育 下一页 下一页 下一页",
+    "url": "https://smse.csu.edu.cn/jyjx/bksjy/3.htm",
+    "kind": "index",
+    "discovered_from": "source-3ba3d90e55fa",
+    "department": "冶金与环境学院"
+  },
+  {
+    "id": "source-1241c556989c",
+    "title": "本科生教育 下一页 下一页 下一页",
+    "url": "https://srse.csu.edu.cn/jyjx/bksjy/tzgg/3.htm",
+    "kind": "index",
+    "discovered_from": "source-80b963d76d6a",
+    "department": "资源与安全工程学院"
+  },
+  {
+    "id": "source-48bae6cd6487",
+    "title": "本科生教育 下一页 下一页 下一页",
+    "url": "https://jcyxy.csu.edu.cn/bksjy/6.htm",
+    "kind": "index",
+    "discovered_from": "source-e8ce1ae13e48",
+    "department": "湘雅基础医学院"
+  },
+  {
+    "id": "source-30c1c02079d4",
+    "title": "本科生教育 下一页 下一页 下一页",
+    "url": "https://xysm.csu.edu.cn/yxjy/bksjy/tzgg/28.htm",
+    "kind": "index",
+    "discovered_from": "source-b1449d63555b",
+    "department": "湘雅医学院"
+  },
+  {
+    "id": "oa-public-elective-2026-attachments",
+    "title": "2026秋季公选课MOOC通知附件索引",
+    "url": "https://oa.csu.edu.cn/con/xnbg/getFjList",
+    "request_form": {
+      "JLNM": "C2A7465AF8944A2D8B8BBD47419A99D1",
+      "WJFL": "11"
+    },
+    "kind": "attachment_index",
+    "term": "2026-2027-1",
+    "plan_year": 2026,
+    "department": "本科生院",
+    "discovered_from": "source-ff55dcb9601d"
+  },
+  {
+    "id": "source-2c04a5690c1e",
+    "title": "自动化专业2025版培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/9061.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-0cf2ce710dbf",
+    "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=15431132",
+    "department": "自动化学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-71fed65f09c7",
+    "title": "自动化卓越人才培养[2023]培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7806.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-368ef452e57d",
+    "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606792",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-8bdc15d0fc55",
+    "title": "自动化与电气类[2023]培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7805.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-0f10d09f8a2a",
+    "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606793",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-6ecc9dad53af",
+    "title": "自动化专业[2023]培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7804.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-b264479e15bd",
+    "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606794",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-fe82a8cf58a8",
+    "title": "人工智能专业[2023]培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7803.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-fd0a686366d4",
+    "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606795",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-04d82b6ebd46",
+    "title": "电子信息工程专业[2023]培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7802.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-70a9064f3053",
+    "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606796",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-8772309d4c42",
+    "title": "测控技术与仪器专业2023版培养方案",
+    "url": "https://soa.csu.edu.cn/info/1072/7800.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-331366412a61",
+    "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606799",
+    "department": "自动化学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-f3d02423ef67",
+    "title": "附件1：课程信息.docx",
+    "url": "https://oa.csu.edu.cn/con/PDFPage?JLNM=C2A7465AF8944A2D8B8BBD47419A99D1&YWMC=ZNDX_ZHBG_GGTZ",
+    "kind": "public_elective_list",
+    "discovered_from": "oa-public-elective-2026-attachments",
+    "file_url": "https://oa.csu.edu.cn/con/xnbg/downLoadFj?NBBM=E122325FBA634D808EE789016F52E1AA&fullfilename=%E9%99%84%E4%BB%B61%EF%BC%9A%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF.docx",
+    "term": "2026-2027-1",
+    "department": "本科生院",
+    "plan_year": 2026
+  }
+]

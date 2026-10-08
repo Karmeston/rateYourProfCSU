@@ -1,0 +1,790 @@
+{
+  "source_url": "https://bksy.csu.edu.cn/jxyz1/xyxl.htm",
+  "source_version": "2026年8月",
+  "programs": [
+    {
+      "department": "材料科学与工程学院",
+      "program_code": "080401",
+      "name": "材料科学与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "070504",
+      "name": "地理信息科学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "081201",
+      "name": "测绘工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "081202",
+      "name": "遥感科学与技术",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "081401",
+      "name": "地质工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "081403K",
+      "name": "资源勘查工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "070801",
+      "name": "地球物理学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "电子信息学院",
+      "program_code": "080703",
+      "name": "通信工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "电子信息学院",
+      "program_code": "080714T",
+      "name": "电子信息科学与技术",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "电子信息学院",
+      "program_code": "080701",
+      "name": "电子信息工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "法学院",
+      "program_code": "030101K",
+      "name": "法学",
+      "degree": "法学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "粉末冶金研究院",
+      "program_code": "080409T",
+      "name": "粉体材料科学与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "粉末冶金研究院",
+      "program_code": "080403",
+      "name": "材料化学",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "粉末冶金研究院",
+      "program_code": "080407",
+      "name": "高分子材料与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "公共管理学院",
+      "program_code": "030301",
+      "name": "社会学",
+      "degree": "法学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "公共管理学院",
+      "program_code": "120402",
+      "name": "行政管理",
+      "degree": "管理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "公共管理学院",
+      "program_code": "120403",
+      "name": "劳动与社会保障",
+      "degree": "管理学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "化学化工学院",
+      "program_code": "070302",
+      "name": "应用化学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "化学化工学院",
+      "program_code": "081301",
+      "name": "化学工程与工艺",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "化学化工学院",
+      "program_code": "081302",
+      "name": "制药工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "机电工程学院",
+      "program_code": "082001",
+      "name": "航空航天工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "机电工程学院",
+      "program_code": "080202",
+      "name": "机械设计制造及其自动化",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "机电工程学院",
+      "program_code": "080207",
+      "name": "车辆工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "机电工程学院",
+      "program_code": "080704",
+      "name": "微电子科学与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "计算机学院",
+      "program_code": "080901",
+      "name": "计算机科学与技术",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "计算机学院",
+      "program_code": "080904K",
+      "name": "信息安全",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "计算机学院",
+      "program_code": "080910T",
+      "name": "数据科学与大数据技术",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "计算机学院",
+      "program_code": "080902",
+      "name": "软件工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "计算机学院",
+      "program_code": "080905",
+      "name": "物联网工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "082801",
+      "name": "建筑学",
+      "degree": "建筑学",
+      "duration": "五年",
+      "notes": ""
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "082802",
+      "name": "城乡规划",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130201",
+      "name": "音乐表演",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130204",
+      "name": "舞蹈表演",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130509T",
+      "name": "艺术与科技",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130502",
+      "name": "视觉传达设计",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130503",
+      "name": "环境设计",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130504",
+      "name": "产品设计",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "交通运输工程学院",
+      "program_code": "081801",
+      "name": "交通运输",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "交通运输工程学院",
+      "program_code": "081806T",
+      "name": "交通设备与控制工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "交通运输工程学院",
+      "program_code": "080802T",
+      "name": "轨道交通信号与控制",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "交通运输工程学院",
+      "program_code": "120602",
+      "name": "物流工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "马克思主义学院",
+      "program_code": "030503",
+      "name": "思想政治教育",
+      "degree": "法学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "能源科学与工程学院",
+      "program_code": "080501",
+      "name": "能源与动力工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "能源科学与工程学院",
+      "program_code": "080503T",
+      "name": "新能源科学与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "能源科学与工程学院",
+      "program_code": "081002",
+      "name": "建筑环境与能源应用工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "人文学院",
+      "program_code": "050101",
+      "name": "汉语言文学",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "人文学院",
+      "program_code": "050307T",
+      "name": "数字出版",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "人文学院",
+      "program_code": "010101",
+      "name": "哲学",
+      "degree": "哲学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "人文学院",
+      "program_code": "050302",
+      "name": "广播电视学",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "商学院",
+      "program_code": "020301K",
+      "name": "金融学",
+      "degree": "经济学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "商学院",
+      "program_code": "020401",
+      "name": "国际经济与贸易",
+      "degree": "经济学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "商学院",
+      "program_code": "120102",
+      "name": "信息管理与信息系统",
+      "degree": "管理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "商学院",
+      "program_code": "120201K",
+      "name": "工商管理",
+      "degree": "管理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "商学院",
+      "program_code": "120203K",
+      "name": "会计学",
+      "degree": "管理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "生命科学学院",
+      "program_code": "071001",
+      "name": "生物科学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "生命科学学院",
+      "program_code": "071003",
+      "name": "生物信息学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "数学与统计学院",
+      "program_code": "070101",
+      "name": "数学与应用数学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "数学与统计学院",
+      "program_code": "071201",
+      "name": "统计学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "数学与统计学院",
+      "program_code": "070102",
+      "name": "信息与计算科学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "体育教研部",
+      "program_code": "040202K",
+      "name": "运动训练",
+      "degree": "教育学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "土木工程学院",
+      "program_code": "083102K",
+      "name": "消防工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "土木工程学院",
+      "program_code": "080102",
+      "name": "工程力学",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "土木工程学院",
+      "program_code": "081001",
+      "name": "土木工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "土木工程学院",
+      "program_code": "120103",
+      "name": "工程管理",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "土木工程学院",
+      "program_code": "081007T",
+      "name": "铁道工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "外国语学院",
+      "program_code": "050201",
+      "name": "英语",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "外国语学院",
+      "program_code": "050204",
+      "name": "法语",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "外国语学院",
+      "program_code": "050205",
+      "name": "西班牙语",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "外国语学院",
+      "program_code": "050207",
+      "name": "日语",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "物理学院",
+      "program_code": "070202",
+      "name": "应用物理学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "物理学院",
+      "program_code": "080705",
+      "name": "光电信息科学与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅公共卫生学院",
+      "program_code": "100401K",
+      "name": "预防医学",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅护理学院",
+      "program_code": "101101K",
+      "name": "护理学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅基础医学院",
+      "program_code": "100901K",
+      "name": "法医学",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅基础医学院",
+      "program_code": "100101K",
+      "name": "基础医学",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅基础医学院",
+      "program_code": "082601",
+      "name": "生物医学工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅口腔医学院",
+      "program_code": "100301K",
+      "name": "口腔医学",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅口腔医学院",
+      "program_code": "100301K",
+      "name": "口腔医学(5+3)",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅药学院",
+      "program_code": "100701",
+      "name": "药学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅医学院",
+      "program_code": "100201K",
+      "name": "临床医学",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅医学院",
+      "program_code": "100201K",
+      "name": "临床医学",
+      "degree": "医学",
+      "duration": "八年",
+      "notes": ""
+    },
+    {
+      "department": "湘雅医学院",
+      "program_code": "101001",
+      "name": "医学检验技术",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "冶金与环境学院",
+      "program_code": "080404",
+      "name": "冶金工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "冶金与环境学院",
+      "program_code": "080414T",
+      "name": "新能源材料与器件",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "冶金与环境学院",
+      "program_code": "082502",
+      "name": "环境工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "资源加工与生物工程学院",
+      "program_code": "080406",
+      "name": "无机非金属材料工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "资源加工与生物工程学院",
+      "program_code": "081503",
+      "name": "矿物加工工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "资源加工与生物工程学院",
+      "program_code": "083001",
+      "name": "生物工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "资源加工与生物工程学院",
+      "program_code": "071002",
+      "name": "生物技术",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "资源与安全工程学院",
+      "program_code": "081005T",
+      "name": "城市地下空间工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "资源与安全工程学院",
+      "program_code": "081501",
+      "name": "采矿工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "资源与安全工程学院",
+      "program_code": "082901",
+      "name": "安全工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "080301",
+      "name": "测控技术与仪器",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "080601",
+      "name": "电气工程及其自动化",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "080801",
+      "name": "自动化",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "080717T",
+      "name": "人工智能",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": ""
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "080907T",
+      "name": "智能科学与技术",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生"
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "082103",
+      "name": "探测制导与控制技术",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生"
+    }
+  ]
+}

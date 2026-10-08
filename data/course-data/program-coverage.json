@@ -1,0 +1,1534 @@
+{
+  "baseline_url": "https://bksy.csu.edu.cn/jxyz1/xyxl.htm",
+  "baseline_version": "2026年8月",
+  "status_definition": "资料覆盖；不保证提取完整、适用于当前年级或代表正在招生",
+  "programs": [
+    {
+      "department": "材料科学与工程学院",
+      "program_code": "080401",
+      "name": "材料科学与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-f1fb1d716543",
+          "program_as_extracted": "材料科学与工程（强基）",
+          "track": "special",
+          "plan_year": 2024,
+          "source_url": "https://mse.csu.edu.cn/info/1016/4206.htm",
+          "records": 71
+        },
+        {
+          "source_id": "source-23efa57cbce2",
+          "program_as_extracted": "材料科学与工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://mse.csu.edu.cn/info/1016/4033.htm",
+          "records": 122
+        },
+        {
+          "source_id": "source-b3dcca77cbca",
+          "program_as_extracted": "材料国际",
+          "track": "special",
+          "plan_year": 2023,
+          "source_url": "https://mse.csu.edu.cn/info/1016/4034.htm",
+          "records": 77
+        },
+        {
+          "source_id": "source-74714abbb2e3",
+          "program_as_extracted": "材料科学与工程卓越人才培养",
+          "track": "special",
+          "plan_year": 2023,
+          "source_url": "https://mse.csu.edu.cn/info/1016/4035.htm",
+          "records": 73
+        }
+      ]
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "070504",
+      "name": "地理信息科学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "081201",
+      "name": "测绘工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "081202",
+      "name": "遥感科学与技术",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "081401",
+      "name": "地质工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "081403K",
+      "name": "资源勘查工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "地球科学与信息物理学院",
+      "program_code": "070801",
+      "name": "地球物理学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "电子信息学院",
+      "program_code": "080703",
+      "name": "通信工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "电子信息学院",
+      "program_code": "080714T",
+      "name": "电子信息科学与技术",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-9f5450b2c617",
+          "program_as_extracted": "电子信息科学与技术",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://ei.csu.edu.cn/info/1135/1322.htm",
+          "records": 72
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-68fe9ea7",
+          "program_as_extracted": "电子信息科学与技术",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://wl.csu.edu.cn/info/1020/6816.htm",
+          "records": 70
+        }
+      ]
+    },
+    {
+      "department": "电子信息学院",
+      "program_code": "080701",
+      "name": "电子信息工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-04d82b6ebd46",
+          "program_as_extracted": "电子信息工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://soa.csu.edu.cn/info/1072/7802.htm",
+          "records": 87
+        }
+      ]
+    },
+    {
+      "department": "法学院",
+      "program_code": "030101K",
+      "name": "法学",
+      "degree": "法学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "粉末冶金研究院",
+      "program_code": "080409T",
+      "name": "粉体材料科学与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-de96a7cf476f",
+          "program_as_extracted": "粉体材料科学与工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://pmri.csu.edu.cn/info/1048/4305.htm",
+          "records": 96
+        },
+        {
+          "source_id": "source-dec425db17cc",
+          "program_as_extracted": "粉体材料科学与工程卓越人才培养",
+          "track": "special",
+          "plan_year": 2023,
+          "source_url": "https://pmri.csu.edu.cn/info/1048/4304.htm",
+          "records": 71
+        }
+      ]
+    },
+    {
+      "department": "粉末冶金研究院",
+      "program_code": "080403",
+      "name": "材料化学",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "粉末冶金研究院",
+      "program_code": "080407",
+      "name": "高分子材料与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "公共管理学院",
+      "program_code": "030301",
+      "name": "社会学",
+      "degree": "法学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "公共管理学院",
+      "program_code": "120402",
+      "name": "行政管理",
+      "degree": "管理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "公共管理学院",
+      "program_code": "120403",
+      "name": "劳动与社会保障",
+      "degree": "管理学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "化学化工学院",
+      "program_code": "070302",
+      "name": "应用化学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "化学化工学院",
+      "program_code": "081301",
+      "name": "化学工程与工艺",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "化学化工学院",
+      "program_code": "081302",
+      "name": "制药工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "机电工程学院",
+      "program_code": "082001",
+      "name": "航空航天工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "机电工程学院",
+      "program_code": "080202",
+      "name": "机械设计制造及其自动化",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "机电工程学院",
+      "program_code": "080207",
+      "name": "车辆工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "机电工程学院",
+      "program_code": "080704",
+      "name": "微电子科学与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "计算机学院",
+      "program_code": "080901",
+      "name": "计算机科学与技术",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "historical_source_only",
+      "plan_sources": [
+        {
+          "source_id": "source-625e80758e72",
+          "program_as_extracted": "计算机科学与技术",
+          "track": "ordinary",
+          "plan_year": 2018,
+          "source_url": "https://cse.csu.edu.cn/info/1053/1596.htm",
+          "records": 87
+        }
+      ]
+    },
+    {
+      "department": "计算机学院",
+      "program_code": "080904K",
+      "name": "信息安全",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "historical_source_only",
+      "plan_sources": [
+        {
+          "source_id": "source-1d0fccb32373",
+          "program_as_extracted": "信息安全",
+          "track": "ordinary",
+          "plan_year": 2018,
+          "source_url": "https://cse.csu.edu.cn/info/1053/1601.htm",
+          "records": 81
+        }
+      ]
+    },
+    {
+      "department": "计算机学院",
+      "program_code": "080910T",
+      "name": "数据科学与大数据技术",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "historical_source_only",
+      "plan_sources": [
+        {
+          "source_id": "source-1f6a7e6907b6",
+          "program_as_extracted": "数据科学与大数据技术",
+          "track": "ordinary",
+          "plan_year": 2018,
+          "source_url": "https://cse.csu.edu.cn/info/1053/1599.htm",
+          "records": 76
+        }
+      ]
+    },
+    {
+      "department": "计算机学院",
+      "program_code": "080902",
+      "name": "软件工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "historical_source_only",
+      "plan_sources": [
+        {
+          "source_id": "source-58faa332e7fa",
+          "program_as_extracted": "软件工程",
+          "track": "ordinary",
+          "plan_year": 2018,
+          "source_url": "https://cse.csu.edu.cn/info/1053/1597.htm",
+          "records": 81
+        }
+      ]
+    },
+    {
+      "department": "计算机学院",
+      "program_code": "080905",
+      "name": "物联网工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "082801",
+      "name": "建筑学",
+      "degree": "建筑学",
+      "duration": "五年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "082802",
+      "name": "城乡规划",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130201",
+      "name": "音乐表演",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130204",
+      "name": "舞蹈表演",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130509T",
+      "name": "艺术与科技",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130502",
+      "name": "视觉传达设计",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130503",
+      "name": "环境设计",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "建筑与艺术学院",
+      "program_code": "130504",
+      "name": "产品设计",
+      "degree": "艺术学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "交通运输工程学院",
+      "program_code": "081801",
+      "name": "交通运输",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "交通运输工程学院",
+      "program_code": "081806T",
+      "name": "交通设备与控制工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "交通运输工程学院",
+      "program_code": "080802T",
+      "name": "轨道交通信号与控制",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "交通运输工程学院",
+      "program_code": "120602",
+      "name": "物流工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "马克思主义学院",
+      "program_code": "030503",
+      "name": "思想政治教育",
+      "degree": "法学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "能源科学与工程学院",
+      "program_code": "080501",
+      "name": "能源与动力工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-f9d09c856bfd",
+          "program_as_extracted": "能源与动力工程",
+          "track": "ordinary",
+          "plan_year": 2025,
+          "source_url": "https://energy.csu.edu.cn/info/1020/3952.htm",
+          "records": 78
+        },
+        {
+          "source_id": "source-1d9019ef60a7",
+          "program_as_extracted": "能源与动力工程",
+          "track": "ordinary",
+          "plan_year": 2024,
+          "source_url": "https://energy.csu.edu.cn/info/1020/4037.htm",
+          "records": 93
+        }
+      ]
+    },
+    {
+      "department": "能源科学与工程学院",
+      "program_code": "080503T",
+      "name": "新能源科学与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-eb3a977713b4",
+          "program_as_extracted": "新能源科学与工程",
+          "track": "ordinary",
+          "plan_year": 2025,
+          "source_url": "https://energy.csu.edu.cn/info/1020/3954.htm",
+          "records": 67
+        },
+        {
+          "source_id": "source-e8e78a83bb4e",
+          "program_as_extracted": "新能源科学与工程",
+          "track": "ordinary",
+          "plan_year": 2024,
+          "source_url": "https://energy.csu.edu.cn/info/1020/4036.htm",
+          "records": 77
+        }
+      ]
+    },
+    {
+      "department": "能源科学与工程学院",
+      "program_code": "081002",
+      "name": "建筑环境与能源应用工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-bad8637ec22a",
+          "program_as_extracted": "建筑环境与能源应用工程",
+          "track": "ordinary",
+          "plan_year": 2025,
+          "source_url": "https://energy.csu.edu.cn/info/1020/3953.htm",
+          "records": 68
+        },
+        {
+          "source_id": "source-7a338dfe109b",
+          "program_as_extracted": "建筑环境与能源应用工程",
+          "track": "ordinary",
+          "plan_year": 2024,
+          "source_url": "https://energy.csu.edu.cn/info/1020/4038.htm",
+          "records": 79
+        }
+      ]
+    },
+    {
+      "department": "人文学院",
+      "program_code": "050101",
+      "name": "汉语言文学",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-1688a94e15eb",
+          "program_as_extracted": "汉语言文学",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://clj.csu.edu.cn/info/1021/6186.htm",
+          "records": 108
+        }
+      ]
+    },
+    {
+      "department": "人文学院",
+      "program_code": "050307T",
+      "name": "数字出版",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "人文学院",
+      "program_code": "010101",
+      "name": "哲学",
+      "degree": "哲学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-0b602b01a46c",
+          "program_as_extracted": "哲学",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://clj.csu.edu.cn/info/1021/6187.htm",
+          "records": 79
+        },
+        {
+          "source_id": "source-c0c406750ca6",
+          "program_as_extracted": "哲学",
+          "track": "ordinary",
+          "plan_year": 2018,
+          "source_url": "https://clj.csu.edu.cn/info/1021/6189.htm",
+          "records": 83
+        }
+      ]
+    },
+    {
+      "department": "人文学院",
+      "program_code": "050302",
+      "name": "广播电视学",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "商学院",
+      "program_code": "020301K",
+      "name": "金融学",
+      "degree": "经济学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-e24f3ad9a660-b1b7a733",
+          "program_as_extracted": "金融学",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+          "records": 84
+        }
+      ]
+    },
+    {
+      "department": "商学院",
+      "program_code": "020401",
+      "name": "国际经济与贸易",
+      "degree": "经济学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_special_source_only",
+      "plan_sources": [
+        {
+          "source_id": "source-e24f3ad9a660-f4efdebd",
+          "program_as_extracted": "国际经济与贸易",
+          "track": "special",
+          "plan_year": 2023,
+          "source_url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+          "records": 91
+        }
+      ]
+    },
+    {
+      "department": "商学院",
+      "program_code": "120102",
+      "name": "信息管理与信息系统",
+      "degree": "管理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-e24f3ad9a660-d95d66a4",
+          "program_as_extracted": "信息管理与信息系统",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+          "records": 82
+        }
+      ]
+    },
+    {
+      "department": "商学院",
+      "program_code": "120201K",
+      "name": "工商管理",
+      "degree": "管理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-e24f3ad9a660-3f8aa964",
+          "program_as_extracted": "工商管理(高水平运动)",
+          "track": "special",
+          "plan_year": 2023,
+          "source_url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+          "records": 56
+        },
+        {
+          "source_id": "source-e24f3ad9a660-4dfd39a7",
+          "program_as_extracted": "工商管理",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+          "records": 83
+        }
+      ]
+    },
+    {
+      "department": "商学院",
+      "program_code": "120203K",
+      "name": "会计学",
+      "degree": "管理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-e24f3ad9a660-8c5004a3",
+          "program_as_extracted": "会计学",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+          "records": 82
+        }
+      ]
+    },
+    {
+      "department": "生命科学学院",
+      "program_code": "071001",
+      "name": "生物科学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "生命科学学院",
+      "program_code": "071003",
+      "name": "生物信息学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-3107c1a058b1",
+          "program_as_extracted": "生物信息学",
+          "track": "ordinary",
+          "plan_year": 2025,
+          "source_url": "https://life.csu.edu.cn/info/1059/3502.htm",
+          "records": 65
+        }
+      ]
+    },
+    {
+      "department": "数学与统计学院",
+      "program_code": "070101",
+      "name": "数学与应用数学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_special_source_only",
+      "plan_sources": [
+        {
+          "source_id": "math-strong-2024",
+          "program_as_extracted": "数学与应用数学（强基）",
+          "track": "special",
+          "plan_year": 2024,
+          "source_url": "https://math.csu.edu.cn/info/1727/13486.htm",
+          "records": 68
+        }
+      ]
+    },
+    {
+      "department": "数学与统计学院",
+      "program_code": "071201",
+      "name": "统计学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "数学与统计学院",
+      "program_code": "070102",
+      "name": "信息与计算科学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "体育教研部",
+      "program_code": "040202K",
+      "name": "运动训练",
+      "degree": "教育学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "土木工程学院",
+      "program_code": "083102K",
+      "name": "消防工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-d074c979a16c",
+          "program_as_extracted": "消防工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+          "records": 79
+        }
+      ]
+    },
+    {
+      "department": "土木工程学院",
+      "program_code": "080102",
+      "name": "工程力学",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-bafef26670dd",
+          "program_as_extracted": "工程力学",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+          "records": 70
+        }
+      ]
+    },
+    {
+      "department": "土木工程学院",
+      "program_code": "081001",
+      "name": "土木工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-6c849319d2f0",
+          "program_as_extracted": "土木工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+          "records": 122
+        },
+        {
+          "source_id": "source-5a5f9fae5da8",
+          "program_as_extracted": "土木国际",
+          "track": "special",
+          "plan_year": 2023,
+          "source_url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+          "records": 72
+        }
+      ]
+    },
+    {
+      "department": "土木工程学院",
+      "program_code": "120103",
+      "name": "工程管理",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-dfa6952734b4",
+          "program_as_extracted": "工程管理",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+          "records": 79
+        }
+      ]
+    },
+    {
+      "department": "土木工程学院",
+      "program_code": "081007T",
+      "name": "铁道工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-15d88ce79494",
+          "program_as_extracted": "铁道工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+          "records": 90
+        }
+      ]
+    },
+    {
+      "department": "外国语学院",
+      "program_code": "050201",
+      "name": "英语",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-9e2a14c52e1f",
+          "program_as_extracted": "英语",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://sfl.csu.edu.cn/info/1232/9528.htm",
+          "records": 102
+        }
+      ]
+    },
+    {
+      "department": "外国语学院",
+      "program_code": "050204",
+      "name": "法语",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "外国语学院",
+      "program_code": "050205",
+      "name": "西班牙语",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "外国语学院",
+      "program_code": "050207",
+      "name": "日语",
+      "degree": "文学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-fa04fc70721f",
+          "program_as_extracted": "日语",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://sfl.csu.edu.cn/info/1232/9529.htm",
+          "records": 90
+        }
+      ]
+    },
+    {
+      "department": "物理学院",
+      "program_code": "070202",
+      "name": "应用物理学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-e562cbee6c84-d98d26cc",
+          "program_as_extracted": "应用物理学",
+          "track": "ordinary",
+          "plan_year": 2024,
+          "source_url": "https://wl.csu.edu.cn/info/1020/6817.htm",
+          "records": 65
+        },
+        {
+          "source_id": "source-e562cbee6c84-e282eb58",
+          "program_as_extracted": "应用物理学拔尖人才培养",
+          "track": "special",
+          "plan_year": 2024,
+          "source_url": "https://wl.csu.edu.cn/info/1020/6817.htm",
+          "records": 69
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-35678d04",
+          "program_as_extracted": "应用物理学",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://wl.csu.edu.cn/info/1020/6816.htm",
+          "records": 64
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-fc15ea54",
+          "program_as_extracted": "应用物理学拔尖人才培养",
+          "track": "special",
+          "plan_year": 2023,
+          "source_url": "https://wl.csu.edu.cn/info/1020/6816.htm",
+          "records": 68
+        }
+      ]
+    },
+    {
+      "department": "物理学院",
+      "program_code": "080705",
+      "name": "光电信息科学与工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-e562cbee6c84-cc64499a",
+          "program_as_extracted": "光电信息科学与工程",
+          "track": "ordinary",
+          "plan_year": 2024,
+          "source_url": "https://wl.csu.edu.cn/info/1020/6817.htm",
+          "records": 75
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-5f69cbec",
+          "program_as_extracted": "光电信息科学与工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://wl.csu.edu.cn/info/1020/6816.htm",
+          "records": 74
+        }
+      ]
+    },
+    {
+      "department": "湘雅公共卫生学院",
+      "program_code": "100401K",
+      "name": "预防医学",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "湘雅护理学院",
+      "program_code": "101101K",
+      "name": "护理学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "湘雅基础医学院",
+      "program_code": "100901K",
+      "name": "法医学",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "湘雅基础医学院",
+      "program_code": "100101K",
+      "name": "基础医学",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "湘雅基础医学院",
+      "program_code": "082601",
+      "name": "生物医学工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "湘雅口腔医学院",
+      "program_code": "100301K",
+      "name": "口腔医学",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "湘雅口腔医学院",
+      "program_code": "100301K",
+      "name": "口腔医学(5+3)",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "湘雅药学院",
+      "program_code": "100701",
+      "name": "药学",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "湘雅医学院",
+      "program_code": "100201K",
+      "name": "临床医学",
+      "degree": "医学",
+      "duration": "五年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "湘雅医学院",
+      "program_code": "100201K",
+      "name": "临床医学",
+      "degree": "医学",
+      "duration": "八年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "湘雅医学院",
+      "program_code": "101001",
+      "name": "医学检验技术",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "冶金与环境学院",
+      "program_code": "080404",
+      "name": "冶金工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-94a20b7556b9",
+          "program_as_extracted": "冶金工程卓越人才培养",
+          "track": "special",
+          "plan_year": 2023,
+          "source_url": "https://smse.csu.edu.cn/info/1065/5184.htm",
+          "records": 77
+        },
+        {
+          "source_id": "source-bc3766d0e595",
+          "program_as_extracted": "冶金工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://smse.csu.edu.cn/info/1058/5179.htm",
+          "records": 112
+        }
+      ]
+    },
+    {
+      "department": "冶金与环境学院",
+      "program_code": "080414T",
+      "name": "新能源材料与器件",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-4b436fe20fa7",
+          "program_as_extracted": "新能源材料与器件",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://smse.csu.edu.cn/info/1065/5175.htm",
+          "records": 98
+        }
+      ]
+    },
+    {
+      "department": "冶金与环境学院",
+      "program_code": "082502",
+      "name": "环境工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-7a14468b9e1d",
+          "program_as_extracted": "环境工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://smse.csu.edu.cn/info/1065/5178.htm",
+          "records": 83
+        }
+      ]
+    },
+    {
+      "department": "资源加工与生物工程学院",
+      "program_code": "080406",
+      "name": "无机非金属材料工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-4e0642e10b96",
+          "program_as_extracted": "无机非金属材料工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://mpb.csu.edu.cn/info/1043/3573.htm",
+          "records": 82
+        }
+      ]
+    },
+    {
+      "department": "资源加工与生物工程学院",
+      "program_code": "081503",
+      "name": "矿物加工工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-02af2a845c6e",
+          "program_as_extracted": "矿物加工工程卓越人才培养",
+          "track": "special",
+          "plan_year": 2023,
+          "source_url": "https://mpb.csu.edu.cn/info/1043/3626.htm",
+          "records": 102
+        },
+        {
+          "source_id": "source-d54c1549bc06",
+          "program_as_extracted": "矿物加工工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://mpb.csu.edu.cn/info/1043/3570.htm",
+          "records": 87
+        }
+      ]
+    },
+    {
+      "department": "资源加工与生物工程学院",
+      "program_code": "083001",
+      "name": "生物工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-37ff7c52da21",
+          "program_as_extracted": "生物工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://mpb.csu.edu.cn/info/1043/3571.htm",
+          "records": 85
+        }
+      ]
+    },
+    {
+      "department": "资源加工与生物工程学院",
+      "program_code": "071002",
+      "name": "生物技术",
+      "degree": "理学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "mpb-plan",
+          "program_as_extracted": "生物技术",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://mpb.csu.edu.cn/__local/B/F4/F2/FF0DC62CE36406F193B02B69039_690435BF_DDFB9.pdf",
+          "records": 85
+        }
+      ]
+    },
+    {
+      "department": "资源与安全工程学院",
+      "program_code": "081005T",
+      "name": "城市地下空间工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "historical_source_only",
+      "plan_sources": [
+        {
+          "source_id": "source-6cc4e042cc5f",
+          "program_as_extracted": "城市地下空间专业",
+          "track": "ordinary",
+          "plan_year": 2016,
+          "source_url": "https://srse.csu.edu.cn/jyjx/bksjy/pyfa.htm",
+          "records": 84
+        }
+      ]
+    },
+    {
+      "department": "资源与安全工程学院",
+      "program_code": "081501",
+      "name": "采矿工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "historical_source_only",
+      "plan_sources": [
+        {
+          "source_id": "source-f1d9e5c48f87",
+          "program_as_extracted": "采矿工程",
+          "track": "ordinary",
+          "plan_year": 2016,
+          "source_url": "https://srse.csu.edu.cn/jyjx/bksjy/pyfa.htm",
+          "records": 76
+        }
+      ]
+    },
+    {
+      "department": "资源与安全工程学院",
+      "program_code": "082901",
+      "name": "安全工程",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "historical_source_only",
+      "plan_sources": [
+        {
+          "source_id": "source-850f53be10f1",
+          "program_as_extracted": "安全工程",
+          "track": "ordinary",
+          "plan_year": 2016,
+          "source_url": "https://srse.csu.edu.cn/jyjx/bksjy/pyfa.htm",
+          "records": 88
+        }
+      ]
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "080301",
+      "name": "测控技术与仪器",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-8772309d4c42",
+          "program_as_extracted": "测控技术与仪器",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://soa.csu.edu.cn/info/1072/7800.htm",
+          "records": 93
+        }
+      ]
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "080601",
+      "name": "电气工程及其自动化",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-8440d0cc9c70",
+          "program_as_extracted": "电气工程及其自动化",
+          "track": "ordinary",
+          "plan_year": 2025,
+          "source_url": "https://see.csu.edu.cn/info/1126/1308.htm",
+          "records": 65
+        },
+        {
+          "source_id": "source-8b9664d6b291",
+          "program_as_extracted": "电气工程及其自动化",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://see.csu.edu.cn/info/1126/1307.htm",
+          "records": 92
+        }
+      ]
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "080801",
+      "name": "自动化",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-2c04a5690c1e",
+          "program_as_extracted": "自动化",
+          "track": "ordinary",
+          "plan_year": 2025,
+          "source_url": "https://soa.csu.edu.cn/info/1072/9061.htm",
+          "records": 71
+        },
+        {
+          "source_id": "source-71fed65f09c7",
+          "program_as_extracted": "自动化卓越人才培养",
+          "track": "special",
+          "plan_year": 2023,
+          "source_url": "https://soa.csu.edu.cn/info/1072/7806.htm",
+          "records": 97
+        },
+        {
+          "source_id": "source-6ecc9dad53af",
+          "program_as_extracted": "自动化",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://soa.csu.edu.cn/info/1072/7804.htm",
+          "records": 95
+        }
+      ]
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "080717T",
+      "name": "人工智能",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "",
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-fe82a8cf58a8",
+          "program_as_extracted": "人工智能",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://soa.csu.edu.cn/info/1072/7803.htm",
+          "records": 78
+        }
+      ]
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "080907T",
+      "name": "智能科学与技术",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    },
+    {
+      "department": "自动化学院",
+      "program_code": "082103",
+      "name": "探测制导与控制技术",
+      "degree": "工学",
+      "duration": "四年",
+      "notes": "停止招生",
+      "status": "plan_source_missing",
+      "plan_sources": []
+    }
+  ]
+}
