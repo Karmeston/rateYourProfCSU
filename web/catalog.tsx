@@ -40,11 +40,7 @@ function Search({ route }: { route: CatalogRoute }) {
         value={query}
         onChange={(event) => setQuery(event.target.value)}
         aria-label="搜索课程名称或代码"
-        placeholder={
-          route.page === 'saved'
-            ? '在收藏中搜索课程名称或代码'
-            : '搜索课程名称或代码，找到你的下一门课'
-        }
+        placeholder={route.page === 'saved' ? '在收藏中搜索课程名称或代码' : '搜索课程名称或代码'}
       />
       {query ? (
         <button
@@ -79,14 +75,14 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
         <SaveButton id={course.id} name={course.name} />
       </div>
       <div className="card-content">
-        <h3>
+        <h2>
           <a
             className="course-link"
             href={`#/courses/${course.id}?from=${encodeURIComponent(from)}`}
           >
             {course.name}
           </a>
-        </h3>
+        </h2>
         <p className="metadata">
           {course.department === '待核实' ? '开课学院待补充' : course.department}
         </p>
@@ -99,9 +95,7 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
         {course.average === null ? (
           <div className="unrated">
             <span>—</span>
-            <div>
-              等待第一条评价<small>你的体验也很重要</small>
-            </div>
+            <div>暂无评价</div>
           </div>
         ) : (
           <div
@@ -118,55 +112,6 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
         <Icon name="arrow" size={19} />
       </div>
     </li>
-  );
-}
-
-function CatalogSidebar() {
-  return (
-    <aside className="catalog-sidebar" aria-label="选课参考">
-      <section className="sidebar-panel tips-panel">
-        <p className="eyebrow">
-          <Icon name="info" size={15} /> 选课小贴士
-        </p>
-        <h3>
-          评分之外，
-          <br />
-          还有故事。
-        </h3>
-        <ol className="tips">
-          <li>
-            <span>01</span>
-            <p>看具体体验，了解课程节奏、作业与考核。</p>
-          </li>
-          <li>
-            <span>02</span>
-            <p>结合评价数量和自己的兴趣，找到适合的课。</p>
-          </li>
-          <li>
-            <span>03</span>
-            <p>先收藏，再比较。给选择留一点思考的时间。</p>
-          </li>
-        </ol>
-        <a className="text-link" href="#/guide">
-          了解评价与收藏 <Icon name="arrow" size={16} />
-        </a>
-      </section>
-      <section className="sidebar-panel resource-panel">
-        <p className="eyebrow">课程资料</p>
-        <h3>更多选课依据</h3>
-        <div className="placeholder-row">
-          <span>专业培养方案</span>
-          <span>待补充</span>
-        </div>
-        <div className="placeholder-row">
-          <span>学分与考核方式</span>
-          <span>待补充</span>
-        </div>
-        <p className="fine-print">
-          课程资料正在整理。未核实的信息会明确标注，避免影响你的选课判断。
-        </p>
-      </section>
-    </aside>
   );
 }
 
@@ -206,49 +151,16 @@ export function Catalog({ route }: { route: CatalogRoute }) {
   const departments = data?.facets.departments ?? [];
   return (
     <div className="catalog-page">
-      {route.home ? (
-        <section className="hero">
-          <div className="hero-label">
-            <span className="status-dot" /> 中南大学 · 学生课程评价
-          </div>
-          <h1>
-            选课之前，
-            <br />
-            听听<span>上过的人</span>怎么说。
-          </h1>
-          <p>发现值得上的课，也分享你自己的课堂体验。</p>
-          <Search route={route} />
-          <div className="hero-stats">
-            <span>
-              <strong>{data?.stats.courseCount ?? '—'}</strong> 门在录课程
-            </span>
-            <i />
-            <span>
-              <strong>{data?.stats.reviewCount ?? '—'}</strong> 条同学评价
-            </span>
-            <i />
-            <a href="#/saved">
-              <Icon name="bookmark" size={15} /> 收藏心仪课程
-            </a>
-          </div>
-        </section>
-      ) : (
-        <section className="catalog-intro">
-          <p className="eyebrow">{saved ? 'YOUR SHORTLIST' : 'EXPLORE COURSES'}</p>
-          <h1>{saved ? '把感兴趣的课留在这里。' : '找到适合你的那门课。'}</h1>
-          <p>
-            {saved
-              ? '收藏保存在当前浏览器，方便下次回来继续比较。'
-              : '从课程出发，看看不同学院的课堂体验。'}
-          </p>
-          <Search route={route} />
-        </section>
-      )}
+      <section className="catalog-intro">
+        <h1>{saved ? '我的收藏' : '课程广场'}</h1>
+        {saved && <p className="fine-print">收藏保存在当前浏览器。</p>}
+        <Search route={route} />
+      </section>
       <div className="catalog-layout">
         <section className="catalog-content" aria-label={title}>
           <div className="section-heading">
             <div>
-              <h2>{title}</h2>
+              {route.q && <strong className="results-title">{title}</strong>}
               <span className="result-count" role="status">
                 {saved && !ids.length ? '0 门课程' : data ? `${data.total} 门课程` : '正在查找…'}
               </span>
@@ -431,7 +343,6 @@ export function Catalog({ route }: { route: CatalogRoute }) {
             </EmptyState>
           )}
         </section>
-        <CatalogSidebar />
       </div>
     </div>
   );

@@ -147,17 +147,6 @@ svg {
   color: #737d8b;
   background: transparent;
 }
-.text-link {
-  display: inline-flex;
-  gap: 0.5rem;
-  align-items: center;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  text-decoration: none;
-}
-.text-link:hover {
-  text-decoration: underline;
-}
 .text-button {
   padding: 0.3rem;
   border: 0;
@@ -173,24 +162,6 @@ svg {
 .fine-print {
   font-size: 0.75rem;
   line-height: 1.8;
-}
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--muted);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.65rem;
-}
-.status-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #548978;
-  flex-shrink: 0;
 }
 
 /* Site frame and navigation. */
@@ -280,15 +251,6 @@ svg {
   border-radius: 4px;
   background: #ffffff12;
 }
-.header-note {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  color: #99a6b8;
-  font-size: 0.7rem;
-  margin-left: auto;
-  white-space: nowrap;
-}
 main {
   max-width: 1200px;
   min-height: 72vh;
@@ -299,77 +261,8 @@ main {
 main:focus {
   outline: none;
 }
-.site-footer {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  max-width: 1136px;
-  margin: auto;
-  padding: 2rem 0 2.5rem;
-  border-top: 1px solid var(--border);
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-.site-footer strong {
-  font-size: 0.95rem;
-  color: #344052;
-  letter-spacing: -0.03em;
-}
-.site-footer strong span {
-  color: #768ca4;
-  font-weight: 500;
-}
-.site-footer p {
-  margin-top: 0.3rem;
-}
-.site-footer nav {
-  display: flex;
-  gap: 1.5rem;
-  margin-left: auto;
-}
-.site-footer a {
-  color: var(--muted);
-  text-decoration: none;
-}
-.site-footer a:hover {
-  color: var(--accent);
-}
-.site-footer > small {
-  font-size: 0.7rem;
-}
 
-/* Discovery: a compact hero and a filterable, consistent catalog. */
-.hero {
-  padding: 3.1rem 0 2.9rem;
-  text-align: center;
-}
-.hero-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.2rem 0.7rem;
-  color: #5a6777;
-  font-size: 0.7rem;
-  border: 1px solid #dce1e5;
-  border-radius: 30px;
-  background: #fafafa;
-  margin-bottom: 1rem;
-}
-.hero h1 {
-  font-size: clamp(2.15rem, 4.2vw, 3rem);
-  line-height: 1.35;
-  font-weight: 650;
-  letter-spacing: -0.035em;
-}
-.hero h1 span {
-  color: var(--accent);
-}
-.hero > p {
-  color: var(--muted);
-  font-size: 0.875rem;
-  margin-top: 0.9rem;
-}
+/* Course discovery: search, filters and the catalog. */
 .search {
   display: flex;
   align-items: center;
@@ -423,53 +316,12 @@ main:focus {
   color: #87919b;
   font-size: 0.75rem;
 }
-.hero-stats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  color: #77808b;
-  font-size: 0.7rem;
-  margin-top: 1.2rem;
-}
-.hero-stats strong {
-  font-weight: 600;
-  color: #455467;
-  margin-right: 0.2rem;
-  font-variant-numeric: tabular-nums;
-}
-.hero-stats i {
-  width: 1px;
-  height: 12px;
-  background: #d9dde1;
-}
-.hero-stats a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  color: #77808b;
-  text-decoration: none;
-}
-.hero-stats a:hover {
-  color: var(--accent);
-}
 .catalog-intro {
-  padding: 2.8rem 0 2.5rem;
-}
-.catalog-intro > p:not(.eyebrow) {
-  color: var(--muted);
-  font-size: 0.875rem;
-  margin-top: 0.6rem;
+  padding: 1.75rem 0 1.5rem;
 }
 .catalog-intro .search {
   margin-left: 0;
-  margin-top: 1.4rem;
-}
-.catalog-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 256px;
-  gap: 1.6rem;
-  align-items: start;
+  margin-top: 1rem;
 }
 .catalog-content {
   min-width: 0;
@@ -594,7 +446,7 @@ select {
   gap: 1rem;
 }
 .course-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .course-card {
   position: relative;
@@ -651,7 +503,7 @@ select {
   padding: 0.4rem 0 1rem;
   flex: 1;
 }
-.course-card h3 {
+.course-card h2 {
   font-size: 1.075rem;
   line-height: 1.5;
   margin-bottom: 0.4rem;
@@ -814,76 +666,6 @@ select {
 }
 
 /* Context panels, empty states and feedback. */
-.catalog-sidebar,
-.detail-sidebar {
-  display: grid;
-  gap: 1rem;
-}
-.catalog-sidebar {
-  padding-top: 0.25rem;
-}
-.sidebar-panel {
-  background: #fff;
-  border: 1px solid #dce0e4;
-  border-radius: var(--radius);
-  padding: 1.3rem;
-}
-.tips-panel {
-  background: #f8fafb;
-}
-.tips-panel h3 {
-  font-size: 1.3rem;
-  line-height: 1.55;
-  color: #3c5068;
-}
-.tips {
-  list-style: none;
-  margin: 1.15rem 0 1.4rem;
-  padding: 0;
-}
-.tips li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.7rem;
-  margin-top: 0.9rem;
-}
-.tips li > span {
-  color: #91a1b3;
-  font-size: 0.65rem;
-  font-variant-numeric: tabular-nums;
-  flex-shrink: 0;
-}
-.tips p {
-  font-size: 0.75rem;
-  color: #738091;
-  line-height: 1.9;
-}
-.resource-panel h3 {
-  font-size: 0.9rem;
-  margin-bottom: 0.6rem;
-}
-.placeholder-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid #eef0f2;
-  font-size: 0.75rem;
-  color: #697585;
-  gap: 0.5rem;
-}
-.placeholder-row span:last-child {
-  color: #939ca7;
-  font-size: 0.65rem;
-  background: #f3f4f5;
-  padding: 0.05rem 0.3rem;
-  border-radius: 3px;
-  white-space: nowrap;
-}
-.resource-panel .fine-print {
-  margin-top: 0.85rem;
-  color: #89939f;
-}
 .empty-state,
 .error-state {
   display: flex;
@@ -1069,12 +851,6 @@ select {
   border-radius: 4px;
   margin-top: 0.5rem;
 }
-.detail-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 282px;
-  gap: 2rem;
-  align-items: start;
-}
 .course-facts {
   margin: 0.8rem 0 1rem;
   font-size: 0.75rem;
@@ -1098,22 +874,6 @@ select {
 .course-facts dd.pending {
   color: #9ba4ae;
 }
-.review-prompt {
-  background: #f8fafb;
-}
-.review-prompt > svg {
-  color: #6d8dab;
-  margin-bottom: 0.7rem;
-}
-.review-prompt h3 {
-  font-size: 1rem;
-  color: #455a70;
-}
-.review-prompt p {
-  color: #7a8797;
-  font-size: 0.75rem;
-  margin: 0.7rem 0 1rem;
-}
 .detail-loading,
 .review-loading {
   padding: 2rem;
@@ -1127,9 +887,6 @@ select {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-}
-.reviews-heading .eyebrow {
-  margin-bottom: 0.3rem;
 }
 .reviews-heading h2 {
   font-size: 1.2rem;
@@ -1263,21 +1020,6 @@ select {
   gap: 0.6rem;
   color: #526277;
   font-size: 0.8125rem;
-}
-.review-author small {
-  display: block;
-  font-size: 0.62rem;
-  color: #929da9;
-}
-.avatar {
-  display: inline-grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #edf1f5;
-  font-size: 0.75rem;
-  color: #7d90a6;
 }
 .review-body {
   white-space: pre-wrap;
@@ -1480,52 +1222,6 @@ select {
 .guide-page {
   padding-top: 2rem;
 }
-.guide-intro {
-  color: var(--muted);
-  font-size: 0.875rem;
-  margin: 1rem 0 2rem;
-  max-width: 580px;
-}
-.guide-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-.guide-number {
-  font-size: 1.6rem;
-  color: #afbdcb;
-  font-weight: 300;
-}
-.guide-grid h2 {
-  font-size: 1rem;
-  margin: 0.7rem 0;
-}
-.guide-grid p,
-.guide-storage p {
-  color: #7a8796;
-  font-size: 0.8125rem;
-  line-height: 1.9;
-}
-.guide-storage {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  margin: 1.5rem 0 2.5rem;
-  background: #f8fafb;
-}
-.guide-storage > svg {
-  color: #6b8dac;
-}
-.guide-storage h2 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-.guide-storage > div {
-  flex: 1;
-}
-.guide-storage > a {
-  flex-shrink: 0;
-}
 .guide-faq {
   max-width: 800px;
 }
@@ -1565,15 +1261,8 @@ select {
   .header-inner {
     gap: 1.5rem;
   }
-  .header-note {
-    display: none;
-  }
   .primary-nav {
     margin-left: auto;
-  }
-  .catalog-layout {
-    grid-template-columns: minmax(0, 1fr) 225px;
-    gap: 1.2rem;
   }
   .catalog-toolbar {
     align-items: flex-start;
@@ -1591,10 +1280,6 @@ select {
   .select-filters label:first-child select {
     width: 100%;
   }
-  .detail-layout {
-    grid-template-columns: minmax(0, 1fr) 250px;
-    gap: 1.2rem;
-  }
   .rating-summary {
     gap: 1rem;
     padding: 1.25rem;
@@ -1602,23 +1287,8 @@ select {
   .rating-score {
     min-width: 100px;
   }
-  .site-footer {
-    margin-inline: 2rem;
-  }
-  .site-footer > small {
-    display: none;
-  }
 }
 @media (max-width: 800px) {
-  .catalog-layout,
-  .detail-layout {
-    grid-template-columns: 1fr;
-  }
-  .catalog-sidebar,
-  .detail-sidebar {
-    grid-template-columns: 1fr 1fr;
-    margin-top: 1rem;
-  }
   .catalog-toolbar {
     align-items: center;
     flex-direction: row;
@@ -1629,15 +1299,6 @@ select {
   .detail-heading {
     align-items: flex-start;
     flex-direction: column;
-  }
-  .guide-grid {
-    grid-template-columns: 1fr;
-  }
-  .guide-storage {
-    flex-wrap: wrap;
-  }
-  .guide-storage > a {
-    margin-left: 3.2rem;
   }
 }
 @media (max-width: 560px) {
@@ -1668,18 +1329,6 @@ select {
   main {
     padding: 0 1.1rem 2.5rem;
   }
-  .hero {
-    padding: 2.3rem 0 2.2rem;
-  }
-  .hero h1 {
-    font-size: 2.15rem;
-  }
-  .hero > p {
-    font-size: 0.75rem;
-  }
-  .hero-label {
-    font-size: 0.65rem;
-  }
   .search {
     padding-left: 0.75rem;
     gap: 0.5rem;
@@ -1701,16 +1350,6 @@ select {
   }
   .search .primary-button svg {
     display: none;
-  }
-  .hero-stats {
-    gap: 0.65rem;
-    font-size: 0.6rem;
-  }
-  .hero-stats a {
-    gap: 0.2rem;
-  }
-  .hero-stats a svg {
-    width: 12px;
   }
   .section-heading > div:first-child {
     align-items: flex-start;
@@ -1749,7 +1388,7 @@ select {
     width: 44px;
     height: 44px;
   }
-  .course-card h3 {
+  .course-card h2 {
     font-size: 1.05rem;
   }
   .card-content {
@@ -1773,18 +1412,8 @@ select {
     text-align: right;
     gap: 0.2rem;
   }
-  .catalog-sidebar,
-  .detail-sidebar {
-    grid-template-columns: 1fr;
-  }
-  .catalog-sidebar .tips-panel br {
-    display: none;
-  }
-  .catalog-sidebar {
-    margin-top: 0.5rem;
-  }
   .catalog-intro {
-    padding: 2rem 0;
+    padding: 1.75rem 0 1.5rem;
   }
   .catalog-intro h1,
   .guide-page h1 {
@@ -1792,15 +1421,6 @@ select {
   }
   .catalog-bottom {
     margin-bottom: 0.5rem;
-  }
-  .site-footer {
-    margin: 0 1.1rem;
-    padding: 1.7rem 0;
-    gap: 1.3rem;
-  }
-  .site-footer nav {
-    margin-left: 0;
-    width: 100%;
   }
   .detail-page {
     padding-top: 1.5rem;
@@ -1839,9 +1459,6 @@ select {
   .reviews-heading h2 {
     font-size: 1.1rem;
   }
-  .reviews-heading .eyebrow {
-    font-size: 0.58rem;
-  }
   .review-dialog {
     padding: 1.3rem;
     width: calc(100% - 1.5rem);
@@ -1849,19 +1466,6 @@ select {
   }
   .dialog-heading h2 {
     font-size: 1.15rem;
-  }
-  .dialog-heading .eyebrow {
-    font-size: 0.6rem;
-  }
-  .guide-storage {
-    align-items: flex-start;
-    gap: 0.8rem;
-  }
-  .guide-storage > div {
-    min-width: 0;
-  }
-  .guide-storage > a {
-    margin-left: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1871,5 +1475,36 @@ select {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+}
+.results-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.detail-page {
+  max-width: 960px;
+  margin-inline: auto;
+}
+.course-info {
+  margin: 0 0 1.5rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.course-info summary {
+  cursor: pointer;
+  width: fit-content;
+}
+.course-info summary span {
+  margin-left: 0.5rem;
+}
+.course-info .course-facts {
+  max-width: 450px;
+}
+.guide-faq {
+  margin-top: 1.5rem;
+}
+@media (min-width: 561px) and (max-width: 1000px) {
+  .course-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

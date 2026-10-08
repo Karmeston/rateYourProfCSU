@@ -140,8 +140,7 @@ function ReviewForm({
     >
       <div className="dialog-heading">
         <div>
-          <p className="eyebrow">SHARE YOUR EXPERIENCE</p>
-          <h2 id="review-form-title">{submitted ? '谢谢你的分享' : '说说这门课怎么样。'}</h2>
+          <h2 id="review-form-title">{submitted ? '评价已发布' : '写评价'}</h2>
         </div>
         <button
           className="icon-button"
@@ -157,7 +156,7 @@ function ReviewForm({
           <span>
             <Icon name="check" size={30} />
           </span>
-          <p role="status">评价已发布。下一位同学可以看到你的课堂体验了。</p>
+          <p role="status">评价已发布。</p>
           <button className="primary-button" onClick={() => dialog.current?.close()}>
             完成
           </button>
@@ -259,8 +258,7 @@ export function Reviews({
     <section className="reviews" aria-labelledby="reviews-heading">
       <div className="reviews-heading">
         <div>
-          <p className="eyebrow">FROM YOUR CLASSMATES</p>
-          <h2 id="reviews-heading">同学们怎么说</h2>
+          <h2 id="reviews-heading">课程评价</h2>
         </div>
         <button className="primary-button" ref={writeButton} onClick={() => setWriting(true)}>
           <Icon name="message" size={17} />
@@ -350,14 +348,7 @@ export function Reviews({
               {data.reviews.map((row) => (
                 <li key={row.id}>
                   <div className="review-meta">
-                    <span className="review-author">
-                      <span className="avatar" aria-hidden="true">
-                        同
-                      </span>
-                      <span>
-                        匿名同学<small>课堂体验分享</small>
-                      </span>
-                    </span>
+                    <span className="review-author">匿名同学</span>
                     <time dateTime={row.created_at}>
                       {new Date(row.created_at).toLocaleDateString('zh-CN')}
                     </time>

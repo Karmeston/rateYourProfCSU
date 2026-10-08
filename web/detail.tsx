@@ -128,50 +128,22 @@ export function Detail({
               </button>
             </div>
           )}
-          <div className="detail-layout">
-            <Reviews kind={kind} id={id} name={row.name} />
-            <aside className="detail-sidebar">
-              <section className="sidebar-panel">
-                <p className="eyebrow">COURSE INFORMATION</p>
-                <h3>{course ? '课程档案' : '教师资料'}</h3>
-                <dl className="course-facts">
-                  <div>
-                    <dt>开课学院</dt>
-                    <dd>{row.department === '待核实' ? '待补充' : row.department}</dd>
+          {course && (
+            <details className="course-info">
+              <summary>
+                课程资料 <span className="fine-print">待补充</span>
+              </summary>
+              <dl className="course-facts">
+                {['课程学分', '适用专业', '考核方式', '课程大纲'].map((label) => (
+                  <div key={label}>
+                    <dt>{label}</dt>
+                    <dd className="pending">待补充</dd>
                   </div>
-                  {course && (
-                    <>
-                      <div>
-                        <dt>课程类型</dt>
-                        <dd>{course.category ? courseCategories[course.category] : '待补充'}</dd>
-                      </div>
-                      {['课程学分', '适用专业', '考核方式', '课程大纲'].map((label) => (
-                        <div key={label}>
-                          <dt>{label}</dt>
-                          <dd className="pending">待补充</dd>
-                        </div>
-                      ))}
-                    </>
-                  )}
-                </dl>
-                <p className="fine-print">
-                  资料经核实后补充。选课要求请以学校当期通知和培养方案为准。
-                </p>
-              </section>
-              <section className="sidebar-panel review-prompt">
-                <Icon name="message" size={24} />
-                <h3>
-                  你的经历，
-                  <br />
-                  可能帮到下一位同学。
-                </h3>
-                <p>分享课程节奏、作业与收获，让评价更有参考价值。</p>
-                <a className="text-link" href="#/guide">
-                  看看如何写评价 <Icon name="arrow" size={16} />
-                </a>
-              </section>
-            </aside>
-          </div>
+                ))}
+              </dl>
+            </details>
+          )}
+          <Reviews kind={kind} id={id} name={row.name} />
         </>
       )}
     </div>

@@ -18,7 +18,6 @@ function TeacherCatalog({ q, offset }: { q: string; offset: number }) {
   }>(q ? `/api/teachers?q=${encodeURIComponent(q)}&offset=${offset}` : null);
   return (
     <section className="catalog-intro">
-      <p className="eyebrow">TEACHER SEARCH</p>
       <h1>教师搜索</h1>
       <form
         className="search"
@@ -162,10 +161,6 @@ function App() {
               </a>
             )}
           </nav>
-          <span className="header-note">
-            <span className="status-dot" />
-            真实体验，匿名分享
-          </span>
         </div>
       </header>
       <main id="main-content" ref={main} tabIndex={-1}>
@@ -195,20 +190,6 @@ function App() {
           </EmptyState>
         )}
       </main>
-      <footer className="site-footer">
-        <div>
-          <strong>
-            rateMyProf<span>CSU</span>
-          </strong>
-          <p>每门课，都有值得被听见的故事。</p>
-        </div>
-        <nav aria-label="页脚导航">
-          <a href="#/courses">发现课程</a>
-          <a href="#/saved">我的收藏</a>
-          <a href="#/guide">使用指南</a>
-        </nav>
-        <small>由同学的体验，慢慢搭建。</small>
-      </footer>
     </>
   );
 }
