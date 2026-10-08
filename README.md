@@ -1,12 +1,12 @@
 # rateMyProfCSU
 
-面向中南大学学生的教师与课程评价平台，采用两个独立入口：
-- 教师：按教师浏览并评价教师，课程与修读时间由评论者自行叙述。
-- 课程：按课程浏览并评价课程，任课教师可在正文补充。
+面向中南大学学生的课程评价平台。保留深蓝导航、灰白背景和蓝色交互色，以课程广场、我的收藏和使用指南作为主要入口。
 
-目前实现独立列表、名称搜索、分页、详情、教师官网链接及星级评论。评价区包括平均分、五星分布、最新评论和投稿弹窗。没有评价时显示暂无评分。
+课程支持名称/代码搜索、类型与学院组合筛选、评分/评价数量/名称排序、网格与列表切换。详情可收藏、复制分享链接、保留筛选返回列表；评价支持星级筛选、最新评论/赞同最多排序、匿名投稿、草稿恢复、赞同与单层回复。没有评价时不显示零分。
 
-教师首页只显示搜索入口，提交非空关键词后才请求并展示匹配教师；空输入或纯空白不请求列表。课程页继续展示分类和列表。这是页面展示规则，不是教师资料访问权限限制。
+教师页面当前由 `web/features.ts` 的开关关闭，旧教师页面链接返回课程广场；独立教师 API 继续保留。开启后提供教师搜索、详情与评价。未核实的培养方案、学分与考核资料显示明确占位，尚未导入已采集数据。
+
+设计依据、验收记录与回退方式见 [界面改造说明](docs/ui-improvements.md)。
 
 ## 技术与目录
 
@@ -14,9 +14,12 @@ TypeScript、React、Vite、Hono、Cloudflare Workers、D1；不依赖常驻进�
 
 - `web/`：前端页面、系统字体样式、静态资源缓存。
 - `src/index.ts`：只读 API、服务端输入验证、参数化 SQL。
+- `src/course-catalog.ts`：课程搜索、组合筛选、排序、收藏 ID 查询、目录统计。
+- `shared/catalog.ts`：前后端共用的课程类型与筛选枚举。
 - `src/reviews.ts`：评价列表、星级统计及投稿（验证阶段直接发布）。
 - `migrations/`：按顺序执行的迁移，已应用文件不修改。
 - `seeds/local.sql`：虚构演示资料，仅用于本地。
+- `seeds/preview.sql`：课程界面验收专用的虚构课程与评价，配合独立本地数据库使用。
 - `tests/`：临时 D1 API 测试及 SQLite 约束和迁移测试。
 - `data/`：已整理的官网来源资料，不自动导入数据库。
 - `scripts/cloudflare-network.cjs`：部署 CLI 的本机网络兼容配置。
@@ -47,24 +50,28 @@ build 仅打包和 dry-run，不发布。测试不修改开发数据库。生成
 | GET 接口 | 返回 |
 | --- | --- |
 | `/api/teachers` | teachers、limit、offset、q、hasMore |
-| `/api/courses` | courses、limit、offset、q、hasMore |
+| `/api/courses` | courses、limit、offset、q、category、department、sort、total、hasMore、facets、stats |
 | `/api/teachers/:id` | teacher |
 | `/api/courses/:id` | course |
 | `/api/health` | status，仅检查服务响应 |
 
-列表支持 limit（1–100，默认20）、offset（0–100000，默认0）、q（最多100字符的名称搜索），按 ID 升序。搜索字面匹配，百分号和下划线不是通配符。详情不接受查询参数。重复、未知或非法参数返回400，不存在的详情返回404，数据库故障返回通用500，详细错误仅记服务端日志。
+列表支持 limit（1–100，默认20）、offset（0–100000，默认0）、q（最多100字符），默认按 ID 升序。教师按名称搜索；课程按名称或代码搜索，ASCII 英文不区分大小写。搜索字面匹配，百分号和下划线不是通配符。详情不接受查询参数。重复、未知或非法参数返回400，不存在的详情返回404，数据库故障返回通用500，详细错误仅记服务端日志。
+
+课程列表另支持 category（major/elective）、department（学院名精确匹配）、sort（default/rating/reviews/name）及 ids（最多100个逗号分隔的非零安全整数，用于本地收藏查询）。ids 自动去重，不能读取隐藏课程。total 为筛选后的总数；facets.departments 为整个可见目录的学院及数量；stats 为整个可见目录的课程数、已发布评价数和已评价课程数。评分排序将未评分课程放在最后，并以 ID 保证稳定顺序。URL 保留搜索、类型、学院、排序及分页，详情返回时恢复原条件。
 
 旧的 `/api/courses/:id/offerings` 已移除。
 
 ## 星级评论
 
-`GET /api/teachers/:id/reviews` 与 `GET /api/courses/:id/reviews` 返回 reviews、summary、offset、limit、hasMore。只接受 offset（0–100000，默认0），每页20条，按 created_at、id 降序。summary 包含所有已公开评价的 count、average 和五星分布，不只统计当前页。没有公开评价时 average 为 null。
+`GET /api/teachers/:id/reviews` 与 `GET /api/courses/:id/reviews` 返回 reviews、summary、total、offset、limit、sort、rating、hasMore。接受 offset（0–100000，默认0）、rating（1–5，可省略）与 sort（latest/helpful，默认 latest），每页20条。latest 按 created_at、id 降序；helpful 按赞同数降序、不赞同数升序，再按时间和 ID 降序。total 为匹配星级的评价数量。summary 始终包含所有已公开评价的 count、average 和五星分布，不随筛选或分页变化。没有公开评价时 average 为 null。
 
 相同路径支持 POST JSON：`{ "id": "客户端生成的 UUID v4", "rating": 5, "body": "评论正文" }`。星级为1–5整数，正文1–2000个 UTF-16 代码单元，请求体最多8192字节。服务器不接受审核状态或其他字段。原样重试相同 ID 返回202，不重复写入；同 ID 改写内容返回409。
 
 验证阶段的新投稿直接写为 published，提交后刷新评论和评分。公开列表及星级统计仍只使用 published，既有 pending 和 rejected 不自动公开。状态字段保留，用户不能通过 API 指定状态；以后需要时再恢复审核流程。
 
-评论按纯文本渲染，不执行 HTML。前端不收集姓名、学号或联系方式；公开作者统一显示匿名用户。这不代表网络服务商不保留访问日志。初始化阶段尚未接入登录、Turnstile 或频率限制；提交去重只用于网络重试，不等于防刷。
+评论按纯文本渲染，不执行 HTML。前端不收集姓名、学号或联系方式；公开作者统一显示匿名同学。这不代表网络服务商不保留访问日志。初始化阶段尚未接入登录、Turnstile 或频率限制；提交去重只用于网络重试，不等于防刷。
+
+评价草稿按对象保存在 sessionStorage，可关闭表单后恢复；重开草稿保留提交 UUID，原样重试不会重复写入。改变内容产生新的提交 UUID，成功发布后清除草稿。收藏与布局偏好保存在 localStorage；最多收藏100门课程，无账号及跨设备同步。存储不可用时界面提供说明，收藏在本次浏览中仍可使用。
 
 ## 评价互动
 
@@ -105,4 +112,4 @@ npm run deploy
 
 ## 性能
 
-使用系统字体，无远程字体、图片或 UI 组件库。搜索点击提交后请求。带哈希的 JS/CSS 缓存一年，HTML 重新验证；目录 API 成功响应在浏览器缓存60秒，评论接口使用 no-store。请求20秒超时，可重试，切页取消旧请求。
+使用系统字体、内联 SVG 图标，无远程字体、图片或 UI 组件库。搜索点击提交后请求。带哈希的 JS/CSS 缓存一年，HTML 重新验证；目录 API 保留 private/max-age=60 供其他调用方使用，页面请求使用 no-store 避免发布评价后显示旧分数；评论接口使用 no-store。请求20秒超时，可重试，切页取消旧请求且不显示前一查询结果。页面提供加载骨架、错误重试、空结果、键盘搜索快捷键 `/`、跳到主要内容、可访问表单和减少动画设置。

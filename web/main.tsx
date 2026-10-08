@@ -1,154 +1,220 @@
 import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
-import { useData } from './use-data';
-import { Reviews, Stars } from './reviews';
+import { SavedCoursesProvider, useSavedCourses } from './bookmarks';
+import { Catalog } from './catalog';
+import { Detail } from './detail';
 import { teacherPagesEnabled } from './features';
+import { Guide } from './guide';
+import { Icon } from './icons';
+import { parseRoute } from './routing';
+import { EmptyState, ErrorState } from './ui';
+import { useData } from './use-data';
 
-type Course = { id: number; code: string | null; name: string; department: string; category: 'major' | 'elective' | null; average: number | null; reviewCount: number };
-type Teacher = { id: number; name: string; department: string; profile_url: string | null };
-type Kind = 'teachers' | 'courses';
-type Page = { limit: number; offset: number; hasMore: boolean };
-type CatalogData = Page & { courses?: Course[]; teachers?: Teacher[] };
-type Details = { course?: Course; teacher?: Teacher };
-const pageSize = 20;
-
-
-function Notice({ error, retry }: { error?: string; retry: () => void }) {
-  return error
-    ? <div className="notice" role="alert"><p>{error}</p><button onClick={retry}>重新加载</button></div>
-    : <p className="notice" role="status">正在加载…</p>;
-}
-
-function Pager({ page, href }: { page: Page; href: (offset: number) => string }) {
-  if (!page.offset && !page.hasMore) return null;
-  return <nav className="pagination" aria-label="分页">
-    {page.offset > 0 ? <a href={href(Math.max(0, page.offset - pageSize))}>上一页</a> : <span>上一页</span>}
-    <span>第 {Math.floor(page.offset / pageSize) + 1} 页</span>
-    {page.hasMore ? <a href={href(page.offset + pageSize)}>下一页</a> : <span>下一页</span>}
-  </nav>;
-}
-
-function Demo() {
-  return <span className="badge">虚构演示数据</span>;
-}
-
-const labels = { teachers: '教师', courses: '课程' };
-const categories = { major: '专业课', elective: '公选课' };
-
-function Catalog({ kind, offset, q, category, home = false }: { kind: Kind; offset: number; q: string; category: string; home?: boolean }) {
-  const filter = kind === 'courses' && category ? `&category=${category}` : '';
-  const showResults = kind === 'courses' || q.trim().length > 0;
-  const { data, error, retry } = useData<CatalogData>(showResults ? `/api/${kind}?limit=${pageSize}&offset=${offset}&q=${encodeURIComponent(q.trim())}${filter}` : null);
-  const rows = data?.[kind] ?? [];
-  return <div className={home ? 'course-home' : !showResults ? 'search-home' : undefined}>
-    <section className={home ? 'search-home course-home-search' : undefined} aria-label={home ? '课程搜索' : undefined}>
-    {!home && <div className="page-heading"><h1>{!showResults ? 'rateMyProfCSU' : labels[kind]}</h1></div>}
-    {kind === 'courses' && !home && <nav className="category-filter" aria-label="课程类型">{[['', '全部'], ...Object.entries(categories)].map(([value, label]) =>
-      <a key={value} href={`#/courses?q=${encodeURIComponent(q)}${value ? `&category=${value}` : ''}`} aria-current={category === value ? 'page' : undefined}>{label}</a>
-    )}</nav>}
-    <form className="search" role="search" onSubmit={(event) => {
-      event.preventDefault();
-      const query = String(new FormData(event.currentTarget).get('q') ?? '').trim();
-      window.location.hash = `#/${kind}?q=${encodeURIComponent(query)}${filter}`;
-    }}>
-      <input name="q" type="search" maxLength={100} defaultValue={q} aria-label={`搜索${labels[kind]}`} placeholder={`搜索${labels[kind]}`} />
-      <button type="submit">搜索</button>
-    </form>
-    {home && <nav className="category-filter" aria-label="课程类型"><a href="#/courses?offset=0">全部课程</a><a href="#/courses?category=major">专业课</a><a href="#/courses?category=elective">公选课</a></nav>}
+function TeacherCatalog({ q, offset }: { q: string; offset: number }) {
+  const { data, error, retry } = useData<{
+    teachers: { id: number; name: string; department: string }[];
+    hasMore: boolean;
+  }>(q ? `/api/teachers?q=${encodeURIComponent(q)}&offset=${offset}` : null);
+  return (
+    <section className="catalog-intro">
+      <p className="eyebrow">TEACHER SEARCH</p>
+      <h1>教师搜索</h1>
+      <form
+        className="search"
+        role="search"
+        onSubmit={(event) => {
+          event.preventDefault();
+          window.location.hash = `#/teachers?q=${encodeURIComponent(String(new FormData(event.currentTarget).get('q') ?? '').trim())}`;
+        }}
+      >
+        <Icon name="search" />
+        <input name="q" aria-label="搜索教师" maxLength={100} type="search" defaultValue={q} />
+        <button className="primary-button">搜索</button>
+      </form>
+      {error ? (
+        <ErrorState message={error} retry={retry} />
+      ) : data ? (
+        <>
+          <ul className="teacher-list">
+            {data.teachers.map((teacher) => (
+              <li key={teacher.id}>
+                <a href={`#/teachers/${teacher.id}`}>
+                  <h2>{teacher.name}</h2>
+                  <p>{teacher.department}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <nav className="pagination" aria-label="教师分页">
+            {offset > 0 && (
+              <a href={`#/teachers?q=${encodeURIComponent(q)}&offset=${offset - 20}`}>上一页</a>
+            )}
+            {data.hasMore && (
+              <a href={`#/teachers?q=${encodeURIComponent(q)}&offset=${offset + 20}`}>下一页</a>
+            )}
+          </nav>
+        </>
+      ) : q ? (
+        <p role="status">正在加载…</p>
+      ) : (
+        <p>输入姓名，查找教师。</p>
+      )}
     </section>
-    {showResults && (!data ? <Notice error={error} retry={retry} /> : <>
-      {rows.length ? <ul className={home ? 'course-list course-grid' : 'course-list'}>{rows.map((row) => <li key={row.id}>
-        <a className="course-link" href={`#/${kind}/${row.id}`}>
-          <div><h2>{row.name}</h2>{'category' in row && row.category && <p className="metadata">{categories[row.category]}</p>}<p className="metadata">{row.department === '待核实' ? '开课学院待核实' : row.department}</p>{row.id < 0 && <Demo />}</div>
-          {'average' in row ? <div className="catalog-rating" aria-label={row.average === null ? '暂无评分' : `${row.average.toFixed(1)} 分，${row.reviewCount} 条评价`}>
-            {row.average === null ? <span className="metadata">暂无评分</span> : <><strong>{row.average.toFixed(1)}</strong><Stars rating={row.average} /><span className="metadata">{row.reviewCount} 条评价</span></>}
-          </div> : <span className="link-label" aria-hidden="true">→</span>}
-        </a>
-      </li>)}</ul> : <p className="notice">{q ? '没有找到匹配结果' : `暂无${labels[kind]}`}</p>}
-      <Pager page={data} href={(value) => home ? `#/?offset=${value}` : `#/${kind}?offset=${value}&q=${encodeURIComponent(q)}${filter}`} />
-    </>)}
-  </div>;
-}
-
-function Home({ offset }: { offset: number }) {
-  return <Catalog kind="courses" offset={offset} q="" category="" home />;
-}
-
-// 仅允许 HTTPS 链接，避免把资料字段变成可执行 URL。
-function profileLink(value: string | null | undefined) {
-  if (!value) return null;
-  try { const url = new URL(value); return url.protocol === 'https:' ? url.href : null; }
-  catch { return null; }
-}
-
-function Detail({ kind, id }: { kind: Kind; id: string }) {
-  const { data, error, retry } = useData<Details>(`/api/${kind}/${id}`);
-  const row = kind === 'teachers' ? data?.teacher : data?.course;
-  const profile = profileLink(data?.teacher?.profile_url);
-  useEffect(() => {
-    if (row) document.title = `${row.name} · rateMyProfCSU`;
-  }, [row]);
-  return <>
-    <a className="back-link" href={kind === 'teachers' ? '#/teachers' : '#/'}>← {kind === 'teachers' ? '返回教师搜索' : '返回首页'}</a>
-    {!row ? <Notice error={error} retry={retry} /> :
-      <><div className="page-heading">
-        <h1>{row.name}</h1>{row.department !== '待核实' && <p>{row.department}</p>}
-        {data?.course?.category && <p>{categories[data.course.category]}</p>}
-        {data?.course?.code && <p>课程代码：{data.course.code}</p>}
-        {profile && <a href={profile} target="_blank" rel="noopener noreferrer">官网主页 ↗</a>}
-        {row.id < 0 && <Demo />}
-      </div>{(kind === 'courses' || teacherPagesEnabled) && <Reviews kind={kind} id={id} name={row.name} />}</>}
-  </>;
+  );
 }
 
 function App() {
-  const home = teacherPagesEnabled ? '#/teachers' : '#/';
-  function visibleHash() {
-    const current = window.location.hash;
-    if (!current || current === '#/' || current === '#/courses' || current === '#/courses?' || (!teacherPagesEnabled && /^#\/teachers(?:[/?]|$)/.test(current))) {
-      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}${home}`);
-      return home;
-    }
-    return current;
-  }
-  const [hash, setHash] = useState(visibleHash);
+  const [hash, setHash] = useState(() => window.location.hash || '#/');
+  const { ids } = useSavedCourses();
   const main = useRef<HTMLElement>(null);
+  const searchRequested = useRef(false);
+  const route = parseRoute(hash, teacherPagesEnabled);
+  const path = hash.split('?')[0];
   useEffect(() => {
-    const onChange = () => setHash(visibleHash());
-    window.addEventListener('hashchange', onChange);
-    return () => window.removeEventListener('hashchange', onChange);
+    const changed = () => setHash(window.location.hash || '#/');
+    const shortcut = (event: KeyboardEvent) => {
+      if (
+        event.key !== '/' ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.altKey ||
+        document.querySelector('dialog[open]')
+      )
+        return;
+      const target = event.target as HTMLElement | null;
+      if (target?.isContentEditable || target?.closest('input, textarea, select')) return;
+      event.preventDefault();
+      const search = document.getElementById('course-search');
+      if (search) search.focus();
+      else {
+        searchRequested.current = true;
+        window.location.hash = '#/courses';
+      }
+    };
+    window.addEventListener('hashchange', changed);
+    window.addEventListener('keydown', shortcut);
+    return () => {
+      window.removeEventListener('hashchange', changed);
+      window.removeEventListener('keydown', shortcut);
+    };
   }, []);
-  const [path, query = ''] = hash.slice(1).split('?');
-  const match = /^\/(teachers|courses)(?:\/(-?[1-9]\d*))?$/.exec(path);
-  const kind: Kind = match?.[1] === 'teachers' && teacherPagesEnabled ? 'teachers' : 'courses';
-  const params = new URLSearchParams(query);
-  const value = params.get('offset') ?? '0';
-  const offset = Number(value);
-  const q = params.get('q') ?? '';
-  const category = params.get('category') ?? '';
-  const valid = /^(0|[1-9]\d*)$/.test(value) && Number.isSafeInteger(offset) && offset <= 100000
-    && q.length <= 100 && ['', 'major', 'elective'].includes(category) && (!match?.[2] || Number.isSafeInteger(Number(match[2])));
   useEffect(() => {
     main.current?.focus();
     window.scrollTo(0, 0);
-  }, [hash]);
+    if (searchRequested.current) {
+      document.getElementById('course-search')?.focus();
+      searchRequested.current = false;
+    }
+  }, [path]);
   useEffect(() => {
-    if (!match?.[2]) document.title = `${labels[kind]} · rateMyProfCSU`;
-  }, [hash, kind]);
-  return <>
-    <header><div className="header-inner">
-      <a className="brand" href={home}>rateMyProfCSU</a>
-      {teacherPagesEnabled && <nav className="primary-nav" aria-label="浏览分类">
-        {teacherPagesEnabled && <a href="#/teachers" aria-current={kind === 'teachers' ? 'page' : undefined}>教师</a>}
-        <a href="#/courses" aria-current={kind === 'courses' ? 'page' : undefined}>课程</a>
-      </nav>}
-    </div></header>
-    <main ref={main} tabIndex={-1} key={hash}>
-      {!valid || (path !== '/' && !match) ? <div className="notice"><h1>页面不存在</h1><a href={home}>返回列表</a></div>
-        : path === '/' ? <Home offset={offset} /> : match?.[2] ? <Detail kind={kind} id={match[2]} /> : <><a className="back-link" href={home}>← 返回首页</a><Catalog kind={kind} offset={offset} q={q} category={category} /></>}
-    </main>
-  </>;
+    if (route.page !== 'detail')
+      document.title = `${route.page === 'saved' ? '我的收藏' : route.page === 'guide' ? '使用指南' : '课程广场'} · rateMyProfCSU`;
+  }, [route.page]);
+  const active =
+    route.page === 'detail'
+      ? route.kind === 'teachers'
+        ? 'teachers'
+        : route.from.startsWith('#/saved')
+          ? 'saved'
+          : 'catalog'
+      : route.page;
+  return (
+    <>
+      <a
+        className="skip-link"
+        href="#main-content"
+        onClick={(event) => {
+          event.preventDefault();
+          main.current?.focus();
+        }}
+      >
+        跳到主要内容
+      </a>
+      <header className="site-header">
+        <div className="header-inner">
+          <a className="brand" href="#/" aria-label="rateMyProfCSU 首页">
+            <span className="brand-mark" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+              <i />
+            </span>
+            <span>
+              rateMyProf<span className="brand-csu">CSU</span>
+              <small>中南大学课程评价</small>
+            </span>
+          </a>
+          <nav className="primary-nav" aria-label="主导航">
+            <a href="#/" aria-current={active === 'catalog' ? 'page' : undefined}>
+              课程广场
+            </a>
+            <a href="#/saved" aria-current={active === 'saved' ? 'page' : undefined}>
+              <Icon name="bookmark" size={16} />
+              我的收藏{ids.length > 0 && <span className="nav-count">{ids.length}</span>}
+            </a>
+            <a href="#/guide" aria-current={active === 'guide' ? 'page' : undefined}>
+              使用指南
+            </a>
+            {teacherPagesEnabled && (
+              <a href="#/teachers" aria-current={active === 'teachers' ? 'page' : undefined}>
+                教师
+              </a>
+            )}
+          </nav>
+          <span className="header-note">
+            <span className="status-dot" />
+            真实体验，匿名分享
+          </span>
+        </div>
+      </header>
+      <main id="main-content" ref={main} tabIndex={-1}>
+        {route.page === 'catalog' || route.page === 'saved' ? (
+          <Catalog route={route} />
+        ) : route.page === 'detail' ? (
+          <Detail
+            key={`${route.kind}/${route.id}`}
+            kind={route.kind}
+            id={route.id}
+            from={route.from}
+          />
+        ) : route.page === 'guide' ? (
+          <Guide />
+        ) : route.page === 'teachers' ? (
+          <TeacherCatalog q={route.q} offset={route.offset} />
+        ) : (
+          <EmptyState
+            title="这个页面暂时找不到"
+            action={
+              <a className="primary-button" href="#/">
+                返回课程广场
+              </a>
+            }
+          >
+            链接可能有误，回到课程广场继续探索。
+          </EmptyState>
+        )}
+      </main>
+      <footer className="site-footer">
+        <div>
+          <strong>
+            rateMyProf<span>CSU</span>
+          </strong>
+          <p>每门课，都有值得被听见的故事。</p>
+        </div>
+        <nav aria-label="页脚导航">
+          <a href="#/courses">发现课程</a>
+          <a href="#/saved">我的收藏</a>
+          <a href="#/guide">使用指南</a>
+        </nav>
+        <small>由同学的体验，慢慢搭建。</small>
+      </footer>
+    </>
+  );
 }
 
-createRoot(document.getElementById('root')!).render(<App />);
+createRoot(document.getElementById('root')!).render(
+  <SavedCoursesProvider>
+    <App />
+  </SavedCoursesProvider>,
+);

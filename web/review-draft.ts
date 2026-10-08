@@ -11,7 +11,7 @@ export function readDraft(value: string | null): ReviewDraft | null {
       typeof draft.body === 'string' &&
       draft.body.length <= 2000 &&
       !draft.body.includes('\0')
-      ? draft
+      ? { id: draft.id, rating: draft.rating, body: draft.body }
       : null;
   } catch {
     return null;

@@ -80,7 +80,10 @@ test('课程发现与评价筛选（独立临时 D1）', async (t) => {
     assert.deepEqual(first.stats, { courseCount: 3, reviewCount: 3, reviewedCourseCount: 2 });
     query.set('department', '艺术学院');
     assert.equal((await get(`/api/courses?${query}`)).total, 0);
-    assert.deepEqual((await get('/api/courses?q=python')).courses.map(course => course.id), [3]);
+    assert.deepEqual(
+      (await get('/api/courses?q=python')).courses.map((course) => course.id),
+      [3],
+    );
   });
 
   await t.test('排序使用公开评价，并把无评分课程放在评分列表末尾', async () => {
@@ -200,6 +203,7 @@ test('返回课程列表保留搜索、学院、排序和页码；非法返回�
 test('评价草稿恢复同一提交 ID，拒绝损坏或超出服务端限制的草稿', () => {
   const draft = { id: randomUUID(), rating: 4, body: '未提交的课堂体验' };
   assert.deepEqual(readDraft(JSON.stringify(draft)), draft);
+  assert.deepEqual(readDraft(JSON.stringify({ ...draft, unrelated: '不应提交的额外字段' })), draft);
   assert.equal(readDraft('broken'), null);
   assert.equal(readDraft(JSON.stringify({ ...draft, rating: 6 })), null);
   assert.equal(readDraft(JSON.stringify({ ...draft, body: 'a'.repeat(2001) })), null);

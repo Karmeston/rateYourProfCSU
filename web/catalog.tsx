@@ -1,0 +1,438 @@
+import { useEffect, useRef, useState } from 'react';
+import {
+  courseCategories,
+  courseSorts,
+  type CourseCatalog,
+  type CourseSummary,
+} from '../shared/catalog';
+import { SaveButton, useSavedCourses } from './bookmarks';
+import { Icon } from './icons';
+import {
+  catalogHref,
+  defaultFilters,
+  pageSize,
+  type CatalogFilters,
+  type CatalogRoute,
+} from './routing';
+import { Stars } from './reviews';
+import { EmptyState, ErrorState, LoadingCards } from './ui';
+import { useData } from './use-data';
+
+function Search({ route }: { route: CatalogRoute }) {
+  const [query, setQuery] = useState(route.q);
+  const input = useRef<HTMLInputElement>(null);
+  useEffect(() => setQuery(route.q), [route.q]);
+  return (
+    <form
+      className="search"
+      role="search"
+      onSubmit={(event) => {
+        event.preventDefault();
+        window.location.hash = catalogHref(route, { q: query.trim(), offset: 0 });
+      }}
+    >
+      <Icon name="search" size={22} />
+      <input
+        ref={input}
+        id="course-search"
+        type="search"
+        maxLength={100}
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        aria-label="搜索课程名称或代码"
+        placeholder={
+          route.page === 'saved'
+            ? '在收藏中搜索课程名称或代码'
+            : '搜索课程名称或代码，找到你的下一门课'
+        }
+      />
+      {query ? (
+        <button
+          className="icon-button"
+          type="button"
+          aria-label="清空搜索输入"
+          onClick={() => {
+            setQuery('');
+            input.current?.focus();
+          }}
+        >
+          <Icon name="close" />
+        </button>
+      ) : (
+        <kbd>/</kbd>
+      )}
+      <button className="primary-button" type="submit">
+        搜索 <Icon name="arrow" size={17} />
+      </button>
+    </form>
+  );
+}
+
+function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
+  return (
+    <li className="course-card">
+      <div className="card-top">
+        <span className={`category-badge ${course.category ?? 'unknown'}`}>
+          <i />
+          {course.category ? courseCategories[course.category] : '待分类'}
+        </span>
+        <SaveButton id={course.id} name={course.name} />
+      </div>
+      <div className="card-content">
+        <h3>
+          <a
+            className="course-link"
+            href={`#/courses/${course.id}?from=${encodeURIComponent(from)}`}
+          >
+            {course.name}
+          </a>
+        </h3>
+        <p className="metadata">
+          {course.department === '待核实' ? '开课学院待补充' : course.department}
+        </p>
+        <div className="card-code">
+          {course.code ?? '课程代码待补充'}
+          {course.id < 0 && <span className="demo-badge">演示</span>}
+        </div>
+      </div>
+      <div className="card-footer">
+        {course.average === null ? (
+          <div className="unrated">
+            <span>—</span>
+            <div>
+              等待第一条评价<small>你的体验也很重要</small>
+            </div>
+          </div>
+        ) : (
+          <div
+            className="catalog-rating"
+            aria-label={`${course.average.toFixed(1)} 分，${course.reviewCount} 条评价`}
+          >
+            <strong>{course.average.toFixed(1)}</strong>
+            <div>
+              <Stars rating={course.average} />
+              <small>{course.reviewCount} 条评价</small>
+            </div>
+          </div>
+        )}
+        <Icon name="arrow" size={19} />
+      </div>
+    </li>
+  );
+}
+
+function CatalogSidebar() {
+  return (
+    <aside className="catalog-sidebar" aria-label="选课参考">
+      <section className="sidebar-panel tips-panel">
+        <p className="eyebrow">
+          <Icon name="info" size={15} /> 选课小贴士
+        </p>
+        <h3>
+          评分之外，
+          <br />
+          还有故事。
+        </h3>
+        <ol className="tips">
+          <li>
+            <span>01</span>
+            <p>看具体体验，了解课程节奏、作业与考核。</p>
+          </li>
+          <li>
+            <span>02</span>
+            <p>结合评价数量和自己的兴趣，找到适合的课。</p>
+          </li>
+          <li>
+            <span>03</span>
+            <p>先收藏，再比较。给选择留一点思考的时间。</p>
+          </li>
+        </ol>
+        <a className="text-link" href="#/guide">
+          了解评价与收藏 <Icon name="arrow" size={16} />
+        </a>
+      </section>
+      <section className="sidebar-panel resource-panel">
+        <p className="eyebrow">课程资料</p>
+        <h3>更多选课依据</h3>
+        <div className="placeholder-row">
+          <span>专业培养方案</span>
+          <span>待补充</span>
+        </div>
+        <div className="placeholder-row">
+          <span>学分与考核方式</span>
+          <span>待补充</span>
+        </div>
+        <p className="fine-print">
+          课程资料正在整理。未核实的信息会明确标注，避免影响你的选课判断。
+        </p>
+      </section>
+    </aside>
+  );
+}
+
+export function Catalog({ route }: { route: CatalogRoute }) {
+  const { ids } = useSavedCourses();
+  const saved = route.page === 'saved';
+  const href = (patch: Partial<CatalogFilters>) => catalogHref(route, patch);
+  const params = new URLSearchParams({
+    limit: String(pageSize),
+    offset: String(route.offset),
+    q: route.q,
+    sort: route.sort,
+  });
+  if (route.category) params.set('category', route.category);
+  if (route.department) params.set('department', route.department);
+  if (saved) params.set('ids', ids.join(','));
+  const { data, error, retry } = useData<CourseCatalog>(
+    saved && !ids.length ? null : `/api/courses?${params}`,
+  );
+  const [view, setView] = useState<'grid' | 'list'>(() => {
+    try {
+      return localStorage.getItem('csu-catalog-view') === 'list' ? 'list' : 'grid';
+    } catch {
+      return 'grid';
+    }
+  });
+  function changeView(value: 'grid' | 'list') {
+    setView(value);
+    try {
+      localStorage.setItem('csu-catalog-view', value);
+    } catch {
+      /* 当前页面仍可切换布局。 */
+    }
+  }
+  const filtered = !!(route.q || route.category || route.department);
+  const title = saved ? '我的收藏' : route.q ? `“${route.q}”的搜索结果` : '课程广场';
+  const departments = data?.facets.departments ?? [];
+  return (
+    <div className="catalog-page">
+      {route.home ? (
+        <section className="hero">
+          <div className="hero-label">
+            <span className="status-dot" /> 中南大学 · 学生课程评价
+          </div>
+          <h1>
+            选课之前，
+            <br />
+            听听<span>上过的人</span>怎么说。
+          </h1>
+          <p>发现值得上的课，也分享你自己的课堂体验。</p>
+          <Search route={route} />
+          <div className="hero-stats">
+            <span>
+              <strong>{data?.stats.courseCount ?? '—'}</strong> 门在录课程
+            </span>
+            <i />
+            <span>
+              <strong>{data?.stats.reviewCount ?? '—'}</strong> 条同学评价
+            </span>
+            <i />
+            <a href="#/saved">
+              <Icon name="bookmark" size={15} /> 收藏心仪课程
+            </a>
+          </div>
+        </section>
+      ) : (
+        <section className="catalog-intro">
+          <p className="eyebrow">{saved ? 'YOUR SHORTLIST' : 'EXPLORE COURSES'}</p>
+          <h1>{saved ? '把感兴趣的课留在这里。' : '找到适合你的那门课。'}</h1>
+          <p>
+            {saved
+              ? '收藏保存在当前浏览器，方便下次回来继续比较。'
+              : '从课程出发，看看不同学院的课堂体验。'}
+          </p>
+          <Search route={route} />
+        </section>
+      )}
+      <div className="catalog-layout">
+        <section className="catalog-content" aria-label={title}>
+          <div className="section-heading">
+            <div>
+              <h2>{title}</h2>
+              <span className="result-count" role="status">
+                {saved && !ids.length ? '0 门课程' : data ? `${data.total} 门课程` : '正在查找…'}
+              </span>
+            </div>
+            <div className="view-toggle" role="group" aria-label="课程展示方式">
+              <button
+                aria-label="网格视图"
+                aria-pressed={view === 'grid'}
+                onClick={() => changeView('grid')}
+              >
+                <Icon name="grid" size={18} />
+              </button>
+              <button
+                aria-label="列表视图"
+                aria-pressed={view === 'list'}
+                onClick={() => changeView('list')}
+              >
+                <Icon name="list" size={18} />
+              </button>
+            </div>
+          </div>
+          <div className="catalog-toolbar">
+            <nav className="category-filter" aria-label="课程类型">
+              {[['', '全部课程'], ...Object.entries(courseCategories)].map(([value, label]) => (
+                <a
+                  key={value}
+                  href={href({ category: value as CatalogRoute['category'], offset: 0 })}
+                  aria-current={route.category === value ? 'page' : undefined}
+                >
+                  {label}
+                </a>
+              ))}
+            </nav>
+            <div className="select-filters">
+              <label>
+                <span className="sr-only">开课学院</span>
+                <select
+                  value={route.department}
+                  onChange={(event) => {
+                    window.location.hash = href({ department: event.target.value, offset: 0 });
+                  }}
+                >
+                  <option value="">全部学院</option>
+                  {route.department &&
+                    !departments.some((department) => department.name === route.department) && (
+                      <option value={route.department}>{route.department}</option>
+                    )}
+                  {departments.map((department) => (
+                    <option key={department.name} value={department.name}>
+                      {department.name === '待核实' ? '学院待补充' : department.name} ·{' '}
+                      {department.count}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span className="sr-only">排序方式</span>
+                <select
+                  value={route.sort}
+                  onChange={(event) => {
+                    window.location.hash = href({
+                      sort: event.target.value as CatalogRoute['sort'],
+                      offset: 0,
+                    });
+                  }}
+                >
+                  {Object.entries(courseSorts).map(([value, label]) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </div>
+          {filtered && (
+            <div className="filter-chips" aria-label="已选筛选条件">
+              {route.q && (
+                <a href={href({ q: '', offset: 0 })} aria-label="移除搜索条件">
+                  搜索：{route.q}
+                  <Icon name="close" size={13} />
+                </a>
+              )}
+              {route.category && (
+                <a href={href({ category: '', offset: 0 })} aria-label="移除课程类型筛选">
+                  {courseCategories[route.category]}
+                  <Icon name="close" size={13} />
+                </a>
+              )}
+              {route.department && (
+                <a href={href({ department: '', offset: 0 })} aria-label="移除学院筛选">
+                  {route.department}
+                  <Icon name="close" size={13} />
+                </a>
+              )}
+              <a
+                className="clear-filters"
+                href={catalogHref({ ...defaultFilters, page: route.page })}
+              >
+                清除筛选
+              </a>
+            </div>
+          )}
+          {saved && !ids.length ? (
+            <EmptyState
+              title="把感兴趣的课程收藏起来"
+              action={
+                <a className="primary-button" href="#/courses">
+                  去发现课程 <Icon name="arrow" size={16} />
+                </a>
+              }
+            >
+              点击课程卡片上的收藏图标，建立自己的选课清单。
+            </EmptyState>
+          ) : error ? (
+            <ErrorState message={error} retry={retry} />
+          ) : !data ? (
+            <LoadingCards />
+          ) : data.courses.length ? (
+            <>
+              <ul className={`course-list ${view === 'grid' ? 'course-grid' : 'course-rows'}`}>
+                {data.courses.map((course) => (
+                  <CourseCard key={course.id} course={course} from={catalogHref(route)} />
+                ))}
+              </ul>
+              <div className="catalog-bottom">
+                <span>
+                  显示 {route.offset + 1}–{route.offset + data.courses.length} / {data.total} 门课程
+                </span>
+                {(route.offset > 0 || data.hasMore) && (
+                  <nav className="pagination" aria-label="课程分页">
+                    {route.offset > 0 ? (
+                      <a href={href({ offset: Math.max(0, route.offset - pageSize) })}>上一页</a>
+                    ) : (
+                      <span>上一页</span>
+                    )}
+                    <span>第 {Math.floor(route.offset / pageSize) + 1} 页</span>
+                    {data.hasMore ? (
+                      <a href={href({ offset: route.offset + pageSize })}>下一页</a>
+                    ) : (
+                      <span>下一页</span>
+                    )}
+                  </nav>
+                )}
+              </div>
+            </>
+          ) : (
+            <EmptyState
+              title={
+                route.offset
+                  ? '这一页已经没有课程了'
+                  : filtered
+                    ? '没有找到匹配的课程'
+                    : saved
+                      ? '收藏的课程暂时不可用'
+                      : '课程目录正在准备中'
+              }
+              action={
+                <a
+                  className="secondary-button"
+                  href={
+                    route.offset
+                      ? href({ offset: 0 })
+                      : saved && !filtered
+                        ? '#/courses'
+                        : catalogHref({ ...defaultFilters, page: route.page })
+                  }
+                >
+                  {route.offset
+                    ? '回到第一页'
+                    : saved && !filtered
+                      ? '去发现更多课程'
+                      : '查看全部课程'}
+                </a>
+              }
+            >
+              {filtered
+                ? '试试更短的关键词，或移除部分筛选条件。'
+                : '已收录且可展示的课程会出现在这里。'}
+            </EmptyState>
+          )}
+        </section>
+        <CatalogSidebar />
+      </div>
+    </div>
+  );
+}

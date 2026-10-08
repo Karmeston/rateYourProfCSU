@@ -1,0 +1,179 @@
+import { useEffect, useState } from 'react';
+import { courseCategories, type Course } from '../shared/catalog';
+import { SaveButton } from './bookmarks';
+import { Icon } from './icons';
+import { Reviews } from './reviews';
+import { ErrorState } from './ui';
+import { useData } from './use-data';
+
+type Teacher = { id: number; name: string; department: string; profile_url: string | null };
+function profileLink(value: string | null | undefined) {
+  try {
+    const url = new URL(value ?? '');
+    return url.protocol === 'https:' ? url.href : null;
+  } catch {
+    return null;
+  }
+}
+
+export function Detail({
+  kind,
+  id,
+  from,
+}: {
+  kind: 'courses' | 'teachers';
+  id: string;
+  from: string;
+}) {
+  const { data, error, retry } = useData<{ course?: Course; teacher?: Teacher }>(
+    `/api/${kind}/${id}`,
+  );
+  const row = kind === 'courses' ? data?.course : data?.teacher;
+  const course = data?.course;
+  const profile = profileLink(data?.teacher?.profile_url);
+  const [shareMessage, setShareMessage] = useState('');
+  const [copyUrl, setCopyUrl] = useState('');
+  useEffect(() => {
+    if (row) document.title = `${row.name} · rateMyProfCSU`;
+  }, [row]);
+  useEffect(() => {
+    if (!shareMessage) return;
+    const timer = window.setTimeout(() => setShareMessage(''), 3000);
+    return () => window.clearTimeout(timer);
+  }, [shareMessage]);
+  async function share() {
+    const url = `${window.location.origin}${window.location.pathname}${window.location.search}#/${kind}/${id}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setShareMessage('链接已复制');
+      setCopyUrl('');
+    } catch {
+      setCopyUrl(url);
+    }
+  }
+  return (
+    <div className="detail-page">
+      <a className="back-link" href={from}>
+        <span className="back-arrow">
+          <Icon name="arrow" size={17} />
+        </span>{' '}
+        返回
+        {from.startsWith('#/saved') ? '我的收藏' : kind === 'teachers' ? '教师搜索' : '课程列表'}
+      </a>
+      {!row ? (
+        error ? (
+          <ErrorState message={error} retry={retry} />
+        ) : (
+          <div className="detail-loading" role="status">
+            正在加载课程资料…
+          </div>
+        )
+      ) : (
+        <>
+          <section className="detail-heading">
+            <div>
+              <div className="detail-labels">
+                <span className={`category-badge ${course?.category ?? 'unknown'}`}>
+                  <i />
+                  {course?.category
+                    ? courseCategories[course.category]
+                    : kind === 'teachers'
+                      ? '教师主页'
+                      : '课程'}
+                </span>
+                {row.id < 0 && <span className="demo-badge">虚构演示数据</span>}
+              </div>
+              <h1>{row.name}</h1>
+              <div className="detail-meta">
+                <span>
+                  <Icon name="book" size={17} />
+                  {row.department === '待核实' ? '开课学院待补充' : row.department}
+                </span>
+                {course?.code && <span>课程代码 · {course.code}</span>}
+                {profile && (
+                  <a href={profile} target="_blank" rel="noopener noreferrer">
+                    官网主页 ↗
+                  </a>
+                )}
+              </div>
+            </div>
+            <div className="detail-actions">
+              {course && <SaveButton id={row.id} name={row.name} label />}
+              <button className="secondary-button" onClick={() => void share()}>
+                <Icon name="share" size={17} />
+                分享{course ? '课程' : '主页'}
+              </button>
+              <span className="share-message" role="status">
+                {shareMessage}
+              </span>
+            </div>
+          </section>
+          {copyUrl && (
+            <div className="share-fallback">
+              <label>
+                复制此链接分享
+                <input
+                  aria-label="课程分享链接"
+                  readOnly
+                  value={copyUrl}
+                  onFocus={(event) => event.target.select()}
+                />
+              </label>
+              <button
+                className="icon-button"
+                aria-label="关闭分享链接"
+                onClick={() => setCopyUrl('')}
+              >
+                <Icon name="close" />
+              </button>
+            </div>
+          )}
+          <div className="detail-layout">
+            <Reviews kind={kind} id={id} name={row.name} />
+            <aside className="detail-sidebar">
+              <section className="sidebar-panel">
+                <p className="eyebrow">COURSE INFORMATION</p>
+                <h3>{course ? '课程档案' : '教师资料'}</h3>
+                <dl className="course-facts">
+                  <div>
+                    <dt>开课学院</dt>
+                    <dd>{row.department === '待核实' ? '待补充' : row.department}</dd>
+                  </div>
+                  {course && (
+                    <>
+                      <div>
+                        <dt>课程类型</dt>
+                        <dd>{course.category ? courseCategories[course.category] : '待补充'}</dd>
+                      </div>
+                      {['课程学分', '适用专业', '考核方式', '课程大纲'].map((label) => (
+                        <div key={label}>
+                          <dt>{label}</dt>
+                          <dd className="pending">待补充</dd>
+                        </div>
+                      ))}
+                    </>
+                  )}
+                </dl>
+                <p className="fine-print">
+                  资料经核实后补充。选课要求请以学校当期通知和培养方案为准。
+                </p>
+              </section>
+              <section className="sidebar-panel review-prompt">
+                <Icon name="message" size={24} />
+                <h3>
+                  你的经历，
+                  <br />
+                  可能帮到下一位同学。
+                </h3>
+                <p>分享课程节奏、作业与收获，让评价更有参考价值。</p>
+                <a className="text-link" href="#/guide">
+                  看看如何写评价 <Icon name="arrow" size={16} />
+                </a>
+              </section>
+            </aside>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
