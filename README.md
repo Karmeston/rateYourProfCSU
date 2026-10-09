@@ -8,6 +8,8 @@
 
 设计依据、验收记录与回退方式见 [界面改造说明](docs/ui-improvements.md)。
 
+公选课类别、培养方案学分要求及后续功能建议见 [公选课认定调研](docs/elective-credit-research.md)。课程分类与学分认定分别核实，尚未实现自动认定功能。
+
 ## 技术与目录
 
 TypeScript、React、Vite、Hono、Cloudflare Workers、D1；不依赖常驻进程或线上本地磁盘。
