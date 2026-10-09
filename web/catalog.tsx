@@ -5,7 +5,6 @@ import {
   type CourseCatalog,
   type CourseSummary,
 } from '../shared/catalog';
-import { SaveButton, useSavedCourses } from './bookmarks';
 import { Icon } from './icons';
 import {
   catalogHref,
@@ -40,7 +39,7 @@ function Search({ route }: { route: CatalogRoute }) {
         value={query}
         onChange={(event) => setQuery(event.target.value)}
         aria-label="搜索课程名称或代码"
-        placeholder={route.page === 'saved' ? '在收藏中搜索课程名称或代码' : '搜索课程名称或代码'}
+        placeholder="搜索课程名称或代码"
       />
       {query ? (
         <button
@@ -72,7 +71,6 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
           <i />
           {course.category ? courseCategories[course.category] : '待分类'}
         </span>
-        <SaveButton id={course.id} name={course.name} />
       </div>
       <div className="card-content">
         <h2>
@@ -116,8 +114,6 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
 }
 
 export function Catalog({ route }: { route: CatalogRoute }) {
-  const { ids } = useSavedCourses();
-  const saved = route.page === 'saved';
   const href = (patch: Partial<CatalogFilters>) => catalogHref(route, patch);
   const params = new URLSearchParams({
     limit: String(pageSize),
@@ -127,10 +123,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
   });
   if (route.category) params.set('category', route.category);
   if (route.department) params.set('department', route.department);
-  if (saved) params.set('ids', ids.join(','));
-  const { data, error, retry } = useData<CourseCatalog>(
-    saved && !ids.length ? null : `/api/courses?${params}`,
-  );
+  const { data, error, retry } = useData<CourseCatalog>(`/api/courses?${params}`);
   const [view, setView] = useState<'grid' | 'list'>(() => {
     try {
       return localStorage.getItem('csu-catalog-view') === 'list' ? 'list' : 'grid';
@@ -147,13 +140,12 @@ export function Catalog({ route }: { route: CatalogRoute }) {
     }
   }
   const filtered = !!(route.q || route.category || route.department);
-  const title = saved ? '我的收藏' : route.q ? `“${route.q}”的搜索结果` : '课程广场';
+  const title = route.q ? `“${route.q}”的搜索结果` : '课程广场';
   const departments = data?.facets.departments ?? [];
   return (
     <div className="catalog-page">
       <section className="catalog-intro">
-        <h1>{saved ? '我的收藏' : '课程广场'}</h1>
-        {saved && <p className="fine-print">收藏保存在当前浏览器。</p>}
+        <h1>课程广场</h1>
         <Search route={route} />
       </section>
       <div className="catalog-layout">
@@ -162,7 +154,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
             <div>
               {route.q && <strong className="results-title">{title}</strong>}
               <span className="result-count" role="status">
-                {saved && !ids.length ? '0 门课程' : data ? `${data.total} 门课程` : '正在查找…'}
+                {data ? `${data.total} 门课程` : '正在查找…'}
               </span>
             </div>
             <div className="view-toggle" role="group" aria-label="课程展示方式">
@@ -256,26 +248,12 @@ export function Catalog({ route }: { route: CatalogRoute }) {
                   <Icon name="close" size={13} />
                 </a>
               )}
-              <a
-                className="clear-filters"
-                href={catalogHref({ ...defaultFilters, page: route.page })}
-              >
+              <a className="clear-filters" href={catalogHref(defaultFilters)}>
                 清除筛选
               </a>
             </div>
           )}
-          {saved && !ids.length ? (
-            <EmptyState
-              title="把感兴趣的课程收藏起来"
-              action={
-                <a className="primary-button" href="#/courses">
-                  去发现课程 <Icon name="arrow" size={16} />
-                </a>
-              }
-            >
-              点击课程卡片上的收藏图标，建立自己的选课清单。
-            </EmptyState>
-          ) : error ? (
+          {error ? (
             <ErrorState message={error} retry={retry} />
           ) : !data ? (
             <LoadingCards />
@@ -314,26 +292,14 @@ export function Catalog({ route }: { route: CatalogRoute }) {
                   ? '这一页已经没有课程了'
                   : filtered
                     ? '没有找到匹配的课程'
-                    : saved
-                      ? '收藏的课程暂时不可用'
-                      : '课程目录正在准备中'
+                    : '课程目录正在准备中'
               }
               action={
                 <a
                   className="secondary-button"
-                  href={
-                    route.offset
-                      ? href({ offset: 0 })
-                      : saved && !filtered
-                        ? '#/courses'
-                        : catalogHref({ ...defaultFilters, page: route.page })
-                  }
+                  href={route.offset ? href({ offset: 0 }) : catalogHref(defaultFilters)}
                 >
-                  {route.offset
-                    ? '回到第一页'
-                    : saved && !filtered
-                      ? '去发现更多课程'
-                      : '查看全部课程'}
+                  {route.offset ? '回到第一页' : '查看全部课程'}
                 </a>
               }
             >

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { courseCategories, type Course } from '../shared/catalog';
-import { SaveButton } from './bookmarks';
 import { Icon } from './icons';
 import { Reviews } from './reviews';
 import { ErrorState } from './ui';
@@ -58,7 +57,7 @@ export function Detail({
           <Icon name="arrow" size={17} />
         </span>{' '}
         返回
-        {from.startsWith('#/saved') ? '我的收藏' : kind === 'teachers' ? '教师搜索' : '课程列表'}
+        {kind === 'teachers' ? '教师搜索' : '课程列表'}
       </a>
       {!row ? (
         error ? (
@@ -98,7 +97,6 @@ export function Detail({
               </div>
             </div>
             <div className="detail-actions">
-              {course && <SaveButton id={row.id} name={row.name} label />}
               <button className="secondary-button" onClick={() => void share()}>
                 <Icon name="share" size={17} />
                 分享{course ? '课程' : '主页'}

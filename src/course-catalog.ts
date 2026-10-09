@@ -10,7 +10,7 @@ const ordering: Record<CourseSort, string> = {
 };
 
 function parseQuery(query: Record<string, string[]>) {
-  const allowed = ['limit', 'offset', 'q', 'category', 'department', 'sort', 'ids'];
+  const allowed = ['limit', 'offset', 'q', 'category', 'department', 'sort'];
   if (Object.entries(query).some(([key, values]) => !allowed.includes(key) || values.length !== 1))
     return null;
   const limit = query.limit?.[0] ?? '20';
@@ -36,14 +36,6 @@ function parseQuery(query: Record<string, string[]>) {
     !Object.hasOwn(ordering, sort)
   )
     return null;
-  const ids = query.ids ? query.ids[0].split(',') : [];
-  if (
-    query.ids &&
-    (!ids.length ||
-      ids.length > 100 ||
-      ids.some((id) => !/^-?[1-9]\d*$/.test(id) || !Number.isSafeInteger(Number(id))))
-  )
-    return null;
   return {
     limit: Number(limit),
     offset: Number(offset),
@@ -51,19 +43,17 @@ function parseQuery(query: Record<string, string[]>) {
     department,
     category,
     sort: sort as CourseSort,
-    ids: [...new Set(ids.map(Number))],
   };
 }
 
 catalog.get('/', async (c) => {
   const page = parseQuery(c.req.queries());
   if (!page) return c.json({ error: '查询参数不合法' }, 400);
-  const { limit, offset, q, category, department, sort, ids } = page;
-  // SQL fragments only come from fixed sort options or generated placeholders.
+  const { limit, offset, q, category, department, sort } = page;
+  // SQL fragments only come from fixed sort options.
   const where = `is_listed = 1 AND (instr(lower(name), lower(?)) > 0 OR instr(lower(coalesce(code, '')), lower(?)) > 0)
-    AND (? = '' OR category = ?) AND (? = '' OR department = ?)
-    ${ids.length ? `AND id IN (${ids.map(() => '?').join(',')})` : ''}`;
-  const bindings = [q, q, category, category, department, department, ...ids];
+    AND (? = '' OR category = ?) AND (? = '' OR department = ?)`;
+  const bindings = [q, q, category, category, department, department];
   const [entries, count, departments, statistics] = await c.env.DB.batch([
     c.env.DB.prepare(
       `SELECT c.id, c.code, c.name, c.department, c.category,

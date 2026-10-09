@@ -244,13 +244,6 @@ svg {
   background: #ffffff0e;
   color: #fff;
 }
-.nav-count {
-  color: #cce1f3;
-  padding: 0 0.4rem;
-  font-size: 0.65rem;
-  border-radius: 4px;
-  background: #ffffff12;
-}
 main {
   max-width: 1200px;
   min-height: 72vh;
@@ -525,17 +518,6 @@ select {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
-.card-top .save-button {
-  position: relative;
-  z-index: 1;
-}
-.save-button[aria-pressed='true'] {
-  color: var(--accent);
-  background: #edf4fa;
-}
-.save-button[aria-pressed='true'] svg {
-  fill: #0067b819;
-}
 .card-code {
   display: flex;
   align-items: center;
@@ -699,36 +681,6 @@ select {
 .empty-state > .empty-action,
 .error-state button {
   margin-top: 1.3rem;
-}
-.toast {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  z-index: 15;
-  max-width: min(90vw, 500px);
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-  background: var(--navy);
-  color: #fff;
-  padding: 0.75rem 1rem;
-  font-size: 0.8125rem;
-  border-radius: 7px;
-  opacity: 0;
-  visibility: hidden;
-  box-shadow: 0 4px 15px #111e3025;
-  transition:
-    opacity 0.15s,
-    transform 0.15s;
-}
-.toast-visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%);
-}
-.toast svg {
-  color: #8fb8a6;
 }
 .skeleton {
   background: #edf0f2;

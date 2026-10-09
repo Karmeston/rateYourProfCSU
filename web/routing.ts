@@ -8,7 +8,7 @@ export type CatalogFilters = {
   sort: CourseSort;
   offset: number;
 };
-export type CatalogRoute = CatalogFilters & { page: 'catalog' | 'saved'; home: boolean };
+export type CatalogRoute = CatalogFilters & { page: 'catalog'; home: boolean };
 export type Route =
   | CatalogRoute
   | { page: 'detail'; kind: 'courses' | 'teachers'; id: string; from: string }
@@ -23,10 +23,7 @@ export const defaultFilters: CatalogFilters = {
   offset: 0,
 };
 
-export function catalogHref(
-  filters: CatalogFilters & { page?: string },
-  patch: Partial<CatalogFilters> = {},
-) {
+export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilters> = {}) {
   const value = { ...filters, ...patch };
   const query = new URLSearchParams();
   if (value.q) query.set('q', value.q);
@@ -34,7 +31,7 @@ export function catalogHref(
   if (value.department) query.set('department', value.department);
   if (value.sort !== 'default') query.set('sort', value.sort);
   if (value.offset) query.set('offset', String(value.offset));
-  return `#/${filters.page === 'saved' ? 'saved' : 'courses'}${query.size ? `?${query}` : ''}`;
+  return `#/courses${query.size ? `?${query}` : ''}`;
 }
 
 export function parseRoute(hash: string, teachersEnabled = false): Route {
@@ -42,6 +39,8 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
   const separator = fragment.indexOf('?');
   const path = separator < 0 ? fragment : fragment.slice(0, separator);
   const query = separator < 0 ? '' : fragment.slice(separator + 1);
+  // Retired bookmark links open the catalog rather than a dead page.
+  if (path === '/saved') return { page: 'catalog', home: true, ...defaultFilters };
   if (!teachersEnabled && /^\/teachers(?:\/|$)/.test(path))
     return { page: 'catalog', home: true, ...defaultFilters };
   const params = new URLSearchParams(query);
@@ -58,15 +57,15 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     const candidate = params.get('from') ?? '#/';
     // A return link may only point to a valid internal catalog, never an external URL.
     const from =
-      /^#\/(?:courses|saved)?(?:\?|$)/.test(candidate) &&
+      /^#\/(?:courses)?(?:\?|$)/.test(candidate) &&
       candidate.length <= 1000 &&
-      ['catalog', 'saved'].includes(parseRoute(candidate, teachersEnabled).page)
+      parseRoute(candidate, teachersEnabled).page === 'catalog'
         ? candidate
         : '#/';
     return { page: 'detail', kind: detail[1] as 'courses' | 'teachers', id: detail[2], from };
   }
   if (
-    !['/', '/courses', '/saved', '/teachers'].includes(path) ||
+    !['/', '/courses', '/teachers'].includes(path) ||
     [...params.keys()].some(
       (key) => !['q', 'category', 'department', 'sort', 'offset'].includes(key),
     )
@@ -90,7 +89,7 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     return { page: 'not-found' };
   if (path === '/teachers') return { page: 'teachers', q, offset: Number(rawOffset) };
   return {
-    page: path === '/saved' ? 'saved' : 'catalog',
+    page: 'catalog',
     home: path === '/',
     q,
     category: category as CourseCategory | '',

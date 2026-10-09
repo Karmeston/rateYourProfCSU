@@ -4,10 +4,8 @@ export function Guide() {
       <h1>使用指南</h1>
       <section className="guide-faq">
         <details>
-          <summary>收藏与草稿保存在哪里？</summary>
-          <p>
-            收藏保存在当前浏览器，更换设备或清除浏览器数据后不会自动恢复。评价草稿保存在当前标签页，发布成功后清除。
-          </p>
+          <summary>评价草稿保存在哪里？</summary>
+          <p>评价草稿保存在当前标签页，关闭表单后可恢复，发布成功后清除。</p>
         </details>
         <details>
           <summary>评价会显示我的姓名吗？</summary>

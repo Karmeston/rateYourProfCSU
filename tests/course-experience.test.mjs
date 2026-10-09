@@ -101,21 +101,15 @@ test('课程发现与评价筛选（独立临时 D1）', async (t) => {
     assert.equal(page.courses.find((course) => course.id === 3).average, null);
   });
 
-  await t.test('收藏查询不重复、不泄露隐藏课程，仍可搜索和筛选', async () => {
-    const saved = await get('/api/courses?ids=1,1,2,4,999&sort=rating');
-    assert.deepEqual(
-      saved.courses.map((course) => course.id),
-      [2, 1],
-    );
-    assert.equal(saved.total, 2);
-    assert.deepEqual(
-      (await get('/api/courses?ids=1,2&category=elective')).courses.map((course) => course.id),
-      [2],
-    );
-    assert.equal((await get('/api/courses?ids=999')).total, 0);
+  await t.test('搜索和学院筛选不能重新显示隐藏课程', async () => {
+    for (const query of ['q=退出目录', 'q=OLD-104', 'department=隐藏学院']) {
+      const page = await get(`/api/courses?${query}`);
+      assert.equal(page.total, 0);
+      assert.deepEqual(page.courses, []);
+    }
   });
 
-  await t.test('拒绝任意排序 SQL、重复参数、非法收藏及学院输入', async () => {
+  await t.test('拒绝任意排序 SQL、重复参数、未知参数及学院输入', async () => {
     for (const query of [
       'sort=average%20DESC',
       'sort=__proto__',
@@ -123,12 +117,7 @@ test('课程发现与评价筛选（独立临时 D1）', async (t) => {
       'department=',
       'department=%00',
       'department=a&department=b',
-      'ids=',
-      'ids=0',
-      'ids=1,',
-      'ids=9007199254740992',
-      'ids=1&ids=2',
-      `ids=${Array(101).fill('1').join(',')}`,
+      'ids=1,2',
     ]) {
       assert.equal((await request(`/api/courses?${query}`)).status, 400, query);
     }
@@ -177,18 +166,24 @@ test('课程发现与评价筛选（独立临时 D1）', async (t) => {
 
 test('返回课程列表保留搜索、学院、排序和页码；非法返回地址不会成为链接', () => {
   const route = parseRoute(
-    '#/saved?q=数学&category=major&department=数学学院&sort=reviews&offset=20',
+    '#/courses?q=数学&category=major&department=数学学院&sort=reviews&offset=20',
   );
-  assert.equal(route.page, 'saved');
+  assert.equal(route.page, 'catalog');
   const changed = parseRoute(catalogHref(route, { category: '', offset: 0 }));
-  assert.equal(changed.page, 'saved');
+  assert.equal(changed.page, 'catalog');
   assert.equal(changed.q, '数学');
   assert.equal(changed.department, '数学学院');
   assert.equal(changed.sort, 'reviews');
   assert.equal(changed.offset, 0);
   const from = catalogHref(route);
   assert.equal(parseRoute(`#/courses/1?from=${encodeURIComponent(from)}`).from, from);
-  for (const from of ['https://example.com', '#/guide', '#/courses/2', '#/courses?sort=bad'])
+  for (const from of [
+    'https://example.com',
+    '#/guide',
+    '#/courses/2',
+    '#/courses?sort=bad',
+    '#/saved',
+  ])
     assert.equal(parseRoute(`#/courses/1?from=${encodeURIComponent(from)}`).from, '#/');
   for (const hash of [
     '#/courses?sort=bad',
@@ -198,6 +193,7 @@ test('返回课程列表保留搜索、学院、排序和页码；非法返回�
   ])
     assert.equal(parseRoute(hash).page, 'not-found');
   assert.equal(parseRoute('#/teachers/1').page, 'catalog');
+  assert.equal(parseRoute('#/saved?q=数学').page, 'catalog');
 });
 
 test('评价草稿恢复同一提交 ID，拒绝损坏或超出服务端限制的草稿', () => {

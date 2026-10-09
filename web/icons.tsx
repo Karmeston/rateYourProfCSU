@@ -1,6 +1,5 @@
 type IconName =
   | 'search'
-  | 'bookmark'
   | 'arrow'
   | 'book'
   | 'grid'
@@ -16,7 +15,6 @@ type IconName =
   | 'message';
 const paths: Record<IconName, string> = {
   search: 'm21 21-4.5-4.5 M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0',
-  bookmark: 'M6 4h12v17l-6-4-6 4z',
   arrow: 'M5 12h14m-5-5 5 5-5 5',
   book: 'M12 5v16M3 4h4a5 5 0 0 1 5 3 5 5 0 0 1 5-3h4v15h-4a5 5 0 0 0-5 2 5 5 0 0 0-5-2H3z',
   grid: 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',

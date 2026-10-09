@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
-import { SavedCoursesProvider, useSavedCourses } from './bookmarks';
 import { Catalog } from './catalog';
 import { Detail } from './detail';
 import { teacherPagesEnabled } from './features';
@@ -65,7 +64,6 @@ function TeacherCatalog({ q, offset }: { q: string; offset: number }) {
 
 function App() {
   const [hash, setHash] = useState(() => window.location.hash || '#/');
-  const { ids } = useSavedCourses();
   const main = useRef<HTMLElement>(null);
   const searchRequested = useRef(false);
   const route = parseRoute(hash, teacherPagesEnabled);
@@ -108,16 +106,10 @@ function App() {
   }, [path]);
   useEffect(() => {
     if (route.page !== 'detail')
-      document.title = `${route.page === 'saved' ? '我的收藏' : route.page === 'guide' ? '使用指南' : '课程广场'} · rateMyProfCSU`;
+      document.title = `${route.page === 'guide' ? '使用指南' : '课程广场'} · rateMyProfCSU`;
   }, [route.page]);
   const active =
-    route.page === 'detail'
-      ? route.kind === 'teachers'
-        ? 'teachers'
-        : route.from.startsWith('#/saved')
-          ? 'saved'
-          : 'catalog'
-      : route.page;
+    route.page === 'detail' ? (route.kind === 'teachers' ? 'teachers' : 'catalog') : route.page;
   return (
     <>
       <a
@@ -148,10 +140,6 @@ function App() {
             <a href="#/" aria-current={active === 'catalog' ? 'page' : undefined}>
               课程广场
             </a>
-            <a href="#/saved" aria-current={active === 'saved' ? 'page' : undefined}>
-              <Icon name="bookmark" size={16} />
-              我的收藏{ids.length > 0 && <span className="nav-count">{ids.length}</span>}
-            </a>
             <a href="#/guide" aria-current={active === 'guide' ? 'page' : undefined}>
               使用指南
             </a>
@@ -164,7 +152,7 @@ function App() {
         </div>
       </header>
       <main id="main-content" ref={main} tabIndex={-1}>
-        {route.page === 'catalog' || route.page === 'saved' ? (
+        {route.page === 'catalog' ? (
           <Catalog route={route} />
         ) : route.page === 'detail' ? (
           <Detail
@@ -194,8 +182,4 @@ function App() {
   );
 }
 
-createRoot(document.getElementById('root')!).render(
-  <SavedCoursesProvider>
-    <App />
-  </SavedCoursesProvider>,
-);
+createRoot(document.getElementById('root')!).render(<App />);
