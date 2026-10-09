@@ -3,6 +3,7 @@ import type { Course, CourseCatalog, CourseSort, CourseSummary } from '../shared
 import { isElectiveTypeFilter } from '../shared/electives.ts';
 import { readElectiveDetails } from './elective-guidance.ts';
 import { isResourceId } from './validation.ts';
+import { readCourseMaterials } from './course-materials.ts';
 
 const catalog = new Hono<{ Bindings: Env }>();
 const ordering: Record<CourseSort, string> = {
@@ -64,11 +65,15 @@ catalog.get('/', async (c) => {
     AND (? = '' OR (? = 'unknown' AND e.elective_type IS NULL) OR e.elective_type = ?)`;
   const bindings = [q, q, category, category, department, department, electiveType, electiveType, electiveType];
   const electiveJoin = "LEFT JOIN elective_course_facts e ON e.course_id = c.id AND c.category = 'elective'";
+  const materialsJoin = `LEFT JOIN (
+    SELECT course_id, department, max(source_year) AS departmentSourceYear
+    FROM course_materials WHERE kind = 'syllabus' GROUP BY course_id, department
+  ) m ON m.course_id = c.id AND m.department = c.department`;
   const [entries, count, departments, statistics] = await c.env.DB.batch([
     c.env.DB.prepare(
-      `SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType,
+      `SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType, m.departmentSourceYear,
       r.average, coalesce(r.reviewCount, 0) AS reviewCount
-      FROM courses c ${electiveJoin} LEFT JOIN (
+      FROM courses c ${electiveJoin} ${materialsJoin} LEFT JOIN (
         SELECT course_id, avg(rating) AS average, count(*) AS reviewCount
         FROM course_reviews WHERE status = 'published' GROUP BY course_id
       ) r ON r.course_id = c.id WHERE ${where}
@@ -105,16 +110,20 @@ catalog.get('/:id', async (c) => {
   if (!isResourceId(c.req.param('id')) || Object.keys(c.req.queries()).length)
     return c.json({ error: '查询参数不合法' }, 400);
   const course = await c.env.DB.prepare(
-    `SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType
+    `SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType,
+      (SELECT max(source_year) FROM course_materials WHERE course_id = c.id AND kind = 'syllabus' AND department = c.department) AS departmentSourceYear
       FROM courses c LEFT JOIN elective_course_facts e ON e.course_id = c.id AND c.category = 'elective'
       WHERE c.id = ? AND c.is_listed = 1`,
   )
     .bind(Number(c.req.param('id')))
     .first<Course>();
   if (!course) return c.json({ error: '课程不存在' }, 404);
-  const elective = course.category === 'elective' ? await readElectiveDetails(c.env.DB, course.id) : null;
+  const [elective, materials] = await Promise.all([
+    course.category === 'elective' ? readElectiveDetails(c.env.DB, course.id) : Promise.resolve(null),
+    readCourseMaterials(c.env.DB, course.id),
+  ]);
   c.header('Cache-Control', 'private, max-age=60');
-  return c.json({ course: { ...course, elective } });
+  return c.json({ course: { ...course, elective, materials } });
 });
 
 export default catalog;

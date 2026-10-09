@@ -89,6 +89,7 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
         </h2>
         <p className="metadata">
           {course.department === '待核实' ? '开课学院待补充' : course.department}
+          {course.departmentSourceYear != null && ` · ${course.departmentSourceYear}大纲学院`}
         </p>
         <div className="card-code">
           {course.code ?? '课程代码待补充'}
@@ -215,7 +216,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
                 </label>
               )}
               <label>
-                <span className="sr-only">开课学院</span>
+                <span className="sr-only">学院（含资料来源）</span>
                 <select
                   value={route.department}
                   onChange={(event) => {

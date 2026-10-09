@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
-import { isAbsolute, relative, resolve } from 'node:path';
+import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { withLocalD1 } from './lib/local-d1.mjs';
 
 export const electiveCatalog = JSON.parse(readFileSync(new URL('../data/course-data/public-electives-current.json', import.meta.url), 'utf8'));
 const sourceLabel = '2026—2027学年第一学期MOOC课程信息';
@@ -71,22 +72,5 @@ export async function importElectiveCatalog(db, source = electiveCatalog) {
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const args = process.argv.slice(2);
-  if (args.length !== 2 || args[0] !== '--persist-to') throw new Error('用法：node scripts/import-elective-catalog.mjs --persist-to <项目内本地D1目录>');
-  const project = fileURLToPath(new URL('../', import.meta.url));
-  const path = resolve(project, args[1]);
-  const withinProject = relative(project, path);
-  if (!withinProject || withinProject.startsWith('..') || isAbsolute(withinProject)) throw new Error('本地D1目录必须位于本项目内');
-  const { getPlatformProxy } = await import('wrangler');
-  // Wrangler's --persist-to points to the parent; getPlatformProxy expects the versioned directory.
-  const platform = await getPlatformProxy({
-    configPath: resolve(project, 'wrangler.jsonc'),
-    persist: { path: resolve(path, 'v3') },
-    remoteBindings: false,
-  });
-  try {
-    console.log(JSON.stringify(await importElectiveCatalog(platform.env.DB)));
-  } finally {
-    await platform.dispose();
-  }
+  console.log(JSON.stringify(await withLocalD1(process.argv.slice(2), (db) => importElectiveCatalog(db))));
 }

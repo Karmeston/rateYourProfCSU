@@ -1,4 +1,5 @@
 import type { ElectiveDetails, ElectiveType, ElectiveTypeFilter } from './electives.ts';
+import type { CourseMaterial } from './course-materials.ts';
 
 export type Teacher = { id: number; name: string; department: string; profile_url: string | null };
 export type TeacherCatalog = {
@@ -19,8 +20,9 @@ export type Course = {
   department: string;
   category: CourseCategory | null;
   electiveType: ElectiveType | null;
+  departmentSourceYear: number | null;
 };
-export type CourseDetail = Course & { elective: ElectiveDetails | null };
+export type CourseDetail = Course & { elective: ElectiveDetails | null; materials: CourseMaterial[] };
 export type CourseSummary = Course & { average: number | null; reviewCount: number };
 export type CourseCatalog = {
   courses: CourseSummary[];

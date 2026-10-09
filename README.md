@@ -4,11 +4,13 @@
 
 课程支持名称/代码搜索、类型与学院组合筛选、评分/评价数量/名称排序、网格与列表切换。详情可复制分享链接、保留筛选返回列表；评价支持星级筛选、最新评论/赞同最多排序、匿名投稿、草稿恢复、赞同与单层回复。没有评价时不显示零分。
 
-教师页面当前由 `web/features.ts` 的开关关闭，旧教师页面链接返回课程广场；独立教师 API 继续保留。开启后提供教师搜索、详情与评价。未核实的培养方案、学分与考核资料显示明确占位；已核对的18门MOOC接入隔离本地预览，线上目录未修改。
+教师页面当前由 `web/features.ts` 的开关关闭，旧教师页面链接返回课程广场；独立教师 API 继续保留。开启后提供教师搜索、详情与评价。隔离本地预览已接入18门MOOC和604门有大纲、方案交叉依据的专业及学科课程；线上目录未修改。未核实资料保留占位，版本与来源分别显示。
 
 设计依据、验收记录与回退方式见 [界面改造说明](docs/ui-improvements.md)。
 
 公选课支持细分类筛选，详情提供培养方案选择、分模块认定提示与已核实学年的MOOC限选提醒。课程分类与学分认定分别核实，缺少证据时显示待核实。规则依据见 [公选课认定调研](docs/elective-credit-research.md)，实现与回退方式见 [公选课功能说明](docs/elective-guidance.md)。
+
+专业课详情展示方案课程表中的学分、必选修属性、专业、版本和原文定位。卡片的“大纲学院”是对应版本的资料来源单位，可能保留历史名称；不把资料学院当作已核实的当前开课单位。收录标准、复现和回退见 [专业课目录说明](docs/major-catalog.md)。
 
 ## 技术与目录
 
@@ -66,6 +68,8 @@ GitHub Actions的`Project checks`在推送和Pull Request时运行同一检查�
 课程列表另支持 category（major/elective）、department（学院名精确匹配）、sort（default/rating/reviews/name）。total 为筛选后的总数；facets.departments 为整个可见目录的学院及数量；stats 为整个可见目录的课程数、已发布评价数和已评价课程数。评分排序将未评分课程放在最后，并以 ID 保证稳定顺序。URL 保留搜索、类型、学院、排序及分页，详情返回时恢复原条件。
 
 公选课细分类参数 electiveType 接受 natural_science、humanities、economics、arts_sports、unknown；使用时限定公选课，不能与 category=major 组合。unknown 只包含细分类未知的可见公选课。列表课程增加可空 electiveType，详情增加 elective（facts、offerings、creditRules；非公选课为 null）。开课记录包含明确学年学期，不等于每学期持续开设。
+
+课程列表和详情新增可空`departmentSourceYear`，标明学院字段对应的大纲版本；为空时沿用既有学院信息。详情新增`materials`数组，分别保存大纲及方案记录（kind、sourceYear、department、program、credits、requirement和来源定位），单门课程的多个版本不合并为一个学分值。隐藏课程不能读取这些资料。
 
 旧的 `/api/courses/:id/offerings` 已移除。
 

@@ -9,23 +9,8 @@ import {
   getMoocAnnualRule,
   type CreditModule,
   type ElectiveOffering,
-  type Evidence,
 } from '../shared/electives';
-
-function EvidenceLink({ evidence, demo = false }: { evidence: Evidence; demo?: boolean }) {
-  if (demo) return <span className="fine-print">虚构演示资料</span>;
-  try {
-    const url = new URL(evidence.sourceUrl);
-    if (url.protocol !== 'https:') return <span className="pending">来源待核实</span>;
-    return (
-      <a href={url.href} target="_blank" rel="noopener noreferrer" title={evidence.sourceLocator}>
-        {evidence.sourceLabel} ↗
-      </a>
-    );
-  } catch {
-    return <span className="pending">来源待核实</span>;
-  }
-}
+import { EvidenceLink } from './source-link';
 
 function MoocNotice({ offering }: { offering: ElectiveOffering }) {
   const rule = getMoocAnnualRule(offering);

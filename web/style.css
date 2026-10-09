@@ -1452,6 +1452,17 @@ select {
 .course-info .course-facts {
   max-width: 450px;
 }
+.course-materials ul {
+  list-style: none;
+  padding: 0;
+}
+.course-materials li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.course-materials p {
+  margin: 0.4rem 0;
+}
 .guide-faq {
   margin-top: 1.5rem;
 }
