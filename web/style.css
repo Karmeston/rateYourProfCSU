@@ -1455,6 +1455,29 @@ select {
 .guide-faq {
   margin-top: 1.5rem;
 }
+.guide-credit-plans {
+  padding-left: 1.25rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.9;
+}
+.guide-credit-plans li + li {
+  margin-top: 0.5rem;
+}
+.guide-feedback {
+  max-width: 800px;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.guide-feedback h2 {
+  font-size: 1rem;
+}
+.guide-feedback p {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
 .elective-type-label {
   color: var(--muted);
   font-size: 0.7rem;

@@ -55,6 +55,33 @@ export const electivePlans = [
     sourceLabel: '生物工程2023版培养方案',
     sourceLocator: 'PDF第8–9页，文化素质类选修要求',
   },
+  {
+    id: 'biotechnology-2023',
+    name: '生物技术 · 2023版',
+    total: 6,
+    modules: { art: 2, cross_discipline: 4 },
+    sourceUrl: 'https://mpb.csu.edu.cn/__local/B/F4/F2/FF0DC62CE36406F193B02B69039_690435BF_DDFB9.pdf',
+    sourceLabel: '生物技术2023版培养方案',
+    sourceLocator: 'PDF第8–9页，文化素质类选修要求',
+  },
+  {
+    id: 'environmental-2023',
+    name: '环境工程 · 2023版',
+    total: 6,
+    modules: { art: 2, cross_discipline: 4 },
+    sourceUrl: 'https://smse.csu.edu.cn/__local/3/3C/9B/2A71B139E5C84370965CC3B9AE5_91E09011_44B55.pdf',
+    sourceLabel: '环境工程2023版培养方案',
+    sourceLocator: 'PDF第7页，文化素质类选修要求',
+  },
+  {
+    id: 'mathematics-strong-2024',
+    name: '数学与应用数学（强基计划）· 2024版',
+    total: 6,
+    modules: { art: 2, cross_discipline: 4 },
+    sourceUrl: 'https://math.csu.edu.cn/__local/1/14/72/C1DDB9BD00FB45D721DA51C8FA7_005556E3_735FC.pdf',
+    sourceLabel: '数学与应用数学强基计划2024版培养方案',
+    sourceLocator: 'PDF第7页，文化素质类选修要求',
+  },
 ] as const;
 export type ElectivePlan = (typeof electivePlans)[number];
 export function findElectivePlan(id: string) {

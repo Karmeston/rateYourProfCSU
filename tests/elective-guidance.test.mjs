@@ -38,6 +38,10 @@ test('学分认定逐方案、逐模块匹配；无证据、未知方案及冲�
   assert.equal(assessCreditModule('electrical-2025', 'cross_discipline', [rule]).outcome, 'unknown');
   assert.equal(assessCreditModule('bioengineering-2023', 'art', [rule]).outcome, 'unknown');
   assert.equal(assessCreditModule('unlisted', 'art', [{ ...rule, planId: 'unlisted' }]).outcome, 'unknown');
+  const strongRule = { ...rule, planId: 'mathematics-strong-2024' };
+  assert.equal(assessCreditModule('mathematics-strong-2024', 'art', [strongRule]).outcome, 'counts');
+  for (const planId of ['mathematics-2024', 'mathematics-strong-2025'])
+    assert.equal(assessCreditModule(planId, 'art', [{ ...strongRule, planId }]).outcome, 'unknown');
   const conflicting = [rule, { ...rule, outcome: 'not_counts', sourceLocator: '院级补充说明' }];
   assert.equal(assessCreditModule('electrical-2025', 'art', conflicting).outcome, 'conflict');
   assert.equal(assessCreditModule('electrical-2025', 'art', conflicting.reverse()).outcome, 'conflict');

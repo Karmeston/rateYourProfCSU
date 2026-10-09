@@ -157,7 +157,7 @@ export function ElectiveGuidance({ course }: { course: CourseDetail }) {
           </dl>
         </> : <p className="fine-print" role="status">{planId === 'unlisted'
           ? '此方案尚未收录，暂时无法判断本课程可计入哪些学分模块。'
-          : '按专业与培养方案版本核对学分；这里只收录已有官方依据的两个版本。'}</p>}
+          : '按专业与培养方案版本核对学分；这里只收录已有官方依据的方案版本。'}</p>}
         <p className="fine-print">艺术体育类别不等于艺术学分资格；同学院开课也不能直接判为不计学分。模块认定与选课许可分别核实。</p>
       </details>
     </section>
