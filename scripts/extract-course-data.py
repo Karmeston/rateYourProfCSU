@@ -237,9 +237,28 @@ def plans_legacy(source, text):
 
 def plans_pdf(source, pages):
     records = []
+    metadata = base(source, pages[0].extract_text() or "")
+    current_program = metadata["program"]
+    category, subcategory = None, None
     for page_no, page in enumerate(pages, 1):
+        # Compilations contain several ordinary and special-track plans. Carry
+        # the explicit document heading forward, never the first plan's name.
+        for line in (page.extract_text() or "").splitlines()[:8]:
+            heading = re.fullmatch(r"(.+?)(?:专业)?本科培养方案", re.sub(r"\s+", "", line))
+            if heading:
+                current_program = heading[1]
+                category, subcategory = None, None
+                break
         for ti, table in enumerate(page.extract_tables(), 1):
+            category_table = bool(table and clean(table[0][0]) == "课程类别")
             for ri, row in enumerate(table, 1):
+                if category_table:
+                    main = re.sub(r"\s+", "", row[0] or "")
+                    sub = re.sub(r"\s+", "", row[1] or "") if len(row) > 1 else ""
+                    if main in ("通识教育课程", "学科教育课程", "专业教育课程"):
+                        category, subcategory = main, None
+                    if sub and sub != "课程类别":
+                        subcategory = sub
                 for ci, cell in enumerate(row):
                     code = re.sub(r"\s+", "", cell or "")
                     if not CODE.fullmatch(code) or ci + 1 >= len(row):
@@ -253,11 +272,20 @@ def plans_pdf(source, pages):
                         continue  # Excludes codes in curriculum support matrices.
                     idx = next(j for j, x in enumerate(rest) if clean(x) == nature)
                     credit = clean(rest[idx + 1]) if len(rest) > idx + 1 else ""
-                    records.append({**base(source, pages[0].extract_text() or ""), "name": name, "code": code,
+                    records.append({**metadata, "program": current_program, "name": name, "code": code,
+                                    "course_category_raw": "/".join(x for x in (category, subcategory) if x) if category_table else None,
+                                    "category_extraction_method": "pdf_category_column" if category_table and category else None,
                                     "required_or_elective": nature, "credits": float(credit) if re.fullmatch(r"\d+(\.\d+)?", credit) else None,
                                     "catalog_category": None, "locator": {"page": page_no, "table": ti, "row": ri},
                                     "extraction_method": "pdf_table", "needs_review": []})
     return records
+
+
+def record_identity(row):
+    key = (row["code"], row["name"])
+    if row["source_kind"] == "undergraduate_plan":
+        key += (row["program"], row.get("credits"), row.get("required_or_elective"))
+    return key
 
 
 def extract(source):
@@ -316,10 +344,10 @@ def main():
                 rows = json.loads(cache_file.read_text(encoding="utf-8"))
             else:
                 rows = extract(source)
-                # Keep the first precise occurrence per source, while preserving
-                # separately coded courses even when their names are identical.
+                # Repeated progress tables are redundant, but each professional
+                # plan, credit value and required/elective scope is distinct.
                 seen = set()
-                rows = [x for x in rows if not ((x["code"], x["name"]) in seen or seen.add((x["code"], x["name"])))]
+                rows = [x for x in rows if not (record_identity(x) in seen or seen.add(record_identity(x)))]
                 cache_file.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             records += rows
             report.append({"source_id": source["id"], "title": source["title"], "kind": source["kind"], "plan_year": source.get("plan_year"),

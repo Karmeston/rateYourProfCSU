@@ -2913,5 +2913,175 @@
     "term": "2026-2027-1",
     "department": "本科生院",
     "plan_year": 2026
+  },
+  {
+    "id": "source-7bca45f37e29",
+    "title": "地信学院2023年培养方案",
+    "url": "https://gip.csu.edu.cn/info/1018/7241.htm",
+    "kind": "plan_page",
+    "discovered_from": "reviewed-public-research-20261010",
+    "department": "地球科学与信息物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-d6dd564ba314",
+    "title": "地信学院2023年教学大纲",
+    "url": "https://gip.csu.edu.cn/info/1017/7240.htm",
+    "kind": "syllabus_page",
+    "discovered_from": "reviewed-public-research-20261010",
+    "department": "地球科学与信息物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-5947067bc0c2",
+    "title": "生物科学专业本科培养方案",
+    "url": "https://life.csu.edu.cn/info/1059/3501.htm",
+    "kind": "plan_page",
+    "discovered_from": "reviewed-public-research-20261010",
+    "department": "生命科学学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-663a1b4e5580",
+    "title": "生物科学（强基）专业本科培养方案",
+    "url": "https://life.csu.edu.cn/info/1059/3500.htm",
+    "kind": "plan_page",
+    "discovered_from": "reviewed-public-research-20261010",
+    "department": "生命科学学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-51cbc5b7eff3",
+    "title": "本科生院选课通知目录",
+    "url": "https://bksy.csu.edu.cn/tztg/jxyxyxxhjsbgs.htm",
+    "kind": "notice_index",
+    "discovered_from": "reviewed-public-research-20261010"
+  },
+  {
+    "id": "source-195fdf0451d7",
+    "title": "地球科学与信息物理学院2023年培养方案",
+    "url": "https://gip.csu.edu.cn/info/1018/7241.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-7bca45f37e29",
+    "file_url": "https://gip.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750497848&wbfileid=14945365",
+    "department": "地球科学与信息物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-988fce9f237c",
+    "title": "1地质工程专业教学大纲.pdf",
+    "url": "https://gip.csu.edu.cn/info/1017/7240.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-d6dd564ba314",
+    "file_url": "https://gip.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750497848&wbfileid=14945360",
+    "department": "地球科学与信息物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-f9a54c7552a2",
+    "title": "2地理信息科学专业教学大纲.pdf",
+    "url": "https://gip.csu.edu.cn/info/1017/7240.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-d6dd564ba314",
+    "file_url": "https://gip.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750497848&wbfileid=14945359",
+    "department": "地球科学与信息物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-8c32358827e0",
+    "title": "3资源勘查工程专业教学大纲.pdf",
+    "url": "https://gip.csu.edu.cn/info/1017/7240.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-d6dd564ba314",
+    "file_url": "https://gip.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750497848&wbfileid=14945361",
+    "department": "地球科学与信息物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-f6431ccef3a0",
+    "title": "4地球物理学专业教学大纲.pdf",
+    "url": "https://gip.csu.edu.cn/info/1017/7240.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-d6dd564ba314",
+    "file_url": "https://gip.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750497848&wbfileid=14945364",
+    "department": "地球科学与信息物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-511f00cd1c6c",
+    "title": "5遥感科学与技术专业教学大纲.pdf",
+    "url": "https://gip.csu.edu.cn/info/1017/7240.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-d6dd564ba314",
+    "file_url": "https://gip.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750497848&wbfileid=14945363",
+    "department": "地球科学与信息物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-e7ce9668acb8",
+    "title": "6测绘工程专业教学大纲.pdf",
+    "url": "https://gip.csu.edu.cn/info/1017/7240.htm",
+    "kind": "major_syllabus",
+    "discovered_from": "source-d6dd564ba314",
+    "file_url": "https://gip.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750497848&wbfileid=14945362",
+    "department": "地球科学与信息物理学院",
+    "plan_year": 2023
+  },
+  {
+    "id": "source-416acf322717",
+    "title": "生物科学专业本科培养方案.doc",
+    "url": "https://life.csu.edu.cn/info/1059/3501.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-5947067bc0c2",
+    "file_url": "https://life.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2068444299&wbfileid=18205885",
+    "department": "生命科学学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-eb1e90122814",
+    "title": "生物科学（强基）专业本科培养方案.doc",
+    "url": "https://life.csu.edu.cn/info/1059/3500.htm",
+    "kind": "undergraduate_plan",
+    "discovered_from": "source-663a1b4e5580",
+    "file_url": "https://life.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2068444299&wbfileid=18205883",
+    "department": "生命科学学院",
+    "plan_year": 2025
+  },
+  {
+    "id": "source-39642999d2c3",
+    "title": "2026-2027第一学期本科生选课开课通知",
+    "url": "https://oa.csu.edu.cn/con/PDFPage?YWMC=ZNDX_ZHBG_GGTZ&JLNM=C1DED8DB93004CA09115E869C5A8335B",
+    "kind": "access_check",
+    "discovered_from": "reviewed-public-research-20261010",
+    "department": "本科生院",
+    "plan_year": 2026
+  },
+  {
+    "id": "source-ddb09e155109",
+    "title": "艺术教育发展年度报告目录",
+    "url": "https://xxgk.csu.edu.cn/ysjy.jsp?urltype=tree.TreeTempUrl&wbtreeid=1081",
+    "kind": "notice_index",
+    "discovered_from": "reviewed-public-research-20261010"
+  },
+  {
+    "id": "source-47720500df2d",
+    "title": "2026-2027第一学期本科生选课开课通知 PDF",
+    "url": "https://oa.csu.edu.cn/con/xnbg/loadContentPdf/C1DED8DB93004CA09115E869C5A8335B",
+    "kind": "course_notice",
+    "discovered_from": "reviewed-public-research-20261010",
+    "department": "本科生院",
+    "plan_year": 2026
+  },
+  {
+    "id": "course-selection-2026-autumn-attachments",
+    "title": "2026-2027第一学期本科生选课开课通知附件清单",
+    "url": "https://oa.csu.edu.cn/con/xnbg/getFjList",
+    "request_form": {
+      "JLNM": "C1DED8DB93004CA09115E869C5A8335B",
+      "WJFL": "11"
+    },
+    "kind": "notice_attachments",
+    "department": "本科生院",
+    "plan_year": 2026
   }
 ]

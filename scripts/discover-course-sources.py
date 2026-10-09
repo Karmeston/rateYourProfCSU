@@ -52,13 +52,16 @@ def main():
             # classification to its title, not degree names in the teaser.
             if "培养方案" in title:
                 title = title[:title.index("培养方案") + len("培养方案")] + (".doc" if attachment and ".doc" in title else "")
-            plan = bool(re.search(r"培养方案|课程.*大纲", title)) and not re.search(r"研究生|硕士|博士|修订机制|工作方案|指导意见|通知|实施细则", title)
-            year = re.search(r"[\[（(](20\d{2})(?:版)?[\]）)]|(20\d{2})版|(20\d{2})(?:日语|英语|哲学|法语|西班牙语)", original_title)
+            plan = bool(re.search(r"培养方案|课程.*大纲", title)) and not re.search(r"研究生|硕士|博士|修订机制|修订实施办法|工作方案|指导意见|通知|实施细则|召开|研讨会|解读大会", original_title)
+            year = re.search(r"[\[（(](20\d{2})(?:版)?[\]）)]|(20\d{2})[版年]|(20\d{2})(?:日语|英语|哲学|法语|西班牙语)", original_title)
             year_value = int(next(x for x in year.groups() if x)) if year else item.get("plan_year")
             historical_syllabus = "2016版" in title and "课程教学大纲" in title
             pagination = item.get("kind") == "index" and item["title"].count("下一页") < 2 and title in ("下页", "下一页", "尾页") and urllib.parse.urlparse(url).netloc == urllib.parse.urlparse(item["url"]).netloc
             undergraduate_nav = item.get("kind") == "college_home" and (("培养方案" in title and "/bks" in url) or title in ("本科生教育", "本科生培养", "本科教育"))
-            if not (attachment or (plan and year and year_value >= item.get("min_plan_year", 2023)) or historical_syllabus or pagination or undergraduate_nav):
+            undated_plan = (plan and not year and item.get("kind") == "index"
+                            and "专业本科培养方案" in title and not re.search(r"\d{2}版", original_title)
+                            and "/yjs" not in url)
+            if not (attachment or (plan and year and year_value >= item.get("min_plan_year", 2023)) or undated_plan or historical_syllabus or pagination or undergraduate_nav):
                 continue
             if attachment and not (plan or "课程" in title or item.get("kind") in ("plan_page", "syllabus_page")):
                 continue

@@ -1439,6 +1439,87 @@
       "department": "本科生院",
       "records": 18,
       "status": "extracted"
+    },
+    {
+      "source_id": "source-195fdf0451d7",
+      "title": "地球科学与信息物理学院2023年培养方案",
+      "kind": "undergraduate_plan",
+      "plan_year": 2023,
+      "department": "地球科学与信息物理学院",
+      "records": 573,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-988fce9f237c",
+      "title": "1地质工程专业教学大纲.pdf",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "地球科学与信息物理学院",
+      "records": 38,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f9a54c7552a2",
+      "title": "2地理信息科学专业教学大纲.pdf",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "地球科学与信息物理学院",
+      "records": 46,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-8c32358827e0",
+      "title": "3资源勘查工程专业教学大纲.pdf",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "地球科学与信息物理学院",
+      "records": 43,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-f6431ccef3a0",
+      "title": "4地球物理学专业教学大纲.pdf",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "地球科学与信息物理学院",
+      "records": 44,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-511f00cd1c6c",
+      "title": "5遥感科学与技术专业教学大纲.pdf",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "地球科学与信息物理学院",
+      "records": 42,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-e7ce9668acb8",
+      "title": "6测绘工程专业教学大纲.pdf",
+      "kind": "major_syllabus",
+      "plan_year": 2023,
+      "department": "地球科学与信息物理学院",
+      "records": 38,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-416acf322717",
+      "title": "生物科学专业本科培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2025,
+      "department": "生命科学学院",
+      "records": 72,
+      "status": "extracted"
+    },
+    {
+      "source_id": "source-eb1e90122814",
+      "title": "生物科学（强基）专业本科培养方案.doc",
+      "kind": "undergraduate_plan",
+      "plan_year": 2025,
+      "department": "生命科学学院",
+      "records": 74,
+      "status": "extracted"
     }
   ],
   "code_name_conflicts": [
@@ -1536,11 +1617,13 @@
         "source-0b602b01a46c",
         "source-15d88ce79494",
         "source-1688a94e15eb",
+        "source-195fdf0451d7",
         "source-1d9019ef60a7",
         "source-23efa57cbce2",
         "source-2c04a5690c1e",
         "source-3107c1a058b1",
         "source-37ff7c52da21",
+        "source-416acf322717",
         "source-4b436fe20fa7",
         "source-4e0642e10b96",
         "source-5a5f9fae5da8",
@@ -1579,6 +1662,7 @@
         "source-e562cbee6c84-d98d26cc",
         "source-e562cbee6c84-e282eb58",
         "source-e8e78a83bb4e",
+        "source-eb1e90122814",
         "source-eb3a977713b4",
         "source-f106ce6c1a8a-35678d04",
         "source-f106ce6c1a8a-5f69cbec",
@@ -1928,6 +2012,7 @@
         "工科大学化学—物理化学C"
       ],
       "source_ids": [
+        "source-195fdf0451d7",
         "source-23efa57cbce2",
         "source-4b9c2a26ae7b",
         "source-74714abbb2e3",
@@ -2686,6 +2771,18 @@
       ],
       "source_ids": [
         "source-fd26805d601a"
+      ]
+    },
+    {
+      "key": "csu:280101Z10",
+      "names": [
+        "细胞生物学A",
+        "细胞生物学Ａ"
+      ],
+      "source_ids": [
+        "source-416acf322717",
+        "source-50a0a1e9a062",
+        "source-eb1e90122814"
       ]
     },
     {
@@ -3692,6 +3789,113 @@
       ]
     },
     {
+      "key": "csu:010103Z10",
+      "names": [
+        "构造地质学",
+        "构造地质学Ⅰ"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-8c32358827e0"
+      ]
+    },
+    {
+      "key": "csu:010104Z10",
+      "names": [
+        "《岩石学》教学大纲(审核中)",
+        "岩石学Ⅰ"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-8c32358827e0"
+      ]
+    },
+    {
+      "key": "csu:010105Z10",
+      "names": [
+        "矿床学",
+        "矿床学Ⅰ"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-8c32358827e0"
+      ]
+    },
+    {
+      "key": "csu:010116Z10",
+      "names": [
+        "《遥感地质学》教学大纲(审核中)",
+        "遥感地质学"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-8c32358827e0"
+      ]
+    },
+    {
+      "key": "csu:010139Z11",
+      "names": [
+        "勘查学课程设计",
+        "矿产勘查课程设计"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-8c32358827e0"
+      ]
+    },
+    {
+      "key": "csu:010150X10",
+      "names": [
+        "《普通地质学》教学大纲(审核中)",
+        "普通地质学"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-8c32358827e0"
+      ]
+    },
+    {
+      "key": "csu:010151X11",
+      "names": [
+        "地质认知实习",
+        "地质认识实习"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7"
+      ]
+    },
+    {
+      "key": "csu:010201Z10",
+      "names": [
+        "地质工程新生课",
+        "新生课"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-988fce9f237c"
+      ]
+    },
+    {
+      "key": "csu:010213Z10",
+      "names": [
+        "弹性力学",
+        "弹性力学（后半学期）"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-988fce9f237c"
+      ]
+    },
+    {
       "key": "csu:010223Z10",
       "names": [
         "地基处理",
@@ -3699,6 +3903,54 @@
       ],
       "source_ids": [
         "source-0768b79a991d"
+      ]
+    },
+    {
+      "key": "csu:010228Z10",
+      "names": [
+        "特种钻探工程",
+        "特种钻探技术"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-988fce9f237c"
+      ]
+    },
+    {
+      "key": "csu:010316Z10",
+      "names": [
+        "计算地球物理",
+        "计算地球物理学"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-f6431ccef3a0"
+      ]
+    },
+    {
+      "key": "csu:010332Z10",
+      "names": [
+        "放射性勘探与辐射防护基础",
+        "放射性勘探及辐射防护"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7"
+      ]
+    },
+    {
+      "key": "csu:010423Z10",
+      "names": [
+        "雷达干涉测量",
+        "雷达干涉测量(双语)"
+      ],
+      "source_ids": [
+        "source-0768b79a991d",
+        "source-195fdf0451d7",
+        "source-511f00cd1c6c",
+        "source-e7ce9668acb8"
       ]
     },
     {
@@ -4203,17 +4455,73 @@
       "source_ids": [
         "source-04d82b6ebd46"
       ]
+    },
+    {
+      "key": "csu:010270Z11",
+      "names": [
+        "边坡与基坑工程课程设计",
+        "边坡与基坑支护工程课程设计"
+      ],
+      "source_ids": [
+        "source-195fdf0451d7",
+        "source-988fce9f237c"
+      ]
+    },
+    {
+      "key": "csu:010179Z10",
+      "names": [
+        "专业英语",
+        "专业英语Ⅰ"
+      ],
+      "source_ids": [
+        "source-195fdf0451d7",
+        "source-8c32358827e0"
+      ]
+    },
+    {
+      "key": "csu:010372Z10",
+      "names": [
+        "地球物理数值计算与反演",
+        "地球物理测井"
+      ],
+      "source_ids": [
+        "source-195fdf0451d7",
+        "source-f6431ccef3a0"
+      ]
+    },
+    {
+      "key": "csu:010370Z10",
+      "names": [
+        "勘查地球物理 I",
+        "地球物理与人工智能"
+      ],
+      "source_ids": [
+        "source-195fdf0451d7",
+        "source-f6431ccef3a0"
+      ]
+    },
+    {
+      "key": "csu:010379T10",
+      "names": [
+        "科学计算与",
+        "科学计算与 Matlab / Python 语言",
+        "科学计算与Matlab/Python语言"
+      ],
+      "source_ids": [
+        "source-195fdf0451d7",
+        "source-f6431ccef3a0"
+      ]
     }
   ],
   "statistics": {
-    "records": 10065,
-    "course_keys": 5548,
+    "records": 11035,
+    "course_keys": 5728,
     "elective_keys": 234,
     "records_by_year": {
       "2016": 4604,
       "2024": 597,
-      "2023": 4002,
-      "2025": 414,
+      "2023": 4826,
+      "2025": 560,
       "2018": 430,
       "2026": 18
     },

@@ -1,32 +1,32 @@
 {
   "statistics": {
-    "records": 10065,
-    "course_keys": 5548,
+    "records": 11035,
+    "course_keys": 5728,
     "elective_keys": 234,
     "records_by_year": {
       "2016": 4604,
       "2024": 597,
-      "2023": 4002,
-      "2025": 414,
+      "2023": 4826,
+      "2025": 560,
       "2018": 430,
       "2026": 18
     },
     "source_departments": 40,
     "current_mooc_courses": 18,
     "historical_public_electives": 216,
-    "curriculum_records": 5491,
-    "plan_documents_with_records": 70,
+    "curriculum_records": 6210,
+    "plan_documents_with_records": 73,
     "baseline_programs": 98,
     "program_coverage_status": {
-      "recent_ordinary_source": 34,
-      "plan_source_missing": 55,
+      "recent_ordinary_source": 41,
+      "plan_source_missing": 48,
       "historical_source_only": 7,
       "recent_special_source_only": 2
     },
-    "course_keys_needing_review": 288,
-    "source_documents": 400,
-    "downloaded_bytes": 132803260,
-    "checksum_sources_checked": 400
+    "course_keys_needing_review": 308,
+    "source_documents": 418,
+    "downloaded_bytes": 155807594,
+    "checksum_sources_checked": 418
   },
   "checks": [
     "manifest_sha256",

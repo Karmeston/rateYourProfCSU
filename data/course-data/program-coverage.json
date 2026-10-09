@@ -53,8 +53,17 @@
       "degree": "理学",
       "duration": "四年",
       "notes": "",
-      "status": "plan_source_missing",
-      "plan_sources": []
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-195fdf0451d7",
+          "program_as_extracted": "地理信息科学",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://gip.csu.edu.cn/info/1018/7241.htm",
+          "records": 76
+        }
+      ]
     },
     {
       "department": "地球科学与信息物理学院",
@@ -63,8 +72,17 @@
       "degree": "工学",
       "duration": "四年",
       "notes": "",
-      "status": "plan_source_missing",
-      "plan_sources": []
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-195fdf0451d7",
+          "program_as_extracted": "测绘工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://gip.csu.edu.cn/info/1018/7241.htm",
+          "records": 78
+        }
+      ]
     },
     {
       "department": "地球科学与信息物理学院",
@@ -73,8 +91,17 @@
       "degree": "工学",
       "duration": "四年",
       "notes": "",
-      "status": "plan_source_missing",
-      "plan_sources": []
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-195fdf0451d7",
+          "program_as_extracted": "遥感科学与技术",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://gip.csu.edu.cn/info/1018/7241.htm",
+          "records": 80
+        }
+      ]
     },
     {
       "department": "地球科学与信息物理学院",
@@ -83,8 +110,17 @@
       "degree": "工学",
       "duration": "四年",
       "notes": "",
-      "status": "plan_source_missing",
-      "plan_sources": []
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-195fdf0451d7",
+          "program_as_extracted": "地质工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://gip.csu.edu.cn/info/1018/7241.htm",
+          "records": 82
+        }
+      ]
     },
     {
       "department": "地球科学与信息物理学院",
@@ -93,8 +129,17 @@
       "degree": "工学",
       "duration": "四年",
       "notes": "",
-      "status": "plan_source_missing",
-      "plan_sources": []
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-195fdf0451d7",
+          "program_as_extracted": "资源勘查工程",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://gip.csu.edu.cn/info/1018/7241.htm",
+          "records": 157
+        }
+      ]
     },
     {
       "department": "地球科学与信息物理学院",
@@ -103,8 +148,17 @@
       "degree": "理学",
       "duration": "四年",
       "notes": "",
-      "status": "plan_source_missing",
-      "plan_sources": []
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-195fdf0451d7",
+          "program_as_extracted": "地球物理学",
+          "track": "ordinary",
+          "plan_year": 2023,
+          "source_url": "https://gip.csu.edu.cn/info/1018/7241.htm",
+          "records": 100
+        }
+      ]
     },
     {
       "department": "电子信息学院",
@@ -792,8 +846,25 @@
       "degree": "理学",
       "duration": "四年",
       "notes": "",
-      "status": "plan_source_missing",
-      "plan_sources": []
+      "status": "recent_ordinary_source",
+      "plan_sources": [
+        {
+          "source_id": "source-416acf322717",
+          "program_as_extracted": "生物科学",
+          "track": "ordinary",
+          "plan_year": 2025,
+          "source_url": "https://life.csu.edu.cn/info/1059/3501.htm",
+          "records": 72
+        },
+        {
+          "source_id": "source-eb1e90122814",
+          "program_as_extracted": "生物科学（强基）",
+          "track": "special",
+          "plan_year": 2025,
+          "source_url": "https://life.csu.edu.cn/info/1059/3500.htm",
+          "records": 74
+        }
+      ]
     },
     {
       "department": "生命科学学院",

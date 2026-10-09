@@ -45,8 +45,11 @@ def main():
         plans = [row for row in course["evidence"] if eligible_plan(row)]
         if not plans:
             continue
+        explicit_plan_category = any(row.get("category_extraction_method") == "pdf_category_column"
+            and re.match(r"^(?:学科|专业)教育课程(?:/|$)", row.get("course_category_raw") or "") for row in plans)
         syllabi = [row for row in course["evidence"] if row["source_kind"] == "major_syllabus"
-                   and re.search(r"学科|专业", row.get("course_category_raw") or "")
+                   and (re.search(r"学科|专业", row.get("course_category_raw") or "")
+                        or (explicit_plan_category and not row.get("course_category_raw")))
                    and row["source_department"] != "医药信息系学院"]
         reason = None
         if course["needs_review"]:
@@ -80,7 +83,8 @@ def main():
                 "source_id": source["id"], "name": row["name"],
                 "program": row.get("program"), "credits": row.get("credits"),
                 "requirement": row.get("required_or_elective"),
-                "category_raw": row.get("course_category_raw"), "locator": locator(row),
+                "category_raw": row.get("course_category_raw"),
+                "category_method": row.get("category_extraction_method"), "locator": locator(row),
             }
             # A plan repeats courses in progress tables and support matrices; keep one
             # location per identical source/program/credit/requirement combination.
