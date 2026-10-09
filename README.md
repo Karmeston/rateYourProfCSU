@@ -4,11 +4,11 @@
 
 课程支持名称/代码搜索、类型与学院组合筛选、评分/评价数量/名称排序、网格与列表切换。详情可复制分享链接、保留筛选返回列表；评价支持星级筛选、最新评论/赞同最多排序、匿名投稿、草稿恢复、赞同与单层回复。没有评价时不显示零分。
 
-教师页面当前由 `web/features.ts` 的开关关闭，旧教师页面链接返回课程广场；独立教师 API 继续保留。开启后提供教师搜索、详情与评价。未核实的培养方案、学分与考核资料显示明确占位，尚未导入已采集数据。
+教师页面当前由 `web/features.ts` 的开关关闭，旧教师页面链接返回课程广场；独立教师 API 继续保留。开启后提供教师搜索、详情与评价。未核实的培养方案、学分与考核资料显示明确占位；已核对的18门MOOC接入隔离本地预览，线上目录未修改。
 
 设计依据、验收记录与回退方式见 [界面改造说明](docs/ui-improvements.md)。
 
-公选课类别、培养方案学分要求及后续功能建议见 [公选课认定调研](docs/elective-credit-research.md)。课程分类与学分认定分别核实，尚未实现自动认定功能。
+公选课支持细分类筛选，详情提供培养方案选择、分模块认定提示与已核实学年的MOOC限选提醒。课程分类与学分认定分别核实，缺少证据时显示待核实。规则依据见 [公选课认定调研](docs/elective-credit-research.md)，实现与回退方式见 [公选课功能说明](docs/elective-guidance.md)。
 
 ## 技术与目录
 
@@ -52,7 +52,7 @@ build 仅打包和 dry-run，不发布。测试不修改开发数据库。生成
 | GET 接口 | 返回 |
 | --- | --- |
 | `/api/teachers` | teachers、limit、offset、q、hasMore |
-| `/api/courses` | courses、limit、offset、q、category、department、sort、total、hasMore、facets、stats |
+| `/api/courses` | courses、limit、offset、q、category、electiveType、department、sort、total、hasMore、facets、stats |
 | `/api/teachers/:id` | teacher |
 | `/api/courses/:id` | course |
 | `/api/health` | status，仅检查服务响应 |
@@ -60,6 +60,8 @@ build 仅打包和 dry-run，不发布。测试不修改开发数据库。生成
 列表支持 limit（1–100，默认20）、offset（0–100000，默认0）、q（最多100字符），默认按 ID 升序。教师按名称搜索；课程按名称或代码搜索，ASCII 英文不区分大小写。搜索字面匹配，百分号和下划线不是通配符。详情不接受查询参数。重复、未知或非法参数返回400，不存在的详情返回404，数据库故障返回通用500，详细错误仅记服务端日志。
 
 课程列表另支持 category（major/elective）、department（学院名精确匹配）、sort（default/rating/reviews/name）。total 为筛选后的总数；facets.departments 为整个可见目录的学院及数量；stats 为整个可见目录的课程数、已发布评价数和已评价课程数。评分排序将未评分课程放在最后，并以 ID 保证稳定顺序。URL 保留搜索、类型、学院、排序及分页，详情返回时恢复原条件。
+
+公选课细分类参数 electiveType 接受 natural_science、humanities、economics、arts_sports、unknown；使用时限定公选课，不能与 category=major 组合。unknown 只包含细分类未知的可见公选课。列表课程增加可空 electiveType，详情增加 elective（facts、offerings、creditRules；非公选课为 null）。开课记录包含明确学年学期，不等于每学期持续开设。
 
 旧的 `/api/courses/:id/offerings` 已移除。
 
@@ -116,7 +118,7 @@ Cloudflare 原生限流绑定配置在 wrangler.jsonc：
 教师可同名，以 ID 区分；官网链接可为空，前端仅允许 HTTPS。
 课程代码可为空，已知代码唯一。
 
-课程 category 为 major（专业课）、elective（公选课），未知时为空。课程列表可用 category 参数筛选，两类可与名称搜索组合；教师接口不接受该参数。is_listed=0 的课程不会出现在列表、搜索、详情或评论接口中。首批7门数学统计课程归入专业课，3门思政课程退出课程目录，目前公选课为空。未来导入应人工确认分类，不凭教师学院或课程名称自动分类。
+课程 category 为 major（专业课）、elective（公选课），未知时为空。课程列表可用 category 参数筛选，两类可与名称搜索组合；教师接口不接受该参数。is_listed=0 的课程不会出现在列表、搜索、详情或评论接口中。初始目录的7门数学统计课程归入专业课，3门思政课程退出课程目录。公选课按官方名单导入，细分类另行核实，不凭教师学院或课程名称自动分类。
 
 初版的 `terms`、`course_offerings` 表及其数据暂时保留，避免破坏已应用迁移；当前页面与 API 不再使用它们。`teacher_reviews` 与 `course_reviews` 分别关联教师或课程，不关联授课记录，也不强制填写学期。
 

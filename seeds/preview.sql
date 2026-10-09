@@ -10,6 +10,10 @@ INSERT INTO courses (id, code, name, department, category) VALUES
   (-107, 'DEMO-PHYS-107', '大学物理', '物理学院', 'major'),
   (-108, 'DEMO-SAFE-108', '大学生安全文化', '资源与安全工程学院', 'elective')
 ON CONFLICT(id) DO NOTHING;
+INSERT INTO elective_course_facts (course_id, elective_type, credits, source_url, source_label, source_locator) VALUES
+  (-105, 'natural_science', 2, 'https://example.invalid/elective-preview', '虚构演示资料', '演示课程，不作选课依据'),
+  (-106, 'arts_sports', 2, 'https://example.invalid/elective-preview', '虚构演示资料', '演示课程，不作选课依据')
+ON CONFLICT(course_id) DO NOTHING;
 INSERT INTO course_reviews (id, course_id, rating, body, status, created_at) VALUES
   ('preview-review-1', -101, 5, '演示评价：概念之间的联系讲得很清楚。建议课前预习定义，课后认真完成习题，逐渐会找到分析问题的方法。', 'published', '2026-10-05T10:00:00Z'),
   ('preview-review-2', -101, 4, '演示评价：课程需要持续投入，证明题开始有些难。和同学讨论之后收获很大，别把问题留到期末。', 'published', '2026-10-07T09:30:00Z'),

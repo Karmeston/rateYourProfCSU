@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { courseCategories, type Course } from '../shared/catalog';
+import { courseCategories, type CourseDetail } from '../shared/catalog';
+import { ElectiveGuidance } from './elective-guidance';
 import { Icon } from './icons';
 import { Reviews } from './reviews';
 import { ErrorState } from './ui';
@@ -24,7 +25,7 @@ export function Detail({
   id: string;
   from: string;
 }) {
-  const { data, error, retry } = useData<{ course?: Course; teacher?: Teacher }>(
+  const { data, error, retry } = useData<{ course?: CourseDetail; teacher?: Teacher }>(
     `/api/${kind}/${id}`,
   );
   const row = kind === 'courses' ? data?.course : data?.teacher;
@@ -126,7 +127,8 @@ export function Detail({
               </button>
             </div>
           )}
-          {course && (
+          {course?.category === 'elective' && <ElectiveGuidance course={course} />}
+          {course && course.category !== 'elective' && (
             <details className="course-info">
               <summary>
                 课程资料 <span className="fine-print">待补充</span>

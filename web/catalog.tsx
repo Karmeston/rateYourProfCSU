@@ -5,6 +5,7 @@ import {
   type CourseCatalog,
   type CourseSummary,
 } from '../shared/catalog';
+import { electiveTypes, type ElectiveTypeFilter } from '../shared/electives';
 import { Icon } from './icons';
 import {
   catalogHref,
@@ -71,6 +72,11 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
           <i />
           {course.category ? courseCategories[course.category] : '待分类'}
         </span>
+        {course.category === 'elective' && (
+          <span className="elective-type-label">
+            {course.electiveType ? electiveTypes[course.electiveType] : '类别待核实'}
+          </span>
+        )}
       </div>
       <div className="card-content">
         <h2>
@@ -122,6 +128,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
     sort: route.sort,
   });
   if (route.category) params.set('category', route.category);
+  if (route.electiveType) params.set('electiveType', route.electiveType);
   if (route.department) params.set('department', route.department);
   const { data, error, retry } = useData<CourseCatalog>(`/api/courses?${params}`);
   const [view, setView] = useState<'grid' | 'list'>(() => {
@@ -139,7 +146,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
       /* 当前页面仍可切换布局。 */
     }
   }
-  const filtered = !!(route.q || route.category || route.department);
+  const filtered = !!(route.q || route.category || route.electiveType || route.department);
   const title = route.q ? `“${route.q}”的搜索结果` : '课程广场';
   const departments = data?.facets.departments ?? [];
   return (
@@ -187,6 +194,26 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               ))}
             </nav>
             <div className="select-filters">
+              {route.category === 'elective' && (
+                <label className="elective-type-filter">
+                  <span className="sr-only">公选课类别</span>
+                  <select
+                    value={route.electiveType}
+                    onChange={(event) => {
+                      window.location.hash = href({
+                        electiveType: event.target.value as ElectiveTypeFilter,
+                        offset: 0,
+                      });
+                    }}
+                  >
+                    <option value="">全部公选课类别</option>
+                    {Object.entries(electiveTypes).map(([value, label]) => (
+                      <option key={value} value={value}>{label}</option>
+                    ))}
+                    <option value="unknown">类别待核实</option>
+                  </select>
+                </label>
+              )}
               <label>
                 <span className="sr-only">开课学院</span>
                 <select
@@ -245,6 +272,12 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               {route.department && (
                 <a href={href({ department: '', offset: 0 })} aria-label="移除学院筛选">
                   {route.department}
+                  <Icon name="close" size={13} />
+                </a>
+              )}
+              {route.electiveType && (
+                <a href={href({ electiveType: '', offset: 0 })} aria-label="移除公选课类别筛选">
+                  {route.electiveType === 'unknown' ? '类别待核实' : electiveTypes[route.electiveType]}
                   <Icon name="close" size={13} />
                 </a>
               )}

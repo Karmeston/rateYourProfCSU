@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import type { CourseCatalog, CourseSort, CourseSummary } from '../shared/catalog.ts';
+import { isElectiveTypeFilter } from '../shared/electives.ts';
 
 const catalog = new Hono<{ Bindings: Env }>();
 const ordering: Record<CourseSort, string> = {
@@ -10,7 +11,7 @@ const ordering: Record<CourseSort, string> = {
 };
 
 function parseQuery(query: Record<string, string[]>) {
-  const allowed = ['limit', 'offset', 'q', 'category', 'department', 'sort'];
+  const allowed = ['limit', 'offset', 'q', 'category', 'electiveType', 'department', 'sort'];
   if (Object.entries(query).some(([key, values]) => !allowed.includes(key) || values.length !== 1))
     return null;
   const limit = query.limit?.[0] ?? '20';
@@ -25,6 +26,7 @@ function parseQuery(query: Record<string, string[]>) {
   const q = query.q?.[0].trim() ?? '';
   const department = query.department?.[0].trim() ?? '';
   const category = query.category?.[0] ?? '';
+  const electiveType = query.electiveType?.[0] ?? '';
   const sort = query.sort?.[0] ?? 'default';
   if (
     q.length > 100 ||
@@ -33,6 +35,9 @@ function parseQuery(query: Record<string, string[]>) {
     department.includes('\0') ||
     (query.department && !department) ||
     (query.category && !['major', 'elective'].includes(category)) ||
+    !isElectiveTypeFilter(electiveType) ||
+    (query.electiveType && !electiveType) ||
+    (electiveType && category === 'major') ||
     !Object.hasOwn(ordering, sort)
   )
     return null;
@@ -41,7 +46,8 @@ function parseQuery(query: Record<string, string[]>) {
     offset: Number(offset),
     q,
     department,
-    category,
+    category: electiveType ? 'elective' : category,
+    electiveType,
     sort: sort as CourseSort,
   };
 }
@@ -49,22 +55,24 @@ function parseQuery(query: Record<string, string[]>) {
 catalog.get('/', async (c) => {
   const page = parseQuery(c.req.queries());
   if (!page) return c.json({ error: '查询参数不合法' }, 400);
-  const { limit, offset, q, category, department, sort } = page;
+  const { limit, offset, q, category, electiveType, department, sort } = page;
   // SQL fragments only come from fixed sort options.
-  const where = `is_listed = 1 AND (instr(lower(name), lower(?)) > 0 OR instr(lower(coalesce(code, '')), lower(?)) > 0)
-    AND (? = '' OR category = ?) AND (? = '' OR department = ?)`;
-  const bindings = [q, q, category, category, department, department];
+  const where = `c.is_listed = 1 AND (instr(lower(c.name), lower(?)) > 0 OR instr(lower(coalesce(c.code, '')), lower(?)) > 0)
+    AND (? = '' OR c.category = ?) AND (? = '' OR c.department = ?)
+    AND (? = '' OR (? = 'unknown' AND e.elective_type IS NULL) OR e.elective_type = ?)`;
+  const bindings = [q, q, category, category, department, department, electiveType, electiveType, electiveType];
+  const electiveJoin = "LEFT JOIN elective_course_facts e ON e.course_id = c.id AND c.category = 'elective'";
   const [entries, count, departments, statistics] = await c.env.DB.batch([
     c.env.DB.prepare(
-      `SELECT c.id, c.code, c.name, c.department, c.category,
+      `SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType,
       r.average, coalesce(r.reviewCount, 0) AS reviewCount
-      FROM courses c LEFT JOIN (
+      FROM courses c ${electiveJoin} LEFT JOIN (
         SELECT course_id, avg(rating) AS average, count(*) AS reviewCount
         FROM course_reviews WHERE status = 'published' GROUP BY course_id
       ) r ON r.course_id = c.id WHERE ${where}
       ORDER BY ${ordering[sort]} LIMIT ? OFFSET ?`,
     ).bind(...bindings, limit + 1, offset),
-    c.env.DB.prepare(`SELECT count(*) AS total FROM courses WHERE ${where}`).bind(...bindings),
+    c.env.DB.prepare(`SELECT count(*) AS total FROM courses c ${electiveJoin} WHERE ${where}`).bind(...bindings),
     c.env.DB.prepare(
       'SELECT department AS name, count(*) AS count FROM courses WHERE is_listed = 1 GROUP BY department ORDER BY department',
     ),
@@ -79,6 +87,7 @@ catalog.get('/', async (c) => {
     offset,
     q,
     category,
+    electiveType,
     department,
     sort,
     total: (count.results[0] as { total: number }).total,

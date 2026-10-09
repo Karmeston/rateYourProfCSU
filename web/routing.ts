@@ -1,9 +1,11 @@
 import { courseSorts, type CourseCategory, type CourseSort } from '../shared/catalog.ts';
+import { isElectiveTypeFilter, type ElectiveTypeFilter } from '../shared/electives.ts';
 
 export const pageSize = 20;
 export type CatalogFilters = {
   q: string;
   category: CourseCategory | '';
+  electiveType: ElectiveTypeFilter;
   department: string;
   sort: CourseSort;
   offset: number;
@@ -18,6 +20,7 @@ export type Route =
 export const defaultFilters: CatalogFilters = {
   q: '',
   category: '',
+  electiveType: '',
   department: '',
   sort: 'default',
   offset: 0,
@@ -25,9 +28,13 @@ export const defaultFilters: CatalogFilters = {
 
 export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilters> = {}) {
   const value = { ...filters, ...patch };
+  if (patch.category !== undefined && patch.category !== 'elective' && patch.electiveType === undefined)
+    value.electiveType = '';
+  if (value.electiveType) value.category = 'elective';
   const query = new URLSearchParams();
   if (value.q) query.set('q', value.q);
   if (value.category) query.set('category', value.category);
+  if (value.electiveType) query.set('electiveType', value.electiveType);
   if (value.department) query.set('department', value.department);
   if (value.sort !== 'default') query.set('sort', value.sort);
   if (value.offset) query.set('offset', String(value.offset));
@@ -67,7 +74,7 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
   if (
     !['/', '/courses', '/teachers'].includes(path) ||
     [...params.keys()].some(
-      (key) => !['q', 'category', 'department', 'sort', 'offset'].includes(key),
+      (key) => !['q', 'category', 'electiveType', 'department', 'sort', 'offset'].includes(key),
     )
   )
     return { page: 'not-found' };
@@ -75,6 +82,7 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
   const q = params.get('q')?.trim() ?? '';
   const department = params.get('department') ?? '';
   const category = params.get('category') ?? '';
+  const electiveType = params.get('electiveType') ?? '';
   const sort = params.get('sort') ?? 'default';
   if (
     !/^(0|[1-9]\d*)$/.test(rawOffset) ||
@@ -84,6 +92,8 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     department.length > 100 ||
     department.includes('\0') ||
     !['', 'major', 'elective'].includes(category) ||
+    !isElectiveTypeFilter(electiveType) ||
+    (electiveType && category === 'major') ||
     !Object.hasOwn(courseSorts, sort)
   )
     return { page: 'not-found' };
@@ -92,7 +102,8 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     page: 'catalog',
     home: path === '/',
     q,
-    category: category as CourseCategory | '',
+    category: electiveType ? 'elective' : category as CourseCategory | '',
+    electiveType,
     department,
     sort: sort as CourseSort,
     offset: Number(rawOffset),

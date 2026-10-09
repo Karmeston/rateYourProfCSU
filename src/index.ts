@@ -2,15 +2,10 @@ import { Hono } from 'hono';
 import reviews from './reviews.ts';
 import visitor, { type AppEnv } from './visitor.ts';
 import courseCatalog from './course-catalog.ts';
+import type { Course } from '../shared/catalog.ts';
+import { readElectiveDetails } from './elective-guidance.ts';
 
 const app = new Hono<AppEnv>();
-type Course = {
-  id: number;
-  code: string | null;
-  name: string;
-  department: string;
-  category: 'major' | 'elective' | null;
-};
 type Teacher = { id: number; name: string; department: string; profile_url: string | null };
 
 // 两个入口共用分页验证，SQL 和返回字段分别定义。
@@ -71,13 +66,16 @@ app.get('/api/courses/:id', async (c) => {
   if (!validId(c.req.param('id')) || Object.keys(c.req.queries()).length)
     return c.json({ error: '查询参数不合法' }, 400);
   const course = await c.env.DB.prepare(
-    'SELECT id, code, name, department, category FROM courses WHERE id = ? AND is_listed = 1',
+    `SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType
+      FROM courses c LEFT JOIN elective_course_facts e ON e.course_id = c.id AND c.category = 'elective'
+      WHERE c.id = ? AND c.is_listed = 1`,
   )
     .bind(Number(c.req.param('id')))
     .first<Course>();
   if (!course) return c.json({ error: '课程不存在' }, 404);
+  const elective = course.category === 'elective' ? await readElectiveDetails(c.env.DB, course.id) : null;
   c.header('Cache-Control', 'private, max-age=60');
-  return c.json({ course });
+  return c.json({ course: { ...course, elective } });
 });
 
 app.get('/api/teachers/:id', async (c) => {

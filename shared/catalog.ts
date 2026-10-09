@@ -1,3 +1,5 @@
+import type { ElectiveDetails, ElectiveType, ElectiveTypeFilter } from './electives.ts';
+
 export type CourseCategory = 'major' | 'elective';
 export type CourseSort = 'default' | 'rating' | 'reviews' | 'name';
 export type Course = {
@@ -6,7 +8,9 @@ export type Course = {
   name: string;
   department: string;
   category: CourseCategory | null;
+  electiveType: ElectiveType | null;
 };
+export type CourseDetail = Course & { elective: ElectiveDetails | null };
 export type CourseSummary = Course & { average: number | null; reviewCount: number };
 export type CourseCatalog = {
   courses: CourseSummary[];
@@ -16,6 +20,7 @@ export type CourseCatalog = {
   hasMore: boolean;
   q: string;
   category: string;
+  electiveType: ElectiveTypeFilter;
   department: string;
   sort: CourseSort;
   facets: { departments: { name: string; count: number }[] };
