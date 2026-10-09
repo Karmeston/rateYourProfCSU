@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
 import { test } from 'node:test';
 import { generateSignedCookie } from 'hono/cookie';
 import { getPlatformProxy } from 'wrangler';
 import app from '../src/index.ts';
+import { migrate } from './helpers/database.mjs';
 import { issueCookie, testSecret, visitorEnv } from './helpers/visitor.mjs';
 
 const json = (method, value, cookie, extra = {}) => ({
@@ -20,15 +20,7 @@ test('匿名访客 Cookie 与频率限制（临时 D1）', async (t) => {
   t.after(() => platform.dispose());
   const env = visitorEnv(platform);
   const { DB } = env;
-  const migrations = new URL('../migrations/', import.meta.url);
-  for (const name of readdirSync(migrations)
-    .filter((n) => n.endsWith('.sql'))
-    .sort()) {
-    for (const sql of readFileSync(new URL(name, migrations), 'utf8')
-      .split(';')
-      .filter((s) => s.trim()))
-      await DB.prepare(sql).run();
-  }
+  await migrate(DB);
   await DB.prepare(
     "INSERT INTO courses (id,name,department) VALUES (1,'测试课程','测试学院')",
   ).run();

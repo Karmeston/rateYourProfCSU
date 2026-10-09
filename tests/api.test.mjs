@@ -1,18 +1,14 @@
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
 import { test } from 'node:test';
 import { getPlatformProxy } from 'wrangler';
 import app from '../src/index.ts';
+import { migrate } from './helpers/database.mjs';
 
 test('独立教师与课程浏览 API（临时 D1）', async (t) => {
   const platform = await getPlatformProxy({ persist: false });
   t.after(() => platform.dispose());
   const { DB } = platform.env;
-  const migrations = new URL('../migrations/', import.meta.url);
-  for (const file of readdirSync(migrations).filter((name) => name.endsWith('.sql')).sort()) {
-    const sql = readFileSync(new URL(file, migrations), 'utf8');
-    for (const statement of sql.split(';').filter((part) => part.trim())) await DB.prepare(statement).run();
-  }
+  await migrate(DB);
   // 无授课关系、无学期，也可以建立和浏览这两类资料。
   for (const [id, name] of [[1, '同名教师'], [2, '同名教师']]) {
     await DB.prepare('INSERT INTO teachers (id, name, department) VALUES (?, ?, ?)').bind(id, name, '测试学院').run();

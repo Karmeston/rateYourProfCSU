@@ -2,13 +2,11 @@ import { Hono } from 'hono';
 import { readBody } from './request-body.ts';
 import interactions from './review-interactions.ts';
 import { checkWriteRequest, readVisitor, limitWrite, type AppEnv } from './visitor.ts';
+import { reviewTargets } from './review-targets.ts';
+import { isResourceId, isUuid } from './validation.ts';
 
 const reviews = new Hono<AppEnv>();
 const pageSize = 20;
-const targets = [
-  { kind: 'teachers', table: 'teacher_reviews', foreignKey: 'teacher_id' },
-  { kind: 'courses', table: 'course_reviews', foreignKey: 'course_id' },
-] as const;
 type Review = { id: string; rating: number; body: string; created_at: string };
 type RatingCount = { rating: number; count: number };
 
@@ -18,7 +16,7 @@ reviews.use('*', async (c, next) => {
   await next();
 });
 
-for (const { kind, table, foreignKey } of targets) {
+for (const { kind, reviews: table, foreignKey, votes, replies } of reviewTargets) {
   const visibility = kind === 'courses' ? ' AND is_listed = 1' : '';
   // 表名仅来自上面的固定配置，所有外部值都使用参数绑定。
   reviews.get(`/${kind}/:id/reviews`, async (c) => {
@@ -28,8 +26,7 @@ for (const { kind, table, foreignKey } of targets) {
     const sort = query.sort?.[0] ?? 'latest';
     const rating = query.rating?.[0] ?? '';
     if (
-      !/^-?[1-9]\d*$/.test(rawId) ||
-      !Number.isSafeInteger(Number(rawId)) ||
+      !isResourceId(rawId) ||
       Object.entries(query).some(
         ([key, values]) => !['offset', 'sort', 'rating'].includes(key) || values.length !== 1,
       ) ||
@@ -52,10 +49,10 @@ for (const { kind, table, foreignKey } of targets) {
       ).bind(id),
       c.env.DB.prepare(
         `SELECT r.id, r.rating, r.body, r.created_at,
-        (SELECT count(*) FROM ${table.slice(0, -1)}_votes v WHERE v.review_id=r.id AND v.value=1) AS likes,
-        (SELECT count(*) FROM ${table.slice(0, -1)}_votes v WHERE v.review_id=r.id AND v.value=-1) AS dislikes,
-        coalesce((SELECT value FROM ${table.slice(0, -1)}_votes v WHERE v.review_id=r.id AND v.voter_id=?),0) AS myVote,
-        (SELECT count(*) FROM ${table.slice(0, -1)}_replies p WHERE p.review_id=r.id AND p.status='published') AS replyCount
+        (SELECT count(*) FROM ${votes} v WHERE v.review_id=r.id AND v.value=1) AS likes,
+        (SELECT count(*) FROM ${votes} v WHERE v.review_id=r.id AND v.value=-1) AS dislikes,
+        coalesce((SELECT value FROM ${votes} v WHERE v.review_id=r.id AND v.voter_id=?),0) AS myVote,
+        (SELECT count(*) FROM ${replies} p WHERE p.review_id=r.id AND p.status='published') AS replyCount
         FROM ${table} r WHERE ${foreignKey} = ? AND status = 'published' AND (? = '' OR rating = ?)
         ORDER BY ${sort === 'helpful' ? 'likes DESC, dislikes ASC,' : ''} created_at DESC, id DESC LIMIT ? OFFSET ?`,
       ).bind(c.get('visitorId') ?? '', id, rating, rating, pageSize + 1, offset),
@@ -84,8 +81,7 @@ for (const { kind, table, foreignKey } of targets) {
     if (rejected) return rejected;
     const rawId = c.req.param('id');
     if (
-      !/^-?[1-9]\d*$/.test(rawId) ||
-      !Number.isSafeInteger(Number(rawId)) ||
+      !isResourceId(rawId) ||
       Object.keys(c.req.queries()).length
     )
       return c.json({ error: '查询参数不合法' }, 400);
@@ -97,8 +93,7 @@ for (const { kind, table, foreignKey } of targets) {
     const data = value as Record<string, unknown>;
     if (
       Object.keys(data).some((key) => !['id', 'rating', 'body'].includes(key)) ||
-      typeof data.id !== 'string' ||
-      !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(data.id) ||
+      !isUuid(data.id) ||
       typeof data.rating !== 'number' ||
       !Number.isInteger(data.rating) ||
       data.rating < 1 ||

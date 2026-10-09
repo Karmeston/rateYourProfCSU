@@ -1,24 +1,16 @@
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
 import { test } from 'node:test';
 import { getPlatformProxy } from 'wrangler';
 import app from '../src/index.ts';
+import { migrate } from './helpers/database.mjs';
 import { issueCookie, visitorEnv } from './helpers/visitor.mjs';
 
 test('评价投票与单层回复（临时 D1）', async (t) => {
   const platform = await getPlatformProxy({ persist: false });
   t.after(() => platform.dispose());
   const { DB } = platform.env;
-  const dir = new URL('../migrations/', import.meta.url);
-  for (const name of readdirSync(dir)
-    .filter((name) => name.endsWith('.sql'))
-    .sort()) {
-    for (const sql of readFileSync(new URL(name, dir), 'utf8')
-      .split(';')
-      .filter((part) => part.trim()))
-      await DB.prepare(sql).run();
-  }
+  await migrate(DB);
   const reviewId = randomUUID();
   const voter = randomUUID();
   const env = visitorEnv(platform);

@@ -1,22 +1,14 @@
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
 import { test } from 'node:test';
 import { getPlatformProxy } from 'wrangler';
 import app from '../src/index.ts';
+import { migrate } from './helpers/database.mjs';
 import { academicYear, assessCreditModule, getMoocAnnualRule } from '../shared/electives.ts';
 import { catalogHref, parseRoute } from '../web/routing.ts';
 import { electiveCatalog, importElectiveCatalog } from '../scripts/import-elective-catalog.mjs';
 
 const evidence = { sourceUrl: 'https://bksy.csu.edu.cn/example', sourceLabel: '测试依据', sourceLocator: '第2页' };
 const rule = { ...evidence, planId: 'electrical-2025', module: 'art', outcome: 'counts', reason: '测试认定规则' };
-
-async function migrate(db) {
-  const migrations = new URL('../migrations/', import.meta.url);
-  for (const name of readdirSync(migrations).filter((name) => name.endsWith('.sql')).sort()) {
-    for (const sql of readFileSync(new URL(name, migrations), 'utf8').split(';').filter((sql) => sql.trim()))
-      await db.prepare(sql).run();
-  }
-}
 
 test('只有负编号演示课程时，真实课程仍使用正编号且能重复导入', async (t) => {
   const platform = await getPlatformProxy({ persist: false });

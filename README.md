@@ -15,16 +15,20 @@
 TypeScript、React、Vite、Hono、Cloudflare Workers、D1；不依赖常驻进程或线上本地磁盘。
 
 - `web/`：前端页面、系统字体样式、静态资源缓存。
-- `src/index.ts`：只读 API、服务端输入验证、参数化 SQL。
-- `src/course-catalog.ts`：课程搜索、组合筛选、排序、目录统计。
-- `shared/catalog.ts`：前后端共用的课程类型与筛选枚举。
+- `src/index.ts`：路由挂载、健康检查和统一错误处理。
+- `src/course-catalog.ts`、`src/teacher-catalog.ts`：对应目录的查询、参数验证与详情。
+- `shared/`：前后端共用的目录类型、筛选枚举和有来源的公选课规则。
 - `src/reviews.ts`：评价列表、星级统计及投稿（验证阶段直接发布）。
+- `src/review-interactions.ts`：投票与回复；`src/review-targets.ts`固定评价相关表名。
+- `src/validation.ts`、`src/request-body.ts`：基础ID校验和有大小限制的JSON读取。
 - `migrations/`：按顺序执行的迁移，已应用文件不修改。
 - `seeds/local.sql`：虚构演示资料，仅用于本地。
 - `seeds/preview.sql`：课程界面验收专用的虚构课程与评价，配合独立本地数据库使用。
-- `tests/`：临时 D1 API 测试及 SQLite 约束和迁移测试。
+- `tests/`：临时 D1 API 测试及 SQLite 约束和迁移测试，公共初始化位于`tests/helpers/`。
 - `data/`：已整理的官网来源资料，不自动导入数据库。
 - `scripts/cloudflare-network.cjs`：部署 CLI 的本机网络兼容配置。
+
+模块职责、维护约定和回退基线见 [项目维护说明](docs/project-maintenance.md)。`HANDOVER.md`保留早期接手快照，当前功能与命令以本README为准。
 
 ## 本地运行
 
@@ -40,12 +44,12 @@ npm run dev
 打开终端显示的地址，通常为 http://localhost:8787。演示数据可选，负数 ID 会显示演示标记。修改前端后重新运行 dev 构建。
 
 ```sh
-npm run typecheck
-npm run build
-npm test
+npm run check
 ```
 
-build 仅打包和 dry-run，不发布。测试不修改开发数据库。生成的类型、构建产物、依赖和本地配置不提交 Git。
+check依次执行类型检查、完整测试和构建；也可单独运行`typecheck`、`test`和`build`。类型检查拒绝未使用的局部声明与参数。build仅打包和dry-run，不发布。测试不修改开发数据库。生成的类型、构建产物、依赖和本地配置不提交Git。
+
+GitHub Actions的`Project checks`在推送和Pull Request时运行同一检查命令，使用Node.js 24，不执行部署。
 
 ## API
 

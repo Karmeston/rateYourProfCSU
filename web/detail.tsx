@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { courseCategories, type CourseDetail } from '../shared/catalog';
+import { courseCategories, type CourseDetail, type Teacher } from '../shared/catalog';
 import { ElectiveGuidance } from './elective-guidance';
 import { Icon } from './icons';
 import { Reviews } from './reviews';
 import { ErrorState } from './ui';
 import { useData } from './use-data';
 
-type Teacher = { id: number; name: string; department: string; profile_url: string | null };
 function profileLink(value: string | null | undefined) {
   try {
     const url = new URL(value ?? '');

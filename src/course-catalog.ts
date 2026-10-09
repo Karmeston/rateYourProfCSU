@@ -1,6 +1,8 @@
 import { Hono } from 'hono';
-import type { CourseCatalog, CourseSort, CourseSummary } from '../shared/catalog.ts';
+import type { Course, CourseCatalog, CourseSort, CourseSummary } from '../shared/catalog.ts';
 import { isElectiveTypeFilter } from '../shared/electives.ts';
+import { readElectiveDetails } from './elective-guidance.ts';
+import { isResourceId } from './validation.ts';
 
 const catalog = new Hono<{ Bindings: Env }>();
 const ordering: Record<CourseSort, string> = {
@@ -97,6 +99,22 @@ catalog.get('/', async (c) => {
   };
   c.header('Cache-Control', 'private, max-age=60');
   return c.json(response);
+});
+
+catalog.get('/:id', async (c) => {
+  if (!isResourceId(c.req.param('id')) || Object.keys(c.req.queries()).length)
+    return c.json({ error: '查询参数不合法' }, 400);
+  const course = await c.env.DB.prepare(
+    `SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType
+      FROM courses c LEFT JOIN elective_course_facts e ON e.course_id = c.id AND c.category = 'elective'
+      WHERE c.id = ? AND c.is_listed = 1`,
+  )
+    .bind(Number(c.req.param('id')))
+    .first<Course>();
+  if (!course) return c.json({ error: '课程不存在' }, 404);
+  const elective = course.category === 'elective' ? await readElectiveDetails(c.env.DB, course.id) : null;
+  c.header('Cache-Control', 'private, max-age=60');
+  return c.json({ course: { ...course, elective } });
 });
 
 export default catalog;

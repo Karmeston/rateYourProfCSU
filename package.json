@@ -13,7 +13,8 @@
     "db:migrate:local": "wrangler d1 migrations apply DB --local",
     "db:seed:local": "wrangler d1 execute DB --local --file seeds/local.sql",
     "test:db": "node --test tests/schema.test.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run typecheck && npm test && npm run build"
   },
   "engines": {
     "node": ">=22"

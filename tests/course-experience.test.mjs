@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
-import { readFileSync, readdirSync } from 'node:fs';
 import { test } from 'node:test';
 import { getPlatformProxy } from 'wrangler';
 import app from '../src/index.ts';
+import { migrate } from './helpers/database.mjs';
 import { catalogHref, parseRoute } from '../web/routing.ts';
 import { readDraft } from '../web/review-draft.ts';
 
@@ -11,15 +11,7 @@ test('课程发现与评价筛选（独立临时 D1）', async (t) => {
   const platform = await getPlatformProxy({ persist: false });
   t.after(() => platform.dispose());
   const { DB } = platform.env;
-  const migrations = new URL('../migrations/', import.meta.url);
-  for (const name of readdirSync(migrations)
-    .filter((name) => name.endsWith('.sql'))
-    .sort()) {
-    for (const sql of readFileSync(new URL(name, migrations), 'utf8')
-      .split(';')
-      .filter((sql) => sql.trim()))
-      await DB.prepare(sql).run();
-  }
+  await migrate(DB);
   for (const [id, name, code, department, category, listed] of [
     [1, '数学分析', 'MATH-101', '数学学院', 'major', 1],
     [2, '艺术导论', 'ART-102', '艺术学院', 'elective', 1],

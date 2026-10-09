@@ -1,19 +1,16 @@
 import { Hono } from 'hono';
 import { readBody } from './request-body.ts';
 import { checkWriteRequest, limitWrite, type AppEnv } from './visitor.ts';
+import { reviewTargets } from './review-targets.ts';
+import { isResourceId, isUuid } from './validation.ts';
 
 const app = new Hono<AppEnv>();
-const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-for (const kind of ['teachers', 'courses'] as const) {
-  const singular = kind.slice(0, -1);
-  const reviews = `${singular}_reviews`;
-  const votes = `${singular}_review_votes`;
-  const replies = `${singular}_review_replies`;
+for (const { kind, reviews, foreignKey, votes, replies } of reviewTargets) {
   const path = `/${kind}/:id/reviews/:reviewId`;
   app.use(`${path}/*`, async (c, next) => {
     const id = c.req.param('id') ?? '';
     const reviewId = c.req.param('reviewId') ?? '';
-    if (!/^-?[1-9]\d*$/.test(id) || !Number.isSafeInteger(Number(id)) || !uuid.test(reviewId))
+    if (!isResourceId(id) || !isUuid(reviewId))
       return c.json({ error: '参数不合法' }, 400);
     if (c.req.method !== 'GET') {
       const rejected = checkWriteRequest(c);
@@ -21,7 +18,7 @@ for (const kind of ['teachers', 'courses'] as const) {
       if (Object.keys(c.req.queries()).length) return c.json({ error: '参数不合法' }, 400);
     }
     const parent = await c.env.DB.prepare(
-      `SELECT r.id FROM ${reviews} r JOIN ${kind} t ON t.id=r.${singular}_id WHERE r.id=? AND t.id=? AND r.status='published' ${kind === 'courses' ? 'AND t.is_listed=1' : ''}`,
+      `SELECT r.id FROM ${reviews} r JOIN ${kind} t ON t.id=r.${foreignKey} WHERE r.id=? AND t.id=? AND r.status='published' ${kind === 'courses' ? 'AND t.is_listed=1' : ''}`,
     )
       .bind(reviewId, Number(id))
       .first();
@@ -91,8 +88,7 @@ for (const kind of ['teachers', 'courses'] as const) {
       typeof data !== 'object' ||
       Array.isArray(data) ||
       Object.keys(data).some((key) => !['id', 'body'].includes(key)) ||
-      typeof data.id !== 'string' ||
-      !uuid.test(data.id) ||
+      !isUuid(data.id) ||
       typeof data.body !== 'string' ||
       !data.body.trim() ||
       data.body.length > 1000 ||

@@ -1,5 +1,15 @@
 import type { ElectiveDetails, ElectiveType, ElectiveTypeFilter } from './electives.ts';
 
+export type Teacher = { id: number; name: string; department: string; profile_url: string | null };
+export type TeacherCatalog = {
+  teachers: Teacher[];
+  limit: number;
+  offset: number;
+  q: string;
+  category: string;
+  hasMore: boolean;
+};
+
 export type CourseCategory = 'major' | 'elective';
 export type CourseSort = 'default' | 'rating' | 'reviews' | 'name';
 export type Course = {
