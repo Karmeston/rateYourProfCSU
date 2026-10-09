@@ -4,6 +4,7 @@ import { readDraft, type ReviewDraft } from './review-draft';
 import { ReviewInteractions } from './review-interactions';
 import { EmptyState, ErrorState } from './ui';
 import { useData } from './use-data';
+import { send } from './visitor';
 
 type Review = {
   id: string;
@@ -102,16 +103,7 @@ function ReviewForm({
     setError('');
     const timeout = window.setTimeout(() => abort.abort(), 20000);
     try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(draft),
-        signal: abort.signal,
-      });
-      if (!response.ok) {
-        const result = (await response.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(result?.error ?? '提交失败，请重试。');
-      }
+      await send(endpoint, 'POST', draft, abort.signal);
       setSubmitted(true);
       published();
     } catch (cause) {

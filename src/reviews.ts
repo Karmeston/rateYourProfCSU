@@ -1,8 +1,9 @@
 import { Hono } from 'hono';
 import { readBody } from './request-body.ts';
 import interactions from './review-interactions.ts';
+import { checkWriteRequest, readVisitor, limitWrite, type AppEnv } from './visitor.ts';
 
-const reviews = new Hono<{ Bindings: Env }>();
+const reviews = new Hono<AppEnv>();
 const pageSize = 20;
 const targets = [
   { kind: 'teachers', table: 'teacher_reviews', foreignKey: 'teacher_id' },
@@ -13,6 +14,7 @@ type RatingCount = { rating: number; count: number };
 
 reviews.use('*', async (c, next) => {
   c.header('Cache-Control', 'no-store');
+  c.set('visitorId', await readVisitor(c));
   await next();
 });
 
@@ -56,7 +58,7 @@ for (const { kind, table, foreignKey } of targets) {
         (SELECT count(*) FROM ${table.slice(0, -1)}_replies p WHERE p.review_id=r.id AND p.status='published') AS replyCount
         FROM ${table} r WHERE ${foreignKey} = ? AND status = 'published' AND (? = '' OR rating = ?)
         ORDER BY ${sort === 'helpful' ? 'likes DESC, dislikes ASC,' : ''} created_at DESC, id DESC LIMIT ? OFFSET ?`,
-      ).bind(c.req.header('X-Browser-ID') ?? '', id, rating, rating, pageSize + 1, offset),
+      ).bind(c.get('visitorId') ?? '', id, rating, rating, pageSize + 1, offset),
     ]);
     const histogram = counts.results as RatingCount[];
     const count = histogram.reduce((sum, row) => sum + row.count, 0);
@@ -78,11 +80,8 @@ for (const { kind, table, foreignKey } of targets) {
   });
 
   reviews.post(`/${kind}/:id/reviews`, async (c) => {
-    const origin = c.req.header('Origin');
-    if (origin && origin !== new URL(c.req.url).origin)
-      return c.json({ error: '不支持跨站提交' }, 403);
-    if (c.req.header('Content-Type')?.split(';')[0].trim().toLowerCase() !== 'application/json')
-      return c.json({ error: '请使用 JSON 提交' }, 415);
+    const rejected = checkWriteRequest(c);
+    if (rejected) return rejected;
     const rawId = c.req.param('id');
     if (
       !/^-?[1-9]\d*$/.test(rawId) ||
@@ -117,6 +116,8 @@ for (const { kind, table, foreignKey } of targets) {
       .bind(id)
       .first();
     if (!target) return c.json({ error: '评价对象不存在' }, 404);
+    const limited = await limitWrite(c, 'publish');
+    if (limited) return limited;
     // 同一个提交 ID 重试不会重复写入；不允许客户端指定审核状态。
     // 验证阶段直接公开，保留状态字段供以后启用审核。
     await c.env.DB.prepare(

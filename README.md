@@ -69,23 +69,44 @@ build 仅打包和 dry-run，不发布。测试不修改开发数据库。生成
 
 验证阶段的新投稿直接写为 published，提交后刷新评论和评分。公开列表及星级统计仍只使用 published，既有 pending 和 rejected 不自动公开。状态字段保留，用户不能通过 API 指定状态；以后需要时再恢复审核流程。
 
-评论按纯文本渲染，不执行 HTML。前端不收集姓名、学号或联系方式；公开作者统一显示匿名同学。这不代表网络服务商不保留访问日志。初始化阶段尚未接入登录、Turnstile 或频率限制；提交去重只用于网络重试，不等于防刷。
+评论按纯文本渲染，不执行 HTML。前端不收集姓名、学号或联系方式；公开作者统一显示匿名同学。这不代表网络服务商不保留访问日志。当前采用服务端签发的匿名访客 Cookie 和基础频率限制，没有账号登录或 Turnstile。提交去重用于网络重试。
 
 评价草稿按对象保存在 sessionStorage，可关闭表单后恢复；重开草稿保留提交 UUID，原样重试不会重复写入。改变内容产生新的提交 UUID，成功发布后清除草稿。收藏与布局偏好保存在 localStorage；最多收藏100门课程，无账号及跨设备同步。存储不可用时界面提供说明，收藏在本次浏览中仍可使用。
 
 ## 评价互动
 
-每条教师或课程评价包含 likes、dislikes、myVote、replyCount。请求头 `X-Browser-ID` 使用浏览器本地保存的随机 UUID v4；它只标记投票，不是登录凭据。清除存储或更换浏览器会产生新标识，目前不保证一人一票，也不具备防刷能力。
+每条教师或课程评价包含 likes、dislikes、myVote、replyCount。服务器只认可签名有效且未过期的匿名访客 Cookie；`X-Browser-ID` 不再参与身份判断。公开列表无需 Cookie，携带有效 Cookie 时返回自己的 myVote。旧投票计数保留，旧 localStorage ID 不迁移为可信身份。
 
 以下路径前缀为 `/api/teachers/:id/reviews/:reviewId` 或 `/api/courses/:id/reviews/:reviewId`：
 
 | 方法及后缀 | 用途 |
 | --- | --- |
-| `PUT /vote` | JSON `{ "value": 1 }` 点赞，-1 点踩，0 取消；必须携带浏览器标识 |
+| `PUT /vote` | JSON `{ "value": 1 }` 点赞，-1 点踩，0 取消；必须携带有效访客 Cookie |
 | `GET /replies` | 按时间正序返回单层回复，支持 offset，每页20条 |
 | `POST /replies` | JSON `{ "id": "UUID v4", "body": "回复" }`，正文1–1000个 UTF-16 代码单元 |
 
-投票按“评价 + 浏览器标识”唯一存储，重复请求不会累加。回复使用客户端 ID 避免网络重试重复写入，验证阶段直接公开，保留状态字段。互动只开放给可浏览对象的已公开评价，不计入对象的星级和评价总数。回复区点击后才加载，纯文本显示。
+投票按“评价 + 服务端验证的访客 ID”唯一存储，重复请求不会累加。回复使用客户端 ID 避免网络重试重复写入，验证阶段直接公开，保留状态字段。互动只开放给可浏览对象的已公开评价，不计入对象的星级和评价总数。回复区点击后才加载，纯文本显示。
+
+## 匿名访客
+
+浏览课程不建立会话。首次评价、回复或投票前，前端调用 `POST /api/visitor`，提交 JSON `{}`。成功返回204；新访客通过 Set-Cookie 建立身份，有效旧 Cookie 保持不变；响应不暴露访客 ID。并发互动共用一次正在建立的会话。Cookie 被禁用时写入返回401，页面显示允许 Cookie 的提示，草稿保留，不反复签发。
+
+Cookie 使用 Hono 的 HMAC-SHA256 签名，包含版本、随机 UUID 和签发时间，有效期180天，服务端同时检查有效期。HTTPS 使用 `__Host-csu-visitor`，设置 HttpOnly、Secure、SameSite=Strict、Path=/ 且无 Domain；本地回环 HTTP 使用 `csu-visitor`，仅本地省略 Secure。其他 HTTP 地址不能建立访客。所有写入要求 JSON，并拒绝异站 Origin 和 Sec-Fetch-Site=cross-site。
+
+Cloudflare 原生限流绑定配置在 wrangler.jsonc：
+
+| 操作 | 计数范围 | 每60秒额度 |
+| --- | --- | --- |
+| 新 Cookie 签发 | 网络地址 | 60 |
+| 发布评价与回复 | 访客，两类合计 | 8 |
+| 投票 | 访客 | 60 |
+| 所有互动写入 | 网络地址，合计 | 120 |
+
+网络计数只使用 Cloudflare 设置的 CF-Connecting-IP，密钥加盐哈希后作为计数键，不使用 X-Forwarded-For。额度按有效请求尝试计数，重试也计数。超限返回429和 Retry-After:60；缺失密钥、必需绑定或生产网络地址时写入返回503，浏览继续可用。网络额度用于抑制清 Cookie 后重新签发的滥用，共享校园网络也会共享该额度，可根据实际使用调整。
+
+这只识别同一浏览器访客，不能证明一人一票或中南大学身份；清 Cookie、过期或换浏览器会建立新访客。原生限流按 Cloudflare 节点计数且为最终一致，不能当作严格全局配额。[Cookie 签名说明](https://hono.dev/docs/helpers/cookie)、[限流范围说明](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/)。
+
+`npm run dev` 会在缺少本地密钥时生成随机的 `.dev.vars`，已有文件和密钥保留，文件被 Git 忽略；单独启动 Wrangler 时先运行 `node scripts/setup-local-visitor.mjs`。不要将本地密钥用于线上。没有新数据库迁移。
 
 ## 数据模型
 
@@ -99,7 +120,13 @@ build 仅打包和 dry-run，不发布。测试不修改开发数据库。生成
 
 ## 部署
 
-`wrangler.jsonc` 已绑定本项目 D1。首次部署需登录相应 Cloudflare 账户。新增迁移先应用，再发布：
+`wrangler.jsonc` 已绑定本项目 D1。首次部署需登录相应 Cloudflare 账户。发布匿名访客功能前，生成独立的高强度随机密钥（至少32字符，建议32随机字节的 base64url），通过下列命令的交互输入配置，不能写入仓库或公开环境变量：
+
+```sh
+node --env-file-if-exists=.env.deploy --require ./scripts/cloudflare-network.cjs ./node_modules/wrangler/bin/wrangler.js secret put VISITOR_SECRET
+```
+
+后续部署保持此密钥稳定；更换密钥会使已有 Cookie 失效。生产 Cookie 需要 HTTPS；无需为匿名访客建立账号表。新增迁移先应用，再发布：
 
 ```sh
 node --env-file-if-exists=.env.deploy --require ./scripts/cloudflare-network.cjs ./node_modules/wrangler/bin/wrangler.js d1 migrations apply DB --remote

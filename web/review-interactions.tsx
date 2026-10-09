@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { browserId } from './browser-id';
+import { send, SubmissionError } from './visitor';
 import { Icon } from './icons';
 import { useData } from './use-data';
 
@@ -9,18 +9,6 @@ type Replies = {
   offset: number;
   hasMore: boolean;
 };
-async function send<T>(url: string, method: 'POST' | 'PUT', body: unknown): Promise<T> {
-  const response = await fetch(url, {
-    method,
-    headers: { 'Content-Type': 'application/json', 'X-Browser-ID': browserId() },
-    body: JSON.stringify(body),
-    signal: AbortSignal.timeout(20000),
-  });
-  const data = (await response.json()) as T & { error?: string };
-  if (!response.ok) throw new Error(data.error ?? '提交失败，请重试。');
-  return data;
-}
-
 function ReplyPanel({
   endpoint,
   onPosted,
@@ -164,8 +152,8 @@ export function ReviewInteractions({ endpoint, initial }: { endpoint: string; in
         value: stats.myVote === value ? 0 : value,
       });
       setStats((current) => ({ ...current, ...result }));
-    } catch {
-      setError('投票结果未确认，请重试。');
+    } catch (cause) {
+      setError(cause instanceof SubmissionError ? cause.message : '投票结果未确认，请重试。');
     } finally {
       busy.current = false;
       setSending(false);

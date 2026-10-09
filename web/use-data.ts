@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { browserId } from './browser-id';
 
 // 页面切换时取消旧请求，避免慢请求把新页面的数据覆盖。
 export function useData<T>(url: string | null) {
@@ -23,7 +22,7 @@ export function useData<T>(url: string | null) {
         const response = await fetch(url, {
           cache: 'no-store',
           signal: controller.signal,
-          headers: url.includes('/reviews') ? { 'X-Browser-ID': browserId() } : undefined,
+          credentials: 'same-origin',
         });
         if (!response.ok)
           throw new Error(

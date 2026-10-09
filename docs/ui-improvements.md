@@ -39,6 +39,7 @@
 以下命令只操作 `tmp/ui-preview-d1` 内的独立本地数据库。`seeds/preview.sql` 是明确标注的虚构课程/评价，不能用于远程数据库：
 
 ```sh
+node scripts/setup-local-visitor.mjs
 npm run build:client
 node node_modules/wrangler/bin/wrangler.js d1 migrations apply DB --local --persist-to tmp/ui-preview-d1
 node node_modules/wrangler/bin/wrangler.js d1 execute DB --local --persist-to tmp/ui-preview-d1 --file seeds/preview.sql
@@ -50,6 +51,8 @@ node node_modules/wrangler/bin/wrangler.js dev --local --persist-to tmp/ui-previ
 2026-10-08 浏览器人工验收：名称/代码搜索、类型与学院组合、排序、收藏与刷新恢复、列表切换、详情返回原查询、链接复制、星级筛选、草稿关闭恢复、评价发布、赞同和回复。移动端使用 390px 与 320px 宽度检查布局、横向溢出及投稿弹窗；演示写入仅发生在上述独立本地数据库。
 
 最终检查：`npm run typecheck`、`npm test`（39 项通过）、`npm run build` 均通过。build 包含 Worker dry-run，不发布。界面截图：[桌面首页](screenshots/course-home-desktop.jpg)、[手机首页](screenshots/course-home-mobile.jpg)。截图使用明确标注的本地虚构数据。
+
+2026-10-09 匿名访客验收：服务端签发 Cookie，首次投稿、投票、刷新恢复与回复均通过；页面未增加账号入口。`npm run typecheck`、`npm test`（51项）和`npm run build`通过。新测试覆盖签名篡改、过期、旧 ID 伪造、跨站请求、会话并发、Cookie 禁用、配置缺失与限流。签名密钥只保存在被忽略的本地配置中；线上密钥尚未配置，没有部署。
 
 ## Git 与回退
 

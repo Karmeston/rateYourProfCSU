@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npm run build:client && wrangler dev --local",
+    "dev": "node scripts/setup-local-visitor.mjs && npm run build:client && wrangler dev --local",
     "build:client": "vite build web --outDir ../dist/client --emptyOutDir",
     "types": "wrangler types",
     "typecheck": "npm run types && tsc --noEmit && tsc -p web/tsconfig.json",
