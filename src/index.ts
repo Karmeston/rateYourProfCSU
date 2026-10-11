@@ -3,6 +3,7 @@ import courseCatalog from './course-catalog.ts';
 import teacherCatalog from './teacher-catalog.ts';
 import reviews from './reviews.ts';
 import visitor, { type AppEnv } from './visitor.ts';
+import community from './community.ts';
 
 const app = new Hono<AppEnv>();
 
@@ -11,6 +12,7 @@ app.route('/api/courses', courseCatalog);
 app.route('/api/teachers', teacherCatalog);
 app.route('/api', visitor);
 app.route('/api', reviews);
+app.route('/api', community);
 
 app.onError((error, c) => {
   console.error('Request failed', error);

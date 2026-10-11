@@ -174,6 +174,10 @@ test('匿名访客 Cookie 与频率限制（临时 D1）', async (t) => {
 
   await t.test('发布与回复共用每访客额度，超限不写入并允许另一访客互动', async () => {
     const publisher = await issueCookie(env);
+    for (let i = 0; i < 8; i++)
+      await DB.prepare("INSERT INTO courses(id,name,department) VALUES (?,'限流测试','测试学院')")
+        .bind(10 + i)
+        .run();
     for (let i = 0; i < 8; i++) {
       const response =
         i % 2
@@ -182,7 +186,7 @@ test('匿名访客 Cookie 与频率限制（临时 D1）', async (t) => {
               json('POST', { id: randomUUID(), body: `测试回复 ${i}` }, publisher),
             )
           : await request(
-              base,
+              `/api/courses/${10 + i}/reviews`,
               json('POST', { id: randomUUID(), rating: 5, body: `测试评价 ${i}` }, publisher),
             );
       assert.equal(response.status, i % 2 ? 201 : 202);

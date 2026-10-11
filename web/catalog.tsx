@@ -95,6 +95,12 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
           {course.code ?? '课程代码待补充'}
           {course.id < 0 && <span className="demo-badge">演示</span>}
         </div>
+        {course.planRecords?.map((record, index) => (
+          <p className="fine-print" key={index}>
+            {record.sourceYear}版 · {record.requirement ?? '属性待核实'} ·{' '}
+            {record.credits == null ? '学分待核实' : `${record.credits}学分`}
+          </p>
+        ))}
       </div>
       <div className="card-footer">
         {course.average === null ? (
@@ -131,6 +137,8 @@ export function Catalog({ route }: { route: CatalogRoute }) {
   if (route.category) params.set('category', route.category);
   if (route.electiveType) params.set('electiveType', route.electiveType);
   if (route.department) params.set('department', route.department);
+  if (route.program) params.set('program', route.program);
+  if (route.planYear) params.set('planYear', route.planYear);
   const { data, error, retry } = useData<CourseCatalog>(`/api/courses?${params}`);
   const [view, setView] = useState<'grid' | 'list'>(() => {
     try {
@@ -147,7 +155,13 @@ export function Catalog({ route }: { route: CatalogRoute }) {
       /* 当前页面仍可切换布局。 */
     }
   }
-  const filtered = !!(route.q || route.category || route.electiveType || route.department);
+  const filtered = !!(
+    route.q ||
+    route.category ||
+    route.electiveType ||
+    route.department ||
+    route.program
+  );
   const title = route.q ? `“${route.q}”的搜索结果` : '课程广场';
   const departments = data?.facets.departments ?? [];
   return (
@@ -209,7 +223,9 @@ export function Catalog({ route }: { route: CatalogRoute }) {
                   >
                     <option value="">全部公选课类别</option>
                     {Object.entries(electiveTypes).map(([value, label]) => (
-                      <option key={value} value={value}>{label}</option>
+                      <option key={value} value={value}>
+                        {label}
+                      </option>
                     ))}
                     <option value="unknown">类别待核实</option>
                   </select>
@@ -256,6 +272,61 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               </label>
             </div>
           </div>
+          {route.category !== 'elective' && (
+            <div className="program-filters">
+              <label>
+                培养方案专业
+                <select
+                  value={route.program}
+                  onChange={(event) => {
+                    window.location.hash = href({ program: event.target.value, offset: 0 });
+                  }}
+                >
+                  <option value="">全部专业</option>
+                  {route.program &&
+                    !data?.facets.programs.some((item) => item.name === route.program) && (
+                      <option>{route.program}</option>
+                    )}
+                  {data?.facets.programs.map((item) => (
+                    <option key={item.name} value={item.name}>
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {route.program && (
+                <label>
+                  方案版本
+                  <select
+                    value={route.planYear}
+                    onChange={(event) => {
+                      window.location.hash = href({ planYear: event.target.value, offset: 0 });
+                    }}
+                  >
+                    <option value="">全部已收录版本</option>
+                    {route.planYear &&
+                      !data?.facets.programs
+                        .find((item) => item.name === route.program)
+                        ?.years.includes(Number(route.planYear)) && (
+                        <option value={route.planYear}>{route.planYear}版（未收录）</option>
+                      )}
+                    {data?.facets.programs
+                      .find((item) => item.name === route.program)
+                      ?.years.map((year) => (
+                        <option key={year} value={year}>
+                          {year}版
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              )}
+              {route.program && (
+                <span className="fine-print">
+                  按已收录方案记录筛选，可能含辅修表；不代表当期开课或个人选课资格。
+                </span>
+              )}
+            </div>
+          )}
           {filtered && (
             <div className="filter-chips" aria-label="已选筛选条件">
               {route.q && (
@@ -278,7 +349,16 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               )}
               {route.electiveType && (
                 <a href={href({ electiveType: '', offset: 0 })} aria-label="移除公选课类别筛选">
-                  {route.electiveType === 'unknown' ? '类别待核实' : electiveTypes[route.electiveType]}
+                  {route.electiveType === 'unknown'
+                    ? '类别待核实'
+                    : electiveTypes[route.electiveType]}
+                  <Icon name="close" size={13} />
+                </a>
+              )}
+              {route.program && (
+                <a href={href({ program: '', offset: 0 })} aria-label="移除专业筛选">
+                  {route.program}
+                  {route.planYear && ` · ${route.planYear}版`}
                   <Icon name="close" size={13} />
                 </a>
               )}

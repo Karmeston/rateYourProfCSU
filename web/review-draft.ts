@@ -1,4 +1,5 @@
-export type ReviewDraft = { id: string; rating: number; body: string };
+import { validTerm, validTeacher, type ReviewContext } from '../shared/community.ts';
+export type ReviewDraft = { id: string; rating: number; body: string } & Partial<ReviewContext>;
 export function readDraft(value: string | null): ReviewDraft | null {
   try {
     const draft = JSON.parse(value ?? 'null') as ReviewDraft | null;
@@ -10,8 +11,16 @@ export function readDraft(value: string | null): ReviewDraft | null {
       draft.rating <= 5 &&
       typeof draft.body === 'string' &&
       draft.body.length <= 2000 &&
-      !draft.body.includes('\0')
-      ? { id: draft.id, rating: draft.rating, body: draft.body }
+      !draft.body.includes('\0') &&
+      validTerm(draft.term ?? null) &&
+      validTeacher(draft.teacherName ?? null)
+      ? {
+          id: draft.id,
+          rating: draft.rating,
+          body: draft.body,
+          ...(draft.term !== undefined ? { term: draft.term } : {}),
+          ...(draft.teacherName !== undefined ? { teacherName: draft.teacherName } : {}),
+        }
       : null;
   } catch {
     return null;

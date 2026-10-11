@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Icon } from './icons';
-import { readDraft, type ReviewDraft } from './review-draft';
 import { ReviewInteractions } from './review-interactions';
 import { EmptyState, ErrorState } from './ui';
 import { useData } from './use-data';
-import { send } from './visitor';
+import { ContextLine } from './community-forms';
+import type { OwnReview } from '../shared/community';
+import { ReviewForm } from './review-form';
+import { OwnReviewActions } from './own-review-actions';
 
 type Review = {
   id: string;
@@ -15,6 +17,10 @@ type Review = {
   dislikes: number;
   myVote: number;
   replyCount: number;
+  term: string | null;
+  teacherName: string | null;
+  updated_at: string | null;
+  isMine: number;
 };
 type ReviewPage = {
   reviews: Review[];
@@ -27,8 +33,8 @@ type ReviewPage = {
   offset: number;
   limit: number;
   hasMore: boolean;
+  myReview: OwnReview | null;
 };
-const ratingLabels = ['不推荐', '不太推荐', '一般', '推荐', '非常推荐'];
 
 export function Stars({ rating }: { rating: number }) {
   return (
@@ -38,193 +44,6 @@ export function Stars({ rating }: { rating: number }) {
         ★★★★★
       </span>
     </span>
-  );
-}
-
-function ReviewForm({
-  endpoint,
-  name,
-  close,
-  published,
-}: {
-  endpoint: string;
-  name: string;
-  close: () => void;
-  published: () => void;
-}) {
-  const storageKey = `csu-review-draft:${endpoint}`;
-  const [draft, setDraft] = useState<ReviewDraft>(() => {
-    try {
-      return (
-        readDraft(sessionStorage.getItem(storageKey)) ?? {
-          id: crypto.randomUUID(),
-          rating: 0,
-          body: '',
-        }
-      );
-    } catch {
-      return { id: crypto.randomUUID(), rating: 0, body: '' };
-    }
-  });
-  const dialog = useRef<HTMLDialogElement>(null);
-  const controller = useRef<AbortController | null>(null);
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [saved, setSaved] = useState(true);
-  useEffect(() => {
-    dialog.current?.showModal();
-    return () => controller.current?.abort();
-  }, []);
-  useEffect(() => {
-    try {
-      if (submitted || (!draft.rating && !draft.body)) sessionStorage.removeItem(storageKey);
-      else sessionStorage.setItem(storageKey, JSON.stringify(draft));
-      setSaved(true);
-    } catch {
-      setSaved(false);
-    }
-  }, [draft, storageKey, submitted]);
-  function update(patch: Partial<Pick<ReviewDraft, 'rating' | 'body'>>) {
-    // Preserve this ID on retries and reopening the draft; changing content starts a new submission.
-    setDraft((current) => ({ ...current, ...patch, id: crypto.randomUUID() }));
-    setError('');
-  }
-  async function submit(event: React.FormEvent) {
-    event.preventDefault();
-    if (controller.current || sending) return;
-    if (!draft.rating || !draft.body.trim()) {
-      setError('请选择星级并填写你的课堂体验。');
-      return;
-    }
-    const abort = new AbortController();
-    controller.current = abort;
-    setSending(true);
-    setError('');
-    const timeout = window.setTimeout(() => abort.abort(), 20000);
-    try {
-      await send(endpoint, 'POST', draft, abort.signal);
-      setSubmitted(true);
-      published();
-    } catch (cause) {
-      setError(
-        abort.signal.aborted || cause instanceof TypeError
-          ? '提交结果未确认，请原样重试；同一份草稿不会重复发布。'
-          : cause instanceof Error
-            ? cause.message
-            : '提交失败，请重试。',
-      );
-    } finally {
-      window.clearTimeout(timeout);
-      controller.current = null;
-      setSending(false);
-    }
-  }
-  return (
-    <dialog
-      ref={dialog}
-      className="review-dialog"
-      aria-labelledby="review-form-title"
-      onCancel={(event) => {
-        if (sending) event.preventDefault();
-      }}
-      onClose={close}
-    >
-      <div className="dialog-heading">
-        <div>
-          <h2 id="review-form-title">{submitted ? '评价已发布' : '写评价'}</h2>
-        </div>
-        <button
-          className="icon-button"
-          disabled={sending}
-          aria-label="关闭评价表单"
-          onClick={() => dialog.current?.close()}
-        >
-          <Icon name="close" />
-        </button>
-      </div>
-      {submitted ? (
-        <div className="review-success">
-          <span>
-            <Icon name="check" size={30} />
-          </span>
-          <p role="status">评价已发布。</p>
-          <button className="primary-button" onClick={() => dialog.current?.close()}>
-            完成
-          </button>
-        </div>
-      ) : (
-        <form onSubmit={(event) => void submit(event)}>
-          <p className="review-target">
-            <Icon name="book" size={17} />
-            {name}
-          </p>
-          <fieldset className="rating-picker" disabled={sending}>
-            <legend>
-              你的整体评分 <span>必填</span>
-            </legend>
-            <div>
-              {[1, 2, 3, 4, 5].map((value) => (
-                <label key={value} title={ratingLabels[value - 1]}>
-                  <input
-                    type="radio"
-                    name="rating"
-                    value={value}
-                    required
-                    checked={draft.rating === value}
-                    onChange={() => update({ rating: value })}
-                    aria-label={`${value} 星`}
-                  />
-                  <span aria-hidden="true" className={value <= draft.rating ? 'selected' : ''}>
-                    ★
-                  </span>
-                </label>
-              ))}
-            </div>
-            <p className="rating-hint">
-              {draft.rating ? ratingLabels[draft.rating - 1] : '选择 1–5 星，表达你的整体体验'}
-            </p>
-          </fieldset>
-          <label className="comment-label" htmlFor="review-body">
-            你的课堂体验 <span>必填</span>
-          </label>
-          <textarea
-            id="review-body"
-            required
-            maxLength={2000}
-            rows={6}
-            value={draft.body}
-            disabled={sending}
-            placeholder="可以聊聊课程内容、授课节奏、作业与考核，以及你最大的收获…"
-            onChange={(event) => update({ body: event.target.value })}
-          />
-          <div className="draft-status">
-            <span>{saved ? '草稿保存在当前标签页' : '浏览器无法保存草稿，请保留本表单'}</span>
-            <span>{draft.body.length} / 2000</span>
-          </div>
-          <p className="fine-print">匿名发布，请分享具体经历，并避免填写个人联系方式。</p>
-          {error && (
-            <p className="form-error" role="alert">
-              {error}
-            </p>
-          )}
-          <div className="form-actions">
-            <button
-              type="button"
-              className="secondary-button"
-              disabled={sending}
-              onClick={() => dialog.current?.close()}
-            >
-              稍后再写
-            </button>
-            <button type="submit" className="primary-button" disabled={sending}>
-              {sending ? '正在发布…' : '发布评价'}
-              <Icon name="arrow" size={16} />
-            </button>
-          </div>
-        </form>
-      )}
-    </dialog>
   );
 }
 
@@ -241,6 +60,7 @@ export function Reviews({
   const [rating, setRating] = useState<number | null>(null);
   const [sort, setSort] = useState('latest');
   const [writing, setWriting] = useState(false);
+  const [editing, setEditing] = useState<OwnReview | null>(null);
   const writeButton = useRef<HTMLButtonElement>(null);
   const endpoint = `/api/${kind}/${id}/reviews`;
   const { data, error, retry } = useData<ReviewPage>(
@@ -252,9 +72,17 @@ export function Reviews({
         <div>
           <h2 id="reviews-heading">课程评价</h2>
         </div>
-        <button className="primary-button" ref={writeButton} onClick={() => setWriting(true)}>
+        <button
+          className="primary-button"
+          ref={writeButton}
+          disabled={!data}
+          onClick={() => {
+            setEditing(data?.myReview ?? null);
+            setWriting(true);
+          }}
+        >
           <Icon name="message" size={17} />
-          写评价
+          {data?.myReview ? '修改我的评价' : '写评价'}
         </button>
       </div>
       {!data ? (
@@ -267,6 +95,17 @@ export function Reviews({
         )
       ) : (
         <>
+          {data.myReview && (
+            <OwnReviewActions
+              endpoint={endpoint}
+              review={data.myReview}
+              changed={retry}
+              edit={() => {
+                setEditing(data.myReview);
+                setWriting(true);
+              }}
+            />
+          )}
           <div className="rating-summary">
             <div className="rating-score">
               <strong>
@@ -340,13 +179,21 @@ export function Reviews({
               {data.reviews.map((row) => (
                 <li key={row.id}>
                   <div className="review-meta">
-                    <span className="review-author">匿名同学</span>
+                    <span className="review-author">
+                      {row.isMine ? '匿名同学 · 我的评价' : '匿名同学'}
+                    </span>
                     <time dateTime={row.created_at}>
                       {new Date(row.created_at).toLocaleDateString('zh-CN')}
                     </time>
                   </div>
                   <Stars rating={row.rating} />
+                  <ContextLine {...row} />
                   <p className="review-body">{row.body}</p>
+                  {row.updated_at && (
+                    <span className="fine-print">
+                      已修改 · {new Date(row.updated_at).toLocaleDateString('zh-CN')}
+                    </span>
+                  )}
                   <ReviewInteractions endpoint={`${endpoint}/${row.id}`} initial={row} />
                 </li>
               ))}
@@ -400,6 +247,8 @@ export function Reviews({
         <ReviewForm
           endpoint={endpoint}
           name={name}
+          own={editing}
+          teacher={kind === 'courses'}
           published={() => {
             setOffset(0);
             setRating(null);
@@ -408,6 +257,7 @@ export function Reviews({
           }}
           close={() => {
             setWriting(false);
+            setEditing(null);
             writeButton.current?.focus();
           }}
         />

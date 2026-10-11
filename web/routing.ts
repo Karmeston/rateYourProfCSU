@@ -7,6 +7,8 @@ export type CatalogFilters = {
   category: CourseCategory | '';
   electiveType: ElectiveTypeFilter;
   department: string;
+  program: string;
+  planYear: string;
   sort: CourseSort;
   offset: number;
 };
@@ -22,20 +24,39 @@ export const defaultFilters: CatalogFilters = {
   category: '',
   electiveType: '',
   department: '',
+  program: '',
+  planYear: '',
   sort: 'default',
   offset: 0,
 };
 
 export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilters> = {}) {
   const value = { ...filters, ...patch };
-  if (patch.category !== undefined && patch.category !== 'elective' && patch.electiveType === undefined)
+  if (patch.program !== undefined && patch.planYear === undefined) value.planYear = '';
+  if (patch.category !== undefined && patch.category !== 'major') {
+    value.program = '';
+    value.planYear = '';
+  }
+  if (!value.program) value.planYear = '';
+  if (
+    patch.category !== undefined &&
+    patch.category !== 'elective' &&
+    patch.electiveType === undefined
+  )
     value.electiveType = '';
-  if (value.electiveType) value.category = 'elective';
+  if (value.electiveType) {
+    value.category = 'elective';
+    value.program = '';
+    value.planYear = '';
+  }
+  if (value.program) value.category = 'major';
   const query = new URLSearchParams();
   if (value.q) query.set('q', value.q);
   if (value.category) query.set('category', value.category);
   if (value.electiveType) query.set('electiveType', value.electiveType);
   if (value.department) query.set('department', value.department);
+  if (value.program) query.set('program', value.program);
+  if (value.planYear) query.set('planYear', value.planYear);
   if (value.sort !== 'default') query.set('sort', value.sort);
   if (value.offset) query.set('offset', String(value.offset));
   return `#/courses${query.size ? `?${query}` : ''}`;
@@ -74,7 +95,17 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
   if (
     !['/', '/courses', '/teachers'].includes(path) ||
     [...params.keys()].some(
-      (key) => !['q', 'category', 'electiveType', 'department', 'sort', 'offset'].includes(key),
+      (key) =>
+        ![
+          'q',
+          'category',
+          'electiveType',
+          'department',
+          'sort',
+          'offset',
+          'program',
+          'planYear',
+        ].includes(key),
     )
   )
     return { page: 'not-found' };
@@ -84,6 +115,8 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
   const category = params.get('category') ?? '';
   const electiveType = params.get('electiveType') ?? '';
   const sort = params.get('sort') ?? 'default';
+  const program = params.get('program') ?? '';
+  const planYear = params.get('planYear') ?? '';
   if (
     !/^(0|[1-9]\d*)$/.test(rawOffset) ||
     Number(rawOffset) > 100000 ||
@@ -94,7 +127,12 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     !['', 'major', 'elective'].includes(category) ||
     !isElectiveTypeFilter(electiveType) ||
     (electiveType && category === 'major') ||
-    !Object.hasOwn(courseSorts, sort)
+    !Object.hasOwn(courseSorts, sort) ||
+    program.length > 100 ||
+    program.includes('\0') ||
+    (params.has('program') && !program.trim()) ||
+    (program && (category === 'elective' || electiveType)) ||
+    (params.has('planYear') && (!program || !/^20\d{2}$/.test(planYear)))
   )
     return { page: 'not-found' };
   if (path === '/teachers') return { page: 'teachers', q, offset: Number(rawOffset) };
@@ -102,9 +140,11 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     page: 'catalog',
     home: path === '/',
     q,
-    category: electiveType ? 'elective' : category as CourseCategory | '',
+    category: program ? 'major' : electiveType ? 'elective' : (category as CourseCategory | ''),
     electiveType,
     department,
+    program,
+    planYear,
     sort: sort as CourseSort,
     offset: Number(rawOffset),
   };

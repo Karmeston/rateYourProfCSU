@@ -29,7 +29,7 @@ function ensureVisitor() {
 
 export async function send<T>(
   url: string,
-  method: 'POST' | 'PUT',
+  method: 'POST' | 'PUT' | 'DELETE',
   body: unknown,
   signal: AbortSignal = AbortSignal.timeout(20000),
 ): Promise<T> {

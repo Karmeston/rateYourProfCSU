@@ -2,7 +2,7 @@
 
 面向中南大学学生的课程评价平台。保留深蓝导航、灰白背景和蓝色交互色，以课程广场和使用指南作为主要入口。
 
-课程支持名称/代码搜索、类型与学院组合筛选、评分/评价数量/名称排序、网格与列表切换。详情可复制分享链接、保留筛选返回列表；评价支持星级筛选、最新评论/赞同最多排序、匿名投稿、草稿恢复、赞同与单层回复。没有评价时不显示零分。
+课程支持名称/代码搜索、类型与学院组合筛选、培养方案专业与版本筛选、评分/评价数量/名称排序、网格与列表切换。详情可复制分享链接、保留筛选返回列表；评价支持星级筛选、最新评论/赞同最多排序、匿名投稿、草稿恢复、赞同与单层回复，以及选填学期、任课教师。同一匿名访客对同一课程保留一条评价，可修改或撤回；用户可补充课程资料，审核后展示，评价、回复和补充均支持举报。没有评价时不显示零分。
 
 教师页面当前由 `web/features.ts` 的开关关闭，旧教师页面链接返回课程广场；独立教师 API 继续保留。开启后提供教师搜索、详情与评价。隔离本地预览已接入18门MOOC和819门有大纲、方案交叉依据的专业及学科课程；线上目录未修改。未核实资料保留占位，版本与来源分别显示。
 
@@ -12,6 +12,8 @@
 
 专业课详情展示方案课程表中的学分、必选修属性、专业、版本和原文定位。卡片的“大纲学院”是对应版本的资料来源单位，可能保留历史名称；不把资料学院当作已核实的当前开课单位。收录标准、复现和回退见 [专业课目录说明](docs/major-catalog.md)。
 
+最小管理工具为本地命令行，支持资料/评价审核、内容隐藏与恢复、举报处理和操作日志。归属规则、管理命令及回退方式见[匿名社区功能说明](docs/community-features.md)。本轮实际浏览器验收尚未完成。
+
 ## 技术与目录
 
 TypeScript、React、Vite、Hono、Cloudflare Workers、D1；不依赖常驻进程或线上本地磁盘。
@@ -20,7 +22,9 @@ TypeScript、React、Vite、Hono、Cloudflare Workers、D1；不依赖常驻进�
 - `src/index.ts`：路由挂载、健康检查和统一错误处理。
 - `src/course-catalog.ts`、`src/teacher-catalog.ts`：对应目录的查询、参数验证与详情。
 - `shared/`：前后端共用的目录类型、筛选枚举和有来源的公选课规则。
-- `src/reviews.ts`：评价列表、星级统计及投稿（验证阶段直接发布）。
+- `src/reviews.ts`：评价列表、本人归属、星级统计、投稿、修改与撤回；隐藏后修改须重新审核。
+- `src/community.ts`、`src/community-input.ts`：补充资料、举报、共用输入验证；审核工具位于`scripts/moderate.mjs`。
+- `web/review-form.tsx`、`web/own-review-actions.tsx`、`web/course-supplements.tsx`：独立表单、本人操作与资料补充组件。
 - `src/review-interactions.ts`：投票与回复；`src/review-targets.ts`固定评价相关表名。
 - `src/validation.ts`、`src/request-body.ts`：基础ID校验和有大小限制的JSON读取。
 - `migrations/`：按顺序执行的迁移，已应用文件不修改。
@@ -58,7 +62,7 @@ GitHub Actions的`Project checks`在推送和Pull Request时运行同一检查�
 | GET 接口 | 返回 |
 | --- | --- |
 | `/api/teachers` | teachers、limit、offset、q、hasMore |
-| `/api/courses` | courses、limit、offset、q、category、electiveType、department、sort、total、hasMore、facets、stats |
+| `/api/courses` | courses、limit、offset、q、category、electiveType、department、program、planYear、sort、total、hasMore、facets、stats |
 | `/api/teachers/:id` | teacher |
 | `/api/courses/:id` | course |
 | `/api/health` | status，仅检查服务响应 |
@@ -66,6 +70,8 @@ GitHub Actions的`Project checks`在推送和Pull Request时运行同一检查�
 列表支持 limit（1–100，默认20）、offset（0–100000，默认0）、q（最多100字符），默认按 ID 升序。教师按名称搜索；课程按名称或代码搜索，ASCII 英文不区分大小写。搜索字面匹配，百分号和下划线不是通配符。详情不接受查询参数。重复、未知或非法参数返回400，不存在的详情返回404，数据库故障返回通用500，详细错误仅记服务端日志。
 
 课程列表另支持 category（major/elective）、department（学院名精确匹配）、sort（default/rating/reviews/name）。total 为筛选后的总数；facets.departments 为整个可见目录的学院及数量；stats 为整个可见目录的课程数、已发布评价数和已评价课程数。评分排序将未评分课程放在最后，并以 ID 保证稳定顺序。URL 保留搜索、类型、学院、排序及分页，详情返回时恢复原条件。
+
+专业方案筛选使用`program`（原文专业/班型名）与`planYear`（需同时指定专业），限定专业课。下拉选项来自可见课程的方案资料，版本与专业精确匹配，多个证据不重复计数；列表所选原表资料返回`planRecords`。结果不代表当期开课或个人选课资格。
 
 公选课细分类参数 electiveType 接受 natural_science、humanities、economics、arts_sports、unknown；使用时限定公选课，不能与 category=major 组合。unknown 只包含细分类未知的可见公选课。列表课程增加可空 electiveType，详情增加 elective（facts、offerings、creditRules；非公选课为 null）。开课记录包含明确学年学期，不等于每学期持续开设。
 
@@ -77,13 +83,13 @@ GitHub Actions的`Project checks`在推送和Pull Request时运行同一检查�
 
 `GET /api/teachers/:id/reviews` 与 `GET /api/courses/:id/reviews` 返回 reviews、summary、total、offset、limit、sort、rating、hasMore。接受 offset（0–100000，默认0）、rating（1–5，可省略）与 sort（latest/helpful，默认 latest），每页20条。latest 按 created_at、id 降序；helpful 按赞同数降序、不赞同数升序，再按时间和 ID 降序。total 为匹配星级的评价数量。summary 始终包含所有已公开评价的 count、average 和五星分布，不随筛选或分页变化。没有公开评价时 average 为 null。
 
-相同路径支持 POST JSON：`{ "id": "客户端生成的 UUID v4", "rating": 5, "body": "评论正文" }`。星级为1–5整数，正文1–2000个 UTF-16 代码单元，请求体最多8192字节。服务器不接受审核状态或其他字段。原样重试相同 ID 返回202，不重复写入；同 ID 改写内容返回409。
+相同路径支持 POST JSON：`{ "id": "客户端生成的 UUID v4", "rating": 5, "body": "评论正文" }`，可选`term`（例如`2025-1`）与`teacherName`。新评价关联服务端验证的匿名访客；同访客同对象不能通过换UUID或学期重复评分。列表增加`myReview`及自述背景，但不返回访客标识。星级为1–5整数，正文1–2000个 UTF-16 代码单元，请求体最多8192字节。服务器不接受审核状态或其他字段。原样重试相同 ID 返回202，不重复写入；同 ID 改写内容返回409。本人修改使用`PUT /api/{courses|teachers}/:id/reviews/:reviewId`，携带`revision`及新评分、正文和可选背景。同路径`DELETE`接收JSON`{"revision":0}`标记撤回。评分只统计公开且未撤回的记录；管理恢复不能覆盖作者撤回。
 
-验证阶段的新投稿直接写为 published，提交后刷新评论和评分。公开列表及星级统计仍只使用 published，既有 pending 和 rejected 不自动公开。状态字段保留，用户不能通过 API 指定状态；以后需要时再恢复审核流程。
+验证阶段的新投稿直接写为 published，提交后刷新评论和评分。公开列表及星级统计只使用 published 且未撤回的记录，既有 pending 和 rejected 不自动公开。被隐藏的评价修改后转为 pending 等待重新审核。用户不能通过 API 指定审核状态；最小本地管理工具负责审核、隐藏、恢复及记录理由。
 
-评论按纯文本渲染，不执行 HTML。前端不收集姓名、学号或联系方式；公开作者统一显示匿名同学。这不代表网络服务商不保留访问日志。当前采用服务端签发的匿名访客 Cookie 和基础频率限制，没有账号登录或 Turnstile。提交去重用于网络重试。
+评论按纯文本渲染，不执行 HTML。前端不收集姓名、学号或联系方式；公开作者统一显示匿名同学。这不代表网络服务商不保留访问日志。当前采用服务端签发的匿名访客 Cookie 和基础频率限制，没有账号登录或 Turnstile。Cookie清除、过期或更换浏览器后无法认领旧评价；历史无归属记录不自动认领。提交去重用于网络重试。
 
-评价草稿按对象保存在 sessionStorage，可关闭表单后恢复；重开草稿保留提交 UUID，原样重试不会重复写入。改变内容产生新的提交 UUID，成功发布后清除草稿。布局偏好保存在 localStorage；无需账号。收藏功能已移除，旧收藏链接回到课程广场，原收藏存储不再读取或写入。
+评价草稿按对象保存在 sessionStorage，可关闭表单后恢复；重开草稿保留提交 UUID，原样重试不会重复写入。新投稿改变内容产生新的提交 UUID；编辑保持原评价ID，按ID及版本隔离草稿。成功保存后清除草稿。布局偏好保存在 localStorage；无需账号。收藏功能已移除，旧收藏链接回到课程广场，原收藏存储不再读取或写入。
 
 ## 评价互动
 

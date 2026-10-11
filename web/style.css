@@ -1505,23 +1505,27 @@ select {
   gap: 0.8rem 2rem;
   margin: 0;
 }
-.elective-facts dt, .credit-results dt {
+.elective-facts dt,
+.credit-results dt {
   color: var(--muted);
 }
 .elective-facts dd {
   margin: 0.25rem 0 0;
 }
-.elective-source, .elective-offering p {
+.elective-source,
+.elective-offering p {
   margin: 0.75rem 0;
   overflow-wrap: anywhere;
 }
 .elective-guidance a {
   font-size: 0.75rem;
 }
-.credit-guidance, .mooc-notice {
+.credit-guidance,
+.mooc-notice {
   margin-top: 0.8rem;
 }
-.credit-guidance summary, .mooc-notice summary {
+.credit-guidance summary,
+.mooc-notice summary {
   cursor: pointer;
 }
 .elective-choice {
@@ -1553,7 +1557,9 @@ select {
 .credit-counts {
   color: #276b4f;
 }
-.credit-warning, .credit-not_counts, .credit-conflict {
+.credit-warning,
+.credit-not_counts,
+.credit-conflict {
   color: #935714;
 }
 .credit-unknown {
@@ -1588,5 +1594,91 @@ select {
 @media (min-width: 561px) and (max-width: 1000px) {
   .course-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.program-filters,
+.context-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  align-items: end;
+}
+.program-filters label,
+.context-fields label,
+.review-dialog form > label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  min-width: 0;
+}
+.program-filters label {
+  flex: 0 1 300px;
+}
+.program-filters select,
+.context-fields select {
+  width: 100%;
+  max-width: 100%;
+}
+.context-fields label {
+  flex: 1 1 200px;
+}
+.context-fields input,
+.review-dialog form > label input {
+  padding: 0.65rem;
+  border: 1px solid #d8dfe5;
+  border-radius: 6px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.review-dialog form > label {
+  margin-top: 0.85rem;
+}
+.review-context summary,
+.course-supplements summary {
+  cursor: pointer;
+}
+.course-supplements {
+  padding-block: 0.8rem 1.3rem;
+  border-bottom: 1px solid #d8dfe5;
+}
+.supplement-list {
+  padding: 0;
+  list-style: none;
+}
+.supplement-list li {
+  padding-block: 1rem;
+  border-bottom: 1px solid #e5e9ed;
+}
+.supplement-list a {
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+}
+.supplement-list .text-button {
+  margin-left: 1rem;
+}
+.own-review,
+.own-supplement {
+  margin-block: 1rem;
+  padding: 0.8rem 1rem;
+  background: #f0f4f7;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+}
+.own-review button {
+  margin-left: 0.8rem;
+}
+.own-review > div {
+  margin-top: 0.5rem;
+}
+@media (max-width: 560px) {
+  .program-filters label,
+  .context-fields label {
+    flex: 1 1 100%;
+  }
+  .program-filters .fine-print {
+    width: 100%;
   }
 }

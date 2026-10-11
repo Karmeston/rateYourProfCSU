@@ -18,7 +18,7 @@ for (const { kind, reviews, foreignKey, votes, replies } of reviewTargets) {
       if (Object.keys(c.req.queries()).length) return c.json({ error: '参数不合法' }, 400);
     }
     const parent = await c.env.DB.prepare(
-      `SELECT r.id FROM ${reviews} r JOIN ${kind} t ON t.id=r.${foreignKey} WHERE r.id=? AND t.id=? AND r.status='published' ${kind === 'courses' ? 'AND t.is_listed=1' : ''}`,
+      `SELECT r.id FROM ${reviews} r JOIN ${kind} t ON t.id=r.${foreignKey} WHERE r.id=? AND t.id=? AND r.status='published' AND r.withdrawn_at IS NULL ${kind === 'courses' ? 'AND t.is_listed=1' : ''}`,
     )
       .bind(reviewId, Number(id))
       .first();

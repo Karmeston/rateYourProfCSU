@@ -9,12 +9,15 @@
 | `web/main.tsx` | 应用外壳、导航、键盘快捷键和页面调度 |
 | `web/routing.ts` | URL解析、筛选状态与返回链接 |
 | `web/catalog.tsx`、`web/teacher-catalog.tsx`、`web/detail.tsx`、`web/guide.tsx` | 各自页面的展示与操作 |
-| `web/reviews.tsx`、`web/review-interactions.tsx` | 评价表单、列表、投票和回复 |
+| `web/reviews.tsx`、`web/review-interactions.tsx` | 评价列表、投票和回复 |
+| `web/review-form.tsx`、`web/own-review-actions.tsx` | 评价草稿、选课背景、本人修改与撤回 |
+| `web/course-supplements.tsx`、`web/community-forms.tsx` | 同学补充资料、举报表单与共用背景字段 |
 | `web/use-data.ts`、`web/visitor.ts` | 取消过期读取请求、超时、匿名会话及写入请求 |
 | `shared/` | 纯类型、枚举和可核实的业务规则；可由前后端共同导入 |
 | `src/index.ts` | 路由装配、健康检查与错误兜底 |
 | `src/*catalog.ts`、`src/reviews.ts`、`src/review-interactions.ts` | 对应功能的参数验证、SQL与响应 |
 | `src/visitor.ts` | 签名Cookie、跨站写入检查和频率限制 |
+| `src/community.ts`、`src/community-input.ts`、`scripts/moderate.mjs` | 资料补充、举报、输入验证和本地审核工具 |
 | `src/validation.ts`、`src/request-body.ts` | 重复使用的ID/UUID校验、受限请求体读取 |
 | `src/review-targets.ts` | 固定的评价、投票、回复表名和外键映射 |
 | `tests/helpers/database.mjs` | 将生产迁移按顺序应用到调用方的临时D1 |
@@ -28,6 +31,7 @@
 - SQL表名来自固定代码配置，外部值全部参数绑定。课程隐藏状态要覆盖搜索、详情、评价和互动入口。
 - ID允许负数演示资料，零和不安全整数无效；真实课程导入保留正编号。匿名Cookie与写入限制继续由服务端验证。
 - 公选课事实、当期开课与模块认定分别存储。结论绑定专业/方案版本和官方来源；缺少依据保留未知，专项班单独核对。
+- 本人评价由已验证匿名访客判定，UUID不能作为归属凭证；同访客同对象唯一约束覆盖所有状态。评分查询和互动入口须同时检查公开状态及未撤回。资料补充与官方记录分开，管理操作保留理由、版本检查和原子日志。
 - 已应用的迁移只追加新文件。业务测试使用临时D1（`persist: false`），新增用例复用`tests/helpers/database.mjs`；数据库约束测试继续保留自己的SQLite夹具。
 - `.editorconfig`约定UTF-8、LF、两空格缩进；Python四空格。TypeScript启用严格检查、未使用声明及参数检查。
 - 前端更新后重新构建并重启Wrangler，使静态资源索引与构建一致。浏览器验收使用现有隔离预览数据库；演示数据保持明确标记。

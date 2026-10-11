@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { send, SubmissionError } from './visitor';
 import { Icon } from './icons';
 import { useData } from './use-data';
+import { ReportButton } from './community-forms';
 
 type Stats = { likes: number; dislikes: number; myVote: number; replyCount: number };
 type Replies = {
@@ -74,6 +75,7 @@ function ReplyPanel({
                     </time>
                   </div>
                   <p className="review-body">{row.body}</p>
+                  <ReportButton endpoint={`${endpoint}/replies/${row.id}/reports`}/>
                 </li>
               ))}
             </ul>
@@ -174,6 +176,7 @@ export function ReviewInteractions({ endpoint, initial }: { endpoint: string; in
           <Icon name="message" size={14} />
           回复 {stats.replyCount}
         </button>
+        <ReportButton endpoint={`${endpoint}/reports`}/>
       </div>
       {error && (
         <p className="form-error" role="alert">

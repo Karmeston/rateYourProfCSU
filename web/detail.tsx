@@ -6,6 +6,7 @@ import { Icon } from './icons';
 import { Reviews } from './reviews';
 import { ErrorState } from './ui';
 import { useData } from './use-data';
+import { CourseSupplements } from './course-supplements';
 
 function profileLink(value: string | null | undefined) {
   try {
@@ -145,6 +146,7 @@ export function Detail({
               </dl>
             </details>
           )}
+          {course && <CourseSupplements id={id}/>}
           <Reviews kind={kind} id={id} name={row.name} />
         </>
       )}

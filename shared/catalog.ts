@@ -22,8 +22,15 @@ export type Course = {
   electiveType: ElectiveType | null;
   departmentSourceYear: number | null;
 };
-export type CourseDetail = Course & { elective: ElectiveDetails | null; materials: CourseMaterial[] };
-export type CourseSummary = Course & { average: number | null; reviewCount: number };
+export type CourseDetail = Course & {
+  elective: ElectiveDetails | null;
+  materials: CourseMaterial[];
+};
+export type CourseSummary = Course & {
+  average: number | null;
+  reviewCount: number;
+  planRecords?: Pick<CourseMaterial, 'program' | 'sourceYear' | 'credits' | 'requirement'>[];
+};
 export type CourseCatalog = {
   courses: CourseSummary[];
   limit: number;
@@ -34,8 +41,13 @@ export type CourseCatalog = {
   category: string;
   electiveType: ElectiveTypeFilter;
   department: string;
+  program: string;
+  planYear: string;
   sort: CourseSort;
-  facets: { departments: { name: string; count: number }[] };
+  facets: {
+    departments: { name: string; count: number }[];
+    programs: { name: string; years: number[] }[];
+  };
   stats: { courseCount: number; reviewCount: number; reviewedCourseCount: number };
 };
 export const courseCategories = { major: '专业课', elective: '公选课' } as const;

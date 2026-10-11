@@ -8,21 +8,56 @@ export function Guide() {
       <h1>使用指南</h1>
       <section className="guide-faq">
         <details>
+          <summary>怎么按自己的专业找课？</summary>
+          <p>
+            在课程广场选择“培养方案专业”和方案版本。普通班、强基或卓越等专项方案分别保留。结果来自已收录的方案记录，可能包含辅修课程，不代表本学期开课或个人选课资格。
+          </p>
+        </details>
+        <details>
+          <summary>能修改或撤回自己的评价吗？</summary>
+          <p>
+            同一匿名访客对同一课程保留一条评价，可在原浏览器修改或撤回；撤回后不再公开，也不计入评分。重新发布沿用原记录，不会多计一票。被隐藏的评价修改后须重新审核。
+          </p>
+          <p>
+            身份由本站匿名Cookie识别。清除Cookie、Cookie过期或更换浏览器后，无法认领之前的评价；早期未关联访客的评价也不能自动认领。此限制按浏览器访客执行，不等于实名去重。
+          </p>
+        </details>
+        <details>
+          <summary>如何补充课程资料或举报内容？</summary>
+          <p>
+            课程详情的“同学补充资料”支持提交考核方式、学习资料链接和纠错信息，审核后单独展示。评价、回复和补充资料均可举报；维护者处理后决定是否隐藏，重复举报不会自动下架内容。
+          </p>
+        </details>
+        <details>
           <summary>公选课具体需要修多少学分？</summary>
-          <p>文化素质类选修的要求按专业和培养方案版本核对。目前已核实以下版本，课程详情可选择对应方案：</p>
+          <p>
+            文化素质类选修的要求按专业和培养方案版本核对。目前已核实以下版本，课程详情可选择对应方案：
+          </p>
           <ul className="guide-credit-plans">
             {electivePlans.map((plan) => (
               <li key={plan.id}>
-                {plan.name}：至少 {plan.total} 学分（艺术类 {plan.modules.art}、其他学科门类 {plan.modules.cross_discipline}）。{' '}
-                <a href={plan.sourceUrl} target="_blank" rel="noopener noreferrer" title={plan.sourceLocator}>官方依据 ↗</a>
+                {plan.name}：至少 {plan.total} 学分（艺术类 {plan.modules.art}、其他学科门类{' '}
+                {plan.modules.cross_discipline}）。{' '}
+                <a
+                  href={plan.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={plan.sourceLocator}
+                >
+                  官方依据 ↗
+                </a>
               </li>
             ))}
           </ul>
-          <p>方案版本不一定等于入学年份；强基等专项方案须单独核对。单门课程的学分见详情，是否满足某模块仍需课程认定依据。</p>
+          <p>
+            方案版本不一定等于入学年份；强基等专项方案须单独核对。单门课程的学分见详情，是否满足某模块仍需课程认定依据。
+          </p>
         </details>
         <details>
           <summary>公选课类别能说明是否计入培养方案吗？</summary>
-          <p>类别用于查找课程。艺术体育类不一定满足艺术学分要求，同学院开课也不能直接判为不计学分。课程详情可选择已收录的培养方案，分模块查看认定依据；未核实的规则显示“待核实”。</p>
+          <p>
+            类别用于查找课程。艺术体育类不一定满足艺术学分要求，同学院开课也不能直接判为不计学分。课程详情可选择已收录的培养方案，分模块查看认定依据；未核实的规则显示“待核实”。
+          </p>
         </details>
         <details>
           <summary>评价草稿保存在哪里？</summary>
@@ -34,7 +69,9 @@ export function Guide() {
         </details>
         <details>
           <summary>课程评分如何计算？</summary>
-          <p>评分是全部已发布评价的星级平均值。筛选、排序和赞同操作不改变总评分。</p>
+          <p>
+            评分是全部已发布且未撤回评价的星级平均值。修改会更新原评分，撤回或隐藏后不计入评分。筛选、排序和赞同操作不改变总评分。
+          </p>
         </details>
         <details>
           <summary>课程资料显示“待补充”是什么意思？</summary>
