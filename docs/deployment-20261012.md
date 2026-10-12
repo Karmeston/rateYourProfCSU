@@ -24,7 +24,7 @@ GitHub main已从5e79235快进到3c4b501，工作分支codex/course-experience�
 
 Worker版本：5b79b367-ae03-4a23-b2a5-f4b00d12ce60，应用源码提交8474335。首页与当前JS资源返回200，JS为index-w129jSTb.js，与本地构建一致。健康接口ok，课程API可见843门，专业课825、公选课18。资源勘查工程2023版筛选36门；结晶矿物学010102Z10返回4条课程材料，其中方案必修4学分。
 
-匿名访客签发返回204，Cookie包含Secure、HttpOnly、SameSite=Strict；有效Cookie再次请求不重复签发。未向线上写入测试评分、回复或补充资料。页面已在应用内打开；实际页面与窄屏视觉验收仍未宣称完成。
+匿名访客签发返回204，Cookie包含Secure、HttpOnly、SameSite=Strict；有效Cookie再次请求不重复签发。未向线上写入测试评分、回复或补充资料。已提交应用内打开请求（工具返回queued），也可直接通过公开链接访问；实际页面与窄屏视觉验收仍未宣称完成。
 
 ## 回退资料
 
