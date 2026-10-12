@@ -1,10 +1,10 @@
 # 2026-10-12部署记录
 
-发布状态将在公开接口核对后补齐。本轮用户已明确要求push和上线；没有创建新站点、替换原数据库或导入演示数据。
+已发布：[线上课程广场](https://rate-your-prof-csu.karmeston.workers.dev/#/courses)。公开接口核对通过。本轮用户已明确要求push和上线；没有创建新站点、替换原数据库或导入演示数据。
 
 ## 发行与数据
 
-GitHub main已从5e79235快进到3c4b501，工作分支codex/course-experience也已推送。现有Cloudflare Worker为rate-your-prof-csu，DB绑定保持原数据库。上线前完成原数据库SQL导出与Time Travel书签记录，随后应用0006、0007、0008迁移。
+GitHub main已从5e79235快进到3c4b501，工作分支codex/course-experience也已推送。发行及线上维护补充提交8474335已推送，GitHub Project checks通过。现有Cloudflare Worker为rate-your-prof-csu，DB绑定保持原数据库。上线前完成原数据库SQL导出与Time Travel书签记录，随后应用0006、0007、0008迁移。
 
 原库10条课程记录和2条课程评价保留。以导出副本为基础，在内存SQLite中应用待发布schema，再复用两个已核对导入器生成仅新增的SQL。SQLite自身展开绑定参数，避免引号、问号和Unicode转义错误；规划结束后回滚副本，不修改备份。369条新增语句通过D1文件导入原子执行，失败时可恢复到导入前状态。
 
@@ -19,6 +19,12 @@ GitHub main已从5e79235快进到3c4b501，工作分支codex/course-experience�
 管理工具支持显式--remote，经Wrangler账户认证操作同一个DB，不开放管理HTTP接口。直接复用Wrangler D1事务查询，避开当前远程绑定代理的不稳定连接；已读取线上审核队列。故意失败的事务探针已确认整批回滚，未留下探针记录。网络不确定时不自动重试写入，先inspect核对revision。
 
 77项测试、前后端类型检查、Vite构建及Worker dry-run通过。新发行测试验证规划不改快照、SQL参数重放、冲突时全部回滚；维护测试验证单次事务请求、审计与版本检查、网络错误不重复写入。
+
+## 线上结果
+
+Worker版本：5b79b367-ae03-4a23-b2a5-f4b00d12ce60，应用源码提交8474335。首页与当前JS资源返回200，JS为index-w129jSTb.js，与本地构建一致。健康接口ok，课程API可见843门，专业课825、公选课18。资源勘查工程2023版筛选36门；结晶矿物学010102Z10返回4条课程材料，其中方案必修4学分。
+
+匿名访客签发返回204，Cookie包含Secure、HttpOnly、SameSite=Strict；有效Cookie再次请求不重复签发。未向线上写入测试评分、回复或补充资料。页面已在应用内打开；实际页面与窄屏视觉验收仍未宣称完成。
 
 ## 回退资料
 
