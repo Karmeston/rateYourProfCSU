@@ -1,6 +1,6 @@
 # 专业筛选与匿名社区维护
 
-更新日期：2026-10-12。功能接入隔离本地预览，没有线上迁移、数据库写入或部署。
+更新日期：2026-10-12。功能已接入本地预览，本轮增加了线上发行和受保护命令行维护；实际线上版本、数据与回退见[部署记录](deployment-20261012.md)。
 
 ## 按方案找课
 
@@ -37,10 +37,13 @@ API使用`program`与`planYear`，版本需同时指定专业。采用方案资�
 
 ## 最小管理工具
 
-`scripts/moderate.mjs`只接受项目内的本地D1目录，远程bindings关闭。没有新增公开管理API、管理Cookie或学生登录。命令行适用于当前本地预览；线上部署前需另行落实线上维护访问方式，不能把本工具描述为已提供线上管理后台。
+`scripts/moderate.mjs`默认通过`--persist-to`操作项目内本地D1；只有显式指定`--remote`才通过已登录的Wrangler维护配置中的线上DB。线上使用现有Cloudflare账户权限，没有公开管理API、管理Cookie或学生登录。SQLite负责安全展开绑定参数；状态变更与日志在一次事务请求中提交，写入结果不确定时不自动重试，应先inspect查看当前版本。
 
 ```powershell
-# 查看举报、待审核资料及待审核评价（每类最多50条，处理后再次查看）
+# 线上队列：需要先登录具有本项目D1写入权限的Cloudflare账户
+node --env-file-if-exists=.env.deploy --require ./scripts/cloudflare-network.cjs scripts/moderate.mjs --remote queue
+
+# 本地查看举报、待审核资料及待审核评价（每类最多50条，处理后再次查看）
 node scripts/moderate.mjs --persist-to tmp/ui-preview-d1 queue
 
 # 将实际UUID与revision从queue/inspect复制，下面的字符串是占位
@@ -74,7 +77,7 @@ node scripts/moderate.mjs --persist-to tmp/ui-preview-d1 resolve report '举报U
 
 ## 验证与回退
 
-生产迁移`0008_community.sql`已应用于隔离本地预览，旧迁移未修改。`npm run check`通过：73项测试、前后端类型检查、Vite构建及Worker dry-run。API回归测试覆盖专业/班型与版本筛选、分页及隐藏资料、并发重复评分、旧记录拒绝认领、不同访客越权、修改/撤回重试、评分更新、隐藏后重新审核、待审核队列、补充审核、举报去重和回复隐藏/恢复。本地管理队列命令执行成功。
+生产迁移`0008_community.sql`已应用于本地与线上，旧迁移未修改。`npm run check`通过：77项测试、前后端类型检查、Vite构建及Worker dry-run。API回归测试覆盖专业/班型与版本筛选、分页及隐藏资料、并发重复评分、旧记录拒绝认领、不同访客越权、修改/撤回重试、评分更新、隐藏后重新审核、待审核队列、补充审核、举报去重和回复隐藏/恢复。本地及线上管理队列命令执行成功；新增发行SQL重放、冲突回滚、线上维护参数展开与不盲目重试的回归测试。
 
 浏览器工具因无法可靠确认当前Windows浏览器地址停止操作，尚未完成实际页面与窄屏验收，不提供旧截图作为本轮证明。
 
