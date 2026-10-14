@@ -128,14 +128,32 @@
       "department": "数学与统计学院",
       "sha256": "a59d6d822f4ad9983ae4ca5e006bbd0cfc3dc74a0e5e0802c7302dcc964cca58"
     },
-    "source-4b9c2a26ae7b": {
-      "url": "https://bksy.csu.edu.cn/info/1272/3676.htm",
-      "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685909",
-      "label": "11 化学化工学院.docx",
-      "kind": "major_syllabus",
-      "year": 2016,
-      "department": "化学化工学院",
-      "sha256": "a5632d5627e8bcb77ce3e901dd41d3fcbd24fb89214776694e0651f0d4924551"
+    "source-1f6a7e6907b6": {
+      "url": "https://cse.csu.edu.cn/info/1053/1599.htm",
+      "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078568",
+      "label": "数据科学与大数据技术[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2018,
+      "department": "计算机学院",
+      "sha256": "245cd7e6a94dda24ee86186501a96b8a20a1494ed3d74dc8a5a0f7b46e4a97f9"
+    },
+    "source-fe82a8cf58a8": {
+      "url": "https://soa.csu.edu.cn/info/1072/7803.htm",
+      "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606795",
+      "label": "人工智能专业[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "自动化学院",
+      "sha256": "1ca223e7db5cb00dfcde87d69ba7dcdc669a96ce7f6ead1d9b0c6816f090bd1c"
+    },
+    "source-04d82b6ebd46": {
+      "url": "https://soa.csu.edu.cn/info/1072/7802.htm",
+      "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606796",
+      "label": "电子信息工程专业[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "自动化学院",
+      "sha256": "0e6dff9cd487061b5726d6ef822f1a524fcc3b829087321203c9517877ed21a6"
     },
     "mpb-plan": {
       "url": "https://mpb.csu.edu.cn/__local/B/F4/F2/FF0DC62CE36406F193B02B69039_690435BF_DDFB9.pdf",
@@ -146,6 +164,15 @@
       "department": "资源加工与生物工程学院",
       "sha256": "5728d7fbb1adcb0c518201c4dc1b8fd8ee5386e48c759f6ace0dc1d01eacecf1"
     },
+    "source-5a5f9fae5da8": {
+      "url": "https://civil.csu.edu.cn/info/1044/11063.htm",
+      "file_url": "https://civil.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1746836995&wbfileid=15399519",
+      "label": "93 土木国际[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "土木工程学院",
+      "sha256": "5fa30fd1808d1f086118a80fc0847f868815d05acfd8d55ca08fbc525a65aab0"
+    },
     "source-23efa57cbce2": {
       "url": "https://mse.csu.edu.cn/info/1016/4033.htm",
       "file_url": "https://mse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750475902&wbfileid=13084725",
@@ -154,6 +181,15 @@
       "year": 2023,
       "department": "材料科学与工程学院",
       "sha256": "a4e34e438231ad168cbf31b58b0d63c548c454b408e8487b16955159cd85dee8"
+    },
+    "source-9f5450b2c617": {
+      "url": "https://ei.csu.edu.cn/info/1135/1322.htm",
+      "file_url": "https://ei.csu.edu.cn/__local/1/A5/A3/9CD893665FD2D544721224A2173_41E5BEC3_5C89F.pdf",
+      "label": "电子信息科学与技术2023培养方案 PDF",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "电子信息学院",
+      "sha256": "64a96b23118d3663216f879fabfdab210124caa395bafb91241e59b95c49aa0f"
     },
     "source-b3dcca77cbca": {
       "url": "https://mse.csu.edu.cn/info/1016/4034.htm",
@@ -182,6 +218,114 @@
       "department": "材料科学与工程学院",
       "sha256": "4eddeaab0f7b5d1c347da17d1899cf6808e4daf8b01154c31646ab51b42204af"
     },
+    "source-de96a7cf476f": {
+      "url": "https://pmri.csu.edu.cn/info/1048/4305.htm",
+      "file_url": "https://pmri.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2117606044&wbfileid=15368695",
+      "label": "粉体材料科学与工程[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "粉末冶金研究院",
+      "sha256": "9eb64ca711cf7d8fc01809061e1fdb17f38dbcf791ea029f0d8297a3bd791e4e"
+    },
+    "source-dec425db17cc": {
+      "url": "https://pmri.csu.edu.cn/info/1048/4304.htm",
+      "file_url": "https://pmri.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2117606044&wbfileid=15368694",
+      "label": "粉体材料科学与工程卓越人才培养[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "粉末冶金研究院",
+      "sha256": "3e705824198406b1c7c35c68147c704243f0e126402aa1a10c9016d33420849f"
+    },
+    "source-7a338dfe109b": {
+      "url": "https://energy.csu.edu.cn/info/1020/4038.htm",
+      "file_url": "https://energy.csu.edu.cn/__local/F/A7/BC/D2959A25782E7F6EF962C821B98_A692B8CD_5391F.pdf",
+      "label": "2024版建筑环境与能源应用工程专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "year": 2024,
+      "department": "能源科学与工程学院",
+      "sha256": "b553f0c870a1f18b2be10d8aeabd5350f1974fc5ee98d6683de560df6ca9a92b"
+    },
+    "source-e24f3ad9a660-8c5004a3": {
+      "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+      "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
+      "label": "会计学[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "商学院",
+      "sha256": "87e3d7ad7131c7af891935865e0a6e2c17b6c17e165f939990c2b725825e7a4b"
+    },
+    "source-e24f3ad9a660-f4efdebd": {
+      "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+      "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
+      "label": "国际经济与贸易[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "商学院",
+      "sha256": "f18498c17a336eb3fea449b6d3d0b5467aa32b9f97accdef421f366d6d19497a"
+    },
+    "source-e24f3ad9a660-4dfd39a7": {
+      "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+      "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
+      "label": "工商管理[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "商学院",
+      "sha256": "72c968179e26fbd0f3451d39730fa6226790457b81fa430ad29095f8c3b8847a"
+    },
+    "source-e24f3ad9a660-b7dd1810": {
+      "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+      "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
+      "label": "数据科学与商业分析卓越人才培养[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "商学院",
+      "sha256": "f4a366ca624554cbcc80d3efcec24c715a2d40a5043b17e6989f5f091404c4ec"
+    },
+    "source-e24f3ad9a660-b1b7a733": {
+      "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
+      "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
+      "label": "金融学[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "商学院",
+      "sha256": "e21a277edba072b7c6f8bcc3189f8d4a8d8f6408c892d5298ab01aef138b0047"
+    },
+    "source-1d9019ef60a7": {
+      "url": "https://energy.csu.edu.cn/info/1020/4037.htm",
+      "file_url": "https://energy.csu.edu.cn/__local/7/2A/D2/29E09246493847F8172AA00B445_7E81B75C_5E763.pdf",
+      "label": "2024版能源与动力工程专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "year": 2024,
+      "department": "能源科学与工程学院",
+      "sha256": "12e79807f62c52ecc691d4191aa1f94e1040ca90000e8cfbdf928a5122376632"
+    },
+    "source-e8e78a83bb4e": {
+      "url": "https://energy.csu.edu.cn/info/1020/4036.htm",
+      "file_url": "https://energy.csu.edu.cn/__local/E/47/BF/FC813719C7EC86C562675A8F107_D960AE93_6B235.pdf",
+      "label": "2024版新能源科学与工程专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "year": 2024,
+      "department": "能源科学与工程学院",
+      "sha256": "d81ef3a6ebc38de565ca85d2d7095404e5104c1dcf92498ae6812690c4d5349b"
+    },
+    "source-02af2a845c6e": {
+      "url": "https://mpb.csu.edu.cn/info/1043/3626.htm",
+      "file_url": "https://mpb.csu.edu.cn/__local/9/49/E1/62532079D3C918F12153860651D_DCB4361A_E9834.pdf",
+      "label": "矿物加工工程卓越人才培养2023版培养方案",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "资源加工与生物工程学院",
+      "sha256": "de495cbcf3dc4168e7e262373c06bb0b06497f40078cb3126b9fa6ee066b65d2"
+    },
+    "source-4e0642e10b96": {
+      "url": "https://mpb.csu.edu.cn/info/1043/3573.htm",
+      "file_url": "https://mpb.csu.edu.cn/__local/6/D1/1D/9818ED4594CA2577554289A5609_EC296C0E_CDDBD.pdf",
+      "label": "无机非金属材料工程2023版培养方案",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "资源加工与生物工程学院",
+      "sha256": "332c7f7c6532c1e2c29760385891067858023ef4ef499991a7428e24f877a634"
+    },
     "source-37ff7c52da21": {
       "url": "https://mpb.csu.edu.cn/info/1043/3571.htm",
       "file_url": "https://mpb.csu.edu.cn/__local/6/F3/53/9130454FC207AFD31EBCA5B6B1E_FAF76F09_DF087.pdf",
@@ -191,23 +335,23 @@
       "department": "资源加工与生物工程学院",
       "sha256": "84a9fae7114bdb3a7e92cd75ce9c658ea8946ddbdda70f7350838208419f8256"
     },
-    "source-674825f69efb": {
-      "url": "https://bksy.csu.edu.cn/info/1272/3683.htm",
-      "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685916",
-      "label": "18机电工程学院.docx",
-      "kind": "major_syllabus",
-      "year": 2016,
-      "department": "机电工程学院",
-      "sha256": "1b6139412f6ae42ead39e39ebbc432e4e62da0f767470810abcba2b5f59912b1"
-    },
-    "source-9f5450b2c617": {
-      "url": "https://ei.csu.edu.cn/info/1135/1322.htm",
-      "file_url": "https://ei.csu.edu.cn/__local/1/A5/A3/9CD893665FD2D544721224A2173_41E5BEC3_5C89F.pdf",
-      "label": "电子信息科学与技术2023培养方案 PDF",
+    "source-d54c1549bc06": {
+      "url": "https://mpb.csu.edu.cn/info/1043/3570.htm",
+      "file_url": "https://mpb.csu.edu.cn/__local/2/5D/A5/68B7446A85B85883182F1B21795_CFCE8FF6_EA36D.pdf",
+      "label": "矿物加工工程2023版培养方案",
       "kind": "undergraduate_plan",
       "year": 2023,
-      "department": "电子信息学院",
-      "sha256": "64a96b23118d3663216f879fabfdab210124caa395bafb91241e59b95c49aa0f"
+      "department": "资源加工与生物工程学院",
+      "sha256": "067a16b21aff4505e69d63783be031397006c8afcebfaef86d701cfb7edf1025"
+    },
+    "source-94a20b7556b9": {
+      "url": "https://smse.csu.edu.cn/info/1065/5184.htm",
+      "file_url": "https://smse.csu.edu.cn/__local/4/AA/7C/7221EA067201C821241A4920B09_FBE13B57_4DDA0.pdf",
+      "label": "1冶金工程卓越人才培养[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "冶金与环境学院",
+      "sha256": "b52ec39f87d492d844ffe4d5d7b89a9b582696d7c06794e6055ca55467a35f37"
     },
     "source-7a14468b9e1d": {
       "url": "https://smse.csu.edu.cn/info/1065/5178.htm",
@@ -217,6 +361,51 @@
       "year": 2023,
       "department": "冶金与环境学院",
       "sha256": "66c8489207175efe572ed0c08b58d1cd4ae532fccf2289cbbaeb0f3eb5c5faa9"
+    },
+    "source-bc3766d0e595": {
+      "url": "https://smse.csu.edu.cn/info/1058/5179.htm",
+      "file_url": "https://smse.csu.edu.cn/__local/5/B2/20/87A32ED37D57E87D72C10563C52_3D2C0C61_58784.pdf",
+      "label": "15冶金工程[2023]培养方案",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "冶金与环境学院",
+      "sha256": "4f869d4b06698bc18e2704b5eb38fddb810612525b083f28640d730ced4b6a19"
+    },
+    "source-f16060247e95": {
+      "url": "https://energy.csu.edu.cn/info/1020/3991.htm",
+      "file_url": "https://energy.csu.edu.cn/__local/6/AF/C8/98CDD5833D36268690B2F2155C3_C848B58E_90AC1.pdf",
+      "label": "2023版能源类专业本科培养方案",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "能源科学与工程学院",
+      "sha256": "af82d2be530c1a2cbe2f0e7125e5ae7ea8f3e12084c28974d2efb335013a46c6"
+    },
+    "source-1d0fccb32373": {
+      "url": "https://cse.csu.edu.cn/info/1053/1601.htm",
+      "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078570",
+      "label": "信息安全[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2018,
+      "department": "计算机学院",
+      "sha256": "b1990e12fa1360cfd3ce1f05eec0805354fc711fd05cb1a333e7d7ccc6795408"
+    },
+    "source-58faa332e7fa": {
+      "url": "https://cse.csu.edu.cn/info/1053/1597.htm",
+      "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078566",
+      "label": "软件工程专业[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2018,
+      "department": "计算机学院",
+      "sha256": "0cecb21c3c81cebb8ebe425ca5db176c0dc579fe8aed2bc71144137d1d486894"
+    },
+    "source-625e80758e72": {
+      "url": "https://cse.csu.edu.cn/info/1053/1596.htm",
+      "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078565",
+      "label": "计算机科学与技术专业[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2018,
+      "department": "计算机学院",
+      "sha256": "159443d5ff7fb69ef1ea3b7b3858253aa70d9846e5e9dafa56a04dcd22fbe0a2"
     },
     "source-e562cbee6c84-d98d26cc": {
       "url": "https://wl.csu.edu.cn/info/1020/6817.htm",
@@ -245,15 +434,6 @@
       "department": "物理学院",
       "sha256": "2f7d7894065123ff37531f8239875fb65516157e74eaff2a716c33abdcf6b5c5"
     },
-    "source-f106ce6c1a8a-5f69cbec": {
-      "url": "https://wl.csu.edu.cn/info/1020/6816.htm",
-      "file_url": "https://wl.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750465396&wbfileid=18210578",
-      "label": "光电信息科学与工程[2023]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "物理学院",
-      "sha256": "6f8b19b442f8fe49cb2ae23789b03c6c1efef57b235a205fa970971c41b20007"
-    },
     "source-f106ce6c1a8a-35678d04": {
       "url": "https://wl.csu.edu.cn/info/1020/6816.htm",
       "file_url": "https://wl.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750465396&wbfileid=18210578",
@@ -281,6 +461,33 @@
       "department": "物理学院",
       "sha256": "6ab63739f419de9dfdffbccf3e86ab1c1e02c316ad5ded7938085e046bfac7ba"
     },
+    "source-4b9c2a26ae7b": {
+      "url": "https://bksy.csu.edu.cn/info/1272/3676.htm",
+      "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685909",
+      "label": "11 化学化工学院.docx",
+      "kind": "major_syllabus",
+      "year": 2016,
+      "department": "化学化工学院",
+      "sha256": "a5632d5627e8bcb77ce3e901dd41d3fcbd24fb89214776694e0651f0d4924551"
+    },
+    "source-674825f69efb": {
+      "url": "https://bksy.csu.edu.cn/info/1272/3683.htm",
+      "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685916",
+      "label": "18机电工程学院.docx",
+      "kind": "major_syllabus",
+      "year": 2016,
+      "department": "机电工程学院",
+      "sha256": "1b6139412f6ae42ead39e39ebbc432e4e62da0f767470810abcba2b5f59912b1"
+    },
+    "source-f106ce6c1a8a-5f69cbec": {
+      "url": "https://wl.csu.edu.cn/info/1020/6816.htm",
+      "file_url": "https://wl.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750465396&wbfileid=18210578",
+      "label": "光电信息科学与工程[2023]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2023,
+      "department": "物理学院",
+      "sha256": "6f8b19b442f8fe49cb2ae23789b03c6c1efef57b235a205fa970971c41b20007"
+    },
     "source-f106ce6c1a8a-73f83f2a": {
       "url": "https://wl.csu.edu.cn/info/1020/6816.htm",
       "file_url": "https://wl.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1750465396&wbfileid=18210578",
@@ -289,60 +496,6 @@
       "year": 2023,
       "department": "物理学院",
       "sha256": "8113e07287ff5947cb3e223c7696fcb9c739336bef4d7b65989abba69f0c9478"
-    },
-    "source-de96a7cf476f": {
-      "url": "https://pmri.csu.edu.cn/info/1048/4305.htm",
-      "file_url": "https://pmri.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2117606044&wbfileid=15368695",
-      "label": "粉体材料科学与工程[2023]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "粉末冶金研究院",
-      "sha256": "9eb64ca711cf7d8fc01809061e1fdb17f38dbcf791ea029f0d8297a3bd791e4e"
-    },
-    "source-dec425db17cc": {
-      "url": "https://pmri.csu.edu.cn/info/1048/4304.htm",
-      "file_url": "https://pmri.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2117606044&wbfileid=15368694",
-      "label": "粉体材料科学与工程卓越人才培养[2023]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "粉末冶金研究院",
-      "sha256": "3e705824198406b1c7c35c68147c704243f0e126402aa1a10c9016d33420849f"
-    },
-    "source-02af2a845c6e": {
-      "url": "https://mpb.csu.edu.cn/info/1043/3626.htm",
-      "file_url": "https://mpb.csu.edu.cn/__local/9/49/E1/62532079D3C918F12153860651D_DCB4361A_E9834.pdf",
-      "label": "矿物加工工程卓越人才培养2023版培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "资源加工与生物工程学院",
-      "sha256": "de495cbcf3dc4168e7e262373c06bb0b06497f40078cb3126b9fa6ee066b65d2"
-    },
-    "source-4e0642e10b96": {
-      "url": "https://mpb.csu.edu.cn/info/1043/3573.htm",
-      "file_url": "https://mpb.csu.edu.cn/__local/6/D1/1D/9818ED4594CA2577554289A5609_EC296C0E_CDDBD.pdf",
-      "label": "无机非金属材料工程2023版培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "资源加工与生物工程学院",
-      "sha256": "332c7f7c6532c1e2c29760385891067858023ef4ef499991a7428e24f877a634"
-    },
-    "source-d54c1549bc06": {
-      "url": "https://mpb.csu.edu.cn/info/1043/3570.htm",
-      "file_url": "https://mpb.csu.edu.cn/__local/2/5D/A5/68B7446A85B85883182F1B21795_CFCE8FF6_EA36D.pdf",
-      "label": "矿物加工工程2023版培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "资源加工与生物工程学院",
-      "sha256": "067a16b21aff4505e69d63783be031397006c8afcebfaef86d701cfb7edf1025"
-    },
-    "source-bc3766d0e595": {
-      "url": "https://smse.csu.edu.cn/info/1058/5179.htm",
-      "file_url": "https://smse.csu.edu.cn/__local/5/B2/20/87A32ED37D57E87D72C10563C52_3D2C0C61_58784.pdf",
-      "label": "15冶金工程[2023]培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "冶金与环境学院",
-      "sha256": "4f869d4b06698bc18e2704b5eb38fddb810612525b083f28640d730ced4b6a19"
     },
     "source-b224005bd1ee": {
       "url": "https://bksy.csu.edu.cn/info/1272/3678.htm",
@@ -389,15 +542,6 @@
       "department": "土木工程学院",
       "sha256": "a46c99be3d22664fdcf92cab5253ee643f5e99d423877a9d87e47aa3da4bf18f"
     },
-    "source-5a5f9fae5da8": {
-      "url": "https://civil.csu.edu.cn/info/1044/11063.htm",
-      "file_url": "https://civil.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1746836995&wbfileid=15399519",
-      "label": "93 土木国际[2023]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "土木工程学院",
-      "sha256": "5fa30fd1808d1f086118a80fc0847f868815d05acfd8d55ca08fbc525a65aab0"
-    },
     "source-d3c29319ecd9": {
       "url": "https://bksy.csu.edu.cn/info/1272/3680.htm",
       "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685913",
@@ -407,50 +551,14 @@
       "department": "材料科学与工程学院",
       "sha256": "7679ef844d5286376289f6175c9ca10b530c88e4831c22b1593966c8960e264d"
     },
-    "source-94a20b7556b9": {
-      "url": "https://smse.csu.edu.cn/info/1065/5184.htm",
-      "file_url": "https://smse.csu.edu.cn/__local/4/AA/7C/7221EA067201C821241A4920B09_FBE13B57_4DDA0.pdf",
-      "label": "1冶金工程卓越人才培养[2023]培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "冶金与环境学院",
-      "sha256": "b52ec39f87d492d844ffe4d5d7b89a9b582696d7c06794e6055ca55467a35f37"
-    },
-    "source-7a338dfe109b": {
-      "url": "https://energy.csu.edu.cn/info/1020/4038.htm",
-      "file_url": "https://energy.csu.edu.cn/__local/F/A7/BC/D2959A25782E7F6EF962C821B98_A692B8CD_5391F.pdf",
-      "label": "2024版建筑环境与能源应用工程专业本科培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2024,
-      "department": "能源科学与工程学院",
-      "sha256": "b553f0c870a1f18b2be10d8aeabd5350f1974fc5ee98d6683de560df6ca9a92b"
-    },
-    "source-1d9019ef60a7": {
-      "url": "https://energy.csu.edu.cn/info/1020/4037.htm",
-      "file_url": "https://energy.csu.edu.cn/__local/7/2A/D2/29E09246493847F8172AA00B445_7E81B75C_5E763.pdf",
-      "label": "2024版能源与动力工程专业本科培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2024,
-      "department": "能源科学与工程学院",
-      "sha256": "12e79807f62c52ecc691d4191aa1f94e1040ca90000e8cfbdf928a5122376632"
-    },
-    "source-e8e78a83bb4e": {
-      "url": "https://energy.csu.edu.cn/info/1020/4036.htm",
-      "file_url": "https://energy.csu.edu.cn/__local/E/47/BF/FC813719C7EC86C562675A8F107_D960AE93_6B235.pdf",
-      "label": "2024版新能源科学与工程专业本科培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2024,
-      "department": "能源科学与工程学院",
-      "sha256": "d81ef3a6ebc38de565ca85d2d7095404e5104c1dcf92498ae6812690c4d5349b"
-    },
-    "source-f16060247e95": {
-      "url": "https://energy.csu.edu.cn/info/1020/3991.htm",
-      "file_url": "https://energy.csu.edu.cn/__local/6/AF/C8/98CDD5833D36268690B2F2155C3_C848B58E_90AC1.pdf",
-      "label": "2023版能源类专业本科培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "能源科学与工程学院",
-      "sha256": "af82d2be530c1a2cbe2f0e7125e5ae7ea8f3e12084c28974d2efb335013a46c6"
+    "source-a65ef551efb8": {
+      "url": "https://bksy.csu.edu.cn/info/1272/3689.htm",
+      "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685922",
+      "label": "24信息科学与工程学院.docx",
+      "kind": "major_syllabus",
+      "year": 2016,
+      "department": "信息科学与工程学院",
+      "sha256": "be82e09cb6d60af4ad72a618efe2c368dd877a31c8c8c7493233627af39f9eec"
     },
     "source-451fd5199baa": {
       "url": "https://bksy.csu.edu.cn/info/1272/3669.htm",
@@ -497,15 +605,6 @@
       "department": "外国语学院",
       "sha256": "62d15fe843ded450e485eef6f51efb55429ddff41df3620d96945204c621f948"
     },
-    "source-a65ef551efb8": {
-      "url": "https://bksy.csu.edu.cn/info/1272/3689.htm",
-      "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685922",
-      "label": "24信息科学与工程学院.docx",
-      "kind": "major_syllabus",
-      "year": 2016,
-      "department": "信息科学与工程学院",
-      "sha256": "be82e09cb6d60af4ad72a618efe2c368dd877a31c8c8c7493233627af39f9eec"
-    },
     "source-8440d0cc9c70": {
       "url": "https://see.csu.edu.cn/info/1126/1308.htm",
       "file_url": "https://see.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2051321257&wbfileid=18201675",
@@ -523,6 +622,15 @@
       "year": 2016,
       "department": "物理与电子学院",
       "sha256": "66c2ca761d8425418d19fb97a4b5240a047448a2070686891beaa2d505792a90"
+    },
+    "source-8e155ea6b9de": {
+      "url": "https://cse.csu.edu.cn/info/1053/1602.htm",
+      "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078571",
+      "label": "计算机信息类[2018]培养方案.doc",
+      "kind": "undergraduate_plan",
+      "year": 2018,
+      "department": "计算机学院",
+      "sha256": "adf3f410db977cc33d4ec13a4dce9daf1ffd34afe6e9e2b2e99dde0aa1a5e955"
     },
     "source-9c095516f889": {
       "url": "https://bksy.csu.edu.cn/info/1272/3672.htm",
@@ -560,24 +668,6 @@
       "department": "商学院",
       "sha256": "38b9d140b9677696443610d2df5ed67741cb20581d0cb6a152a1d623b7c14f47"
     },
-    "source-e24f3ad9a660-8c5004a3": {
-      "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
-      "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
-      "label": "会计学[2023]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "商学院",
-      "sha256": "87e3d7ad7131c7af891935865e0a6e2c17b6c17e165f939990c2b725825e7a4b"
-    },
-    "source-e24f3ad9a660-f4efdebd": {
-      "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
-      "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
-      "label": "国际经济与贸易[2023]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "商学院",
-      "sha256": "f18498c17a336eb3fea449b6d3d0b5467aa32b9f97accdef421f366d6d19497a"
-    },
     "source-e24f3ad9a660-3f8aa964": {
       "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
       "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
@@ -586,24 +676,6 @@
       "year": 2023,
       "department": "商学院",
       "sha256": "e234de6b56cbb558800a7631c6246bf72b78a0eb35c5ef612a8e061f436b482d"
-    },
-    "source-e24f3ad9a660-4dfd39a7": {
-      "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
-      "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
-      "label": "工商管理[2023]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "商学院",
-      "sha256": "72c968179e26fbd0f3451d39730fa6226790457b81fa430ad29095f8c3b8847a"
-    },
-    "source-e24f3ad9a660-b7dd1810": {
-      "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
-      "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
-      "label": "数据科学与商业分析卓越人才培养[2023]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "商学院",
-      "sha256": "f4a366ca624554cbcc80d3efcec24c715a2d40a5043b17e6989f5f091404c4ec"
     },
     "source-e24f3ad9a660-618bb980": {
       "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
@@ -614,15 +686,6 @@
       "department": "商学院",
       "sha256": "eb8208f6b8711fc0ee6c04d2a84626796110c08ab9e70b334b82957026eced67"
     },
-    "source-e24f3ad9a660-b1b7a733": {
-      "url": "https://bs.csu.edu.cn/bkjy/info/1586/1077.htm",
-      "file_url": "https://bs.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2039737497&wbfileid=14942428",
-      "label": "金融学[2023]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "商学院",
-      "sha256": "e21a277edba072b7c6f8bcc3189f8d4a8d8f6408c892d5298ab01aef138b0047"
-    },
     "source-8bdc15d0fc55": {
       "url": "https://soa.csu.edu.cn/info/1072/7805.htm",
       "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606793",
@@ -631,24 +694,6 @@
       "year": 2023,
       "department": "自动化学院",
       "sha256": "d981616cb6e24862de31f2ff51d6009aa38318612dd131664de46227cb328c00"
-    },
-    "source-fe82a8cf58a8": {
-      "url": "https://soa.csu.edu.cn/info/1072/7803.htm",
-      "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606795",
-      "label": "人工智能专业[2023]培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "自动化学院",
-      "sha256": "1ca223e7db5cb00dfcde87d69ba7dcdc669a96ce7f6ead1d9b0c6816f090bd1c"
-    },
-    "source-04d82b6ebd46": {
-      "url": "https://soa.csu.edu.cn/info/1072/7802.htm",
-      "file_url": "https://soa.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1523423077&wbfileid=14606796",
-      "label": "电子信息工程专业[2023]培养方案",
-      "kind": "undergraduate_plan",
-      "year": 2023,
-      "department": "自动化学院",
-      "sha256": "0e6dff9cd487061b5726d6ef822f1a524fcc3b829087321203c9517877ed21a6"
     },
     "source-2c04a5690c1e": {
       "url": "https://soa.csu.edu.cn/info/1072/9061.htm",
@@ -965,42 +1010,6 @@
       "department": "能源科学与工程学院",
       "sha256": "bc35cba911d26bde1f247bbbdd7312bcdbe4b6d6fa88f8610ffb446d307fdb24"
     },
-    "source-1d0fccb32373": {
-      "url": "https://cse.csu.edu.cn/info/1053/1601.htm",
-      "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078570",
-      "label": "信息安全[2018]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2018,
-      "department": "计算机学院",
-      "sha256": "b1990e12fa1360cfd3ce1f05eec0805354fc711fd05cb1a333e7d7ccc6795408"
-    },
-    "source-1f6a7e6907b6": {
-      "url": "https://cse.csu.edu.cn/info/1053/1599.htm",
-      "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078568",
-      "label": "数据科学与大数据技术[2018]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2018,
-      "department": "计算机学院",
-      "sha256": "245cd7e6a94dda24ee86186501a96b8a20a1494ed3d74dc8a5a0f7b46e4a97f9"
-    },
-    "source-8e155ea6b9de": {
-      "url": "https://cse.csu.edu.cn/info/1053/1602.htm",
-      "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078571",
-      "label": "计算机信息类[2018]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2018,
-      "department": "计算机学院",
-      "sha256": "adf3f410db977cc33d4ec13a4dce9daf1ffd34afe6e9e2b2e99dde0aa1a5e955"
-    },
-    "source-625e80758e72": {
-      "url": "https://cse.csu.edu.cn/info/1053/1596.htm",
-      "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078565",
-      "label": "计算机科学与技术专业[2018]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2018,
-      "department": "计算机学院",
-      "sha256": "159443d5ff7fb69ef1ea3b7b3858253aa70d9846e5e9dafa56a04dcd22fbe0a2"
-    },
     "source-8fec7b137b0e": {
       "url": "https://bksy.csu.edu.cn/info/1272/3688.htm",
       "file_url": "https://bksy.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1225855846&wbfileid=2685921",
@@ -1009,15 +1018,6 @@
       "year": 2016,
       "department": "软件学院",
       "sha256": "3f946782f791ac7dfb1f269dc98ae503f263db21c53cb3268e8f7dcbf911e02e"
-    },
-    "source-58faa332e7fa": {
-      "url": "https://cse.csu.edu.cn/info/1053/1597.htm",
-      "file_url": "https://cse.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1556422056&wbfileid=3078566",
-      "label": "软件工程专业[2018]培养方案.doc",
-      "kind": "undergraduate_plan",
-      "year": 2018,
-      "department": "计算机学院",
-      "sha256": "0cecb21c3c81cebb8ebe425ca5db176c0dc579fe8aed2bc71144137d1d486894"
     },
     "source-07b44d2e36c7": {
       "url": "https://bksy.csu.edu.cn/info/1272/3679.htm",
@@ -2664,6 +2664,16 @@
           "locator": "正文第10259段"
         },
         {
+          "source_id": "source-988fce9f237c",
+          "name": "土木工程概论",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "PDF第53页，第3行附近"
+        },
+        {
           "source_id": "source-195fdf0451d7",
           "name": "土木工程概论",
           "program": "地质工程",
@@ -3578,6 +3588,16 @@
           "locator": "正文第14472段"
         },
         {
+          "source_id": "source-f6431ccef3a0",
+          "name": "新生课",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第23页，第3行附近"
+        },
+        {
           "source_id": "source-195fdf0451d7",
           "name": "新生课",
           "program": "地球物理学",
@@ -4174,6 +4194,16 @@
           "locator": "正文第20806段"
         },
         {
+          "source_id": "source-f6431ccef3a0",
+          "name": "电子测量原理",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "PDF第81页，第3行附近"
+        },
+        {
           "source_id": "source-195fdf0451d7",
           "name": "电子测量原理",
           "program": "地球物理学",
@@ -4300,6 +4330,16 @@
           "category_raw": "专业教育课程（专业选修课）",
           "category_method": null,
           "locator": "正文第22217段"
+        },
+        {
+          "source_id": "source-f6431ccef3a0",
+          "name": "海洋地球物理",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第101页，第3行附近"
         },
         {
           "source_id": "source-195fdf0451d7",
@@ -4580,6 +4620,60 @@
       ]
     },
     {
+      "code": "010375Z10",
+      "name": "勘探地震数据处理与资料解释",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-f6431ccef3a0",
+          "name": "勘探地震数据处理与资料解释",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "PDF第163页，第3行附近"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "勘探地震数据处理与资料解释",
+          "program": "地球物理学",
+          "credits": 2.0,
+          "requirement": "选修",
+          "category_raw": "专业教育课程/专业课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第65页，表1第30行"
+        }
+      ]
+    },
+    {
+      "code": "010376X10",
+      "name": "地球系统科学概论",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-f6431ccef3a0",
+          "name": "地球系统科学概论",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第169页，第3行附近"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "地球系统科学概论",
+          "program": "地球物理学",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/学科基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第64页，表1第31行"
+        }
+      ]
+    },
+    {
       "code": "010380X10",
       "name": "数字信号分析与数据处理",
       "department": "地球科学与信息物理学院",
@@ -4661,6 +4755,33 @@
       ]
     },
     {
+      "code": "010386Z10",
+      "name": "天然地震探测方法",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-f6431ccef3a0",
+          "name": "天然地震探测方法",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "PDF第199页，第3行附近"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "天然地震探测方法",
+          "program": "地球物理学",
+          "credits": 2.0,
+          "requirement": "选修",
+          "category_raw": "专业教育课程/专业选修课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第66页，表1第8行"
+        }
+      ]
+    },
+    {
       "code": "010387Z10",
       "name": "核地球物理",
       "department": "地球科学与信息物理学院",
@@ -4719,6 +4840,16 @@
       "name": "测绘学概论",
       "department": "地球科学与信息物理学院",
       "materials": [
+        {
+          "source_id": "source-0768b79a991d",
+          "name": "测绘学概论",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第23959段"
+        },
         {
           "source_id": "source-511f00cd1c6c",
           "name": "测绘学概论",
@@ -4787,6 +4918,16 @@
       "department": "地球科学与信息物理学院",
       "materials": [
         {
+          "source_id": "source-0768b79a991d",
+          "name": "误差理论与测量平差基础",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第24467段"
+        },
+        {
           "source_id": "source-511f00cd1c6c",
           "name": "误差理论与测量平差基础",
           "program": null,
@@ -4833,6 +4974,16 @@
       "name": "数据结构",
       "department": "地球科学与信息物理学院",
       "materials": [
+        {
+          "source_id": "source-0768b79a991d",
+          "name": "数据结构",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "正文第24632段"
+        },
         {
           "source_id": "source-511f00cd1c6c",
           "name": "数据结构",
@@ -4965,6 +5116,16 @@
       "department": "地球科学与信息物理学院",
       "materials": [
         {
+          "source_id": "source-0768b79a991d",
+          "name": "测绘程序设计基础",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第25020段"
+        },
+        {
           "source_id": "source-e7ce9668acb8",
           "name": "测绘程序设计基础",
           "program": null,
@@ -4987,10 +5148,77 @@
       ]
     },
     {
+      "code": "010410Z10",
+      "name": "测量学基础",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-511f00cd1c6c",
+          "name": "测量学基础",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第17页，第3行附近"
+        },
+        {
+          "source_id": "source-e7ce9668acb8",
+          "name": "测量学基础",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第26页，第3行附近"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "测量学基础",
+          "program": "地球物理学",
+          "credits": 4.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第78页，表1第4行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "测量学基础",
+          "program": "遥感科学与技术",
+          "credits": 4.0,
+          "requirement": "必修",
+          "category_raw": "专业教育课程/专业核心课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第82页，表1第21行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "测量学基础",
+          "program": "测绘工程",
+          "credits": 4.0,
+          "requirement": "必修",
+          "category_raw": "专业教育课程/专业核心课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第97页，表1第21行"
+        }
+      ]
+    },
+    {
       "code": "010411Z10",
       "name": "地理学概论",
       "department": "地球科学与信息物理学院",
       "materials": [
+        {
+          "source_id": "source-0768b79a991d",
+          "name": "地理学概论",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "正文第25421段"
+        },
         {
           "source_id": "source-511f00cd1c6c",
           "name": "地理学概论",
@@ -5039,6 +5267,16 @@
       "department": "地球科学与信息物理学院",
       "materials": [
         {
+          "source_id": "source-0768b79a991d",
+          "name": "计算机图形学",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第25561段"
+        },
+        {
           "source_id": "source-511f00cd1c6c",
           "name": "计算机图形学",
           "program": null,
@@ -5086,6 +5324,16 @@
       "department": "地球科学与信息物理学院",
       "materials": [
         {
+          "source_id": "source-0768b79a991d",
+          "name": "遥感原理与方法",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第25890段"
+        },
+        {
           "source_id": "source-511f00cd1c6c",
           "name": "遥感原理与方法",
           "program": null,
@@ -5128,6 +5376,43 @@
       ]
     },
     {
+      "code": "010416Z11",
+      "name": "遥感图像处理实习",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-0768b79a991d",
+          "name": "遥感图像处理实习",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第26653段"
+        },
+        {
+          "source_id": "source-511f00cd1c6c",
+          "name": "遥感图像处理实习",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第43页，第3行附近"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "遥感图像处理实习",
+          "program": "遥感科学与技术",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "专业教育课程/集中实践环节",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第83页，表1第21行"
+        }
+      ]
+    },
+    {
       "code": "010417Z11",
       "name": "控制测量生产实习",
       "department": "地球科学与信息物理学院",
@@ -5159,6 +5444,16 @@
       "name": "微波遥感",
       "department": "地球科学与信息物理学院",
       "materials": [
+        {
+          "source_id": "source-0768b79a991d",
+          "name": "微波遥感",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第27164段"
+        },
         {
           "source_id": "source-511f00cd1c6c",
           "name": "微波遥感",
@@ -5214,6 +5509,16 @@
       "department": "地球科学与信息物理学院",
       "materials": [
         {
+          "source_id": "source-0768b79a991d",
+          "name": "工程与工业摄影测量",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "正文第28394段"
+        },
+        {
           "source_id": "source-511f00cd1c6c",
           "name": "工程与工业摄影测量",
           "program": null,
@@ -5260,6 +5565,16 @@
       "name": "测绘遥感专业英语",
       "department": "地球科学与信息物理学院",
       "materials": [
+        {
+          "source_id": "source-0768b79a991d",
+          "name": "测绘遥感专业英语",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "正文第29516段"
+        },
         {
           "source_id": "source-511f00cd1c6c",
           "name": "测绘遥感专业英语",
@@ -5308,6 +5623,16 @@
       "department": "地球科学与信息物理学院",
       "materials": [
         {
+          "source_id": "source-0768b79a991d",
+          "name": "摄影测量学",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第30008段"
+        },
+        {
           "source_id": "source-e7ce9668acb8",
           "name": "摄影测量学",
           "program": null,
@@ -5334,6 +5659,16 @@
       "name": "实用测量数据处理",
       "department": "地球科学与信息物理学院",
       "materials": [
+        {
+          "source_id": "source-0768b79a991d",
+          "name": "实用测量数据处理",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "正文第30423段"
+        },
         {
           "source_id": "source-511f00cd1c6c",
           "name": "实用测量数据处理",
@@ -5382,6 +5717,16 @@
       "department": "地球科学与信息物理学院",
       "materials": [
         {
+          "source_id": "source-0768b79a991d",
+          "name": "组合导航",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "正文第30968段"
+        },
+        {
           "source_id": "source-e7ce9668acb8",
           "name": "组合导航",
           "program": null,
@@ -5408,6 +5753,16 @@
       "name": "变形监测与数据处理",
       "department": "地球科学与信息物理学院",
       "materials": [
+        {
+          "source_id": "source-0768b79a991d",
+          "name": "变形监测与数据处理",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "正文第31574段"
+        },
         {
           "source_id": "source-511f00cd1c6c",
           "name": "变形监测与数据处理",
@@ -5447,6 +5802,97 @@
           "category_raw": "专业教育课程/专业选修课",
           "category_method": "pdf_category_column",
           "locator": "PDF第98页，表1第6行"
+        }
+      ]
+    },
+    {
+      "code": "010447Z11",
+      "name": "摄影测量实习",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-e7ce9668acb8",
+          "name": "摄影测量实习",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第86页，第3行附近"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "摄影测量实习",
+          "program": "测绘工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "专业教育课程/集中实践环节",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第98页，表1第20行"
+        }
+      ]
+    },
+    {
+      "code": "010448X10",
+      "name": "测量学基础",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-0768b79a991d",
+          "name": "测量学基础",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第31825段"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "测量学基础",
+          "program": "资源勘查工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/学科基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第35页，表1第9行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "测量学基础",
+          "program": "资源勘查工程卓越人才培养",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/学科基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第51页，表1第10行"
+        }
+      ]
+    },
+    {
+      "code": "010451Z11",
+      "name": "摄影测量实习",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-511f00cd1c6c",
+          "name": "摄影测量实习",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第78页，第3行附近"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "摄影测量实习",
+          "program": "遥感科学与技术",
+          "credits": 4.0,
+          "requirement": "必修",
+          "category_raw": "专业教育课程/集中实践环节",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第83页，表1第22行"
         }
       ]
     },
@@ -5508,6 +5954,53 @@
       ]
     },
     {
+      "code": "010460Z10",
+      "name": "数字图像处理",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-511f00cd1c6c",
+          "name": "数字图像处理",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第84页，第3行附近"
+        },
+        {
+          "source_id": "source-e7ce9668acb8",
+          "name": "数字图像处理",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第93页，第3行附近"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "数字图像处理",
+          "program": "遥感科学与技术",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "专业教育课程/专业核心课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第82页，表1第25行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "数字图像处理",
+          "program": "测绘工程",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "专业教育课程/专业课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第97页，表1第31行"
+        }
+      ]
+    },
+    {
       "code": "010468Z10",
       "name": "土地管理与不动产测绘",
       "department": "地球科学与信息物理学院",
@@ -5551,6 +6044,53 @@
           "category_raw": "专业教育课程/专业选修课",
           "category_method": "pdf_category_column",
           "locator": "PDF第98页，表1第7行"
+        }
+      ]
+    },
+    {
+      "code": "010469Z10",
+      "name": "模式识别与机器学习",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-511f00cd1c6c",
+          "name": "模式识别与机器学习",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第94页，第3行附近"
+        },
+        {
+          "source_id": "source-e7ce9668acb8",
+          "name": "模式识别与机器学习",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第102页，第3行附近"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "模式识别与机器学习",
+          "program": "遥感科学与技术",
+          "credits": 2.5,
+          "requirement": "选修",
+          "category_raw": "专业教育课程/专业选修课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第83页，表1第8行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "模式识别与机器学习",
+          "program": "测绘工程",
+          "credits": 2.5,
+          "requirement": "选修",
+          "category_raw": "专业教育课程/专业选修课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第98页，表1第8行"
         }
       ]
     },
@@ -6134,6 +6674,33 @@
       ]
     },
     {
+      "code": "010495Z11",
+      "name": "遥感综合实习",
+      "department": "地球科学与信息物理学院",
+      "materials": [
+        {
+          "source_id": "source-511f00cd1c6c",
+          "name": "遥感综合实习",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "PDF第147页，第3行附近"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "遥感综合实习",
+          "program": "遥感科学与技术",
+          "credits": 4.0,
+          "requirement": "必修",
+          "category_raw": "专业教育课程/集中实践环节",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第83页，表1第25行"
+        }
+      ]
+    },
+    {
       "code": "010496Z10",
       "name": "遥感程序设计基础",
       "department": "地球科学与信息物理学院",
@@ -6599,6 +7166,16 @@
       "name": "空间统计基础",
       "department": "地球科学与信息物理学院",
       "materials": [
+        {
+          "source_id": "source-0768b79a991d",
+          "name": "空间统计基础",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "正文第39254段"
+        },
         {
           "source_id": "source-f9a54c7552a2",
           "name": "空间统计基础",
@@ -16697,6 +17274,822 @@
       ]
     },
     {
+      "code": "091107X10",
+      "name": "模拟电子技术B",
+      "department": "信息科学与工程学院",
+      "materials": [
+        {
+          "source_id": "source-a65ef551efb8",
+          "name": "模拟电子技术B",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第52013段"
+        },
+        {
+          "source_id": "source-8e155ea6b9de",
+          "name": "模拟电子技术B",
+          "program": "计算机信息类",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置928"
+        },
+        {
+          "source_id": "source-1d0fccb32373",
+          "name": "模拟电子技术B",
+          "program": "信息安全",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置4109"
+        },
+        {
+          "source_id": "source-1f6a7e6907b6",
+          "name": "模拟电子技术B",
+          "program": "数据科学与大数据技术",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置3808"
+        },
+        {
+          "source_id": "source-625e80758e72",
+          "name": "模拟电子技术B",
+          "program": "计算机科学与技术",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6751"
+        },
+        {
+          "source_id": "source-e562cbee6c84-cc64499a",
+          "name": "模拟电子技术B",
+          "program": "光电信息科学与工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置10437"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-5f69cbec",
+          "name": "模拟电子技术B",
+          "program": "光电信息科学与工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5786"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "模拟电子技术B",
+          "program": "地球物理学",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第65页，表1第2行"
+        }
+      ]
+    },
+    {
+      "code": "091108X10",
+      "name": "数字电子技术B",
+      "department": "信息科学与工程学院",
+      "materials": [
+        {
+          "source_id": "source-a65ef551efb8",
+          "name": "数字电子技术B",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第52232段"
+        },
+        {
+          "source_id": "source-e562cbee6c84-cc64499a",
+          "name": "数字电子技术B",
+          "program": "光电信息科学与工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置10481"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-5f69cbec",
+          "name": "数字电子技术B",
+          "program": "光电信息科学与工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5830"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "数字电子技术B",
+          "program": "地球物理学",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第65页，表1第3行"
+        }
+      ]
+    },
+    {
+      "code": "091109X10",
+      "name": "电工技术B",
+      "department": "信息科学与工程学院",
+      "materials": [
+        {
+          "source_id": "source-a65ef551efb8",
+          "name": "电工技术B",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第52462段"
+        },
+        {
+          "source_id": "source-de96a7cf476f",
+          "name": "电工技术B",
+          "program": "粉体材料科学与工程",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6893"
+        },
+        {
+          "source_id": "source-dec425db17cc",
+          "name": "电工技术B",
+          "program": "粉体材料科学与工程卓越人才培养",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6779"
+        },
+        {
+          "source_id": "source-e562cbee6c84-d98d26cc",
+          "name": "电工技术B",
+          "program": "应用物理学",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置3933"
+        },
+        {
+          "source_id": "source-e562cbee6c84-e282eb58",
+          "name": "电工技术B",
+          "program": "应用物理学拔尖人才培养",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置3965"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-35678d04",
+          "name": "电工技术B",
+          "program": "应用物理学",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置3888"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-fc15ea54",
+          "name": "电工技术B",
+          "program": "应用物理学拔尖人才培养",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置3579"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "电工技术B",
+          "program": "遥感科学与技术",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第82页，表1第10行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "电工技术B",
+          "program": "测绘工程",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第97页，表1第9行"
+        }
+      ]
+    },
+    {
+      "code": "091112X10",
+      "name": "电工学A",
+      "department": "信息科学与工程学院",
+      "materials": [
+        {
+          "source_id": "source-a65ef551efb8",
+          "name": "电工学A",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第53048段"
+        },
+        {
+          "source_id": "source-d074c979a16c",
+          "name": "电工学A",
+          "program": "消防工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5022"
+        },
+        {
+          "source_id": "source-23efa57cbce2",
+          "name": "电工学A",
+          "program": "材料科学与工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6984"
+        },
+        {
+          "source_id": "source-b3dcca77cbca",
+          "name": "电工学A",
+          "program": "材料国际",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6901"
+        },
+        {
+          "source_id": "source-f1fb1d716543",
+          "name": "电工学A",
+          "program": "材料科学与工程（强基）",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6906"
+        },
+        {
+          "source_id": "source-74714abbb2e3",
+          "name": "电工学A",
+          "program": "材料科学与工程卓越人才培养",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6712"
+        },
+        {
+          "source_id": "source-02af2a845c6e",
+          "name": "电工学A",
+          "program": "矿物加工工程卓越人才培养",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第5页，表1第18行"
+        },
+        {
+          "source_id": "source-4e0642e10b96",
+          "name": "电工学A",
+          "program": "无机非金属材料工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第17行"
+        },
+        {
+          "source_id": "source-37ff7c52da21",
+          "name": "电工学A",
+          "program": "生物工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第23行"
+        },
+        {
+          "source_id": "source-d54c1549bc06",
+          "name": "电工学A",
+          "program": "矿物加工工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第5页，表1第11行"
+        },
+        {
+          "source_id": "source-94a20b7556b9",
+          "name": "电工学A",
+          "program": "冶金工程卓越人才培养",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第26行"
+        },
+        {
+          "source_id": "source-7a14468b9e1d",
+          "name": "电工学A",
+          "program": "环境工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第2行"
+        },
+        {
+          "source_id": "source-4b436fe20fa7",
+          "name": "电工学A",
+          "program": "新能源材料与器件",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第32行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "电工学A",
+          "program": "地质工程",
+          "credits": 3.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第5页，表1第19行"
+        }
+      ]
+    },
+    {
+      "code": "091114X11",
+      "name": "电工电子实验A（一）",
+      "department": "信息科学与工程学院",
+      "materials": [
+        {
+          "source_id": "source-a65ef551efb8",
+          "name": "电工电子实验A（一）",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第53482段"
+        },
+        {
+          "source_id": "source-9f5450b2c617",
+          "name": "电工电子实验A（一）",
+          "program": "电子信息科学与技术",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第37行"
+        },
+        {
+          "source_id": "source-8e155ea6b9de",
+          "name": "电工电子实验A（一）",
+          "program": "计算机信息类",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置1200"
+        },
+        {
+          "source_id": "source-1d0fccb32373",
+          "name": "电工电子实验A（一）",
+          "program": "信息安全",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置4626"
+        },
+        {
+          "source_id": "source-1f6a7e6907b6",
+          "name": "电工电子实验A（一）",
+          "program": "数据科学与大数据技术",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置4391"
+        },
+        {
+          "source_id": "source-625e80758e72",
+          "name": "电工电子实验A（一）",
+          "program": "计算机科学与技术",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置7300"
+        },
+        {
+          "source_id": "source-e562cbee6c84-cc64499a",
+          "name": "电工电子实验A（一）",
+          "program": "光电信息科学与工程",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置10970"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-5f69cbec",
+          "name": "电工电子实验A（一）",
+          "program": "光电信息科学与工程",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置6399"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-68fe9ea7",
+          "name": "电工电子实验A（一）",
+          "program": "电子信息科学与技术",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置7427"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-73f83f2a",
+          "name": "电工电子实验A（一）",
+          "program": "电子信息类",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置1656"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "电工电子实验A（一）",
+          "program": "遥感科学与技术",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/集中实践环节",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第82页，表1第18行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "电工电子实验A（一）",
+          "program": "测绘工程",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/集中实践环节",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第97页，表1第18行"
+        }
+      ]
+    },
+    {
+      "code": "091116X11",
+      "name": "电工电子实验C",
+      "department": "信息科学与工程学院",
+      "materials": [
+        {
+          "source_id": "source-a65ef551efb8",
+          "name": "电工电子实验C",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第53776段"
+        },
+        {
+          "source_id": "source-d074c979a16c",
+          "name": "电工电子实验C",
+          "program": "消防工程",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置5955"
+        },
+        {
+          "source_id": "source-b3dcca77cbca",
+          "name": "电工电子实验C",
+          "program": "材料国际",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置7625"
+        },
+        {
+          "source_id": "source-02af2a845c6e",
+          "name": "电工电子实验C",
+          "program": "矿物加工工程卓越人才培养",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第5页，表1第35行"
+        },
+        {
+          "source_id": "source-4e0642e10b96",
+          "name": "电工电子实验C",
+          "program": "无机非金属材料工程",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第36行"
+        },
+        {
+          "source_id": "source-37ff7c52da21",
+          "name": "电工电子实验C",
+          "program": "生物工程",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第24行"
+        },
+        {
+          "source_id": "source-d54c1549bc06",
+          "name": "电工电子实验C",
+          "program": "矿物加工工程",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第5页，表1第31行"
+        },
+        {
+          "source_id": "source-94a20b7556b9",
+          "name": "电工电子实验C",
+          "program": "冶金工程卓越人才培养",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第6行"
+        },
+        {
+          "source_id": "source-7a14468b9e1d",
+          "name": "电工电子实验C",
+          "program": "环境工程",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第18行"
+        },
+        {
+          "source_id": "source-bc3766d0e595",
+          "name": "电工电子实验C",
+          "program": "冶金工程",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第21行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "电工电子实验C",
+          "program": "地质工程",
+          "credits": 0.5,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/集中实践环节",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第5页，表1第29行"
+        }
+      ]
+    },
+    {
+      "code": "091118X11",
+      "name": "电子技术课程设计",
+      "department": "信息科学与工程学院",
+      "materials": [
+        {
+          "source_id": "source-a65ef551efb8",
+          "name": "电子技术课程设计",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第53851段"
+        },
+        {
+          "source_id": "source-9f5450b2c617",
+          "name": "电子技术课程设计",
+          "program": "电子信息科学与技术",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第39行"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-68fe9ea7",
+          "name": "电子技术课程设计",
+          "program": "电子信息科学与技术",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置7589"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "电子技术课程设计",
+          "program": "地球物理学",
+          "credits": 2.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/集中实践环节",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第65页，表1第12行"
+        }
+      ]
+    },
+    {
+      "code": "091120X11",
+      "name": "电工电子实践B",
+      "department": "信息科学与工程学院",
+      "materials": [
+        {
+          "source_id": "source-a65ef551efb8",
+          "name": "电工电子实践B",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第54470段"
+        },
+        {
+          "source_id": "source-d074c979a16c",
+          "name": "电工电子实践B",
+          "program": "消防工程",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置6006"
+        },
+        {
+          "source_id": "source-23efa57cbce2",
+          "name": "电工电子实践B",
+          "program": "材料科学与工程",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置8006"
+        },
+        {
+          "source_id": "source-f1fb1d716543",
+          "name": "电工电子实践B",
+          "program": "材料科学与工程（强基）",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置7756"
+        },
+        {
+          "source_id": "source-74714abbb2e3",
+          "name": "电工电子实践B",
+          "program": "材料科学与工程卓越人才培养",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置7562"
+        },
+        {
+          "source_id": "source-02af2a845c6e",
+          "name": "电工电子实践B",
+          "program": "矿物加工工程卓越人才培养",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第5页，表1第36行"
+        },
+        {
+          "source_id": "source-4e0642e10b96",
+          "name": "电工电子实践B",
+          "program": "无机非金属材料工程",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第37行"
+        },
+        {
+          "source_id": "source-37ff7c52da21",
+          "name": "电工电子实践B",
+          "program": "生物工程",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第39行"
+        },
+        {
+          "source_id": "source-d54c1549bc06",
+          "name": "电工电子实践B",
+          "program": "矿物加工工程",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第5页，表1第32行"
+        },
+        {
+          "source_id": "source-7a14468b9e1d",
+          "name": "电工电子实践B",
+          "program": "环境工程",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第19行"
+        },
+        {
+          "source_id": "source-e562cbee6c84-e282eb58",
+          "name": "电工电子实践B",
+          "program": "应用物理学拔尖人才培养",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置4275"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-fc15ea54",
+          "name": "电工电子实践B",
+          "program": "应用物理学拔尖人才培养",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": "集中实践环节",
+          "category_method": null,
+          "locator": "提取正文字符位置3918"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "电工电子实践B",
+          "program": "遥感科学与技术",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/集中实践环节",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第82页，表1第19行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "电工电子实践B",
+          "program": "测绘工程",
+          "credits": 1.0,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/集中实践环节",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第97页，表1第19行"
+        }
+      ]
+    },
+    {
       "code": "092102Z10",
       "name": "数据科学与大数据技术导论",
       "department": "信息科学与工程学院",
@@ -20404,6 +21797,123 @@
       ]
     },
     {
+      "code": "130101X10",
+      "name": "复变函数与积分变换",
+      "department": "数学与统计学院",
+      "materials": [
+        {
+          "source_id": "math-syllabi-2016",
+          "name": "复变函数与积分变换",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "选修",
+          "category_method": null,
+          "locator": "正文第1813段"
+        },
+        {
+          "source_id": "source-bafef26670dd",
+          "name": "复变函数与积分变换",
+          "program": "工程力学",
+          "credits": 2.5,
+          "requirement": "选修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5377"
+        },
+        {
+          "source_id": "source-8b9664d6b291",
+          "name": "复变函数与积分变换",
+          "program": "电气工程及其自动化",
+          "credits": 2.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第4页，表1第42行"
+        },
+        {
+          "source_id": "source-1f6a7e6907b6",
+          "name": "复变函数与积分变换",
+          "program": "数据科学与大数据技术",
+          "credits": 2.5,
+          "requirement": "选修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置3915"
+        },
+        {
+          "source_id": "source-71fed65f09c7",
+          "name": "复变函数与积分变换",
+          "program": "自动化卓越人才培养",
+          "credits": 2.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第4页，表1第35行"
+        },
+        {
+          "source_id": "source-6ecc9dad53af",
+          "name": "复变函数与积分变换",
+          "program": "自动化",
+          "credits": 2.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第4页，表1第32行"
+        },
+        {
+          "source_id": "source-fe82a8cf58a8",
+          "name": "复变函数与积分变换",
+          "program": "人工智能",
+          "credits": 2.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第6行"
+        },
+        {
+          "source_id": "source-04d82b6ebd46",
+          "name": "复变函数与积分变换",
+          "program": "电子信息工程",
+          "credits": 2.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第10行"
+        },
+        {
+          "source_id": "source-8772309d4c42",
+          "name": "复变函数与积分变换",
+          "program": "测控技术与仪器",
+          "credits": 2.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第4页，表1第30行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "复变函数与积分变换",
+          "program": "遥感科学与技术",
+          "credits": 2.5,
+          "requirement": "选修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第82页，表1第11行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "复变函数与积分变换",
+          "program": "测绘工程",
+          "credits": 2.5,
+          "requirement": "选修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第97页，表1第10行"
+        }
+      ]
+    },
+    {
       "code": "130102X10",
       "name": "数理方程",
       "department": "数学与统计学院",
@@ -20918,6 +22428,573 @@
           "category_raw": null,
           "category_method": null,
           "locator": "PDF第6页，表1第29行"
+        }
+      ]
+    },
+    {
+      "code": "130712X10",
+      "name": "概率论与数理统计",
+      "department": "数学与统计学院",
+      "materials": [
+        {
+          "source_id": "math-syllabi-2016",
+          "name": "概率论与数理统计",
+          "program": null,
+          "credits": null,
+          "requirement": null,
+          "category_raw": "必修",
+          "category_method": null,
+          "locator": "正文第18128段"
+        },
+        {
+          "source_id": "mpb-plan",
+          "name": "概率论与数理统计",
+          "program": "生物技术",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第24行"
+        },
+        {
+          "source_id": "source-6c849319d2f0",
+          "name": "概率论与数理统计",
+          "program": "土木工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5594"
+        },
+        {
+          "source_id": "source-5a5f9fae5da8",
+          "name": "概率论与数理统计",
+          "program": "土木国际",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5828"
+        },
+        {
+          "source_id": "source-dfa6952734b4",
+          "name": "概率论与数理统计",
+          "program": "工程管理",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5514"
+        },
+        {
+          "source_id": "source-15d88ce79494",
+          "name": "概率论与数理统计",
+          "program": "铁道工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5656"
+        },
+        {
+          "source_id": "source-bafef26670dd",
+          "name": "概率论与数理统计",
+          "program": "工程力学",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5617"
+        },
+        {
+          "source_id": "source-d074c979a16c",
+          "name": "概率论与数理统计",
+          "program": "消防工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5591"
+        },
+        {
+          "source_id": "source-23efa57cbce2",
+          "name": "概率论与数理统计",
+          "program": "材料科学与工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置7611"
+        },
+        {
+          "source_id": "source-9f5450b2c617",
+          "name": "概率论与数理统计",
+          "program": "电子信息科学与技术",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第30行"
+        },
+        {
+          "source_id": "source-b3dcca77cbca",
+          "name": "概率论与数理统计",
+          "program": "材料国际",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置7002"
+        },
+        {
+          "source_id": "source-f1fb1d716543",
+          "name": "概率论与数理统计",
+          "program": "材料科学与工程（强基）",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置7021"
+        },
+        {
+          "source_id": "source-74714abbb2e3",
+          "name": "概率论与数理统计",
+          "program": "材料科学与工程卓越人才培养",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "学科基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6827"
+        },
+        {
+          "source_id": "source-8b9664d6b291",
+          "name": "概率论与数理统计",
+          "program": "电气工程及其自动化",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第5页，表1第2行"
+        },
+        {
+          "source_id": "source-de96a7cf476f",
+          "name": "概率论与数理统计",
+          "program": "粉体材料科学与工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6991"
+        },
+        {
+          "source_id": "source-dec425db17cc",
+          "name": "概率论与数理统计",
+          "program": "粉体材料科学与工程卓越人才培养",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6877"
+        },
+        {
+          "source_id": "source-7a338dfe109b",
+          "name": "概率论与数理统计",
+          "program": "建筑环境与能源应用工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第12行"
+        },
+        {
+          "source_id": "source-e24f3ad9a660-8c5004a3",
+          "name": "概率论与数理统计",
+          "program": "会计学",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置4950"
+        },
+        {
+          "source_id": "source-e24f3ad9a660-d95d66a4",
+          "name": "概率论与数理统计",
+          "program": "信息管理与信息系统",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置4617"
+        },
+        {
+          "source_id": "source-e24f3ad9a660-f4efdebd",
+          "name": "概率论与数理统计",
+          "program": "国际经济与贸易",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6309"
+        },
+        {
+          "source_id": "source-e24f3ad9a660-4dfd39a7",
+          "name": "概率论与数理统计",
+          "program": "工商管理",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置5616"
+        },
+        {
+          "source_id": "source-e24f3ad9a660-b7dd1810",
+          "name": "概率论与数理统计",
+          "program": "数据科学与商业分析卓越人才培养",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置4999"
+        },
+        {
+          "source_id": "source-e24f3ad9a660-b1b7a733",
+          "name": "概率论与数理统计",
+          "program": "金融学",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置4624"
+        },
+        {
+          "source_id": "source-1d9019ef60a7",
+          "name": "概率论与数理统计",
+          "program": "能源与动力工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第12行"
+        },
+        {
+          "source_id": "source-e8e78a83bb4e",
+          "name": "概率论与数理统计",
+          "program": "新能源科学与工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第15行"
+        },
+        {
+          "source_id": "source-02af2a845c6e",
+          "name": "概率论与数理统计",
+          "program": "矿物加工工程卓越人才培养",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第5页，表1第21行"
+        },
+        {
+          "source_id": "source-4e0642e10b96",
+          "name": "概率论与数理统计",
+          "program": "无机非金属材料工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第25行"
+        },
+        {
+          "source_id": "source-37ff7c52da21",
+          "name": "概率论与数理统计",
+          "program": "生物工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第28行"
+        },
+        {
+          "source_id": "source-d54c1549bc06",
+          "name": "概率论与数理统计",
+          "program": "矿物加工工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第5页，表1第25行"
+        },
+        {
+          "source_id": "source-94a20b7556b9",
+          "name": "概率论与数理统计",
+          "program": "冶金工程卓越人才培养",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第4行"
+        },
+        {
+          "source_id": "source-7a14468b9e1d",
+          "name": "概率论与数理统计",
+          "program": "环境工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第11行"
+        },
+        {
+          "source_id": "source-4b436fe20fa7",
+          "name": "概率论与数理统计",
+          "program": "新能源材料与器件",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第7页，表1第10行"
+        },
+        {
+          "source_id": "source-bc3766d0e595",
+          "name": "概率论与数理统计",
+          "program": "冶金工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第15行"
+        },
+        {
+          "source_id": "source-f16060247e95",
+          "name": "概率论与数理统计",
+          "program": "能源类大类",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第8页，表1第17行"
+        },
+        {
+          "source_id": "source-1d0fccb32373",
+          "name": "概率论与数理统计",
+          "program": "信息安全",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置4393"
+        },
+        {
+          "source_id": "source-1f6a7e6907b6",
+          "name": "概率论与数理统计",
+          "program": "数据科学与大数据技术",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置4177"
+        },
+        {
+          "source_id": "source-58faa332e7fa",
+          "name": "概率论与数理统计",
+          "program": "软件工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6031"
+        },
+        {
+          "source_id": "source-625e80758e72",
+          "name": "概率论与数理统计",
+          "program": "计算机科学与技术",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置7130"
+        },
+        {
+          "source_id": "source-e562cbee6c84-d98d26cc",
+          "name": "概率论与数理统计",
+          "program": "应用物理学",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置4027"
+        },
+        {
+          "source_id": "source-e562cbee6c84-cc64499a",
+          "name": "概率论与数理统计",
+          "program": "光电信息科学与工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置10652"
+        },
+        {
+          "source_id": "source-e562cbee6c84-e282eb58",
+          "name": "概率论与数理统计",
+          "program": "应用物理学拔尖人才培养",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置4049"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-35678d04",
+          "name": "概率论与数理统计",
+          "program": "应用物理学",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置3982"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-68fe9ea7",
+          "name": "概率论与数理统计",
+          "program": "电子信息科学与技术",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置6909"
+        },
+        {
+          "source_id": "source-f106ce6c1a8a-fc15ea54",
+          "name": "概率论与数理统计",
+          "program": "应用物理学拔尖人才培养",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "公共基础课",
+          "category_method": null,
+          "locator": "提取正文字符位置3671"
+        },
+        {
+          "source_id": "source-71fed65f09c7",
+          "name": "概率论与数理统计",
+          "program": "自动化卓越人才培养",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第5页，表1第4行"
+        },
+        {
+          "source_id": "source-6ecc9dad53af",
+          "name": "概率论与数理统计",
+          "program": "自动化",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第4页，表1第35行"
+        },
+        {
+          "source_id": "source-fe82a8cf58a8",
+          "name": "概率论与数理统计",
+          "program": "人工智能",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第7行"
+        },
+        {
+          "source_id": "source-04d82b6ebd46",
+          "name": "概率论与数理统计",
+          "program": "电子信息工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第6页，表1第11行"
+        },
+        {
+          "source_id": "source-8772309d4c42",
+          "name": "概率论与数理统计",
+          "program": "测控技术与仪器",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": null,
+          "category_method": null,
+          "locator": "PDF第4页，表1第33行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "概率论与数理统计",
+          "program": "地质工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第5页，表1第21行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "概率论与数理统计",
+          "program": "地理信息科学",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第19页，表1第17行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "概率论与数理统计",
+          "program": "资源勘查工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第35页，表1第15行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "概率论与数理统计",
+          "program": "资源勘查工程卓越人才培养",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第51页，表1第16行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "概率论与数理统计",
+          "program": "地球物理学",
+          "credits": 3.5,
+          "requirement": "选修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第65页，表1第4行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "概率论与数理统计",
+          "program": "遥感科学与技术",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第82页，表1第12行"
+        },
+        {
+          "source_id": "source-195fdf0451d7",
+          "name": "概率论与数理统计",
+          "program": "测绘工程",
+          "credits": 3.5,
+          "requirement": "必修",
+          "category_raw": "学科教育课程/公共基础课",
+          "category_method": "pdf_category_column",
+          "locator": "PDF第97页，表1第11行"
         }
       ]
     },

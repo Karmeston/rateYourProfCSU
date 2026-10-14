@@ -1,18 +1,18 @@
 {
-  "courses": 819,
+  "courses": 840,
   "source_files_checksum_verified": 124,
-  "material_records": 2240,
+  "material_records": 2433,
   "syllabus_departments": {
-    "地球科学与信息物理学院": 200,
+    "地球科学与信息物理学院": 211,
     "资源加工与生物工程学院": 45,
     "冶金与环境学院": 41,
     "材料科学与工程学院": 6,
     "粉末冶金研究院": 25,
     "机电工程学院": 5,
-    "信息科学与工程学院": 133,
+    "信息科学与工程学院": 141,
     "能源科学与工程学院": 25,
     "土木工程学院": 64,
-    "数学与统计学院": 19,
+    "数学与统计学院": 21,
     "物理与电子学院": 34,
     "化学化工学院": 5,
     "商学院": 53,
@@ -26,10 +26,10 @@
   },
   "historical_computer_plan_only": 106,
   "excluded_candidates": {
-    "no_unambiguous_discipline_or_professional_syllabus": 1305,
-    "unresolved_record_or_name_variant": 160
+    "unresolved_record_or_name_variant": 160,
+    "no_unambiguous_discipline_or_professional_syllabus": 1284
   },
-  "catalog_canonical_sha256": "25f89813db0e6a19f72db41a10d83e044c9ddce5266d50a2dede3a2912dec5ed",
+  "catalog_canonical_sha256": "016182a60efa142761b23e8db37a587dc88583c25914a8ce945fef2f7938b4ee",
   "pdf_tables_files_verified": 28,
-  "pdf_table_records_verified": 728
+  "pdf_table_records_verified": 811
 }

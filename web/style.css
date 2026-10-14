@@ -316,6 +316,44 @@ main:focus {
   margin-left: 0;
   margin-top: 1rem;
 }
+.catalog-page .catalog-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 0;
+}
+.catalog-page .catalog-intro .search {
+  flex: 1 1 340px;
+  margin: 0;
+}
+.catalog-filters {
+  margin-bottom: 1.2rem;
+}
+.catalog-filter-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.catalog-filter-fields label {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.catalog-filter-fields:has(> label:nth-child(4)) {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.catalog-filter-fields select {
+  width: 100%;
+  max-width: 100%;
+}
+.catalog-plan-note {
+  margin-top: 0.65rem;
+}
 .catalog-content {
   min-width: 0;
 }
@@ -364,14 +402,6 @@ main:focus {
   background: #fff;
   box-shadow: 0 1px 3px #111e3010;
 }
-.catalog-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem;
-  margin-bottom: 1.1rem;
-  flex-wrap: wrap;
-}
 .category-filter {
   display: flex;
   gap: 0.35rem;
@@ -395,10 +425,6 @@ main:focus {
 }
 .category-filter a:hover {
   background: #e8edf1;
-}
-.select-filters {
-  display: flex;
-  gap: 0.5rem;
 }
 select {
   max-width: 185px;
@@ -1215,27 +1241,18 @@ select {
   text-decoration: none;
 }
 @media (max-width: 1000px) {
+  .catalog-filter-fields,
+  .catalog-filter-fields:has(> label:nth-child(4)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .catalog-filter-fields label:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
   .header-inner {
     gap: 1.5rem;
   }
   .primary-nav {
     margin-left: auto;
-  }
-  .catalog-toolbar {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-  .select-filters {
-    width: 100%;
-  }
-  .select-filters label:first-child {
-    flex: 1;
-  }
-  .select-filters select {
-    max-width: 100%;
-  }
-  .select-filters label:first-child select {
-    width: 100%;
   }
   .rating-summary {
     gap: 1rem;
@@ -1246,13 +1263,6 @@ select {
   }
 }
 @media (max-width: 800px) {
-  .catalog-toolbar {
-    align-items: center;
-    flex-direction: row;
-  }
-  .select-filters {
-    width: auto;
-  }
   .detail-heading {
     align-items: flex-start;
     flex-direction: column;
@@ -1317,17 +1327,9 @@ select {
     width: 38px;
     height: 36px;
   }
-  .catalog-toolbar {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
   .category-filter a {
     min-height: 42px;
     padding-inline: 0.9rem;
-  }
-  .select-filters {
-    width: 100%;
   }
   select {
     min-height: 42px;
@@ -1369,8 +1371,13 @@ select {
     text-align: right;
     gap: 0.2rem;
   }
-  .catalog-intro {
-    padding: 1.75rem 0 1.5rem;
+  .catalog-page .catalog-intro {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 1.25rem 0;
+  }
+  .catalog-page .catalog-intro .search {
+    flex: none;
   }
   .catalog-intro h1,
   .guide-page h1 {
@@ -1571,23 +1578,7 @@ select {
   color: var(--muted);
   font-weight: 500;
 }
-.select-filters {
-  flex-wrap: wrap;
-}
-.select-filters label.elective-type-filter {
-  flex: 0 0 145px;
-}
 @media (max-width: 560px) {
-  .select-filters label {
-    flex: 1 1 auto;
-  }
-  .select-filters select {
-    max-width: 100%;
-    width: 100%;
-  }
-  .select-filters label.elective-type-filter {
-    flex: 1 1 100%;
-  }
   .elective-choice {
     align-items: stretch;
     flex-direction: column;
@@ -1602,7 +1593,6 @@ select {
   }
 }
 
-.program-filters,
 .context-fields {
   display: flex;
   flex-wrap: wrap;
@@ -1610,7 +1600,6 @@ select {
   margin: 1rem 0;
   align-items: end;
 }
-.program-filters label,
 .context-fields label,
 .review-dialog form > label {
   display: grid;
@@ -1618,10 +1607,6 @@ select {
   font-size: 0.8125rem;
   min-width: 0;
 }
-.program-filters label {
-  flex: 0 1 300px;
-}
-.program-filters select,
 .context-fields select {
   width: 100%;
   max-width: 100%;
@@ -1696,11 +1681,7 @@ select {
   .supplement-actions button {
     min-height: 44px;
   }
-  .program-filters label,
   .context-fields label {
     flex: 1 1 100%;
-  }
-  .program-filters .fine-print {
-    width: 100%;
   }
 }

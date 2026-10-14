@@ -49,7 +49,8 @@ def main():
             and re.match(r"^(?:学科|专业)教育课程(?:/|$)", row.get("course_category_raw") or "") for row in plans)
         syllabi = [row for row in course["evidence"] if row["source_kind"] == "major_syllabus"
                    and (re.search(r"学科|专业", row.get("course_category_raw") or "")
-                        or (explicit_plan_category and not row.get("course_category_raw")))
+                        or (explicit_plan_category
+                            and compact(row.get("course_category_raw")) in ("", "必修", "选修")))
                    and row["source_department"] != "医药信息系学院"]
         reason = None
         if course["needs_review"]:

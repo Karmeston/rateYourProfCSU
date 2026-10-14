@@ -1,7 +1,8 @@
 import { courseSorts, type CourseCategory, type CourseSort } from '../shared/catalog.ts';
 import { isElectiveTypeFilter, type ElectiveTypeFilter } from '../shared/electives.ts';
 
-export const pageSize = 20;
+// A full page fills both the desktop three-column and tablet two-column grids.
+export const pageSize = 24;
 export type CatalogFilters = {
   q: string;
   category: CourseCategory | '';
@@ -148,6 +149,7 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     program,
     planYear,
     sort: sort as CourseSort,
-    offset: Number(rawOffset),
+    // Old shared links may use a 20-row offset; keep them on a complete current page.
+    offset: Math.floor(Number(rawOffset) / pageSize) * pageSize,
   };
 }

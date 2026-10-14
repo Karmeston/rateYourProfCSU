@@ -22,7 +22,7 @@ function checkedRecords(catalog) {
       || /形势与政策|改革开放史|毛泽东|思想道德|习近平|马克思主义基本原理|中国近现代史纲要/.test(course.name))
       throw new Error('课程代码、名称、学院无效，或属于排除课程');
     codes.add(course.code);
-    // Some recent syllabi omit their category. The matching plan must then
+    // Some syllabi omit their category or put only 必修/选修 here. The matching plan must then
     // classify this exact course in an explicit curriculum-table column.
     const explicitPlanCategory = course.materials.some((record) => {
       const source = catalog.sources[record.source_id];
@@ -42,8 +42,9 @@ function checkedRecords(catalog) {
         || ![null, '必修', '选修'].includes(record.requirement))
         throw new Error(`课程 ${course.code} 来源、版本或原表资料无效`);
       if (source.kind === 'major_syllabus') {
+        const categoryIsOnlyRequirement = ['', '必修', '选修'].includes(compact(record.category_raw ?? ''));
         if (source.department !== course.department
-          || !(/学科|专业/.test(record.category_raw ?? '') || (!record.category_raw && explicitPlanCategory)))
+          || !(/学科|专业/.test(record.category_raw ?? '') || (categoryIsOnlyRequirement && explicitPlanCategory)))
           throw new Error('大纲没有明确的学科或专业课程分类');
         syllabus = true;
       } else if (source.kind === 'undergraduate_plan') {

@@ -1,11 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  courseCategories,
-  courseSorts,
-  type CourseCatalog,
-  type CourseSummary,
-} from '../shared/catalog';
-import { electiveTypes, type ElectiveTypeFilter } from '../shared/electives';
+import { courseCategories, type CourseCatalog, type CourseSummary } from '../shared/catalog';
+import { electiveTypes } from '../shared/electives';
 import { Icon } from './icons';
 import {
   catalogHref,
@@ -17,6 +12,7 @@ import {
 import { Stars } from './reviews';
 import { EmptyState, ErrorState, LoadingCards } from './ui';
 import { useData } from './use-data';
+import { CatalogFiltersPanel } from './catalog-filters';
 
 function Search({ route }: { route: CatalogRoute }) {
   const [query, setQuery] = useState(route.q);
@@ -89,18 +85,11 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
         </h2>
         <p className="metadata">
           {course.department === '待核实' ? '开课学院待补充' : course.department}
-          {course.departmentSourceYear != null && ` · ${course.departmentSourceYear}大纲学院`}
         </p>
         <div className="card-code">
           {course.code ?? '课程代码待补充'}
           {course.id < 0 && <span className="demo-badge">演示</span>}
         </div>
-        {course.planRecords?.map((record, index) => (
-          <p className="fine-print" key={index}>
-            {record.sourceYear}版 · {record.requirement ?? '属性待核实'} ·{' '}
-            {record.credits == null ? '学分待核实' : `${record.credits}学分`}
-          </p>
-        ))}
       </div>
       <div className="card-footer">
         {course.average === null ? (
@@ -163,7 +152,6 @@ export function Catalog({ route }: { route: CatalogRoute }) {
     route.program
   );
   const title = route.q ? `“${route.q}”的搜索结果` : '课程广场';
-  const departments = data?.facets.departments ?? [];
   return (
     <div className="catalog-page">
       <section className="catalog-intro">
@@ -196,139 +184,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               </button>
             </div>
           </div>
-          <div className="catalog-toolbar">
-            <nav className="category-filter" aria-label="课程类型">
-              {[['', '全部课程'], ...Object.entries(courseCategories)].map(([value, label]) => (
-                <a
-                  key={value}
-                  href={href({ category: value as CatalogRoute['category'], offset: 0 })}
-                  aria-current={route.category === value ? 'page' : undefined}
-                >
-                  {label}
-                </a>
-              ))}
-            </nav>
-            <div className="select-filters">
-              {route.category === 'elective' && (
-                <label className="elective-type-filter">
-                  <span className="sr-only">公选课类别</span>
-                  <select
-                    value={route.electiveType}
-                    onChange={(event) => {
-                      window.location.hash = href({
-                        electiveType: event.target.value as ElectiveTypeFilter,
-                        offset: 0,
-                      });
-                    }}
-                  >
-                    <option value="">全部公选课类别</option>
-                    {Object.entries(electiveTypes).map(([value, label]) => (
-                      <option key={value} value={value}>
-                        {label}
-                      </option>
-                    ))}
-                    <option value="unknown">类别待核实</option>
-                  </select>
-                </label>
-              )}
-              <label>
-                <span className="sr-only">学院（含资料来源）</span>
-                <select
-                  value={route.department}
-                  onChange={(event) => {
-                    window.location.hash = href({ department: event.target.value, offset: 0 });
-                  }}
-                >
-                  <option value="">全部学院</option>
-                  {route.department &&
-                    !departments.some((department) => department.name === route.department) && (
-                      <option value={route.department}>{route.department}</option>
-                    )}
-                  {departments.map((department) => (
-                    <option key={department.name} value={department.name}>
-                      {department.name === '待核实' ? '学院待补充' : department.name} ·{' '}
-                      {department.count}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                <span className="sr-only">排序方式</span>
-                <select
-                  value={route.sort}
-                  onChange={(event) => {
-                    window.location.hash = href({
-                      sort: event.target.value as CatalogRoute['sort'],
-                      offset: 0,
-                    });
-                  }}
-                >
-                  {Object.entries(courseSorts).map(([value, label]) => (
-                    <option key={value} value={value}>
-                      {label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-          </div>
-          {route.category !== 'elective' && (
-            <div className="program-filters">
-              <label>
-                培养方案专业
-                <select
-                  value={route.program}
-                  onChange={(event) => {
-                    window.location.hash = href({ program: event.target.value, offset: 0 });
-                  }}
-                >
-                  <option value="">全部专业</option>
-                  {route.program &&
-                    !data?.facets.programs.some((item) => item.name === route.program) && (
-                      <option>{route.program}</option>
-                    )}
-                  {data?.facets.programs.map((item) => (
-                    <option key={item.name} value={item.name}>
-                      {item.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              {route.program && (
-                <label>
-                  方案版本
-                  <select
-                    value={route.planYear}
-                    onChange={(event) => {
-                      window.location.hash = href({ planYear: event.target.value, offset: 0 });
-                    }}
-                  >
-                    <option value="">全部已收录版本</option>
-                    {route.planYear &&
-                      !data?.facets.programs
-                        .find((item) => item.name === route.program)
-                        ?.years.includes(Number(route.planYear)) && (
-                        <option value={route.planYear}>
-                          {route.planYear}版{data ? '（未收录）' : ''}
-                        </option>
-                      )}
-                    {data?.facets.programs
-                      .find((item) => item.name === route.program)
-                      ?.years.map((year) => (
-                        <option key={year} value={year}>
-                          {year}版
-                        </option>
-                      ))}
-                  </select>
-                </label>
-              )}
-              {route.program && (
-                <span className="fine-print">
-                  按已收录方案记录筛选，可能含辅修表；不代表当期开课或个人选课资格。
-                </span>
-              )}
-            </div>
-          )}
+          <CatalogFiltersPanel route={route} facets={data?.facets} />
           {filtered && (
             <div className="filter-chips" aria-label="已选筛选条件">
               {route.q && (

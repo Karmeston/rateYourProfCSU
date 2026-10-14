@@ -3,6 +3,20 @@ import { test } from 'node:test';
 import { getPlatformProxy } from 'wrangler';
 import app from '../src/index.ts';
 import { migrate } from './helpers/database.mjs';
+import { pageSize, parseRoute, catalogHref } from '../web/routing.ts';
+
+test('旧分页链接落到当前完整页，前后翻页保留筛选且连续', () => {
+  const old = parseRoute('#/courses?category=major&q=数学&offset=40');
+  assert.equal(old.offset, 24);
+  const next = parseRoute(catalogHref(old, { offset: old.offset + pageSize }));
+  assert.equal(next.offset, 48);
+  assert.equal(next.q, '数学');
+  assert.equal(next.category, 'major');
+  assert.equal(
+    parseRoute(catalogHref(next, { offset: next.offset - pageSize })).offset,
+    old.offset,
+  );
+});
 
 test('课程分页只返回当页方案记录，完整保留版本差异且支持最大页长', async (t) => {
   const platform = await getPlatformProxy({ persist: false });
@@ -83,6 +97,17 @@ test('课程分页只返回当页方案记录，完整保留版本差异且支�
   const unfiltered = await page('limit=20');
   assert.deepEqual(reads, []);
   assert.ok(unfiltered.courses.every((row) => !Object.hasOwn(row, 'planRecords')));
+  const collected = [];
+  for (let offset = 0; offset < 125; offset += pageSize) {
+    const data = await page(`limit=${pageSize}&offset=${offset}`);
+    assert.equal(data.courses.length, Math.min(pageSize, 125 - offset));
+    assert.equal(data.hasMore, offset + pageSize < 125);
+    collected.push(...data.courses.map((row) => row.id));
+  }
+  assert.deepEqual(
+    collected,
+    Array.from({ length: 125 }, (_, index) => index + 1),
+  );
 });
 
 test('四种课程排序在分页后保持评分与来源一致，隐藏和撤回不参与排名', async (t) => {

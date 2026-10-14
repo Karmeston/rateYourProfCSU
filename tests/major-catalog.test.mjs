@@ -92,7 +92,7 @@ test('专业课交叉目录导入与来源展示（临时D1）', async (t) => {
   });
 });
 
-test('大纲无类别时必须有近期方案的明确课程类别证据', async (t) => {
+test('大纲类别空白或只填必选修时，必须有近期方案的明确课程类别证据', async (t) => {
   const platform = await getPlatformProxy({ persist: false });
   t.after(() => platform.dispose());
   const { DB } = platform.env;
@@ -104,7 +104,18 @@ test('大纲无类别时必须有近期方案的明确课程类别证据', async
   for (const record of subset.courses[0].materials) record.category_raw = null;
   await assert.rejects(importMajorCatalog(DB, subset), /大纲没有明确/);
   assert.equal((await DB.prepare('SELECT count(*) AS n FROM courses').first()).n, 0);
+  for (const label of ['必修', '选修']) {
+    for (const record of subset.courses[0].materials)
+      if (subset.sources[record.source_id].kind === 'major_syllabus') record.category_raw = label;
+    await assert.rejects(importMajorCatalog(DB, subset), /大纲没有明确/);
+  }
   subset.courses[0] = structuredClone(course);
+  for (const record of subset.courses[0].materials)
+    if (subset.sources[record.source_id].kind === 'major_syllabus') record.category_raw = '全校性选修课';
+  await assert.rejects(importMajorCatalog(DB, subset), /大纲没有明确/);
+  subset.courses[0] = structuredClone(course);
+  for (const record of subset.courses[0].materials)
+    if (subset.sources[record.source_id].kind === 'major_syllabus') record.category_raw = '选修';
   const result = await importMajorCatalog(DB, subset);
   assert.equal(result.insertedCourses, 1);
 });
