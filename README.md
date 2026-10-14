@@ -12,7 +12,7 @@
 
 专业课详情展示方案课程表中的学分、必选修属性、专业、版本和原文定位。卡片的“大纲学院”是对应版本的资料来源单位，可能保留历史名称；不把资料学院当作已核实的当前开课单位。收录标准、复现和回退见 [专业课目录说明](docs/major-catalog.md)。
 
-最小管理工具为命令行，支持本地及显式线上模式；线上操作由Wrangler Cloudflare账户认证，支持资料/评价审核、内容隐藏与恢复、举报处理和操作日志。归属规则、管理命令及回退方式见[匿名社区功能说明](docs/community-features.md)。线上地址：[课程广场](https://rate-your-prof-csu.karmeston.workers.dev/#/courses)。公开页面资源、专业筛选、课程资料与匿名Cookie接口已核对，实际窄屏布局验收尚未完成。发行、数据和回退记录见[2026-10-12部署记录](docs/deployment-20261012.md)。
+最小管理工具为命令行，支持本地及显式线上模式；线上操作由Wrangler Cloudflare账户认证，支持资料/评价审核、内容隐藏与恢复、举报处理和操作日志。归属规则、管理命令及回退方式见[匿名社区功能说明](docs/community-features.md)。线上地址：[课程广场](https://rate-your-prof-csu.karmeston.workers.dev/#/courses)。公开页面资源、专业筛选、课程资料与匿名Cookie接口已核对，实际窄屏布局验收尚未完成。发行、数据和回退记录见[部署记录（含2026-10-14更新）](docs/deployment-20261012.md)。
 
 ## 技术与目录
 
