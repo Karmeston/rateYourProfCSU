@@ -41,5 +41,5 @@ export async function setupCommunity(t) {
     );
   const json = async (path, identity = owner) =>
     (await request(path, 'GET', undefined, identity)).json();
-  return { db, request, json, owner, other };
+  return { db, request, json, owner, other, env };
 }

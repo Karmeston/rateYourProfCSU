@@ -3,8 +3,12 @@ import { getSignedCookie, setSignedCookie } from 'hono/cookie';
 import { readBody } from './request-body.ts';
 
 export type AppEnv = {
-  Bindings: Env & { VISITOR_SECRET?: string };
-  Variables: { visitorId: string | undefined };
+  Bindings: Env & {
+    VISITOR_SECRET?: string;
+    ADMIN_PASSWORD_HASH?: string;
+    ADMIN_SESSION_SECRET?: string;
+  };
+  Variables: { visitorId: string | undefined; adminId?: string };
 };
 type VisitorContext = Context<AppEnv>;
 const lifetime = 180 * 24 * 60 * 60;

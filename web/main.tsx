@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 import { Catalog } from './catalog';
@@ -8,6 +8,9 @@ import { Guide } from './guide';
 import { parseRoute } from './routing';
 import { EmptyState } from './ui';
 import { TeacherCatalog } from './teacher-catalog';
+import { recordPageView } from './traffic';
+
+const Admin = lazy(() => import('./admin'));
 
 function App() {
   const [hash, setHash] = useState(() => window.location.hash || '#/');
@@ -15,6 +18,9 @@ function App() {
   const searchRequested = useRef(false);
   const route = parseRoute(hash, teacherPagesEnabled);
   const path = hash.split('?')[0];
+  useEffect(() => {
+    recordPageView(parseRoute(window.location.hash, teacherPagesEnabled));
+  }, [path]);
   useEffect(() => {
     const changed = () => setHash(window.location.hash || '#/');
     const shortcut = (event: KeyboardEvent) => {
@@ -53,7 +59,7 @@ function App() {
   }, [path]);
   useEffect(() => {
     if (route.page !== 'detail')
-      document.title = `${route.page === 'guide' ? '使用指南' : '课程广场'} · rateMyProfCSU`;
+      document.title = `${route.page === 'admin' ? '管理后台' : route.page === 'guide' ? '使用指南' : '课程广场'} · rateMyProfCSU`;
   }, [route.page]);
   const active =
     route.page === 'detail' ? (route.kind === 'teachers' ? 'teachers' : 'catalog') : route.page;
@@ -99,7 +105,11 @@ function App() {
         </div>
       </header>
       <main id="main-content" ref={main} tabIndex={-1}>
-        {route.page === 'catalog' ? (
+        {route.page === 'admin' ? (
+          <Suspense fallback={<p role="status">正在加载后台…</p>}>
+            <Admin />
+          </Suspense>
+        ) : route.page === 'catalog' ? (
           <Catalog route={route} />
         ) : route.page === 'detail' ? (
           <Detail

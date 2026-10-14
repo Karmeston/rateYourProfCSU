@@ -12,7 +12,7 @@
 
 专业课详情展示方案课程表中的学分、必选修属性、专业、版本和原文定位。卡片的“大纲学院”是对应版本的资料来源单位，可能保留历史名称；不把资料学院当作已核实的当前开课单位。收录标准、复现和回退见 [专业课目录说明](docs/major-catalog.md)。
 
-最小管理工具为命令行，支持本地及显式线上模式；线上操作由Wrangler Cloudflare账户认证，支持资料/评价审核、内容隐藏与恢复、举报处理和操作日志。归属规则、管理命令及回退方式见[匿名社区功能说明](docs/community-features.md)。线上地址：[课程广场](https://rate-your-prof-csu.karmeston.workers.dev/#/courses)。公开接口和静态资源已核对；隔离预览已完成320/390/768/1280像素视口与主要表单流程验收，手机实机软键盘尚待验收。发行、数据和回退记录见[部署记录（含2026-10-14更新）](docs/deployment-20261012.md)。
+管理后台支持流量概况、资料/评价/回复审核、举报原文处理和操作日志；使用独立管理员口令，学生仍无需账号。入口与初始化见[后台说明](docs/admin.md)。显式线上命令行维护继续使用Wrangler Cloudflare账户认证，两种入口共用审核逻辑。归属规则见[匿名社区功能说明](docs/community-features.md)。线上地址：[课程广场](https://rate-your-prof-csu.karmeston.workers.dev/#/courses)。隔离预览已完成320/390/768/1280像素视口与主要社区表单流程验收，手机实机软键盘尚待验收。发行、数据和回退记录见[部署记录](docs/deployment-20261012.md)。
 
 ## 技术与目录
 
@@ -26,6 +26,8 @@ TypeScript、React、Vite、Hono、Cloudflare Workers、D1；不依赖常驻进�
 - `src/community.ts`、`src/community-input.ts`：社区路由装配与共用输入验证；资料生命周期在`src/course-supplements.ts`，举报接收在`src/content-reports.ts`；审核工具位于`scripts/moderate.mjs`。
 - `web/review-form.tsx`、`web/own-review-actions.tsx`、`web/course-supplements.tsx`：独立表单、本人操作与资料补充组件。
 - `src/review-interactions.ts`：投票与回复；`src/review-targets.ts`固定评价相关表名。
+- `src/admin*.ts`、`web/admin*.tsx`：独立管理认证、内容查询、概况和按需加载的后台界面；网页与命令行共用`src/moderation.ts`。
+- `src/traffic.ts`、`web/traffic.ts`：仅页面分类及公开对象编号的PV统计、幂等上报与定时清理。
 - `src/validation.ts`、`src/request-body.ts`：基础ID校验和有大小限制的JSON读取。
 - `migrations/`：按顺序执行的迁移，已应用文件不修改。
 - `seeds/local.sql`：虚构演示资料，仅用于本地。

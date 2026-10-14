@@ -41,7 +41,7 @@ API使用`program`与`planYear`，版本需同时指定专业。采用方案资�
 
 ## 最小管理工具
 
-`scripts/moderate.mjs`默认通过`--persist-to`操作项目内本地D1；只有显式指定`--remote`才通过已登录的Wrangler维护配置中的线上DB。线上使用现有Cloudflare账户权限，没有公开管理API、管理Cookie或学生登录。SQLite负责安全展开绑定参数；状态变更与日志在一次事务请求中提交，写入结果不确定时不自动重试，应先inspect查看当前版本。
+`scripts/moderate.mjs`默认通过`--persist-to`操作项目内本地D1；只有显式指定`--remote`才通过已登录的Wrangler维护配置中的线上DB。命令行使用现有Cloudflare账户权限，SQLite负责安全展开绑定参数。状态变更与日志在一次事务请求中提交，命令行写入结果不确定时不自动重试，应先inspect查看当前版本。现已增加独立管理员口令保护的[网页后台](admin.md)，与命令行共用审核逻辑；学生仍无账号登录，Cloudflare凭据不进入网页。
 
 ```powershell
 # 线上队列：需要先登录具有本项目D1写入权限的Cloudflare账户

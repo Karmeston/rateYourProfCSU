@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 // 页面切换时取消旧请求，避免慢请求把新页面的数据覆盖。
 export function useData<T>(url: string | null) {
   const [attempt, setAttempt] = useState(0);
-  const [state, setState] = useState<{ url?: string; data?: T; error?: string }>({});
+  const [state, setState] = useState<{ url?: string; data?: T; error?: string; status?: number }>(
+    {},
+  );
   useEffect(() => {
     if (url === null) {
       setState({});
@@ -18,12 +20,14 @@ export function useData<T>(url: string | null) {
     }, 20000);
     setState({});
     void (async () => {
+      let status: number | undefined;
       try {
         const response = await fetch(url, {
           cache: 'no-store',
           signal: controller.signal,
           credentials: 'same-origin',
         });
+        status = response.status;
         if (!response.ok)
           throw new Error(
             response.status === 404 ? '没有找到这条记录。' : '暂时无法加载，请稍后重试。',
@@ -35,6 +39,7 @@ export function useData<T>(url: string | null) {
         else if (active && !controller.signal.aborted)
           setState({
             url,
+            status,
             error: error instanceof Error ? error.message : '网络连接失败，请重试。',
           });
       } finally {

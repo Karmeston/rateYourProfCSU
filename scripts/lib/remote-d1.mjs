@@ -1,4 +1,4 @@
-// Authenticated Wrangler maintenance only; no admin credentials enter the website.
+// Authenticated Wrangler transport only; no Cloudflare credentials enter the website.
 import { execFile } from 'node:child_process';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync, readdirSync } from 'node:fs';

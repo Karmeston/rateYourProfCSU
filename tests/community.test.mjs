@@ -269,5 +269,5 @@ test('资料先审核，举报去重不自动下架；管理操作有审计且�
   assert.equal((await db.prepare('SELECT count(*) AS n FROM moderation_actions').first()).n, 3);
   await db.prepare('UPDATE courses SET is_listed=0 WHERE id=1').run();
   assert.equal((await request(base)).status, 404);
-  assert.equal((await request('/api/admin')).status, 404);
+  assert.equal((await request('/api/admin')).status, 401);
 });

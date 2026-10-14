@@ -17,6 +17,7 @@ export type Route =
   | CatalogRoute
   | { page: 'detail'; kind: 'courses' | 'teachers'; id: string; from: string }
   | { page: 'guide' }
+  | { page: 'admin' }
   | { page: 'teachers'; q: string; offset: number }
   | { page: 'not-found' };
 export const defaultFilters: CatalogFilters = {
@@ -75,6 +76,7 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
   if ([...params.keys()].some((key) => params.getAll(key).length !== 1))
     return { page: 'not-found' };
   if (path === '/guide' && !query) return { page: 'guide' };
+  if (path === '/admin' && !query) return { page: 'admin' };
   const detail = /^\/(courses|teachers)\/(-?[1-9]\d*)$/.exec(path);
   if (detail) {
     if (

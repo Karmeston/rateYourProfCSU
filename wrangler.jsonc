@@ -8,6 +8,9 @@
     "run_worker_first": ["/api/*"],
   },
   "ratelimits": [
+    { "name": "ADMIN_LOGIN_LIMITER", "namespace_id": "878705", "simple": { "limit": 5, "period": 60 } },
+    { "name": "ADMIN_WRITE_LIMITER", "namespace_id": "878706", "simple": { "limit": 60, "period": 60 } },
+    { "name": "TRAFFIC_LIMITER", "namespace_id": "878707", "simple": { "limit": 60, "period": 60 } },
     {
       "name": "VISITOR_LIMITER",
       "namespace_id": "878701",
@@ -29,4 +32,5 @@
       "migrations_dir": "migrations",
     },
   ],
+  "triggers": { "crons": ["17 3 * * *"] },
 }
