@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { send, SubmissionError } from '../web/visitor.ts';
+import { readSupplementDraft } from '../web/supplement-draft.ts';
 
 const ready = () => new Response(null, { status: 204 });
 const success = () => Response.json({ received: true });
@@ -72,4 +73,31 @@ test('会话建立失败或表单取消后不继续提交', async (t) => {
     name: 'AbortError',
   });
   assert.equal(mock.mock.callCount(), 2);
+});
+
+test('资料提交响应丢失后，重新打开草稿按原编号和内容重试', async (t) => {
+  const original = {
+    id: crypto.randomUUID(),
+    kind: 'materials',
+    body: '公开课件',
+    sourceUrl: 'https://example.edu/',
+    term: null,
+    teacherName: null,
+  };
+  const saved = JSON.stringify(original);
+  const bodies = [],
+    accepted = new Set();
+  t.mock.method(globalThis, 'fetch', async (url, options) => {
+    if (url === '/api/visitor') return ready();
+    bodies.push(options.body);
+    accepted.add(JSON.parse(options.body).id);
+    if (bodies.length === 1) throw new TypeError('Response lost');
+    return success();
+  });
+  await assert.rejects(send('/api/courses/1/supplements', 'POST', original), TypeError);
+  const reopened = readSupplementDraft(saved);
+  assert.ok(reopened);
+  await send('/api/courses/1/supplements', 'POST', reopened);
+  assert.equal(accepted.size, 1);
+  assert.equal(bodies[0], bodies[1]);
 });

@@ -101,19 +101,31 @@ catalog.get('/', async (c) => {
   ];
   const electiveJoin =
     "LEFT JOIN elective_course_facts e ON e.course_id = c.id AND c.category = 'elective'";
-  const materialsJoin = `LEFT JOIN (
-    SELECT course_id, department, max(source_year) AS departmentSourceYear
-    FROM course_materials WHERE kind = 'syllabus' GROUP BY course_id, department
-  ) m ON m.course_id = c.id AND m.department = c.department`;
-  const [entries, count, departments, statistics, programRows, planRows] = await c.env.DB.batch([
+  const ranked = sort === 'rating' || sort === 'reviews';
+  const ratingsJoin = `LEFT JOIN (
+    SELECT course_id, avg(rating) AS average, count(*) AS reviewCount
+    FROM course_reviews WHERE status = 'published' AND withdrawn_at IS NULL GROUP BY course_id
+  ) r ON r.course_id = c.id`;
+  // Rating sorts need all candidates. Other sorts read ratings and source years only for this page.
+  const [entries, count, departments, statistics, programRows] = await c.env.DB.batch([
     c.env.DB.prepare(
-      `SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType, m.departmentSourceYear,
-      r.average, coalesce(r.reviewCount, 0) AS reviewCount
-      FROM courses c ${electiveJoin} ${materialsJoin} LEFT JOIN (
-        SELECT course_id, avg(rating) AS average, count(*) AS reviewCount
-        FROM course_reviews WHERE status = 'published' AND withdrawn_at IS NULL GROUP BY course_id
-      ) r ON r.course_id = c.id WHERE ${where}
-      ORDER BY ${ordering[sort]} LIMIT ? OFFSET ?`,
+      `WITH page AS (
+        SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType
+        ${ranked ? ', r.average, coalesce(r.reviewCount, 0) AS reviewCount' : ''}
+        FROM courses c ${electiveJoin} ${ranked ? ratingsJoin : ''} WHERE ${where}
+        ORDER BY ${ordering[sort]} LIMIT ? OFFSET ?
+      )
+      SELECT page.*,
+        (SELECT max(source_year) FROM course_materials m WHERE m.course_id=page.id
+          AND m.kind='syllabus' AND m.department=page.department) AS departmentSourceYear
+        ${
+          ranked
+            ? ''
+            : `,
+          (SELECT avg(rating) FROM course_reviews r WHERE r.course_id=page.id AND r.status='published' AND r.withdrawn_at IS NULL) AS average,
+          (SELECT count(*) FROM course_reviews r WHERE r.course_id=page.id AND r.status='published' AND r.withdrawn_at IS NULL) AS reviewCount`
+        }
+      FROM page ORDER BY ${ordering[sort]}`,
     ).bind(...bindings, limit + 1, offset),
     c.env.DB.prepare(`SELECT count(*) AS total FROM courses c ${electiveJoin} WHERE ${where}`).bind(
       ...bindings,
@@ -121,40 +133,40 @@ catalog.get('/', async (c) => {
     c.env.DB.prepare(
       'SELECT department AS name, count(*) AS count FROM courses WHERE is_listed = 1 GROUP BY department ORDER BY department',
     ),
-    c.env.DB.prepare(`SELECT count(*) AS courseCount,
-      (SELECT count(*) FROM course_reviews r JOIN courses c ON c.id = r.course_id WHERE c.is_listed = 1 AND r.status = 'published' AND r.withdrawn_at IS NULL) AS reviewCount,
-      (SELECT count(DISTINCT r.course_id) FROM course_reviews r JOIN courses c ON c.id = r.course_id WHERE c.is_listed = 1 AND r.status = 'published' AND r.withdrawn_at IS NULL) AS reviewedCourseCount
-      FROM courses WHERE is_listed = 1`),
+    c.env.DB.prepare(`SELECT
+      (SELECT count(*) FROM courses WHERE is_listed=1) AS courseCount,
+      count(*) AS reviewCount, count(DISTINCT r.course_id) AS reviewedCourseCount
+      FROM course_reviews r JOIN courses c ON c.id=r.course_id
+      WHERE c.is_listed=1 AND r.status='published' AND r.withdrawn_at IS NULL`),
     c.env.DB
       .prepare(`SELECT DISTINCT m.program AS name, m.source_year AS year FROM course_materials m
       JOIN courses c ON c.id=m.course_id WHERE c.is_listed=1 AND c.category='major' AND m.kind='curriculum' AND m.program IS NOT NULL ORDER BY m.program, m.source_year DESC`),
-    c.env.DB.prepare(
-      `SELECT DISTINCT m.course_id AS courseId, m.program, m.source_year AS sourceYear, m.credits, m.requirement
-      FROM course_materials m JOIN courses c ON c.id=m.course_id ${electiveJoin}
-      WHERE ${where} AND m.kind='curriculum' AND m.program=? AND (? = '' OR m.source_year=CAST(? AS INTEGER))`,
-    ).bind(...bindings, program, planYear, planYear),
   ]);
+  const courses = (entries.results as CourseSummary[]).slice(0, limit);
+  if (program && courses.length) {
+    type PlanRecord = NonNullable<CourseSummary['planRecords']>[number];
+    const planRows = await c.env.DB.prepare(
+      `SELECT DISTINCT course_id AS courseId, program, source_year AS sourceYear, credits, requirement
+      FROM course_materials WHERE course_id IN (SELECT value FROM json_each(?))
+        AND kind='curriculum' AND program=? AND (? = '' OR source_year=CAST(? AS INTEGER))
+      ORDER BY source_year DESC, credits, requirement`,
+    )
+      .bind(JSON.stringify(courses.map((course) => course.id)), program, planYear, planYear)
+      .all<PlanRecord & { courseId: number }>();
+    const records = new Map<number, PlanRecord[]>();
+    for (const { courseId, ...record } of planRows.results) {
+      const list = records.get(courseId) ?? [];
+      list.push(record);
+      records.set(courseId, list);
+    }
+    for (const course of courses) course.planRecords = records.get(course.id) ?? [];
+  }
   const programs = new Map<string, number[]>();
   for (const row of programRows.results as { name: string; year: number }[]) {
     programs.set(row.name, [...(programs.get(row.name) ?? []), row.year]);
   }
   const response: CourseCatalog = {
-    courses: (entries.results as CourseSummary[])
-      .slice(0, limit)
-      .map((course) => ({
-        ...course,
-        ...(program
-          ? {
-              planRecords: (
-                planRows.results as (NonNullable<CourseSummary['planRecords']>[number] & {
-                  courseId: number;
-                })[]
-              )
-                .filter((row) => row.courseId === course.id)
-                .map(({ courseId: _courseId, ...record }) => record),
-            }
-          : {}),
-      })),
+    courses,
     limit,
     offset,
     q,
