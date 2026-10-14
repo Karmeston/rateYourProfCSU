@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { supplementKinds } from '../shared/community';
+import { supplementKinds, type OwnSupplement } from '../shared/community';
 import { CommunityDialog, ContextFields } from './community-forms';
 import { readSupplementDraft, type SupplementDraft } from './supplement-draft';
 import { send } from './visitor';
@@ -8,23 +8,26 @@ export function SupplementForm({
   endpoint,
   close,
   received,
+  own = null,
 }: {
   endpoint: string;
   close: () => void;
   received: () => void;
+  own?: OwnSupplement | null;
 }) {
-  const storageKey = `csu-supplement-draft:${endpoint}`;
+  const storageKey = `csu-supplement-draft:${endpoint}${own ? `:${own.id}:${own.revision}` : ''}`;
   const [draft, setDraft] = useState<SupplementDraft>(() => {
     const empty: SupplementDraft = {
-      id: crypto.randomUUID(),
-      kind: 'assessment',
-      body: '',
-      sourceUrl: '',
-      term: null,
-      teacherName: null,
+      id: own?.id ?? crypto.randomUUID(),
+      kind: own?.kind ?? 'assessment',
+      body: own?.body ?? '',
+      sourceUrl: own?.sourceUrl ?? '',
+      term: own?.term ?? null,
+      teacherName: own?.teacherName ?? null,
     };
     try {
-      return readSupplementDraft(sessionStorage.getItem(storageKey)) ?? empty;
+      const saved = readSupplementDraft(sessionStorage.getItem(storageKey));
+      return saved && (!own || saved.id === own.id) ? saved : empty;
     } catch {
       return empty;
     }
@@ -54,7 +57,7 @@ export function SupplementForm({
   }, [draft, storageKey, done]);
   function update(patch: Partial<Omit<SupplementDraft, 'id'>>) {
     // Keep the submission ID through retries and reopening; edits create a new submission.
-    setDraft((current) => ({ ...current, ...patch, id: crypto.randomUUID() }));
+    setDraft((current) => ({ ...current, ...patch, id: own?.id ?? crypto.randomUUID() }));
     setError('');
   }
   async function submit(event: React.FormEvent) {
@@ -70,7 +73,13 @@ export function SupplementForm({
     setBusy(true);
     setError('');
     try {
-      await send(endpoint, 'POST', draft, abort.signal);
+      const { id: requestId, ...content } = draft;
+      await send(
+        own ? `${endpoint}/${own.id}` : endpoint,
+        own ? 'PUT' : 'POST',
+        own ? { ...content, revision: own.revision } : { id: requestId, ...content },
+        abort.signal,
+      );
       if (!mounted.current) return;
       setDone(true);
       received();
@@ -90,7 +99,7 @@ export function SupplementForm({
     }
   }
   return (
-    <CommunityDialog title="补充课程资料" close={close} busy={busy}>
+    <CommunityDialog title={own ? '修改我的补充资料' : '补充课程资料'} close={close} busy={busy}>
       {done ? (
         <p role="status">
           补充资料已提交，审核后展示。<button onClick={close}>完成</button>
@@ -146,7 +155,11 @@ export function SupplementForm({
               ? '草稿保存在当前标签页，关闭后可继续填写。'
               : '浏览器无法保存草稿，请保留本表单。'}
           </p>
-          <p className="fine-print">请勿填写学号、联系方式或公开非公开资料。</p>
+          <p className="fine-print">
+            {own
+              ? '修改或重新提交后须再次审核，通过前不公开。'
+              : '请勿填写学号、联系方式或公开非公开资料。'}
+          </p>
           {error && (
             <p className="form-error" role="alert">
               {error}

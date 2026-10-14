@@ -308,7 +308,9 @@ export function Catalog({ route }: { route: CatalogRoute }) {
                       !data?.facets.programs
                         .find((item) => item.name === route.program)
                         ?.years.includes(Number(route.planYear)) && (
-                        <option value={route.planYear}>{route.planYear}版（未收录）</option>
+                        <option value={route.planYear}>
+                          {route.planYear}版{data ? '（未收录）' : ''}
+                        </option>
                       )}
                     {data?.facets.programs
                       .find((item) => item.name === route.program)

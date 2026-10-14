@@ -1,6 +1,6 @@
 # 专业筛选与匿名社区维护
 
-更新日期：2026-10-12。功能已接入本地预览，本轮增加了线上发行和受保护命令行维护；实际线上版本、数据与回退见[部署记录](deployment-20261012.md)。
+更新日期：2026-10-14。资料补充现支持本人修改、撤回与重新提交；实际线上版本、数据与回退见[部署记录](deployment-20261012.md)。
 
 ## 按方案找课
 
@@ -32,6 +32,10 @@ API使用`program`与`planYear`，版本需同时指定专业。采用方案资�
 ## 资料补充与举报
 
 课程详情“同学补充资料”支持考核/作业、公开学习资料、信息纠错和其他补充，接受正文、可选HTTPS来源、学期和教师，不接收文件上传。默认待审核，仅提交者可看到自己的待审核/未通过内容。审核通过后单独展示为同学补充，不直接写入官方方案表、公选课事实或学分认定规则。
+
+“管理我的补充资料”包含本人的所有状态，包括已发布和已撤回记录，独立分页。本人可修改原记录，修改或重新提交一律转为待审核；撤回保留内容和审核历史，不再公开、不能举报，也不进入待审队列。管理工具恢复或批准不清除作者撤回时间。归属只由签名Cookie判定，清除Cookie或更换浏览器不能认领旧资料。
+
+修改和撤回携带`revision`，与审核共享版本检查；成功结果的原样重试不重复操作。编辑草稿按记录ID和版本隔离，取消时返回原按钮，保存后的刷新会替换旧记录，焦点返回稳定的补充入口。
 
 评价、回复和已审核补充资料均支持举报。每个访客对同一内容只记录一条举报；不公开举报人或举报详情，不因举报数量自动隐藏内容。维护者检查内容后操作相应记录，再将举报标为已处理或不采纳。举报和补充使用现有匿名Cookie、跨站写入检查、请求体限制、访客与网络频率限制。
 
@@ -70,15 +74,18 @@ node scripts/moderate.mjs --persist-to tmp/ui-preview-d1 resolve report '举报U
 - `POST`原评价路径增加可选`term`（例如`2025-1`）、`teacherName`。
 - `PUT /api/{courses|teachers}/:id/reviews/:reviewId`接收`revision`、`rating`、`body`与可选背景。
 - `DELETE`同一路径接收JSON`{"revision":0}`，仅标记撤回。
-- `GET /api/courses/:id/supplements?offset=0`返回公开资料和本人的未公开资料；同路径`POST`提交待审核资料。
+- `GET /api/courses/:id/supplements?offset=0&mineOffset=0`返回`supplements`和`mine`，各自每页20条、使用独立的`hasMore`/`hasMoreMine`。没有有效Cookie时不查询本人列表。公开列表只含已发布且未撤回资料，本人列表包含全部状态。
+- 同路径`POST`提交待审核资料；`PUT /api/courses/:id/supplements/:supplementId`接收`revision`与补充内容，`DELETE`同一路径接收JSON`{"revision":0}`标记撤回。
 - 内容路径后追加`/reports`提交举报：评价、`/replies/:replyId`、`/supplements/:supplementId`。JSON包含`id`、`reason`、`details`。
 
-共用输入与背景类型在`shared/community.ts`、`src/community-input.ts`。资料及举报路由在`src/community.ts`；评分查询和归属在`src/reviews.ts`。前端将评价表单、本人操作、补充资料和通用举报/背景组件拆开，避免继续扩大评价列表组件。
+共用类型与背景输入在`shared/community.ts`、`src/community-input.ts`。`src/community.ts`装配路由并验证访客，资料生命周期在`src/course-supplements.ts`，举报接收在`src/content-reports.ts`；评分查询和归属在`src/reviews.ts`。前端补充表单、本人操作和公开列表分别维护，不增加通用服务层或新依赖。
 
 ## 验证与回退
 
 生产迁移`0008_community.sql`已应用于本地与线上，旧迁移未修改。`npm run check`通过：77项测试、前后端类型检查、Vite构建及Worker dry-run。API回归测试覆盖专业/班型与版本筛选、分页及隐藏资料、并发重复评分、旧记录拒绝认领、不同访客越权、修改/撤回重试、评分更新、隐藏后重新审核、待审核队列、补充审核、举报去重和回复隐藏/恢复。本地及线上管理队列命令执行成功；新增发行SQL重放、冲突回滚、线上维护参数展开与不盲目重试的回归测试。
 
-浏览器工具因无法可靠确认当前Windows浏览器地址停止操作，尚未完成实际页面与窄屏验收，不提供旧截图作为本轮证明。
+2026-10-14增量验证：新增`0009_supplement_ownership.sql`，保留已有资料、审核版本和日志关联，增加修改/撤回时间及本人分页索引。86项测试覆盖越权、并发修改与审核、修改后重新审核、撤回与管理恢复、独立分页、重试、迁移保留和隐藏课程。隔离预览已实际走通资料投稿、草稿恢复、已发布资料修改、撤回和重新提交，以及评价发布、修改与撤回。320/390/768/1280像素视口检查通过；修复320像素评价弹窗的横向溢出、加载时误标版本未收录和嵌套折叠事件。测试使用桌面浏览器视口，手机实机软键盘尚未验收。
+
+本轮代码基线为`codex/supplement-ownership-baseline-20261014`（`f029490`），本地迁移前备份为`tmp/supplement-ownership-baseline-20261014`。已产生撤回资料后，旧Worker不识别`withdrawn_at`，不能直接将旧代码发布为回退；兼容回退仍须保留公开列表、举报及审核队列的撤回过滤。保留当前数据，不倒退迁移或覆盖后续用户写入。
 
 基线提交`dbe751d`，标签`codex/community-features-baseline-20261011`。应用迁移前，已确认预览服务停止并完整复制本地数据库至`tmp/community-features-baseline-20261011`。代码回退使用独立工作树；精确恢复旧预览时用该备份的副本运行，保留当前数据库和后续评价。Git回退不自动恢复数据库；不要修改或倒退已应用迁移。

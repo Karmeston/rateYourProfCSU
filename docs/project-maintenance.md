@@ -2,7 +2,7 @@
 
 整理日期：2026-10-09。项目继续采用React前端、Hono Worker和D1，按功能组织小模块。
 
-2026-10-14更新：课程列表按页读取附加记录，汇总评价数与已评价课程数共用一次聚合；资料补充展开后加载，表单与草稿验证分离。新增分页/排序/重试回归用例，当前82项测试、严格类型检查和构建通过。未新增依赖或数据库迁移。改动前标签为`codex/performance-baseline-20261014`（`3880120`），代码提交可用`git revert`回退。
+2026-10-14更新：课程列表按页读取附加记录，汇总评价统计共用一次聚合。资料补充展开后加载，支持本人修改、撤回及独立分页；资料路由与举报接收分别维护。当前86项测试、严格类型检查和构建通过，未新增依赖。新增迁移`0009`；旧代码不识别资料撤回，线上回退须保留撤回过滤，具体基线与兼容要求见[匿名社区功能说明](community-features.md)。
 
 ## 模块边界
 
@@ -15,12 +15,14 @@
 | `web/review-form.tsx`、`web/own-review-actions.tsx` | 评价草稿、选课背景、本人修改与撤回 |
 | `web/course-supplements.tsx`、`web/community-forms.tsx` | 同学补充资料、举报表单与共用背景字段 |
 | `web/supplement-form.tsx`、`web/supplement-draft.ts` | 资料补充表单、当前标签页草稿验证与原编号重试 |
+| `web/own-supplement-actions.tsx` | 本人资料状态、修改入口、撤回确认与重试 |
 | `web/use-data.ts`、`web/visitor.ts` | 取消过期读取请求、超时、匿名会话及写入请求 |
 | `shared/` | 纯类型、枚举和可核实的业务规则；可由前后端共同导入 |
 | `src/index.ts` | 路由装配、健康检查与错误兜底 |
 | `src/*catalog.ts`、`src/reviews.ts`、`src/review-interactions.ts` | 对应功能的参数验证、SQL与响应 |
 | `src/visitor.ts` | 签名Cookie、跨站写入检查和频率限制 |
-| `src/community.ts`、`src/community-input.ts`、`scripts/moderate.mjs` | 资料补充、举报、输入验证和本地审核工具 |
+| `src/community.ts`、`src/community-input.ts` | 社区路由装配、匿名身份与共用输入验证 |
+| `src/course-supplements.ts`、`src/content-reports.ts`、`scripts/moderate.mjs` | 资料生命周期、举报接收与审核工具 |
 | `src/validation.ts`、`src/request-body.ts` | 重复使用的ID/UUID校验、受限请求体读取 |
 | `src/review-targets.ts` | 固定的评价、投票、回复表名和外键映射 |
 | `tests/helpers/database.mjs` | 将生产迁移按顺序应用到调用方的临时D1 |

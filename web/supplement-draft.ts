@@ -2,13 +2,11 @@ import {
   supplementKinds,
   validTerm,
   validTeacher,
-  type ReviewContext,
+  type SupplementContent,
 } from '../shared/community.ts';
 
-export type SupplementDraft = ReviewContext & {
+export type SupplementDraft = Omit<SupplementContent, 'sourceUrl'> & {
   id: string;
-  kind: keyof typeof supplementKinds;
-  body: string;
   sourceUrl: string;
 };
 

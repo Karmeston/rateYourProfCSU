@@ -77,7 +77,7 @@ export async function queue(db) {
       "SELECT id,target_kind,target_id,reason,details,revision,created_at FROM content_reports WHERE status='open' ORDER BY created_at LIMIT 50",
     ),
     db.prepare(
-      "SELECT s.id,s.course_id,c.name,s.kind,s.body,s.source_url,s.term,s.teacher_name,s.revision,s.created_at FROM course_supplements s JOIN courses c ON c.id=s.course_id WHERE s.status='pending' ORDER BY s.created_at LIMIT 50",
+      "SELECT s.id,s.course_id,c.name,s.kind,s.body,s.source_url,s.term,s.teacher_name,s.revision,s.created_at FROM course_supplements s JOIN courses c ON c.id=s.course_id WHERE s.status='pending' AND s.withdrawn_at IS NULL AND c.is_listed=1 ORDER BY s.created_at,s.id LIMIT 50",
     ),
     db.prepare(
       "SELECT r.id,r.course_id,c.name,r.rating,r.body,r.term,r.teacher_name,r.revision FROM course_reviews r JOIN courses c ON c.id=r.course_id WHERE r.status='pending' AND r.withdrawn_at IS NULL ORDER BY r.created_at,r.id LIMIT 50",

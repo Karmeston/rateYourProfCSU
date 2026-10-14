@@ -1036,6 +1036,7 @@ select {
 }
 .form-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
   gap: 0.6rem;
@@ -1084,6 +1085,7 @@ select {
   margin-bottom: 1.4rem;
 }
 .rating-picker {
+  min-width: 0;
   border: 0;
   padding: 0;
   margin: 0 0 1.3rem;
@@ -1108,6 +1110,9 @@ select {
 .rating-picker label {
   position: relative;
   cursor: pointer;
+  flex: 1;
+  min-width: 0;
+  max-width: 44px;
 }
 .rating-picker input {
   position: absolute;
@@ -1119,7 +1124,7 @@ select {
   display: block;
   font-size: 2rem;
   line-height: 44px;
-  width: 44px;
+  width: 100%;
   text-align: center;
   color: #cbd3dc;
   border-radius: 5px;
@@ -1673,7 +1678,24 @@ select {
 .own-review > div {
   margin-top: 0.5rem;
 }
+.own-supplements {
+  margin-top: 1rem;
+}
+.supplement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.supplement-actions .text-button {
+  margin-left: 0;
+}
+.withdraw-confirm {
+  margin-top: 0.5rem;
+}
 @media (max-width: 560px) {
+  .supplement-actions button {
+    min-height: 44px;
+  }
   .program-filters label,
   .context-fields label {
     flex: 1 1 100%;

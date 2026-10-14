@@ -12,6 +12,29 @@ export const reportReasons = {
   other: '其他问题',
 } as const;
 export type ReviewContext = { term: string | null; teacherName: string | null };
+export type SupplementContent = ReviewContext & {
+  kind: keyof typeof supplementKinds;
+  body: string;
+  sourceUrl: string | null;
+};
+export type Supplement = SupplementContent & {
+  id: string;
+  created_at: string;
+  updated_at: string | null;
+};
+export type OwnSupplement = Supplement & {
+  status: 'published' | 'pending' | 'rejected';
+  revision: number;
+  withdrawn_at: string | null;
+};
+export type SupplementPage = {
+  supplements: Supplement[];
+  mine: OwnSupplement[];
+  offset: number;
+  mineOffset: number;
+  hasMore: boolean;
+  hasMoreMine: boolean;
+};
 export type OwnReview = ReviewContext & {
   id: string;
   rating: number;
