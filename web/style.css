@@ -829,29 +829,6 @@ select {
   border-radius: 4px;
   margin-top: 0.5rem;
 }
-.course-facts {
-  margin: 0.8rem 0 1rem;
-  font-size: 0.75rem;
-}
-.course-facts > div {
-  display: flex;
-  gap: 0.8rem;
-  justify-content: space-between;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #edf0f2;
-}
-.course-facts dt {
-  color: #778493;
-  flex-shrink: 0;
-}
-.course-facts dd {
-  margin: 0;
-  text-align: right;
-  color: #455a70;
-}
-.course-facts dd.pending {
-  color: #9ba4ae;
-}
 .detail-loading,
 .review-loading {
   padding: 2rem;
@@ -1448,32 +1425,6 @@ select {
 .detail-page {
   max-width: 960px;
   margin-inline: auto;
-}
-.course-info {
-  margin: 0 0 1.5rem;
-  font-size: 0.8125rem;
-  color: var(--muted);
-}
-.course-info summary {
-  cursor: pointer;
-  width: fit-content;
-}
-.course-info summary span {
-  margin-left: 0.5rem;
-}
-.course-info .course-facts {
-  max-width: 450px;
-}
-.course-materials ul {
-  list-style: none;
-  padding: 0;
-}
-.course-materials li {
-  padding: 0.8rem 0;
-  border-bottom: 1px solid var(--border);
-}
-.course-materials p {
-  margin: 0.4rem 0;
 }
 .guide-faq {
   margin-top: 1.5rem;

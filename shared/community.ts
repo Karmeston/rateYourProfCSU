@@ -1,6 +1,6 @@
 export const supplementKinds = {
   assessment: '考核与作业',
-  materials: '学习资料',
+  materials: '试卷与学习资料',
   correction: '课程信息纠错',
   other: '其他补充',
 } as const;

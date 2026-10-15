@@ -23,9 +23,9 @@ export function CourseSupplements({ id }: { id: string }) {
           if (event.target === event.currentTarget) setOpened(event.currentTarget.open);
         }}
       >
-        <summary>同学补充资料</summary>
+        <summary>学习资料</summary>
         <p className="fine-print">
-          课程考核、学习资料和纠错信息由同学提供，审核后展示；不替代官方培养方案或学分认定依据。
+          分享往年试卷、复习笔记、作业参考等资料链接，也可补充考核经验；同学提交的内容审核后展示。
         </p>
         <button
           className="secondary-button"
@@ -36,16 +36,18 @@ export function CourseSupplements({ id }: { id: string }) {
             setWriting(true);
           }}
         >
-          补充课程资料
+          分享学习资料
         </button>
-        {opened && !data && !error && <p role="status">正在加载补充资料…</p>}
+        {opened && !data && !error && <p role="status">正在加载学习资料…</p>}
         {error && (
           <p role="alert">
             {error}
             <button onClick={retry}>重试</button>
           </p>
         )}
-        {data && !data.supplements.length && <p className="fine-print">暂无已审核的补充资料。</p>}
+        {data && !data.supplements.length && (
+          <p className="fine-print">暂无已审核的学习资料或备考经验，欢迎分享你手中的资料链接。</p>
+        )}
         <ul className="supplement-list">
           {data?.supplements.map((row) => (
             <li key={row.id}>
@@ -54,7 +56,7 @@ export function CourseSupplements({ id }: { id: string }) {
               <p className="review-body">{row.body}</p>
               {row.sourceUrl && (
                 <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer">
-                  查看提供的来源 ↗
+                  {row.kind === 'materials' ? '打开学习资料 ↗' : '查看提供的来源 ↗'}
                 </a>
               )}
               <ReportButton endpoint={`${endpoint}/${row.id}/reports`} />

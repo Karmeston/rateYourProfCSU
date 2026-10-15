@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { courseCategories, type CourseDetail, type Teacher } from '../shared/catalog';
 import { ElectiveGuidance } from './elective-guidance';
-import { CourseMaterials } from './course-materials';
 import { Icon } from './icons';
 import { Reviews } from './reviews';
 import { ErrorState } from './ui';
@@ -66,7 +65,7 @@ export function Detail({
           <ErrorState message={error} retry={retry} />
         ) : (
           <div className="detail-loading" role="status">
-            正在加载课程资料…
+            正在加载课程…
           </div>
         )
       ) : (
@@ -89,7 +88,6 @@ export function Detail({
                 <span>
                   <Icon name="book" size={17} />
                   {row.department === '待核实' ? '开课学院待补充' : row.department}
-                  {course?.departmentSourceYear != null && ` · ${course.departmentSourceYear}大纲学院`}
                 </span>
                 {course?.code && <span>课程代码 · {course.code}</span>}
                 {profile && (
@@ -130,23 +128,7 @@ export function Detail({
             </div>
           )}
           {course?.category === 'elective' && <ElectiveGuidance course={course} />}
-          {course && course.category !== 'elective' && course.materials.length > 0 && <CourseMaterials course={course} />}
-          {course && course.category !== 'elective' && course.materials.length === 0 && (
-            <details className="course-info">
-              <summary>
-                课程资料 <span className="fine-print">待补充</span>
-              </summary>
-              <dl className="course-facts">
-                {['课程学分', '适用专业', '考核方式', '课程大纲'].map((label) => (
-                  <div key={label}>
-                    <dt>{label}</dt>
-                    <dd className="pending">待补充</dd>
-                  </div>
-                ))}
-              </dl>
-            </details>
-          )}
-          {course && <CourseSupplements id={id}/>}
+          {course && <CourseSupplements id={id} />}
           <Reviews kind={kind} id={id} name={row.name} />
         </>
       )}

@@ -19,7 +19,7 @@ export function SupplementForm({
   const [draft, setDraft] = useState<SupplementDraft>(() => {
     const empty: SupplementDraft = {
       id: own?.id ?? crypto.randomUUID(),
-      kind: own?.kind ?? 'assessment',
+      kind: own?.kind ?? 'materials',
       body: own?.body ?? '',
       sourceUrl: own?.sourceUrl ?? '',
       term: own?.term ?? null,
@@ -99,7 +99,7 @@ export function SupplementForm({
     }
   }
   return (
-    <CommunityDialog title={own ? '修改我的补充资料' : '补充课程资料'} close={close} busy={busy}>
+    <CommunityDialog title={own ? '修改我的补充资料' : '分享学习资料'} close={close} busy={busy}>
       {done ? (
         <p role="status">
           补充资料已提交，审核后展示。<button onClick={close}>完成</button>
@@ -133,11 +133,15 @@ export function SupplementForm({
               onChange={(event) => {
                 update({ body: event.target.value });
               }}
-              placeholder="例如作业安排、考核方式、公开学习资料；纠错请说明原文位置。"
+              placeholder={
+                draft.kind === 'materials'
+                  ? '例如：往年期末试卷、复习笔记或作业参考。请说明资料名称、适用学期和内容，链接填在下方。'
+                  : '例如考核方式、作业安排或备考经验；信息纠错请说明需要更正的位置。'
+              }
             />
           </label>
           <label>
-            来源链接（选填）
+            资料或来源链接（选填）
             <input
               type="url"
               value={draft.sourceUrl}
@@ -158,7 +162,7 @@ export function SupplementForm({
           <p className="fine-print">
             {own
               ? '修改或重新提交后须再次审核，通过前不公开。'
-              : '请勿填写学号、联系方式或公开非公开资料。'}
+              : '请勿填写学号、联系方式；分享可以公开访问的资料链接。'}
           </p>
           {error && (
             <p className="form-error" role="alert">
