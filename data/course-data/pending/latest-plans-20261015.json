@@ -1,0 +1,3280 @@
+{
+  "schema_version": 1,
+  "retrieved_on": "2026-10-15",
+  "imported": false,
+  "status": "pending_source_table_review",
+  "selection": "同一专业、同一班型仅保留官网栏目所列最新版本；下载前检查已有文件与SHA-256，不下载旧版或重复附件。",
+  "index_url": "https://ei.csu.edu.cn/lbejlm.jsp?urltype=tree.TreeTempUrl&wbtreeid=1135",
+  "scope": "三份2025版普通本科培养方案；246条初步提取记录、141个代码，不等于新增课程数或当期开课目录。",
+  "review_required": [
+    "现有提取器仅识别六位数字加一个字母加两位数字；本批初提取临时扩为一至两个字母，记录含ZG代码。",
+    "新版表格的纵排类别文字和跨页合并单元格尚未全部核验，因此不写入推断类别，也不可直接导入。",
+    "提取结果可能不完整，尚需逐表核对课程身份、学院归属及与现有目录的冲突。",
+    "方案中的选修不等于全校公选课，方案存在不证明当前学期开设。"
+  ],
+  "sources": [
+    {
+      "id": "ei-plan-2203",
+      "url": "https://ei.csu.edu.cn/info/1135/2203.htm",
+      "file_url": "https://ei.csu.edu.cn/__local/9/86/3B/0FCDD8B2D73128AAAED9863566C_55904B1F_7C4FF.pdf",
+      "title": "通信工程[2025]培养方案",
+      "kind": "undergraduate_plan",
+      "department": "电子信息学院",
+      "program": "通信工程",
+      "plan_year": 2025,
+      "retrieved_on": "2026-10-15",
+      "local_file": "data/course-data/raw/ei-plan-2203.pdf",
+      "sha256": "cd3671252c6becc28f01973e604000ee5bbb18f8f634100f32931aba04fea736",
+      "record_count": 82,
+      "pages": 27
+    },
+    {
+      "id": "ei-plan-2204",
+      "url": "https://ei.csu.edu.cn/info/1135/2204.htm",
+      "file_url": "https://ei.csu.edu.cn/__local/2/74/AF/9913186C6B88E0AC512AE6582A7_5F9BF391_78DD9.pdf",
+      "title": "电子信息科学与技术[2025]培养方案",
+      "kind": "undergraduate_plan",
+      "department": "电子信息学院",
+      "program": "电子信息科学与技术",
+      "plan_year": 2025,
+      "retrieved_on": "2026-10-15",
+      "local_file": "data/course-data/raw/ei-plan-2204.pdf",
+      "sha256": "27f127e8761ce9f7f035fc7728fc90a346cf9e46632b8d5b422a0cd2aa41bbbc",
+      "record_count": 81,
+      "pages": 17
+    },
+    {
+      "id": "ei-plan-2205",
+      "url": "https://ei.csu.edu.cn/info/1135/2205.htm",
+      "file_url": "https://ei.csu.edu.cn/__local/8/50/DC/3EAFFDC1DFA726A526F99E39F52_508F1A14_623DE.pdf",
+      "title": "电子信息工程[2025]培养方案",
+      "kind": "undergraduate_plan",
+      "department": "电子信息学院",
+      "program": "电子信息工程",
+      "plan_year": 2025,
+      "retrieved_on": "2026-10-15",
+      "local_file": "data/course-data/raw/ei-plan-2205.pdf",
+      "sha256": "86e997a86c1d92246802a14f4375324385d457c6c063f86fe2cbbc2f0458eb8a",
+      "record_count": 83,
+      "pages": 26
+    }
+  ],
+  "records": [
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "210303T10",
+      "name": "马克思主义基本原理",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 2
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "210402T10",
+      "name": "毛泽东思想和中国特色社会主义理论体系概论",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 3
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "210601T10",
+      "name": "习近平新时代中国特色社会主义思想概论",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 4
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "210801T10",
+      "name": "中国共产党的历史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 5
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "210802T10",
+      "name": "新中国史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 6
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "210803T10",
+      "name": "改革开放史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 7
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "210804T10",
+      "name": "社会主义发展史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 8
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "211001T11",
+      "name": "思政实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 9
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "410004T11",
+      "name": "军事技能",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 10
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "410005T10",
+      "name": "军事理论",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 11
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "660003T10",
+      "name": "体育（一）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 12
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "660003T20",
+      "name": "体育（二）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 13
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "660003T30",
+      "name": "体育（三）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 14
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "660003T40",
+      "name": "体育（四）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 15
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "660005T11",
+      "name": "体育课外测试",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 16
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "180533T10",
+      "name": "高级英语（一）",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 17
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "180548T10",
+      "name": "大学英语（一）",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 18
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "180548T20",
+      "name": "大学英语（二）",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 19
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "000001T10",
+      "name": "实验室技术安全与环境保护知识学习培训与考核",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 20
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "210138T10",
+      "name": "大学生心理健康教育（一）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 21
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "210138T20",
+      "name": "大学生心理健康教育（二）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 22
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "210702T10",
+      "name": "国家安全教育",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 23
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "130712T10",
+      "name": "概率论与数理统计A",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 24
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "130715T10",
+      "name": "高等数学A（一）",
+      "credits": 5.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 25
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "130715T20",
+      "name": "高等数学A（二）",
+      "credits": 5.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 26
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "130717T10",
+      "name": "线性代数",
+      "credits": 2.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 27
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "140109T10",
+      "name": "大学物理B（一）(信息类)",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 28
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "140109T20",
+      "name": "大学物理B（二）(信息类)",
+      "credits": 4.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 29
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "140202T11",
+      "name": "大学物理实验B",
+      "credits": 1.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 30
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360120T10",
+      "name": "数理方程",
+      "credits": 4.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 31
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "080203T10",
+      "name": "工程制图基础B",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 32
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "090209T10",
+      "name": "计算机程序设计基础（C）",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 4,
+        "table": 1,
+        "row": 33
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360102T10",
+      "name": "新生课",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 2
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360104Z10",
+      "name": "数据结构",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 3
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "410003T11",
+      "name": "毕业教育",
+      "credits": 0.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 4
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "950614T10",
+      "name": "人工智能基础及应用（通识）A",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 5
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "960402T10",
+      "name": "电路理论",
+      "credits": 4.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 6
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "960403T10",
+      "name": "模拟电子技术A",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 7
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "960405T10",
+      "name": "数字电子技术A",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 8
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "960414T11",
+      "name": "电工电子实验 A（一）",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 9
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "960414T21",
+      "name": "电工电子实验 A（二）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 10
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "960419T11",
+      "name": "电子技术课程设计",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 11
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360105Z10",
+      "name": "单片机原理与接口技术",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 12
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360106Z10",
+      "name": "电磁场与电磁波",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 13
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360107Z10",
+      "name": "半导体物理与器件",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 14
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360108Z10",
+      "name": "数字信号处理",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 15
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360109Z10",
+      "name": "高频电子电路",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 16
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360110Z10",
+      "name": "EDA技术与应用",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 17
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360114Z10",
+      "name": "半导体工艺技术",
+      "credits": 2.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 18
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360117Z10",
+      "name": "嵌入式系统",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 19
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360122Z10",
+      "name": "信号与系统",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 20
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360111ZG10",
+      "name": "计算机网络",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 21
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360112ZG10",
+      "name": "电子电路CAD",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 22
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360113ZG10",
+      "name": "通信原理",
+      "credits": 3.5,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 23
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360115ZG10",
+      "name": "MATLAB程序设计",
+      "credits": 2.5,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 24
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360116ZG10",
+      "name": "开源软件设计基础",
+      "credits": 2.5,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 25
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360118ZG10",
+      "name": "信息论与编码",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 26
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360119ZG10",
+      "name": "数字图像处理",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 27
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360121ZG10",
+      "name": "功率半导体器件与应用",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 28
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360123ZG10",
+      "name": "集成电路设计",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 29
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360124ZG10",
+      "name": "现代交换技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 30
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360125ZG10",
+      "name": "射频电路设计",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 31
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360126ZG10",
+      "name": "现代电子测量技术",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 32
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360127ZG10",
+      "name": "现代通信系统",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 33
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360128ZG10",
+      "name": "光电子学",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 34
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360129ZG10",
+      "name": "传感器技术及应用",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 35
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360130ZG10",
+      "name": "柔性电子学",
+      "credits": 2.5,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 36
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360134ZG10",
+      "name": "微波技术基础",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 37
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360230ZG10",
+      "name": "前沿量子技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 38
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "000002S11",
+      "name": "创新创业实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 39
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360103S10",
+      "name": "创新创业导论",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 40
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "970001S11",
+      "name": "社会实践",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 41
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360101S11",
+      "name": "毕业设计（论文）",
+      "credits": 8.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 42
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360131S11",
+      "name": "认识实习",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 43
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360132S11",
+      "name": "生产实习",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 44
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360133S11",
+      "name": "综合课程设计",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 45
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360135S11",
+      "name": "EDA课程实验",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 46
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360136S11",
+      "name": "嵌入式系统课程实验",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 5,
+        "table": 1,
+        "row": 47
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360137S11",
+      "name": "微电子器件与工艺实验",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 1,
+        "row": 2
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "660005T11",
+      "name": "体育课外测试",
+      "credits": 0.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 10,
+        "table": 1,
+        "row": 6
+      }
+    },
+    {
+      "source_id": "ei-plan-2204",
+      "program": "电子信息科学与技术",
+      "code": "360114Z10",
+      "name": "半导体工艺技术",
+      "credits": 2.5,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 17,
+        "table": 1,
+        "row": 5
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "210303T10",
+      "name": "马克思主义基本原理",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 2
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "210402T10",
+      "name": "毛泽东思想和中国特色社会主义理论体系概论",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 3
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "210601T10",
+      "name": "习近平新时代中国特色社会主义思想概论",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 4
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "210801T10",
+      "name": "中国共产党的历史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 5
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "210802T10",
+      "name": "新中国史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 6
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "210803T10",
+      "name": "改革开放史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 7
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "210804T10",
+      "name": "社会主义发展史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 2
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "211001T11",
+      "name": "思政实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 3
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "410004T11",
+      "name": "军事技能",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 4
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "410005T10",
+      "name": "军事理论",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 5
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "660003T10",
+      "name": "体育（一）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 6
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "660003T20",
+      "name": "体育（二）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 7
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "660003T30",
+      "name": "体育（三）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 8
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "660003T40",
+      "name": "体育（四）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 9
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "660005T11",
+      "name": "体育课外测试",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 10
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "180533T10",
+      "name": "高级英语（一）",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 11
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "180548T10",
+      "name": "大学英语（一）",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 12
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "180548T20",
+      "name": "大学英语（二）",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 13
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "000001T10",
+      "name": "实验室技术安全与环境保护知识学习培训与考核",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 14
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "210138T10",
+      "name": "大学生心理健康教育（一）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 15
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "210138T20",
+      "name": "大学生心理健康教育（二）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 16
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "210702T10",
+      "name": "国家安全教育",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 17
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "130715T10",
+      "name": "高等数学A（一）",
+      "credits": 5.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 18
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "130715T20",
+      "name": "高等数学A（二）",
+      "credits": 5.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 19
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "130717T10",
+      "name": "线性代数",
+      "credits": 2.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 20
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "140109T10",
+      "name": "大学物理B（一）(信息类)",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 21
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "140109T20",
+      "name": "大学物理B（二）(信息类)",
+      "credits": 4.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 22
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "140202T11",
+      "name": "大学物理实验B",
+      "credits": 1.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 23
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360223T10",
+      "name": "基础数理统计",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 24
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "090209T10",
+      "name": "计算机程序设计基础（C）",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 25
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360102T10",
+      "name": "新生课",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 26
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360233T10",
+      "name": "复变函数与信号分析",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 27
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360236T10",
+      "name": "计算机程序设计基础(Java)",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 28
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "410003T11",
+      "name": "毕业教育",
+      "credits": 0.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 29
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "950614T10",
+      "name": "人工智能基础及应用（通识）A",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 30
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "960402T10",
+      "name": "电路理论",
+      "credits": 4.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 31
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "960404T10",
+      "name": "模拟电子技术B",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 32
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "960406T10",
+      "name": "数字电子技术B",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 33
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "960414T11",
+      "name": "电工电子实验 A（一）",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 34
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "960414T21",
+      "name": "电工电子实验 A（二）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 35
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360209Z10",
+      "name": "嵌入式系统",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 36
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360232Z10",
+      "name": "电磁场与电磁波",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 2
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360234Z10",
+      "name": "计算机网络",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 3
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360237Z10",
+      "name": "单片机原理与接口技术",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 4
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360239Z10",
+      "name": "数字信号处理",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 5
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360241Z10",
+      "name": "信号与系统",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 6
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360242Z10",
+      "name": "数据结构",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 7
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360243Z10",
+      "name": "信息论与编码",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 8
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360244Z10",
+      "name": "通信原理",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 9
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360125ZG10",
+      "name": "射频电路设计",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 10
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360210ZG10",
+      "name": "数据库原理与技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 11
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360211ZG10",
+      "name": "操作系统",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 12
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360212ZG10",
+      "name": "通信电子电路",
+      "credits": 2.5,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 13
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360213ZG10",
+      "name": "软件无线电",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 14
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360214ZG10",
+      "name": "通信信号处理",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 15
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360216ZG10",
+      "name": "数字图像处理",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 16
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360217ZG10",
+      "name": "大规模集成电路设计",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 17
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360218ZG10",
+      "name": "无线传感器网技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 18
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360219ZG10",
+      "name": "天线与电波传播",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 19
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360220ZG10",
+      "name": "微波与雷达技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 20
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360221ZG10",
+      "name": "移动通信",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 21
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360222ZG10",
+      "name": "机器学习理论与应用",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 22
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360224ZG10",
+      "name": "自动控制原理",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 23
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360225ZG10",
+      "name": "智能机器人技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 24
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360226ZG10",
+      "name": "网络信息安全",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 25
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360227ZG10",
+      "name": "光纤通信",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 26
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360228ZG10",
+      "name": "列车通信网",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 27
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360229ZG10",
+      "name": "卫星通信",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 28
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360230ZG10",
+      "name": "前沿量子技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 29
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "000002S11",
+      "name": "创新创业实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 30
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360103S10",
+      "name": "创新创业导论",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 31
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "970001S11",
+      "name": "社会实践",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 32
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360206S11",
+      "name": "单片机与嵌入式工程实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 33
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360215S11",
+      "name": "信号处理综合实践",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 34
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360231S11",
+      "name": "毕业设计",
+      "credits": 8.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 35
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360235S11",
+      "name": "通信网络工程实践",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 36
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360238S11",
+      "name": "软件开发实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 37
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360240S11",
+      "name": "人工智能实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 38
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360245S11",
+      "name": "认知实习",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 39
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360246S11",
+      "name": "生产实习",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 40
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "660005T11",
+      "name": "体育课外测试",
+      "credits": 0.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 13,
+        "table": 1,
+        "row": 4
+      }
+    },
+    {
+      "source_id": "ei-plan-2203",
+      "program": "通信工程",
+      "code": "360208S11",
+      "name": "毕业设计（论文）",
+      "credits": 8.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 27,
+        "table": 1,
+        "row": 4
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "210303T10",
+      "name": "马克思主义基本原理",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 2
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "210402T10",
+      "name": "毛泽东思想和中国特色社会主义理论体系概论",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 3
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "210601T10",
+      "name": "习近平新时代中国特色社会主义思想概论",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 4
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "210801T10",
+      "name": "中国共产党的历史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 5
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "210802T10",
+      "name": "新中国史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 6
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "210803T10",
+      "name": "改革开放史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 7
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "210804T10",
+      "name": "社会主义发展史",
+      "credits": 1.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 8
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "211001T11",
+      "name": "思政实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 9
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "410004T11",
+      "name": "军事技能",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 10
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "410005T10",
+      "name": "军事理论",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 11
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "660003T10",
+      "name": "体育（一）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 12
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "660003T20",
+      "name": "体育（二）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 13
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "660003T30",
+      "name": "体育（三）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 14
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "660003T40",
+      "name": "体育（四）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 15
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "660005T11",
+      "name": "体育课外测试",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 16
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "180533T10",
+      "name": "高级英语（一）",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 17
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "180548T10",
+      "name": "大学英语（一）",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 18
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "180548T20",
+      "name": "大学英语（二）",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 19
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "000001T10",
+      "name": "实验室技术安全与环境",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 6,
+        "table": 2,
+        "row": 20
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "210138T10",
+      "name": "大学生心理健康教育（一）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 3
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "210138T20",
+      "name": "大学生心理健康教育（二）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 4
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "210702T10",
+      "name": "国家安全教育",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 5
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "130715T10",
+      "name": "高等数学A（一）",
+      "credits": 5.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 6
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "130715T20",
+      "name": "高等数学A（二）",
+      "credits": 5.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 7
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "130717T10",
+      "name": "线性代数",
+      "credits": 2.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 8
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "140109T10",
+      "name": "大学物理B（一）(信息类)",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 9
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "140109T20",
+      "name": "大学物理B（二）(信息类)",
+      "credits": 4.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 10
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "140202T11",
+      "name": "大学物理实验B",
+      "credits": 1.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 11
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360223T10",
+      "name": "基础数理统计",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 12
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "080203T10",
+      "name": "工程制图基础B",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 13
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "090209T10",
+      "name": "计算机程序设计基础（C）",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 14
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360102T10",
+      "name": "新生课",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 15
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360233T10",
+      "name": "复变函数与信号分析",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 16
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360236T10",
+      "name": "计算机程序设计基础(Java)",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 17
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "410003T11",
+      "name": "毕业教育",
+      "credits": 0.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 18
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "950614T10",
+      "name": "人工智能基础及应用（通识）A",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 19
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "960402T10",
+      "name": "电路理论",
+      "credits": 4.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 20
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "960404T10",
+      "name": "模拟电子技术B",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 21
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "960406T10",
+      "name": "数字电子技术B",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 22
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "960414T11",
+      "name": "电工电子实验 A（一）",
+      "credits": 0.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 23
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "960414T21",
+      "name": "电工电子实验 A（二）",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 24
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360244Z10",
+      "name": "通信原理",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 25
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360301Z10",
+      "name": "EDA技术与应用",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 26
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360307Z10",
+      "name": "数字信号处理原理及实现",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 27
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360308Z10",
+      "name": "高频电子电路",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 28
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360309Z10",
+      "name": "嵌入式系统及应用",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 29
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360314Z10",
+      "name": "单片机原理及应用",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 30
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360317Z10",
+      "name": "电磁场与电磁波",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 31
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360318Z10",
+      "name": "数据结构与算法",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 32
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360319Z10",
+      "name": "信号与系统",
+      "credits": 3.5,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 33
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360126ZG10",
+      "name": "现代电子测量技术",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 34
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360129ZG10",
+      "name": "传感器技术及应用",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 35
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360210ZG10",
+      "name": "数据库原理与技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 36
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360213ZG10",
+      "name": "软件无线电",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 37
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360214ZG10",
+      "name": "通信信号处理",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 38
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360217ZG10",
+      "name": "大规模集成电路设计",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 39
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360218ZG10",
+      "name": "无线传感器网技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 7,
+        "table": 1,
+        "row": 40
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360220ZG10",
+      "name": "微波与雷达技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 2
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360221ZG10",
+      "name": "移动通信",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 3
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360222ZG10",
+      "name": "机器学习理论与应用",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 4
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360224ZG10",
+      "name": "自动控制原理",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 5
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360226ZG10",
+      "name": "网络信息安全",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 6
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360230ZG10",
+      "name": "前沿量子技术",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 7
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360243Z10",
+      "name": "信息论与编码",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 8
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360302ZG10",
+      "name": "计算机网络",
+      "credits": 3.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 9
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360303ZG10",
+      "name": "开源软件设计基础",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 10
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360306ZG10",
+      "name": "半导体器件",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 11
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360310ZG10",
+      "name": "智能机器人系统",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 12
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360311ZG10",
+      "name": "智能信号处理",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 13
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360316ZG10",
+      "name": "数字图像处理",
+      "credits": 2.0,
+      "required_or_elective": "选修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 14
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "000002S11",
+      "name": "创新创业实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 15
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360103S10",
+      "name": "创新创业导论",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 16
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "970001S11",
+      "name": "社会实践",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 17
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360235S11",
+      "name": "通信网络工程实践",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 18
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360301S11",
+      "name": "EDA课程设计",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 19
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360304S11",
+      "name": "电子信息工程综合应用实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 20
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360305S11",
+      "name": "信号处理综合实践",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 21
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360312S11",
+      "name": "生产实习",
+      "credits": 3.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 22
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360313S11",
+      "name": "认知实习",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 23
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360315S11",
+      "name": "人工智能实践",
+      "credits": 2.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 24
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "360331S11",
+      "name": "毕业设计",
+      "credits": 8.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 8,
+        "table": 1,
+        "row": 25
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "000001T10",
+      "name": "实验室技术安全与环境保护知识学习培训与考核",
+      "credits": 1.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 9,
+        "table": 1,
+        "row": 7
+      }
+    },
+    {
+      "source_id": "ei-plan-2205",
+      "program": "电子信息工程",
+      "code": "660005T11",
+      "name": "体育课外测试",
+      "credits": 0.0,
+      "required_or_elective": "必修",
+      "locator": {
+        "page": 12,
+        "table": 1,
+        "row": 11
+      }
+    }
+  ],
+  "access_checks": [
+    {
+      "url": "http://csujwc.its.csu.edu.cn/",
+      "status": "login_required",
+      "evidence": "页面标题为中南大学教务系统，显示账号、密码及验证码登录表单；没有进行登录。"
+    },
+    {
+      "url": "http://csujwc.its.csu.edu.cn/sso.jsp",
+      "status": "login_required",
+      "redirect_origin_path": "https://ca.csu.edu.cn/authserver/login",
+      "evidence": "最终页面标题为统一身份认证平台，并有密码输入框；未保存票据、Cookie或表单隐藏值。"
+    },
+    {
+      "url": "https://csujwc.its.csu.edu.cn/",
+      "status": "connection_timeout",
+      "evidence": "本次连接超时，不能据此判断登录权限。"
+    }
+  ]
+}
