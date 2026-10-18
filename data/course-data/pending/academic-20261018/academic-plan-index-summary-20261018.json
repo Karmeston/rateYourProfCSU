@@ -1,0 +1,2300 @@
+{
+  "sourceFile": "academic-plan-index-20261018.json",
+  "totalPlans": 4701,
+  "plansByYear": {
+    "2003": 75,
+    "2004": 74,
+    "2005": 73,
+    "2006": 77,
+    "2007": 79,
+    "2008": 110,
+    "2009": 122,
+    "2010": 138,
+    "2011": 140,
+    "2012": 145,
+    "2013": 128,
+    "2014": 123,
+    "2015": 123,
+    "2016": 284,
+    "2017": 287,
+    "2018": 322,
+    "2019": 333,
+    "2020": 334,
+    "2021": 331,
+    "2022": 335,
+    "2023": 279,
+    "2024": 278,
+    "2025": 249,
+    "2026": 262
+  },
+  "mainPlansByYear": {
+    "2003": 75,
+    "2004": 74,
+    "2005": 73,
+    "2006": 77,
+    "2007": 79,
+    "2008": 110,
+    "2009": 122,
+    "2010": 138,
+    "2011": 140,
+    "2012": 145,
+    "2013": 128,
+    "2014": 123,
+    "2015": 123,
+    "2016": 110,
+    "2017": 113,
+    "2018": 148,
+    "2019": 159,
+    "2020": 160,
+    "2021": 162,
+    "2022": 164,
+    "2023": 140,
+    "2024": 141,
+    "2025": 138,
+    "2026": 146
+  },
+  "distinctMajors": 326,
+  "distinctMainMajors": 266,
+  "mainMajorsWithLatestAtLeast2023": 126,
+  "mainMajorsWithLatestAtLeast2025": 109,
+  "latestYearDistribution": {
+    "2003": 5,
+    "2004": 1,
+    "2005": 1,
+    "2007": 2,
+    "2008": 4,
+    "2009": 13,
+    "2010": 5,
+    "2011": 9,
+    "2012": 39,
+    "2013": 5,
+    "2014": 3,
+    "2015": 26,
+    "2017": 3,
+    "2020": 1,
+    "2022": 23,
+    "2023": 3,
+    "2024": 14,
+    "2025": 3,
+    "2026": 106
+  },
+  "colleges": {
+    "地球科学与信息物理学院": {
+      "majors": 19,
+      "latestYears": {
+        "2005": 1,
+        "2012": 2,
+        "2013": 1,
+        "2015": 4,
+        "2022": 3,
+        "2026": 8
+      }
+    },
+    "资源与安全工程学院": {
+      "majors": 3,
+      "latestYears": {
+        "2015": 1,
+        "2026": 2
+      }
+    },
+    "资源加工与生物工程学院": {
+      "majors": 8,
+      "latestYears": {
+        "2009": 1,
+        "2012": 2,
+        "2015": 1,
+        "2024": 1,
+        "2026": 3
+      }
+    },
+    "湘雅基础医学院": {
+      "majors": 6,
+      "latestYears": {
+        "2024": 1,
+        "2026": 5
+      }
+    },
+    "冶金与环境学院": {
+      "majors": 7,
+      "latestYears": {
+        "2009": 1,
+        "2010": 1,
+        "2012": 2,
+        "2015": 1,
+        "2026": 2
+      }
+    },
+    "材料科学与工程学院": {
+      "majors": 12,
+      "latestYears": {
+        "2003": 2,
+        "2009": 2,
+        "2012": 1,
+        "2015": 1,
+        "2024": 1,
+        "2026": 5
+      }
+    },
+    "粉末冶金研究院": {
+      "majors": 8,
+      "latestYears": {
+        "2009": 2,
+        "2012": 1,
+        "2015": 1,
+        "2022": 2,
+        "2024": 1,
+        "2026": 1
+      }
+    },
+    "生命科学学院": {
+      "majors": 7,
+      "latestYears": {
+        "2012": 1,
+        "2014": 1,
+        "2020": 1,
+        "2024": 1,
+        "2026": 3
+      }
+    },
+    "机电工程学院": {
+      "majors": 12,
+      "latestYears": {
+        "2003": 2,
+        "2012": 2,
+        "2015": 1,
+        "2022": 1,
+        "2024": 1,
+        "2026": 5
+      }
+    },
+    "信息科学与工程学院": {
+      "majors": 6,
+      "latestYears": {
+        "2007": 1,
+        "2008": 2,
+        "2009": 2,
+        "2012": 1
+      }
+    },
+    "自动化学院": {
+      "majors": 9,
+      "latestYears": {
+        "2015": 1,
+        "2024": 1,
+        "2026": 7
+      }
+    },
+    "电子信息学院": {
+      "majors": 2,
+      "latestYears": {
+        "2026": 2
+      }
+    },
+    "计算机学院": {
+      "majors": 8,
+      "latestYears": {
+        "2015": 3,
+        "2022": 1,
+        "2026": 4
+      }
+    },
+    "能源科学与工程学院": {
+      "majors": 7,
+      "latestYears": {
+        "2012": 3,
+        "2015": 1,
+        "2025": 1,
+        "2026": 2
+      }
+    },
+    "交通运输工程学院": {
+      "majors": 14,
+      "latestYears": {
+        "2009": 1,
+        "2012": 1,
+        "2013": 1,
+        "2015": 2,
+        "2022": 6,
+        "2026": 3
+      }
+    },
+    "土木工程学院": {
+      "majors": 13,
+      "latestYears": {
+        "2009": 1,
+        "2012": 1,
+        "2015": 1,
+        "2017": 1,
+        "2022": 2,
+        "2026": 7
+      }
+    },
+    "建筑与艺术学院": {
+      "majors": 19,
+      "latestYears": {
+        "2009": 1,
+        "2011": 2,
+        "2012": 5,
+        "2015": 1,
+        "2022": 3,
+        "2024": 1,
+        "2025": 1,
+        "2026": 5
+      }
+    },
+    "数学与统计学院": {
+      "majors": 9,
+      "latestYears": {
+        "2012": 1,
+        "2015": 1,
+        "2023": 1,
+        "2024": 1,
+        "2026": 5
+      }
+    },
+    "物理学院": {
+      "majors": 6,
+      "latestYears": {
+        "2012": 1,
+        "2014": 1,
+        "2022": 1,
+        "2025": 1,
+        "2026": 2
+      }
+    },
+    "化学化工学院": {
+      "majors": 9,
+      "latestYears": {
+        "2007": 1,
+        "2012": 1,
+        "2014": 1,
+        "2015": 1,
+        "2023": 2,
+        "2024": 1,
+        "2026": 2
+      }
+    },
+    "商学院": {
+      "majors": 7,
+      "latestYears": {
+        "2011": 1,
+        "2012": 2,
+        "2024": 1,
+        "2026": 3
+      }
+    },
+    "人文学院": {
+      "majors": 5,
+      "latestYears": {
+        "2012": 2,
+        "2022": 1,
+        "2026": 2
+      }
+    },
+    "外国语学院": {
+      "majors": 5,
+      "latestYears": {
+        "2015": 1,
+        "2026": 4
+      }
+    },
+    "公共管理学院": {
+      "majors": 4,
+      "latestYears": {
+        "2008": 2,
+        "2012": 1,
+        "2022": 1
+      }
+    },
+    "法学院": {
+      "majors": 4,
+      "latestYears": {
+        "2012": 1,
+        "2015": 1,
+        "2024": 1,
+        "2026": 1
+      }
+    },
+    "马克思主义学院": {
+      "majors": 4,
+      "latestYears": {
+        "2011": 1,
+        "2026": 3
+      }
+    },
+    "湘雅医学院": {
+      "majors": 15,
+      "latestYears": {
+        "2004": 1,
+        "2009": 1,
+        "2010": 1,
+        "2011": 1,
+        "2012": 2,
+        "2013": 2,
+        "2026": 7
+      }
+    },
+    "大数据研究院": {
+      "majors": 1,
+      "latestYears": {
+        "2012": 1
+      }
+    },
+    "湘雅药学院": {
+      "majors": 4,
+      "latestYears": {
+        "2012": 1,
+        "2024": 1,
+        "2026": 2
+      }
+    },
+    "湘雅护理学院": {
+      "majors": 2,
+      "latestYears": {
+        "2010": 1,
+        "2026": 1
+      }
+    },
+    "湘雅公共卫生学院": {
+      "majors": 4,
+      "latestYears": {
+        "2012": 1,
+        "2022": 1,
+        "2024": 1,
+        "2026": 1
+      }
+    },
+    "湘雅口腔医学院（湘雅口腔医院）": {
+      "majors": 5,
+      "latestYears": {
+        "2010": 1,
+        "2011": 1,
+        "2012": 1,
+        "2026": 2
+      }
+    },
+    "生命科学学院（医学遗传学国家重点实验室）": {
+      "majors": 1,
+      "latestYears": {
+        "2003": 1
+      }
+    },
+    "软件学院": {
+      "majors": 1,
+      "latestYears": {
+        "2010": 1
+      }
+    },
+    "党委学生工作部（学生工作处）、武装部": {
+      "majors": 2,
+      "latestYears": {
+        "2017": 2
+      }
+    },
+    "航空航天技术研究院": {
+      "majors": 4,
+      "latestYears": {
+        "2009": 1,
+        "2011": 1,
+        "2012": 1,
+        "2022": 1
+      }
+    },
+    "体育教研部": {
+      "majors": 1,
+      "latestYears": {
+        "2026": 1
+      }
+    },
+    "邓迪国际学院": {
+      "majors": 5,
+      "latestYears": {
+        "2026": 5
+      }
+    },
+    "国际合作与交流处": {
+      "majors": 2,
+      "latestYears": {
+        "2012": 1,
+        "2013": 1
+      }
+    },
+    "本科生院": {
+      "majors": 5,
+      "latestYears": {
+        "2011": 2,
+        "2015": 3
+      }
+    },
+    "人工智能学院": {
+      "majors": 1,
+      "latestYears": {
+        "2026": 1
+      }
+    }
+  },
+  "latestMainPlans": [
+    {
+      "college": "本科生院",
+      "majorCode": "9801",
+      "major": "虚拟专业1",
+      "latestYear": "2015",
+      "latestPlanName": "2015虚拟专业1"
+    },
+    {
+      "college": "本科生院",
+      "majorCode": "9802",
+      "major": "虚拟专业2",
+      "latestYear": "2015",
+      "latestPlanName": "2015虚拟专业2"
+    },
+    {
+      "college": "本科生院",
+      "majorCode": "9803",
+      "major": "虚拟专业3",
+      "latestYear": "2011",
+      "latestPlanName": "2011虚拟专业3"
+    },
+    {
+      "college": "本科生院",
+      "majorCode": "9804",
+      "major": "虚拟专业4",
+      "latestYear": "2011",
+      "latestPlanName": "2011虚拟专业4"
+    },
+    {
+      "college": "本科生院",
+      "majorCode": "9805",
+      "major": "虚拟专业5",
+      "latestYear": "2015",
+      "latestPlanName": "2015虚拟专业5"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "0605",
+      "major": "材料国际",
+      "latestYear": "2026",
+      "latestPlanName": "2026版材料国际本科培养方案"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "0604",
+      "major": "材料科学类L",
+      "latestYear": "2009",
+      "latestPlanName": "2009材料科学类"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "0606",
+      "major": "材料科学与工程",
+      "latestYear": "2009",
+      "latestPlanName": "2009材料科学与工程"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "0610",
+      "major": "材料科学与工程（强基）",
+      "latestYear": "2026",
+      "latestPlanName": "2026版材料科学与工程（强基）本科培养方案"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "0611",
+      "major": "材料科学与工程（智慧创新班）",
+      "latestYear": "2026",
+      "latestPlanName": "2026新材料智慧创新班培养方案"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "0608",
+      "major": "材料科学与工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015材料科学与工程(T)"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "0609",
+      "major": "材料科学与工程卓越人才培养",
+      "latestYear": "2024",
+      "latestPlanName": "2024版材料科学与工程卓越人才培养本科培养方案"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "0607",
+      "major": "材料类",
+      "latestYear": "2012",
+      "latestPlanName": "2012材料类"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "0602",
+      "major": "材料物理",
+      "latestYear": "2003",
+      "latestPlanName": "2003材料物理"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "0601",
+      "major": "金属材料工程",
+      "latestYear": "2003",
+      "latestPlanName": "2003金属材料工程"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "8412",
+      "major": "新材料类智慧创新班",
+      "latestYear": "2026",
+      "latestPlanName": "2026新材料类智慧创新班大类培养方案"
+    },
+    {
+      "college": "材料科学与工程学院",
+      "majorCode": "8204",
+      "major": "冶金材料类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版冶金材料类大类方案"
+    },
+    {
+      "college": "大数据研究院",
+      "majorCode": "2207",
+      "major": "医学信息学",
+      "latestYear": "2012",
+      "latestPlanName": "2012医学信息学"
+    },
+    {
+      "college": "党委学生工作部（学生工作处）、武装部",
+      "majorCode": "4108",
+      "major": "理工预科",
+      "latestYear": "2017",
+      "latestPlanName": "理科预科"
+    },
+    {
+      "college": "党委学生工作部（学生工作处）、武装部",
+      "majorCode": "4107",
+      "major": "文史预科",
+      "latestYear": "2017",
+      "latestPlanName": "2017预科文科培养方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0145",
+      "major": "测绘地理信息类L",
+      "latestYear": "2013",
+      "latestPlanName": "2013测绘地理信息类"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0401",
+      "major": "测绘工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版测绘工程本科培养方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0105",
+      "major": "测绘工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015测绘工程(T)"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0106",
+      "major": "地理信息科学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版地理信息科学本科培养方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0102",
+      "major": "地理信息系统",
+      "latestYear": "2012",
+      "latestPlanName": "2012地理信息系统"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0103",
+      "major": "地球科学类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012地球科学类"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0110",
+      "major": "地球物理学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版地球物理学本科培养方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0113",
+      "major": "地球物理学卓越人才培养",
+      "latestYear": "2022",
+      "latestPlanName": "2022版地球物理学卓越人才培养本科培养方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0403",
+      "major": "地球信息科学与技术",
+      "latestYear": "2015",
+      "latestPlanName": "2015地球信息科学与技术"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "8211",
+      "major": "地信类",
+      "latestYear": "2022",
+      "latestPlanName": "2022版地信类大类方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0101",
+      "major": "地质工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版地质工程本科培养方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0104",
+      "major": "地质工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015地质工程(T)"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0112",
+      "major": "地质工程卓越人才培养",
+      "latestYear": "2022",
+      "latestPlanName": "2022版地质工程卓越人才培养本科培养方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0115",
+      "major": "空天信息科技卓越人才实验班",
+      "latestYear": "2026",
+      "latestPlanName": "2026空天信息科学与技术卓越人才实验班培养方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0404",
+      "major": "信息物理工程",
+      "latestYear": "2005",
+      "latestPlanName": "2005信息物理工程"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "8215",
+      "major": "遥感测绘地信类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版遥感测绘地信类大类方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0108",
+      "major": "资源勘查工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版资源勘查工程本科培养方案"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0109",
+      "major": "资源勘查工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015资源勘查工程(T)"
+    },
+    {
+      "college": "地球科学与信息物理学院",
+      "majorCode": "0111",
+      "major": "资源勘查工程卓越人才培养",
+      "latestYear": "2026",
+      "latestPlanName": "2026版资源勘查工程卓越人才培养本科培养方案"
+    },
+    {
+      "college": "邓迪国际学院",
+      "majorCode": "7803",
+      "major": "机械设计制造及其自动化D",
+      "latestYear": "2026",
+      "latestPlanName": "2026版机械设计制造及其自动化D本科培养方案"
+    },
+    {
+      "college": "邓迪国际学院",
+      "majorCode": "7802",
+      "major": "计算机科学与技术D",
+      "latestYear": "2026",
+      "latestPlanName": "2026版计算机科学与技术D本科培养方案"
+    },
+    {
+      "college": "邓迪国际学院",
+      "majorCode": "7804",
+      "major": "交通设备与控制工程D",
+      "latestYear": "2026",
+      "latestPlanName": "2026版交通设备与控制工程D本科培养方案"
+    },
+    {
+      "college": "邓迪国际学院",
+      "majorCode": "7805",
+      "major": "数学与应用数学D",
+      "latestYear": "2026",
+      "latestPlanName": "2026版数学与应用数学D本科培养方案"
+    },
+    {
+      "college": "邓迪国际学院",
+      "majorCode": "7801",
+      "major": "土木工程D",
+      "latestYear": "2026",
+      "latestPlanName": "2026版土木工程D本科培养方案"
+    },
+    {
+      "college": "电子信息学院",
+      "majorCode": "8206",
+      "major": "电子信息类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版电子信息类大类方案"
+    },
+    {
+      "college": "电子信息学院",
+      "majorCode": "0905",
+      "major": "通信工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版通信工程本科培养方案"
+    },
+    {
+      "college": "法学院",
+      "majorCode": "2006",
+      "major": "法学(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015法学(T)"
+    },
+    {
+      "college": "法学院",
+      "majorCode": "8103",
+      "major": "法学类",
+      "latestYear": "2024",
+      "latestPlanName": "2024版法学类大类方案"
+    },
+    {
+      "college": "法学院",
+      "majorCode": "2003",
+      "major": "法学类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012法学类"
+    },
+    {
+      "college": "法学院",
+      "majorCode": "2007",
+      "major": "法学卓越人才培养",
+      "latestYear": "2026",
+      "latestPlanName": "2026数字法学卓越人才实验班培养专业"
+    },
+    {
+      "college": "粉末冶金研究院",
+      "majorCode": "0708",
+      "major": "材料化学专业国际班",
+      "latestYear": "2022",
+      "latestPlanName": "2022版材料化学专业国际班本科培养方案"
+    },
+    {
+      "college": "粉末冶金研究院",
+      "majorCode": "0703",
+      "major": "材料科学类L",
+      "latestYear": "2009",
+      "latestPlanName": "2009材料科学类"
+    },
+    {
+      "college": "粉末冶金研究院",
+      "majorCode": "0705",
+      "major": "材料类",
+      "latestYear": "2012",
+      "latestPlanName": "2012材料类"
+    },
+    {
+      "college": "粉末冶金研究院",
+      "majorCode": "0704",
+      "major": "粉体材料科学与工程",
+      "latestYear": "2009",
+      "latestPlanName": "2009粉体材料科学与工程"
+    },
+    {
+      "college": "粉末冶金研究院",
+      "majorCode": "0706",
+      "major": "粉体材料科学与工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015粉体材料科学与工程(T)"
+    },
+    {
+      "college": "粉末冶金研究院",
+      "majorCode": "0709",
+      "major": "粉体材料科学与工程卓越人才培养",
+      "latestYear": "2024",
+      "latestPlanName": "2024版粉体材料科学与工程卓越人才培养本科培养方案"
+    },
+    {
+      "college": "粉末冶金研究院",
+      "majorCode": "0707",
+      "major": "高分子材料与工程",
+      "latestYear": "2022",
+      "latestPlanName": "2022版高分子材料与工程本科培养方案"
+    },
+    {
+      "college": "粉末冶金研究院",
+      "majorCode": "8411",
+      "major": "新材料类大飞机智慧创新班",
+      "latestYear": "2026",
+      "latestPlanName": "2026智慧创新班—“新材料（大飞机班）本科大类培养方案"
+    },
+    {
+      "college": "公共管理学院",
+      "majorCode": "4303",
+      "major": "公共管理类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012公共管理类"
+    },
+    {
+      "college": "公共管理学院",
+      "majorCode": "4304",
+      "major": "劳动与社会保障",
+      "latestYear": "2022",
+      "latestPlanName": "2022版劳动与社会保障本科培养方案"
+    },
+    {
+      "college": "公共管理学院",
+      "majorCode": "2002",
+      "major": "社会学",
+      "latestYear": "2008",
+      "latestPlanName": "2008社会学"
+    },
+    {
+      "college": "公共管理学院",
+      "majorCode": "2101",
+      "major": "行政管理",
+      "latestYear": "2008",
+      "latestPlanName": "2008行政管理"
+    },
+    {
+      "college": "国际合作与交流处",
+      "majorCode": "9302",
+      "major": "临床医学(留学生英文)",
+      "latestYear": "2012",
+      "latestPlanName": "2012临床医学（留学生英文）"
+    },
+    {
+      "college": "国际合作与交流处",
+      "majorCode": "9301",
+      "major": "临床医学(留学生中文)",
+      "latestYear": "2013",
+      "latestPlanName": "2013临床医学（留学生中文）"
+    },
+    {
+      "college": "航空航天技术研究院",
+      "majorCode": "4203",
+      "major": "材料科学类",
+      "latestYear": "2009",
+      "latestPlanName": "2009材料科学类"
+    },
+    {
+      "college": "航空航天技术研究院",
+      "majorCode": "4202",
+      "major": "材料科学与工程",
+      "latestYear": "2012",
+      "latestPlanName": "2012材料科学与工程"
+    },
+    {
+      "college": "航空航天技术研究院",
+      "majorCode": "4204",
+      "major": "材料类L",
+      "latestYear": "2011",
+      "latestPlanName": "2011材料类"
+    },
+    {
+      "college": "航空航天技术研究院",
+      "majorCode": "8213",
+      "major": "航空航天类",
+      "latestYear": "2022",
+      "latestPlanName": "2022版航空航天类大类方案"
+    },
+    {
+      "college": "化学化工学院",
+      "majorCode": "1509",
+      "major": "陈新民（应用化学）拔尖人才培养",
+      "latestYear": "2024",
+      "latestPlanName": "2024版陈新民（应用化学）拔尖人才培养本科培养方案"
+    },
+    {
+      "college": "化学化工学院",
+      "majorCode": "1510",
+      "major": "陈新民强基班",
+      "latestYear": "2026",
+      "latestPlanName": "2026版陈新民强基班本科培养方案"
+    },
+    {
+      "college": "化学化工学院",
+      "majorCode": "1508",
+      "major": "化工国际",
+      "latestYear": "2023",
+      "latestPlanName": "化学工程与工艺国际培养方案"
+    },
+    {
+      "college": "化学化工学院",
+      "majorCode": "8407",
+      "major": "化工国际类",
+      "latestYear": "2023",
+      "latestPlanName": "化学工程与工艺国际培养方案"
+    },
+    {
+      "college": "化学化工学院",
+      "majorCode": "8202",
+      "major": "化工与制药类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版化工与制药类大类方案"
+    },
+    {
+      "college": "化学化工学院",
+      "majorCode": "1505",
+      "major": "化工与制药类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012化工与制药类"
+    },
+    {
+      "college": "化学化工学院",
+      "majorCode": "1507",
+      "major": "化学工程与工艺(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015化学工程与工艺(T)"
+    },
+    {
+      "college": "化学化工学院",
+      "majorCode": "1504",
+      "major": "化学教改班",
+      "latestYear": "2007",
+      "latestPlanName": "2007化学教改班"
+    },
+    {
+      "college": "化学化工学院",
+      "majorCode": "1506",
+      "major": "化学升华",
+      "latestYear": "2014",
+      "latestPlanName": "2014化学升华"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0815",
+      "major": "车辆工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版车辆工程本科培养方案"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0809",
+      "major": "机电国际",
+      "latestYear": "2022",
+      "latestPlanName": "2022版机电国际本科培养方案"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0805",
+      "major": "机械(电子)",
+      "latestYear": "2003",
+      "latestPlanName": "2003机械(电子)"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0804",
+      "major": "机械(数控)",
+      "latestYear": "2003",
+      "latestPlanName": "2003机械(数控)"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "8203",
+      "major": "机械类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版机械类大类方案"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0806",
+      "major": "机械类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012机械类"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0813",
+      "major": "机械设计制造及其自动化(材料与制造工程)",
+      "latestYear": "2024",
+      "latestPlanName": "2024版机械设计制造及其自动化(材料与制造工程)本科培养方案"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0817",
+      "major": "机械设计制造及其自动化(极端制造)",
+      "latestYear": "2026",
+      "latestPlanName": "2026版机械设计制造及其自动化(极端制造)本科培养方案"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0814",
+      "major": "机械设计制造及其自动化(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015机械设计制造及其自动化(T)"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0803",
+      "major": "微电子科学与工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版微电子科学与工程本科培养方案"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0802",
+      "major": "微电子制造工程",
+      "latestYear": "2012",
+      "latestPlanName": "2012微电子制造工程"
+    },
+    {
+      "college": "机电工程学院",
+      "majorCode": "0816",
+      "major": "智能制造卓越人才培养",
+      "latestYear": "2026",
+      "latestPlanName": "2026版智能制造卓越人才培养本科培养方案"
+    },
+    {
+      "college": "计算机学院",
+      "majorCode": "0920",
+      "major": "计算机科学与技术(大数据方向)",
+      "latestYear": "2015",
+      "latestPlanName": "2015计算机科学与技术（大数据方向）"
+    },
+    {
+      "college": "计算机学院",
+      "majorCode": "0916",
+      "major": "计算机科学与技术(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015计算机科学与技术（T）"
+    },
+    {
+      "college": "计算机学院",
+      "majorCode": "0922",
+      "major": "计算机科学与技术卓越人才培养",
+      "latestYear": "2026",
+      "latestPlanName": "2026版计算机科学与技术卓越人才培养本科培养方案"
+    },
+    {
+      "college": "计算机学院",
+      "majorCode": "8208",
+      "major": "计算机类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版计算机类大类方案"
+    },
+    {
+      "college": "计算机学院",
+      "majorCode": "3903",
+      "major": "软件工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015软件工程(T)"
+    },
+    {
+      "college": "计算机学院",
+      "majorCode": "0921",
+      "major": "数据科学与大数据技术",
+      "latestYear": "2026",
+      "latestPlanName": "2026版数据科学与大数据技术本科培养方案"
+    },
+    {
+      "college": "计算机学院",
+      "majorCode": "0919",
+      "major": "物联网工程",
+      "latestYear": "2022",
+      "latestPlanName": "2022版物联网工程本科培养方案"
+    },
+    {
+      "college": "计算机学院",
+      "majorCode": "0906",
+      "major": "信息安全",
+      "latestYear": "2026",
+      "latestPlanName": "2026版信息安全本科培养方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1912",
+      "major": "产品设计",
+      "latestYear": "2024",
+      "latestPlanName": "2024版产品设计本科培养方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1204",
+      "major": "城市规划",
+      "latestYear": "2012",
+      "latestPlanName": "2012城市规划"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1909",
+      "major": "城乡规划",
+      "latestYear": "2026",
+      "latestPlanName": "2026版城乡规划本科培养方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1902",
+      "major": "工业设计",
+      "latestYear": "2012",
+      "latestPlanName": "2012工业设计"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1911",
+      "major": "环境设计",
+      "latestYear": "2022",
+      "latestPlanName": "2022版环境设计本科培养方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "8214",
+      "major": "建筑城规类",
+      "latestYear": "2025",
+      "latestPlanName": "2025版建筑城规类大类方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1910",
+      "major": "建筑学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版建筑学本科培养方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1913",
+      "major": "建筑学(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015建筑学（T)"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1915",
+      "major": "建筑学类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012建筑学类"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1904",
+      "major": "美术类L",
+      "latestYear": "2011",
+      "latestPlanName": "2011美术类"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1906",
+      "major": "视觉传达设计",
+      "latestYear": "2022",
+      "latestPlanName": "2022版视觉传达设计本科培养方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1914",
+      "major": "舞蹈表演",
+      "latestYear": "2026",
+      "latestPlanName": "2026版舞蹈表演本科培养方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1907",
+      "major": "艺术类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012艺术类"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1901",
+      "major": "艺术设计",
+      "latestYear": "2012",
+      "latestPlanName": "2012艺术设计"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "8109",
+      "major": "艺术设计类",
+      "latestYear": "2022",
+      "latestPlanName": "2022版艺术设计类大类方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1916",
+      "major": "艺术与科技",
+      "latestYear": "2026",
+      "latestPlanName": "2026版艺术与科技本科培养方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1903",
+      "major": "音乐表演",
+      "latestYear": "2026",
+      "latestPlanName": "2026版音乐表演本科培养方案"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1908",
+      "major": "音乐表演类",
+      "latestYear": "2011",
+      "latestPlanName": "2011音乐表演类"
+    },
+    {
+      "college": "建筑与艺术学院",
+      "majorCode": "1905",
+      "major": "音乐类L",
+      "latestYear": "2009",
+      "latestPlanName": "2009音乐类"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1110",
+      "major": "轨道交通信号与控制",
+      "latestYear": "2026",
+      "latestPlanName": "2026版轨道交通信号与控制本科培养方案"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1108",
+      "major": "交通国际",
+      "latestYear": "2022",
+      "latestPlanName": "2022版交通国际本科培养方案"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1112",
+      "major": "交通设备（中土国际）",
+      "latestYear": "2022",
+      "latestPlanName": "2022版交通设备（中土国际）本科培养方案"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1102",
+      "major": "交通设备信息工程",
+      "latestYear": "2012",
+      "latestPlanName": "2012交通设备信息工程"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1105",
+      "major": "交通设备与控制工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015交通设备与控制工程(T)"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1114",
+      "major": "交通设备与控制工程卓越人才培养",
+      "latestYear": "2022",
+      "latestPlanName": "2022版交通设备与控制工程卓越人才培养本科培养方案"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1101",
+      "major": "交通运输",
+      "latestYear": "2026",
+      "latestPlanName": "2026版交通运输本科培养方案"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1106",
+      "major": "交通运输",
+      "latestYear": "2009",
+      "latestPlanName": "2009交通运输"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1115",
+      "major": "交通运输（1+4留学生）",
+      "latestYear": "2022",
+      "latestPlanName": "2022版交通运输（1+4留学生）本科培养方案"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1111",
+      "major": "交通运输（中土国际）",
+      "latestYear": "2022",
+      "latestPlanName": "2022版交通运输（中土国际）大类方案"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1107",
+      "major": "交通运输(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015交通运输(T)"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "8212",
+      "major": "交通运输类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版交通运输类大类方案"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1104",
+      "major": "交通运输类L",
+      "latestYear": "2013",
+      "latestPlanName": "2013交通运输类"
+    },
+    {
+      "college": "交通运输工程学院",
+      "majorCode": "1113",
+      "major": "交通运输卓越人才培养",
+      "latestYear": "2022",
+      "latestPlanName": "2022版交通运输卓越人才培养本科培养方案"
+    },
+    {
+      "college": "马克思主义学院",
+      "majorCode": "4102",
+      "major": "理工预科",
+      "latestYear": "2026",
+      "latestPlanName": "2026版理工预科本科培养方案"
+    },
+    {
+      "college": "马克思主义学院",
+      "majorCode": "2102",
+      "major": "思想政治教育",
+      "latestYear": "2026",
+      "latestPlanName": "2026版思想政治教育本科培养方案"
+    },
+    {
+      "college": "马克思主义学院",
+      "majorCode": "4101",
+      "major": "文史预科",
+      "latestYear": "2026",
+      "latestPlanName": "2026版文史预科本科培养方案"
+    },
+    {
+      "college": "马克思主义学院",
+      "majorCode": "2104",
+      "major": "政治学类",
+      "latestYear": "2011",
+      "latestPlanName": "2011政治学类"
+    },
+    {
+      "college": "能源科学与工程学院",
+      "majorCode": "1002",
+      "major": "建筑环境与设备工程",
+      "latestYear": "2012",
+      "latestPlanName": "2012建筑环境与设备工程"
+    },
+    {
+      "college": "能源科学与工程学院",
+      "majorCode": "1003",
+      "major": "能源动力类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012能源动力类"
+    },
+    {
+      "college": "能源科学与工程学院",
+      "majorCode": "8205",
+      "major": "能源类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版能源类大类方案"
+    },
+    {
+      "college": "能源科学与工程学院",
+      "majorCode": "1006",
+      "major": "能源与动力工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版能源与动力工程本科培养方案"
+    },
+    {
+      "college": "能源科学与工程学院",
+      "majorCode": "1005",
+      "major": "能源与动力工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015能源与动力工程(T)"
+    },
+    {
+      "college": "能源科学与工程学院",
+      "majorCode": "10063",
+      "major": "热能方向",
+      "latestYear": "2025",
+      "latestPlanName": "热能方向 2025版"
+    },
+    {
+      "college": "能源科学与工程学院",
+      "majorCode": "1001",
+      "major": "热能与动力工程",
+      "latestYear": "2012",
+      "latestPlanName": "2012热能与动力工程"
+    },
+    {
+      "college": "人工智能学院",
+      "majorCode": "9801",
+      "major": "人工智能",
+      "latestYear": "2026",
+      "latestPlanName": "2026人工智能专业本科培养方案"
+    },
+    {
+      "college": "人文学院",
+      "majorCode": "1702",
+      "major": "广播电视新闻学",
+      "latestYear": "2012",
+      "latestPlanName": "2012广播电视新闻学"
+    },
+    {
+      "college": "人文学院",
+      "majorCode": "1708",
+      "major": "国际传播卓越人才实验班",
+      "latestYear": "2026",
+      "latestPlanName": "2026版国际传播卓越人才实验班本科培养方案"
+    },
+    {
+      "college": "人文学院",
+      "majorCode": "1706",
+      "major": "数字出版卓越人才培养",
+      "latestYear": "2022",
+      "latestPlanName": "2022版数字出版卓越人才培养本科培养方案"
+    },
+    {
+      "college": "人文学院",
+      "majorCode": "8105",
+      "major": "中国语言文学类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版中国语言文学类大类方案"
+    },
+    {
+      "college": "人文学院",
+      "majorCode": "1703",
+      "major": "中国语言文学类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012中国语言文学类"
+    },
+    {
+      "college": "软件学院",
+      "majorCode": "3902",
+      "major": "软件工程类",
+      "latestYear": "2010",
+      "latestPlanName": "2010软件工程类"
+    },
+    {
+      "college": "商学院",
+      "majorCode": "1601",
+      "major": "工商管理",
+      "latestYear": "2026",
+      "latestPlanName": "2026版工商管理本科培养方案"
+    },
+    {
+      "college": "商学院",
+      "majorCode": "1616",
+      "major": "工商管理(高水平运动)",
+      "latestYear": "2024",
+      "latestPlanName": "2024版工商管理(高水平运动)本科培养方案"
+    },
+    {
+      "college": "商学院",
+      "majorCode": "1615",
+      "major": "管理学类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012管理学类"
+    },
+    {
+      "college": "商学院",
+      "majorCode": "8102",
+      "major": "经济管理类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版经济管理类大类方案"
+    },
+    {
+      "college": "商学院",
+      "majorCode": "1614",
+      "major": "经济学类",
+      "latestYear": "2012",
+      "latestPlanName": "2012经济学类"
+    },
+    {
+      "college": "商学院",
+      "majorCode": "1608",
+      "major": "经济与管理类L",
+      "latestYear": "2011",
+      "latestPlanName": "2011经济与管理类"
+    },
+    {
+      "college": "商学院",
+      "majorCode": "1617",
+      "major": "数据科学与商业分析卓越人才培养",
+      "latestYear": "2026",
+      "latestPlanName": "2026版数据科学与商业分析卓越人才培养本科培养方案"
+    },
+    {
+      "college": "生命科学学院",
+      "majorCode": "07101J",
+      "major": "生命科学与技术基地班",
+      "latestYear": "2020",
+      "latestPlanName": "2020版生命科学与技术基地班本科培养方案"
+    },
+    {
+      "college": "生命科学学院",
+      "majorCode": "2802",
+      "major": "生物科学",
+      "latestYear": "2014",
+      "latestPlanName": "中南大学国家生命科学与技术人才培养基地 ——基因科学与技术产业化点"
+    },
+    {
+      "college": "生命科学学院",
+      "majorCode": "2805",
+      "major": "生物科学（强基）",
+      "latestYear": "2026",
+      "latestPlanName": "2026版生物科学（强基）本科培养方案"
+    },
+    {
+      "college": "生命科学学院",
+      "majorCode": "2804",
+      "major": "生物科学拔尖人才培养",
+      "latestYear": "2024",
+      "latestPlanName": "2024版生物科学拔尖人才培养本科培养方案"
+    },
+    {
+      "college": "生命科学学院",
+      "majorCode": "3702",
+      "major": "生物科学类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012生物科学类"
+    },
+    {
+      "college": "生命科学学院",
+      "majorCode": "2806",
+      "major": "生物信息学（智慧创新班）",
+      "latestYear": "2026",
+      "latestPlanName": "2026版生物信息学（智慧创新班）本科培养方案"
+    },
+    {
+      "college": "生命科学学院",
+      "majorCode": "8306",
+      "major": "生物医药类智慧创新班",
+      "latestYear": "2026",
+      "latestPlanName": "2026版生物医药类智慧创新班本科大类培养方案"
+    },
+    {
+      "college": "生命科学学院（医学遗传学国家重点实验室）",
+      "majorCode": "3801",
+      "major": "生命科学",
+      "latestYear": "2003",
+      "latestPlanName": "2003生命科学"
+    },
+    {
+      "college": "数学与统计学院",
+      "majorCode": "8216",
+      "major": "数学类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版数学类大类方案"
+    },
+    {
+      "college": "数学与统计学院",
+      "majorCode": "1304",
+      "major": "数学类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012数学类"
+    },
+    {
+      "college": "数学与统计学院",
+      "majorCode": "8201",
+      "major": "数学物理类",
+      "latestYear": "2023",
+      "latestPlanName": "2023版数学物理类大类培养方案"
+    },
+    {
+      "college": "数学与统计学院",
+      "majorCode": "1307",
+      "major": "数学与应用数学（强基）",
+      "latestYear": "2026",
+      "latestPlanName": "2026版数学与应用数学（强基）本科培养方案"
+    },
+    {
+      "college": "数学与统计学院",
+      "majorCode": "1305",
+      "major": "数学与应用数学(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015数学与应用数学（T）"
+    },
+    {
+      "college": "数学与统计学院",
+      "majorCode": "1306",
+      "major": "数学与应用数学拔尖人才培养",
+      "latestYear": "2024",
+      "latestPlanName": "2024版数学与应用数学拔尖人才培养本科培养方案"
+    },
+    {
+      "college": "数学与统计学院",
+      "majorCode": "1303",
+      "major": "统计学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版统计学本科培养方案"
+    },
+    {
+      "college": "数学与统计学院",
+      "majorCode": "1302",
+      "major": "信息与计算科学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版信息与计算科学本科培养方案"
+    },
+    {
+      "college": "数学与统计学院",
+      "majorCode": "1308",
+      "major": "信息与计算科学（强基）",
+      "latestYear": "2026",
+      "latestPlanName": "2026版信息与计算科学（强基）本科培养方案"
+    },
+    {
+      "college": "体育教研部",
+      "majorCode": "6601",
+      "major": "运动训练",
+      "latestYear": "2026",
+      "latestPlanName": "2026版运动训练本科培养方案"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1202",
+      "major": "工程管理",
+      "latestYear": "2026",
+      "latestPlanName": "2026版工程管理本科培养方案"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1205",
+      "major": "工程力学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版工程力学本科培养方案"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "8210",
+      "major": "轨道交通智能建维类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版轨道交通智能建维类大类方案"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1203",
+      "major": "铁道工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版铁道工程本科培养方案"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1208",
+      "major": "土建类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012土建类"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1201",
+      "major": "土木工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版土木工程本科培养方案"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1216",
+      "major": "土木工程",
+      "latestYear": "2009",
+      "latestPlanName": "2009土木工程"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1210",
+      "major": "土木工程(天佑班)",
+      "latestYear": "2017",
+      "latestPlanName": "2017土木工程(天佑班)培养方案"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1218",
+      "major": "土木工程（中土国际）",
+      "latestYear": "2022",
+      "latestPlanName": "2022版土木工程（中土国际）大类方案"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1217",
+      "major": "土木工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015土木工程(T)"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1219",
+      "major": "土木工程卓越人才培养",
+      "latestYear": "2022",
+      "latestPlanName": "2022版土木工程卓越人才培养本科培养方案"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1209",
+      "major": "土木国际",
+      "latestYear": "2026",
+      "latestPlanName": "2026版土木国际本科培养方案"
+    },
+    {
+      "college": "土木工程学院",
+      "majorCode": "1207",
+      "major": "消防工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版消防工程本科培养方案"
+    },
+    {
+      "college": "外国语学院",
+      "majorCode": "1803",
+      "major": "法语",
+      "latestYear": "2026",
+      "latestPlanName": "2026版法语本科培养方案"
+    },
+    {
+      "college": "外国语学院",
+      "majorCode": "1802",
+      "major": "日语",
+      "latestYear": "2026",
+      "latestPlanName": "2026版日语本科培养方案"
+    },
+    {
+      "college": "外国语学院",
+      "majorCode": "8106",
+      "major": "外国语言文学类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版外国语言文学类大类方案"
+    },
+    {
+      "college": "外国语学院",
+      "majorCode": "1801",
+      "major": "英语",
+      "latestYear": "2026",
+      "latestPlanName": "2026版英语本科培养方案"
+    },
+    {
+      "college": "外国语学院",
+      "majorCode": "1806",
+      "major": "英语(翻译人才班)",
+      "latestYear": "2015",
+      "latestPlanName": "2015英语（翻译人才班）"
+    },
+    {
+      "college": "物理学院",
+      "majorCode": "1406",
+      "major": "光电信息科学与工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版光电信息科学与工程本科培养方案"
+    },
+    {
+      "college": "物理学院",
+      "majorCode": "1405",
+      "major": "物理升华",
+      "latestYear": "2014",
+      "latestPlanName": "2014物理升华"
+    },
+    {
+      "college": "物理学院",
+      "majorCode": "1404",
+      "major": "物理与电子科学类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012物理与电子科学类"
+    },
+    {
+      "college": "物理学院",
+      "majorCode": "1408",
+      "major": "应用物理学（强基）",
+      "latestYear": "2026",
+      "latestPlanName": "2026版应用物理学（强基）本科培养方案"
+    },
+    {
+      "college": "物理学院",
+      "majorCode": "1403",
+      "major": "应用物理学(T)",
+      "latestYear": "2022",
+      "latestPlanName": "2022版应用物理学(T)本科培养方案"
+    },
+    {
+      "college": "物理学院",
+      "majorCode": "1407",
+      "major": "应用物理学拔尖人才培养",
+      "latestYear": "2025",
+      "latestPlanName": "应用物理学拔尖人才培养 2025版"
+    },
+    {
+      "college": "湘雅公共卫生学院",
+      "majorCode": "8304",
+      "major": "非临床医学五年类",
+      "latestYear": "2024",
+      "latestPlanName": "2024版非临床医学五年类大类方案"
+    },
+    {
+      "college": "湘雅公共卫生学院",
+      "majorCode": "2601",
+      "major": "预防医学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版预防医学本科培养方案"
+    },
+    {
+      "college": "湘雅公共卫生学院",
+      "majorCode": "2602",
+      "major": "预防医学(卓越班)",
+      "latestYear": "2022",
+      "latestPlanName": "2022版预防医学(卓越班)本科培养方案"
+    },
+    {
+      "college": "湘雅公共卫生学院",
+      "majorCode": "2502",
+      "major": "预防医学类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012预防医学类"
+    },
+    {
+      "college": "湘雅护理学院",
+      "majorCode": "2501",
+      "major": "护理学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版护理学本科培养方案"
+    },
+    {
+      "college": "湘雅护理学院",
+      "majorCode": "2402",
+      "major": "护理学类",
+      "latestYear": "2010",
+      "latestPlanName": "2010护理学类"
+    },
+    {
+      "college": "湘雅基础医学院",
+      "majorCode": "2301",
+      "major": "法医学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版法医学本科培养方案"
+    },
+    {
+      "college": "湘雅基础医学院",
+      "majorCode": "2303",
+      "major": "基础医学",
+      "latestYear": "2024",
+      "latestPlanName": "2024版基础医学本科培养方案"
+    },
+    {
+      "college": "湘雅基础医学院",
+      "majorCode": "2304",
+      "major": "基础医学拔尖人才培养计划实验班",
+      "latestYear": "2026",
+      "latestPlanName": "2026版基础医学拔尖人才培养计划实验班本科培养方案"
+    },
+    {
+      "college": "湘雅基础医学院",
+      "majorCode": "8410",
+      "major": "升华科创班",
+      "latestYear": "2026",
+      "latestPlanName": "2026版升华科创班大类方案"
+    },
+    {
+      "college": "湘雅基础医学院",
+      "majorCode": "0402",
+      "major": "生物医学工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版生物医学工程本科培养方案"
+    },
+    {
+      "college": "湘雅基础医学院",
+      "majorCode": "2305",
+      "major": "生物医学工程（科创班）",
+      "latestYear": "2026",
+      "latestPlanName": "2026版生物医学工程（科创班）本科培养方案"
+    },
+    {
+      "college": "湘雅口腔医学院（湘雅口腔医院）",
+      "majorCode": "2703",
+      "major": "口腔医学(5+3)",
+      "latestYear": "2026",
+      "latestPlanName": "2026版口腔医学(5+3)本科培养方案"
+    },
+    {
+      "college": "湘雅口腔医学院（湘雅口腔医院）",
+      "majorCode": "2702",
+      "major": "口腔医学(七年制)",
+      "latestYear": "2012",
+      "latestPlanName": "2012口腔医学(七年制)"
+    },
+    {
+      "college": "湘雅口腔医学院（湘雅口腔医院）",
+      "majorCode": "2701",
+      "major": "口腔医学(五年制)",
+      "latestYear": "2026",
+      "latestPlanName": "2026版口腔医学(五年制)本科培养方案"
+    },
+    {
+      "college": "湘雅口腔医学院（湘雅口腔医院）",
+      "majorCode": "2603",
+      "major": "口腔医学类",
+      "latestYear": "2010",
+      "latestPlanName": "2010口腔医学类"
+    },
+    {
+      "college": "湘雅口腔医学院（湘雅口腔医院）",
+      "majorCode": "2604",
+      "major": "口腔医学类(七年制)",
+      "latestYear": "2011",
+      "latestPlanName": "2011口腔医学类（七年制）"
+    },
+    {
+      "college": "湘雅药学院",
+      "majorCode": "2403",
+      "major": "临床药学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版临床药学本科培养方案"
+    },
+    {
+      "college": "湘雅药学院",
+      "majorCode": "2401",
+      "major": "药学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版药学本科培养方案"
+    },
+    {
+      "college": "湘雅药学院",
+      "majorCode": "2302",
+      "major": "药学类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012药学类"
+    },
+    {
+      "college": "湘雅药学院",
+      "majorCode": "8305",
+      "major": "医学四年类",
+      "latestYear": "2024",
+      "latestPlanName": "2024版医学四年类大类方案"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2203",
+      "major": "精神医学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版精神医学本科培养方案"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "8303",
+      "major": "临床及口腔医学五年类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版临床及口腔医学五年类大类方案"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2204",
+      "major": "临床医学(八年制)",
+      "latestYear": "2026",
+      "latestPlanName": "2026版临床医学(八年制)本科培养方案"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2214",
+      "major": "临床医学(基础强化班)",
+      "latestYear": "2013",
+      "latestPlanName": "2013临床医学(基础强化班)"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2215",
+      "major": "临床医学(留学生)",
+      "latestYear": "2010",
+      "latestPlanName": "2010临床医学(留学生)"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2202",
+      "major": "临床医学(七年)",
+      "latestYear": "2004",
+      "latestPlanName": "2004临床医学(七年)"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2201",
+      "major": "临床医学(五年制)",
+      "latestYear": "2026",
+      "latestPlanName": "2026版临床医学(五年制)本科培养方案"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2213",
+      "major": "临床医学(卓越医生班)",
+      "latestYear": "2013",
+      "latestPlanName": "2013临床医学(卓越医生班)"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2211",
+      "major": "临床医学与医学技术类(五年制)L",
+      "latestYear": "2011",
+      "latestPlanName": "2011临床医学与医学技术类（五年制）"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2205",
+      "major": "麻醉学",
+      "latestYear": "2026",
+      "latestPlanName": "2026版麻醉学本科培养方案"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2206",
+      "major": "医学检验",
+      "latestYear": "2012",
+      "latestPlanName": "2012医学检验"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2212",
+      "major": "医学检验技术",
+      "latestYear": "2026",
+      "latestPlanName": "2026版医学检验技术本科培养方案"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2209",
+      "major": "医学类(八年制)",
+      "latestYear": "2009",
+      "latestPlanName": "2009医学类(八年制)"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2208",
+      "major": "医学类(五年制)L",
+      "latestYear": "2012",
+      "latestPlanName": "2012医学类(五年制)"
+    },
+    {
+      "college": "湘雅医学院",
+      "majorCode": "2216",
+      "major": "卓越医生培养（五年制）",
+      "latestYear": "2026",
+      "latestPlanName": "2026版卓越医生培养（五年制）本科培养方案"
+    },
+    {
+      "college": "信息科学与工程学院",
+      "majorCode": "09013",
+      "major": "电气工程及其自动化",
+      "latestYear": "2009",
+      "latestPlanName": "2009电气工程及其自动化"
+    },
+    {
+      "college": "信息科学与工程学院",
+      "majorCode": "0909",
+      "major": "电气信息类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012电气信息类"
+    },
+    {
+      "college": "信息科学与工程学院",
+      "majorCode": "0912",
+      "major": "计算机类08",
+      "latestYear": "2008",
+      "latestPlanName": "2008计算机类"
+    },
+    {
+      "college": "信息科学与工程学院",
+      "majorCode": "0907",
+      "major": "教改信息班",
+      "latestYear": "2007",
+      "latestPlanName": "2007教改信息班"
+    },
+    {
+      "college": "信息科学与工程学院",
+      "majorCode": "0911",
+      "major": "控制类",
+      "latestYear": "2008",
+      "latestPlanName": "2008控制类"
+    },
+    {
+      "college": "信息科学与工程学院",
+      "majorCode": "0910",
+      "major": "信息升华",
+      "latestYear": "2009",
+      "latestPlanName": "2009信息升华"
+    },
+    {
+      "college": "冶金与环境学院",
+      "majorCode": "0502",
+      "major": "环境工程",
+      "latestYear": "2026",
+      "latestPlanName": "环境工程+邓迪2026"
+    },
+    {
+      "college": "冶金与环境学院",
+      "majorCode": "0508",
+      "major": "环境与安全类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012环境与安全类"
+    },
+    {
+      "college": "冶金与环境学院",
+      "majorCode": "0504",
+      "major": "冶金工程",
+      "latestYear": "2009",
+      "latestPlanName": "2009冶金工程"
+    },
+    {
+      "college": "冶金与环境学院",
+      "majorCode": "0505",
+      "major": "冶金工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015冶金工程(T)"
+    },
+    {
+      "college": "冶金与环境学院",
+      "majorCode": "0509",
+      "major": "冶金工程卓越人才培养",
+      "latestYear": "2026",
+      "latestPlanName": "2026版冶金工程卓越人才培养本科培养方案"
+    },
+    {
+      "college": "冶金与环境学院",
+      "majorCode": "0503",
+      "major": "冶金与环境类L",
+      "latestYear": "2010",
+      "latestPlanName": "2010冶金与环境类"
+    },
+    {
+      "college": "冶金与环境学院",
+      "majorCode": "0507",
+      "major": "冶金与新能源类",
+      "latestYear": "2012",
+      "latestPlanName": "2012冶金与新能源类"
+    },
+    {
+      "college": "资源加工与生物工程学院",
+      "majorCode": "0301",
+      "major": "矿物加工工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版矿物加工工程本科培养方案"
+    },
+    {
+      "college": "资源加工与生物工程学院",
+      "majorCode": "0307",
+      "major": "矿物加工工程",
+      "latestYear": "2009",
+      "latestPlanName": "2009矿物加工工程"
+    },
+    {
+      "college": "资源加工与生物工程学院",
+      "majorCode": "0308",
+      "major": "矿物加工工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015矿物加工工程(T)"
+    },
+    {
+      "college": "资源加工与生物工程学院",
+      "majorCode": "0309",
+      "major": "矿物加工工程卓越人才培养",
+      "latestYear": "2026",
+      "latestPlanName": "2026版矿物加工工程卓越人才培养本科培养方案"
+    },
+    {
+      "college": "资源加工与生物工程学院",
+      "majorCode": "0305",
+      "major": "矿物与材料类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012矿物与材料类"
+    },
+    {
+      "college": "资源加工与生物工程学院",
+      "majorCode": "0306",
+      "major": "生物工程类L",
+      "latestYear": "2012",
+      "latestPlanName": "2012生物工程类"
+    },
+    {
+      "college": "资源加工与生物工程学院",
+      "majorCode": "0304",
+      "major": "生物技术",
+      "latestYear": "2024",
+      "latestPlanName": "2024版生物技术本科培养方案（停招）"
+    },
+    {
+      "college": "资源加工与生物工程学院",
+      "majorCode": "8413",
+      "major": "新能源类智慧创新班",
+      "latestYear": "2026",
+      "latestPlanName": "2026新能源类智慧创新班大类培养方案"
+    },
+    {
+      "college": "资源与安全工程学院",
+      "majorCode": "0201",
+      "major": "采矿工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版采矿工程本科培养方案"
+    },
+    {
+      "college": "资源与安全工程学院",
+      "majorCode": "0204",
+      "major": "采矿工程(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015采矿工程(T)"
+    },
+    {
+      "college": "资源与安全工程学院",
+      "majorCode": "0202",
+      "major": "城市地下空间工程",
+      "latestYear": "2026",
+      "latestPlanName": "2026版城市地下空间工程本科培养方案"
+    },
+    {
+      "college": "自动化学院",
+      "majorCode": "0917",
+      "major": "电气工程及其自动化(T)",
+      "latestYear": "2015",
+      "latestPlanName": "2015电气工程及其自动化(T)"
+    },
+    {
+      "college": "自动化学院",
+      "majorCode": "0903",
+      "major": "电子信息工程",
+      "latestYear": "2024",
+      "latestPlanName": "2024版电子信息工程本科培养方案"
+    },
+    {
+      "college": "自动化学院",
+      "majorCode": "9602",
+      "major": "人工智能（科创班）",
+      "latestYear": "2026",
+      "latestPlanName": "2026版人工智能（科创班）本科培养方案"
+    },
+    {
+      "college": "自动化学院",
+      "majorCode": "9605",
+      "major": "人工智能（智慧创新班）",
+      "latestYear": "2026",
+      "latestPlanName": "2026中南大学人工智能智慧创新班培养方案"
+    },
+    {
+      "college": "自动化学院",
+      "majorCode": "9603",
+      "major": "自动化（西伯利亚留学生班）",
+      "latestYear": "2026",
+      "latestPlanName": "2026版自动化（西伯利亚留学生班）本科培养方案"
+    },
+    {
+      "college": "自动化学院",
+      "majorCode": "9606",
+      "major": "自动化国际",
+      "latestYear": "2026",
+      "latestPlanName": "2026版自动化国际培养方案"
+    },
+    {
+      "college": "自动化学院",
+      "majorCode": "8207",
+      "major": "自动化与电气类",
+      "latestYear": "2026",
+      "latestPlanName": "2026版自动化与电气类大类方案"
+    },
+    {
+      "college": "自动化学院",
+      "majorCode": "0923",
+      "major": "自动化卓越人才培养",
+      "latestYear": "2026",
+      "latestPlanName": "2026版自动化卓越人才培养本科培养方案"
+    },
+    {
+      "college": "自动化学院",
+      "majorCode": "8414",
+      "major": "AI类智慧创新班",
+      "latestYear": "2026",
+      "latestPlanName": "2026版AI类智慧创新班大类培养方案"
+    }
+  ]
+}

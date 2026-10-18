@@ -1,0 +1,23 @@
+{
+  "source": "academic-syllabus-catalog-20261018.json",
+  "fetchedAt": "2026-10-17T16:17:30.556Z",
+  "totalRecords": 4620,
+  "uniqueCourseCodes": 4618,
+  "departments": 201,
+  "categoryDistribution": {
+    "理论课（不含实践）": 2289,
+    "实验课": 159,
+    "理论课（含实践）": 1506,
+    "集中性实践环节": 666
+  },
+  "duplicateCodeRecords": 1,
+  "recordsMissingRequiredFields": 0,
+  "comparison": {
+    "projectMajorCatalogCodes": 840,
+    "projectElectiveCodes": 18,
+    "overlapWithMajorCatalog": 562,
+    "overlapWithElectives": 2,
+    "notInProjectCatalog": 4054
+  },
+  "note": "仅按课程编码做集合比较，未核对同码异名、学分或名称差异；比较结果用于确定后续人工核对范围，不代表可直接导入。"
+}
