@@ -15,10 +15,30 @@ const json = (method, value, cookie, extra = {}) => ({
 const signed = async (value, secret = testSecret) =>
   (await generateSignedCookie('csu-visitor', value, secret, { path: '/' })).split(';')[0];
 
+// Exercise the route's quota handling without crossing Miniflare's wall-clock windows.
+// Each test environment gets fresh counters; expiration is the provider's responsibility.
+function testQuota(capacity) {
+  const counts = new Map();
+  return {
+    async limit({ key }) {
+      const used = counts.get(key) ?? 0;
+      if (used >= capacity) return { success: false };
+      counts.set(key, used + 1);
+      return { success: true };
+    },
+  };
+}
+
 test('匿名访客 Cookie 与频率限制（临时 D1）', async (t) => {
   const platform = await getPlatformProxy({ persist: false });
   t.after(() => platform.dispose());
-  const env = visitorEnv(platform);
+  const env = {
+    ...visitorEnv(platform),
+    VISITOR_LIMITER: testQuota(60),
+    PUBLISH_LIMITER: testQuota(8),
+    VOTE_LIMITER: testQuota(60),
+    NETWORK_LIMITER: testQuota(120),
+  };
   const { DB } = env;
   await migrate(DB);
   await DB.prepare(
@@ -245,7 +265,9 @@ test('匿名访客 Cookie 与频率限制（临时 D1）', async (t) => {
     assert.match(keys[0], /^write:[0-9a-f]{64}$/);
   });
 
-  await t.test('新访客签发按网络限流；清 Cookie 与伪造转发头不能绕过', async () => {
+  await t.test('新访客签发按网络限流；清 Cookie 与伪造转发头不能绕过', async (t) => {
+    let now = Math.floor(Date.now() / 60_000) * 60_000 + 59_900;
+    t.mock.method(Date, 'now', () => now);
     const url = 'https://example.test/api/visitor';
     const headers = { 'CF-Connecting-IP': '192.0.2.60' };
     let firstCookie;
@@ -257,6 +279,8 @@ test('匿名访客 Cookie 与频率限制（临时 D1）', async (t) => {
       assert.equal(response.status, 204);
       firstCookie ??= response.headers.get('Set-Cookie').split(';')[0];
     }
+    // Crossing a minute must not accidentally reset this test's controlled quota.
+    now += 1_000;
     const rejected = await request(url, json('POST', {}, undefined, headers));
     assert.equal(rejected.status, 429);
     assert.equal(rejected.headers.get('Set-Cookie'), null);
