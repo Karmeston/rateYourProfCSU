@@ -49,16 +49,16 @@ function parseQuery(query: Record<string, string[]>) {
     department.length > 100 ||
     department.includes('\0') ||
     (query.department && !department) ||
-    (query.category && !['major', 'elective'].includes(category)) ||
+    (query.category && !['major', 'elective', 'unknown'].includes(category)) ||
     !isElectiveTypeFilter(electiveType) ||
     (query.electiveType && !electiveType) ||
-    (electiveType && category === 'major') ||
+    (electiveType && category && category !== 'elective') ||
     !Object.hasOwn(ordering, sort) ||
     program.length > 100 ||
     program.includes('\0') ||
     (query.program && !program) ||
-    (program && (category === 'elective' || electiveType)) ||
-    (query.planYear && (!program || !/^20\d{2}$/.test(planYear)))
+    (program && ((category && category !== 'major') || electiveType)) ||
+    (query.planYear && (!program || !/^(20\d{2}|unknown)$/.test(planYear)))
   )
     return null;
   return {
@@ -80,15 +80,18 @@ catalog.get('/', async (c) => {
   const { limit, offset, q, category, electiveType, department, sort, program, planYear } = page;
   // SQL fragments only come from fixed sort options.
   const where = `c.is_listed = 1 AND (instr(lower(c.name), lower(?)) > 0 OR instr(lower(coalesce(c.code, '')), lower(?)) > 0)
-    AND (? = '' OR c.category = ?) AND (? = '' OR c.department = ?)
+    AND (? = '' OR (? = 'unknown' AND c.category IS NULL) OR c.category = ?) AND (? = '' OR c.department = ?)
     AND (? = '' OR (? = 'unknown' AND e.elective_type IS NULL) OR e.elective_type = ?)
     AND (? = '' OR EXISTS (SELECT 1 FROM course_materials p WHERE p.course_id=c.id AND p.kind='curriculum'
-      AND p.program=? AND (? = '' OR p.source_year=CAST(? AS INTEGER))))`;
+      AND p.program=? AND (? = '' OR p.source_year=CAST(? AS INTEGER)))
+      OR EXISTS (SELECT 1 FROM course_catalog_records p WHERE p.course_id=c.id AND p.program=?
+      AND (? = '' OR (? = 'unknown' AND p.source_year IS NULL) OR p.source_year=CAST(? AS INTEGER))))`;
   const bindings = [
     q,
     q,
     category,
     category,
+    category,
     department,
     department,
     electiveType,
@@ -96,6 +99,10 @@ catalog.get('/', async (c) => {
     electiveType,
     program,
     program,
+    planYear,
+    planYear,
+    program,
+    planYear,
     planYear,
     planYear,
   ];
@@ -138,20 +145,30 @@ catalog.get('/', async (c) => {
       count(*) AS reviewCount, count(DISTINCT r.course_id) AS reviewedCourseCount
       FROM course_reviews r JOIN courses c ON c.id=r.course_id
       WHERE c.is_listed=1 AND r.status='published' AND r.withdrawn_at IS NULL`),
-    c.env.DB
-      .prepare(`SELECT DISTINCT m.program AS name, m.source_year AS year FROM course_materials m
-      JOIN courses c ON c.id=m.course_id WHERE c.is_listed=1 AND c.category='major' AND m.kind='curriculum' AND m.program IS NOT NULL ORDER BY m.program, m.source_year DESC`),
+    c.env.DB.prepare(`SELECT m.program AS name, m.source_year AS year FROM course_materials m
+      JOIN courses c ON c.id=m.course_id WHERE c.is_listed=1 AND c.category='major' AND m.kind='curriculum' AND m.program IS NOT NULL
+      UNION SELECT p.program AS name, p.source_year AS year FROM course_catalog_records p
+      JOIN courses c ON c.id=p.course_id WHERE c.is_listed=1 AND c.category='major' AND p.program IS NOT NULL
+      ORDER BY name, year DESC`),
   ]);
   const courses = (entries.results as CourseSummary[]).slice(0, limit);
   if (program && courses.length) {
     type PlanRecord = NonNullable<CourseSummary['planRecords']>[number];
     const planRows = await c.env.DB.prepare(
-      `SELECT DISTINCT course_id AS courseId, program, source_year AS sourceYear, credits, requirement
-      FROM course_materials WHERE course_id IN (SELECT value FROM json_each(?))
-        AND kind='curriculum' AND program=? AND (? = '' OR source_year=CAST(? AS INTEGER))
+      `SELECT DISTINCT course_id AS courseId, program, source_year AS sourceYear, credits, requirement FROM (
+        SELECT course_id, program, source_year, credits, requirement FROM course_materials WHERE kind='curriculum'
+        UNION ALL SELECT course_id, program, source_year, credits, requirement FROM course_catalog_records WHERE program IS NOT NULL
+      ) WHERE course_id IN (SELECT value FROM json_each(?))
+        AND program=? AND (? = '' OR (? = 'unknown' AND source_year IS NULL) OR source_year=CAST(? AS INTEGER))
       ORDER BY source_year DESC, credits, requirement`,
     )
-      .bind(JSON.stringify(courses.map((course) => course.id)), program, planYear, planYear)
+      .bind(
+        JSON.stringify(courses.map((course) => course.id)),
+        program,
+        planYear,
+        planYear,
+        planYear,
+      )
       .all<PlanRecord & { courseId: number }>();
     const records = new Map<number, PlanRecord[]>();
     for (const { courseId, ...record } of planRows.results) {
@@ -161,8 +178,8 @@ catalog.get('/', async (c) => {
     }
     for (const course of courses) course.planRecords = records.get(course.id) ?? [];
   }
-  const programs = new Map<string, number[]>();
-  for (const row of programRows.results as { name: string; year: number }[]) {
+  const programs = new Map<string, (number | null)[]>();
+  for (const row of programRows.results as { name: string; year: number | null }[]) {
     programs.set(row.name, [...(programs.get(row.name) ?? []), row.year]);
   }
   const response: CourseCatalog = {

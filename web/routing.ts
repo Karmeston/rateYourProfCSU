@@ -1,11 +1,11 @@
-import { courseSorts, type CourseCategory, type CourseSort } from '../shared/catalog.ts';
+import { courseSorts, type CourseCategoryFilter, type CourseSort } from '../shared/catalog.ts';
 import { isElectiveTypeFilter, type ElectiveTypeFilter } from '../shared/electives.ts';
 
 // A full page fills both the desktop three-column and tablet two-column grids.
 export const pageSize = 24;
 export type CatalogFilters = {
   q: string;
-  category: CourseCategory | '';
+  category: CourseCategoryFilter;
   electiveType: ElectiveTypeFilter;
   department: string;
   program: string;
@@ -127,15 +127,15 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     q.includes('\0') ||
     department.length > 100 ||
     department.includes('\0') ||
-    !['', 'major', 'elective'].includes(category) ||
+    !['', 'major', 'elective', 'unknown'].includes(category) ||
     !isElectiveTypeFilter(electiveType) ||
-    (electiveType && category === 'major') ||
+    (electiveType && category && category !== 'elective') ||
     !Object.hasOwn(courseSorts, sort) ||
     program.length > 100 ||
     program.includes('\0') ||
     (params.has('program') && !program.trim()) ||
-    (program && (category === 'elective' || electiveType)) ||
-    (params.has('planYear') && (!program || !/^20\d{2}$/.test(planYear)))
+    (program && ((category && category !== 'major') || electiveType)) ||
+    (params.has('planYear') && (!program || !/^(20\d{2}|unknown)$/.test(planYear)))
   )
     return { page: 'not-found' };
   if (path === '/teachers') return { page: 'teachers', q, offset: Number(rawOffset) };
@@ -143,7 +143,7 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     page: 'catalog',
     home: path === '/',
     q,
-    category: program ? 'major' : electiveType ? 'elective' : (category as CourseCategory | ''),
+    category: program ? 'major' : electiveType ? 'elective' : (category as CourseCategoryFilter),
     electiveType,
     department,
     program,

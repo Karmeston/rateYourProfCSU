@@ -1,0 +1,134 @@
+{
+  "inputRows": 4771,
+  "courses": 4659,
+  "categories": {
+    "unknown": 2495,
+    "major": 2095,
+    "elective": 69
+  },
+  "held": [
+    {
+      "code": "210101T10",
+      "reason": "excluded_course",
+      "names": [
+        "思想道德修养与法律基础"
+      ]
+    },
+    {
+      "code": "210501T10",
+      "reason": "excluded_course",
+      "names": [
+        "形势与政策"
+      ]
+    },
+    {
+      "code": "210401T10",
+      "reason": "excluded_course",
+      "names": [
+        "毛泽东思想和中国特色社会主义理论体系概论"
+      ]
+    },
+    {
+      "code": "210301T10",
+      "reason": "excluded_course",
+      "names": [
+        "马克思主义基本原理概论"
+      ]
+    },
+    {
+      "code": "210502T10",
+      "reason": "excluded_course",
+      "names": [
+        "形势与政策"
+      ]
+    },
+    {
+      "code": "2-97",
+      "reason": "excluded_course",
+      "names": [
+        "习近平新时代中国特色社会主义思想概论"
+      ]
+    },
+    {
+      "code": "210202T10",
+      "reason": "excluded_course",
+      "names": [
+        "中国近现代史纲要"
+      ]
+    },
+    {
+      "code": "210401T20",
+      "reason": "excluded_course",
+      "names": [
+        "习近平新时代中国特色社会主义思想概论"
+      ]
+    },
+    {
+      "code": "210402T10",
+      "reason": "excluded_course",
+      "names": [
+        "毛泽东思想和中国特色社会主义理论体系概论"
+      ]
+    },
+    {
+      "code": "210103T10",
+      "reason": "excluded_course",
+      "names": [
+        "思想道德与法治"
+      ]
+    },
+    {
+      "code": "210601T10",
+      "reason": "excluded_course",
+      "names": [
+        "习近平新时代中国特色社会主义思想概论"
+      ]
+    },
+    {
+      "code": "180460ZG10",
+      "reason": "code_name_conflict",
+      "names": [
+        "二外（西班牙语）（一）",
+        "二外（西班牙语）（二）",
+        "二外（西班牙语）（三）"
+      ]
+    },
+    {
+      "code": "210302T10",
+      "reason": "excluded_course",
+      "names": [
+        "马克思主义基本原理"
+      ]
+    },
+    {
+      "code": "210801T10",
+      "reason": "excluded_course",
+      "names": [
+        "中国共产党的历史"
+      ]
+    },
+    {
+      "code": "210802T10",
+      "reason": "excluded_course",
+      "names": [
+        "新中国史"
+      ]
+    },
+    {
+      "code": "210803T10",
+      "reason": "excluded_course",
+      "names": [
+        "改革开放史"
+      ]
+    },
+    {
+      "code": "210804T10",
+      "reason": "excluded_course",
+      "names": [
+        "社会主义发展史"
+      ]
+    }
+  ],
+  "categoryConflicts": [],
+  "note": "采集日期不是课程版本；目录和执行计划不证明当前开课。未标明年份的统计学方案不套用其他版本。"
+}

@@ -5,6 +5,7 @@ import { test } from 'node:test';
 import { prepareCatalogSql } from '../scripts/prepare-release-catalog.mjs';
 import { majorCatalog } from '../scripts/import-major-catalog.mjs';
 import { electiveCatalog } from '../scripts/import-elective-catalog.mjs';
+import { academicCatalog } from '../scripts/import-academic-catalog.mjs';
 
 function database(t) {
   const db = new DatabaseSync(':memory:');
@@ -61,4 +62,27 @@ test('发行目录发现同码冲突时回滚全部规划写入，不遗留先�
   assert.equal(db.prepare('SELECT count(*) AS n FROM courses').get().n, 1);
   assert.equal(db.prepare('SELECT count(*) AS n FROM elective_course_facts').get().n, 0);
   assert.equal(db.prepare('SELECT count(*) AS n FROM course_reviews').get().n, 1);
+});
+
+test('教务发行SQL可重放，来源和未标注年份保留；生成过程不改变快照', async (t) => {
+  const db = database(t);
+  const academic = structuredClone(academicCatalog);
+  const planCourse = academic.courses.find((c) => c.records.some((r) => r.program));
+  academic.courses = [planCourse];
+  planCourse.name = "SQL'问号?;课程";
+  const sources = { major: { ...majorCatalog, courses: [] }, elective: electiveCatalog, academic };
+  const result = await prepareCatalogSql(db, sources);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM course_catalog_records').get().n, 0);
+  db.exec(result.sql);
+  assert.equal(
+    db.prepare('SELECT name FROM courses WHERE code=?').get(planCourse.code).name,
+    planCourse.name,
+  );
+  assert.equal(
+    db.prepare('SELECT source_year FROM course_catalog_records WHERE program IS NOT NULL').get()
+      .source_year,
+    null,
+  );
+  assert.equal((await prepareCatalogSql(db, sources)).report.academic.insertedCourses, 0);
+  assert.equal(db.prepare('SELECT course_id FROM course_reviews').get().course_id, 5);
 });

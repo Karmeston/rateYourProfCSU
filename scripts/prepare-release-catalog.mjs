@@ -6,10 +6,11 @@ import { isAbsolute, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { importMajorCatalog, majorCatalog } from './import-major-catalog.mjs';
 import { importElectiveCatalog, electiveCatalog } from './import-elective-catalog.mjs';
+import { importAcademicCatalog, academicCatalog } from './import-academic-catalog.mjs';
 
 export async function prepareCatalogSql(
   database,
-  sources = { major: majorCatalog, elective: electiveCatalog },
+  sources = { major: majorCatalog, elective: electiveCatalog, academic: academicCatalog },
 ) {
   const statements = [];
   function statement(sql, values = []) {
@@ -26,7 +27,7 @@ export async function prepareCatalogSql(
     const query = database.prepare(sql);
     if (query.columns().length) return { results: query.all(...values), meta: { changes: 0 } };
     if (
-      !/^\s*INSERT\s+INTO\s+(courses|course_materials|elective_course_facts|elective_course_offerings)\b/i.test(
+      !/^\s*INSERT\s+INTO\s+(courses|course_materials|elective_course_facts|elective_course_offerings|course_catalog_records)\b/i.test(
         sql,
       )
     )
@@ -54,11 +55,13 @@ export async function prepareCatalogSql(
   try {
     const elective = await importElectiveCatalog(db, sources.elective);
     const major = await importMajorCatalog(db, sources.major);
+    const academic = sources.academic ? await importAcademicCatalog(db, sources.academic) : null;
     const counts = database
       .prepare(
         `SELECT count(*) AS total, count(CASE WHEN is_listed=1 THEN 1 END) AS visible,
       count(CASE WHEN is_listed=1 AND category='major' THEN 1 END) AS major,
-      count(CASE WHEN is_listed=1 AND category='elective' THEN 1 END) AS elective FROM courses`,
+      count(CASE WHEN is_listed=1 AND category='elective' THEN 1 END) AS elective,
+      count(CASE WHEN is_listed=1 AND category IS NULL THEN 1 END) AS unknown FROM courses`,
       )
       .get();
     const sql =
@@ -70,6 +73,7 @@ export async function prepareCatalogSql(
       report: {
         elective,
         major,
+        academic,
         counts,
         statements: statements.length,
         sqlSha256: createHash('sha256').update(sql).digest('hex'),

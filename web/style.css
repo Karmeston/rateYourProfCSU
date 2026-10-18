@@ -404,6 +404,7 @@ main:focus {
 }
 .category-filter {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.35rem;
 }
 .category-filter a {

@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { courseCategories, type CourseCatalog, type CourseSummary } from '../shared/catalog';
+import {
+  courseCategories,
+  courseCategoryFilters,
+  planVersionLabel,
+  type CourseCatalog,
+  type CourseSummary,
+} from '../shared/catalog';
 import { electiveTypes } from '../shared/electives';
 import { Icon } from './icons';
 import {
@@ -66,7 +72,7 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
       <div className="card-top">
         <span className={`category-badge ${course.category ?? 'unknown'}`}>
           <i />
-          {course.category ? courseCategories[course.category] : '待分类'}
+          {course.category ? courseCategories[course.category] : '类别待核实'}
         </span>
         {course.category === 'elective' && (
           <span className="elective-type-label">
@@ -195,7 +201,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               )}
               {route.category && (
                 <a href={href({ category: '', offset: 0 })} aria-label="移除课程类型筛选">
-                  {courseCategories[route.category]}
+                  {courseCategoryFilters[route.category]}
                   <Icon name="close" size={13} />
                 </a>
               )}
@@ -216,7 +222,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               {route.program && (
                 <a href={href({ program: '', offset: 0 })} aria-label="移除专业筛选">
                   {route.program}
-                  {route.planYear && ` · ${route.planYear}版`}
+                  {route.planYear && ` · ${planVersionLabel(route.planYear)}`}
                   <Icon name="close" size={13} />
                 </a>
               )}

@@ -79,7 +79,7 @@ export function Detail({
                     ? courseCategories[course.category]
                     : kind === 'teachers'
                       ? '教师主页'
-                      : '课程'}
+                      : '类别待核实'}
                 </span>
                 {row.id < 0 && <span className="demo-badge">虚构演示数据</span>}
               </div>

@@ -71,9 +71,9 @@ GitHub Actions的`Project checks`在推送和Pull Request时运行同一检查�
 
 列表支持 limit（1–100，默认20）、offset（0–100000，默认0）、q（最多100字符），默认按 ID 升序。教师按名称搜索；课程按名称或代码搜索，ASCII 英文不区分大小写。搜索字面匹配，百分号和下划线不是通配符。详情不接受查询参数。重复、未知或非法参数返回400，不存在的详情返回404，数据库故障返回通用500，详细错误仅记服务端日志。
 
-课程列表另支持 category（major/elective）、department（学院名精确匹配）、sort（default/rating/reviews/name）。total 为筛选后的总数；facets.departments 为整个可见目录的学院及数量；stats 为整个可见目录的课程数、已发布评价数和已评价课程数。评分排序将未评分课程放在最后，并以 ID 保证稳定顺序。URL 保留搜索、类型、学院、排序及分页，详情返回时恢复原条件。
+课程列表另支持 category（major/elective/unknown）、department（学院或教学单位精确匹配）、sort（default/rating/reviews/name）。unknown只返回分类为空的课程，不根据编号、理论/实验或必选修属性猜测课程大类。total 为筛选后的总数；facets.departments 为整个可见目录的教学单位及数量；stats 为整个可见目录的课程数、已发布评价数和已评价课程数。评分排序将未评分课程放在最后，并以 ID 保证稳定顺序。URL 保留搜索、类型、教学单位、排序及分页，详情返回时恢复原条件。
 
-专业方案筛选使用`program`（原文专业/班型名）与`planYear`（需同时指定专业），限定专业课。下拉选项来自可见课程的方案资料，版本与专业精确匹配，多个证据不重复计数；列表所选原表资料返回`planRecords`。结果不代表当期开课或个人选课资格。
+专业方案筛选使用`program`（原文专业/班型名）与`planYear`（需同时指定专业），限定专业课。下拉选项来自可见课程的方案记录，版本与专业精确匹配，多个证据不重复计数；列表所选原表资料返回`planRecords`。未标明版本的方案年份为空，下拉显示“版本未标注”，查询参数为`planYear=unknown`。结果不代表当期开课或个人选课资格。新教务目录的离线整理与来源存储见[接入说明](docs/academic-catalog-integration-20261018.md)。
 
 公选课细分类参数 electiveType 接受 natural_science、humanities、economics、arts_sports、unknown；使用时限定公选课，不能与 category=major 组合。unknown 只包含细分类未知的可见公选课。列表课程增加可空 electiveType，详情增加 elective（facts、offerings、creditRules；非公选课为 null）。开课记录包含明确学年学期，不等于每学期持续开设。
 

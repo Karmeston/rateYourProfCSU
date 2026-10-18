@@ -1,4 +1,9 @@
-import { courseCategories, courseSorts, type CourseCatalog } from '../shared/catalog';
+import {
+  courseCategoryFilters,
+  courseSorts,
+  planVersionLabel,
+  type CourseCatalog,
+} from '../shared/catalog';
 import { electiveTypes, type ElectiveTypeFilter } from '../shared/electives';
 import { catalogHref, type CatalogRoute, type CatalogFilters } from './routing';
 
@@ -18,7 +23,7 @@ export function CatalogFiltersPanel({
   return (
     <div className="catalog-filters">
       <nav className="category-filter" aria-label="课程类型">
-        {[['', '全部课程'], ...Object.entries(courseCategories)].map(([value, label]) => (
+        {[['', '全部课程'], ...Object.entries(courseCategoryFilters)].map(([value, label]) => (
           <a
             key={value}
             href={href({ category: value as CatalogRoute['category'] })}
@@ -30,12 +35,12 @@ export function CatalogFiltersPanel({
       </nav>
       <div className="catalog-filter-fields">
         <label>
-          学院（含资料来源）
+          学院／教学单位
           <select
             value={route.department}
             onChange={(event) => change({ department: event.target.value })}
           >
-            <option value="">全部学院</option>
+            <option value="">全部教学单位</option>
             {route.department && !departments.some((item) => item.name === route.department) && (
               <option>{route.department}</option>
             )}
@@ -91,14 +96,16 @@ export function CatalogFiltersPanel({
               onChange={(event) => change({ planYear: event.target.value })}
             >
               <option value="">全部已收录版本</option>
-              {route.planYear && !years.includes(Number(route.planYear)) && (
-                <option value={route.planYear}>
-                  {route.planYear}版{facets ? '（未收录）' : ''}
-                </option>
-              )}
+              {route.planYear &&
+                !years.includes(route.planYear === 'unknown' ? null : Number(route.planYear)) && (
+                  <option value={route.planYear}>
+                    {planVersionLabel(route.planYear)}
+                    {facets ? '（未收录）' : ''}
+                  </option>
+                )}
               {years.map((year) => (
-                <option key={year} value={year}>
-                  {year}版
+                <option key={year ?? 'unknown'} value={year ?? 'unknown'}>
+                  {planVersionLabel(year)}
                 </option>
               ))}
             </select>
