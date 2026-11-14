@@ -55,7 +55,11 @@ npx wrangler d1 migrations apply DB --local --persist-to tmp/academic-preview-d1
 node scripts/import-academic-catalog.mjs --persist-to tmp/academic-preview-d1
 ```
 
-线上发布需要 Cloudflare 账户认证（当前本机 Wrangler 未登录）。步骤：导出线上数据库并核对完整性 → 在副本上应用 `0012` → 用 `prepare-release-catalog.mjs` 生成仅新增 SQL 并重放核对 → 应用迁移 `0012` → 执行新增 SQL → 核对可见数量与旧课程/评价保持。已应用迁移不倒退；如需回退目录，按发布报告的新 ID 范围隐藏新增课程并保留评价，不整体恢复旧备份。
+11 月 14 日已发布源码 `75c3603`，Worker 版本 `89e295c3-f0db-4c49-97db-3f73496cfcef`。应用迁移 `0012` 后执行预演验证过的新增 SQL，新增 7,685 门课程与 58,006 条来源记录，线上可见课程为 12,626 门。发布前备份为本机 `tmp/academic-production-baseline-20261114.sql`，新增 SQL 及核对报告位于 `tmp/academic-release-20261114.sql` 和同名 `.verified.json`，不纳入 Git。
+
+重新导出线上数据库，确认原 4,944 门课程、4,710 条目录来源、2,431 条官方资料及旧评价逐字段未变，外键检查通过。线上检查确认计算机科学与技术 2026 方案可查 71 门课，分页无重复，未分类的课程可打开详情并读取评价。匿名评分提交已在临时数据库测试，未向线上写入验收评价。
+
+如需回退页面，可切回 Worker 版本 `dd696238-9ae4-41d4-a095-22473be5151e`；如需撤回新增课程，可隐藏 ID 4945–12629 并保留期间新增的评价。不要倒退迁移或用旧备份覆盖线上数据库。
 
 ## 六、局限
 
