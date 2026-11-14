@@ -1,5 +1,12 @@
 import { Hono } from 'hono';
-import type { Course, CourseCatalog, CourseSort, CourseSummary } from '../shared/catalog.ts';
+import type {
+  Course,
+  CourseCatalog,
+  CourseCatalogPage,
+  CourseSort,
+  CourseSummary,
+} from '../shared/catalog.ts';
+import { readCatalogFacets } from './catalog-facets.ts';
 import { isElectiveTypeFilter } from '../shared/electives.ts';
 import { readElectiveDetails } from './elective-guidance.ts';
 import { isResourceId } from './validation.ts';
@@ -24,6 +31,7 @@ function parseQuery(query: Record<string, string[]>) {
     'sort',
     'program',
     'planYear',
+    'view',
   ];
   if (Object.entries(query).some(([key, values]) => !allowed.includes(key) || values.length !== 1))
     return null;
@@ -58,6 +66,7 @@ function parseQuery(query: Record<string, string[]>) {
     program.includes('\0') ||
     (query.program && !program) ||
     (program && ((category && category !== 'major') || electiveType)) ||
+    (query.view && query.view[0] !== 'results') ||
     (query.planYear && (!program || !/^(20\d{2}|unknown)$/.test(planYear)))
   )
     return null;
@@ -71,42 +80,43 @@ function parseQuery(query: Record<string, string[]>) {
     electiveType,
     program,
     planYear,
+    resultsOnly: query.view?.[0] === 'results',
     sort: sort as CourseSort,
   };
 }
 
+catalog.get('/facets', async (c) => {
+  if (Object.keys(c.req.queries()).length) return c.json({ error: '查询参数不合法' }, 400);
+  c.header('Cache-Control', 'private, max-age=300');
+  return c.json(await readCatalogFacets(c.env.DB, c.req.url));
+});
+
 catalog.get('/', async (c) => {
   const page = parseQuery(c.req.queries());
   if (!page) return c.json({ error: '查询参数不合法' }, 400);
-  const { limit, offset, q, category, electiveType, department, sort, program, planYear } = page;
+  const { limit, offset, q, category, electiveType, department, sort, program, planYear, resultsOnly } = page;
   // SQL fragments only come from fixed sort options.
-  const where = `c.is_listed = 1 AND (instr(lower(c.name), lower(?)) > 0 OR instr(lower(coalesce(c.code, '')), lower(?)) > 0)
-    AND (? = '' OR (? = 'unknown' AND c.category IS NULL) OR c.category = ?) AND (? = '' OR c.department = ?)
-    AND (? = '' OR (? = 'unknown' AND e.elective_type IS NULL) OR e.elective_type = ?)
-    AND (? = '' OR EXISTS (SELECT 1 FROM course_materials p WHERE p.course_id=c.id AND p.kind='curriculum'
-      AND p.program=? AND (? = '' OR p.source_year=CAST(? AS INTEGER)))
-      OR EXISTS (SELECT 1 FROM course_catalog_records p WHERE p.course_id=c.id AND p.program=?
-      AND (? = '' OR (? = 'unknown' AND p.source_year IS NULL) OR p.source_year=CAST(? AS INTEGER))))`;
-  const bindings = [
-    q,
-    q,
-    category,
-    category,
-    category,
-    department,
-    department,
-    electiveType,
-    electiveType,
-    electiveType,
-    program,
-    program,
-    planYear,
-    planYear,
-    program,
-    planYear,
-    planYear,
-    planYear,
-  ];
+  const clauses = ['c.is_listed = 1'];
+  const bindings: (string | number)[] = [];
+  const filter = (sql: string, ...values: (string | number)[]) => {
+    clauses.push(sql);
+    bindings.push(...values);
+  };
+  if (q) filter("(instr(lower(c.name), lower(?)) > 0 OR instr(lower(coalesce(c.code, '')), lower(?)) > 0)", q, q);
+  if (category === 'unknown') filter('c.category IS NULL');
+  else if (category) filter('c.category = ?', category);
+  if (department) filter('c.department = ?', department);
+  if (electiveType === 'unknown') filter('e.elective_type IS NULL');
+  else if (electiveType) filter('e.elective_type = ?', electiveType);
+  if (program) {
+    const year = planYear === 'unknown' ? ' AND source_year IS NULL' : planYear ? ' AND source_year=?' : '';
+    const plan = planYear && planYear !== 'unknown' ? [program, Number(planYear)] : [program];
+    filter(`c.id IN (
+      SELECT course_id FROM course_materials WHERE kind='curriculum' AND program=?${year}
+      UNION SELECT course_id FROM course_catalog_records WHERE program=?${year}
+    )`, ...plan, ...plan);
+  }
+  const where = clauses.join(' AND ');
   const electiveJoin =
     "LEFT JOIN elective_course_facts e ON e.course_id = c.id AND c.category = 'elective'";
   const ranked = sort === 'rating' || sort === 'reviews';
@@ -115,7 +125,9 @@ catalog.get('/', async (c) => {
     FROM course_reviews WHERE status = 'published' AND withdrawn_at IS NULL GROUP BY course_id
   ) r ON r.course_id = c.id`;
   // Rating sorts need all candidates. Other sorts read ratings and source years only for this page.
-  const [entries, count, departments, statistics, programRows] = await c.env.DB.batch([
+  const filtered = clauses.length > 1;
+  const facets = !resultsOnly || !filtered ? await readCatalogFacets(c.env.DB, c.req.url) : undefined;
+  const [entries, ...aggregates] = await c.env.DB.batch([
     c.env.DB.prepare(
       `WITH page AS (
         SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType
@@ -135,25 +147,17 @@ catalog.get('/', async (c) => {
         }
       FROM page ORDER BY ${ordering[sort]}`,
     ).bind(...bindings, limit + 1, offset),
-    c.env.DB.prepare(`SELECT count(*) AS total FROM courses c ${electiveJoin} WHERE ${where}`).bind(
-      ...bindings,
-    ),
-    c.env.DB.prepare(
-      'SELECT department AS name, count(*) AS count FROM courses WHERE is_listed = 1 GROUP BY department ORDER BY department',
-    ),
-    c.env.DB.prepare(`SELECT
-      (SELECT count(*) FROM courses WHERE is_listed=1) AS courseCount,
+    ...(filtered ? [c.env.DB.prepare(
+      `SELECT count(*) AS total FROM courses c ${electiveType ? electiveJoin : ''} WHERE ${where}`,
+    ).bind(...bindings)] : []),
+    ...(!resultsOnly ? [c.env.DB.prepare(`SELECT
       count(*) AS reviewCount, count(DISTINCT r.course_id) AS reviewedCourseCount
       FROM course_reviews r JOIN courses c ON c.id=r.course_id
-      WHERE c.is_listed=1 AND r.status='published' AND r.withdrawn_at IS NULL`),
-    c.env.DB.prepare(`SELECT m.program AS name, m.source_year AS year FROM course_materials m
-      JOIN courses c ON c.id=m.course_id WHERE c.is_listed=1 AND m.kind='curriculum' AND m.program IS NOT NULL
-      UNION SELECT p.program AS name, p.source_year AS year FROM course_catalog_records p
-      JOIN courses c ON c.id=p.course_id WHERE c.is_listed=1 AND p.program IS NOT NULL
-      ORDER BY name, year DESC`),
+      WHERE c.is_listed=1 AND r.status='published' AND r.withdrawn_at IS NULL`)] : []),
   ]);
+  const [count, statistics] = filtered ? aggregates : [undefined, ...aggregates];
   const courses = (entries.results as CourseSummary[]).slice(0, limit);
-  if (program && courses.length) {
+  if (!resultsOnly && program && courses.length) {
     type PlanRecord = NonNullable<CourseSummary['planRecords']>[number];
     const planRows = await c.env.DB.prepare(
       `SELECT DISTINCT course_id AS courseId, program, source_year AS sourceYear, credits, requirement FROM (
@@ -179,11 +183,8 @@ catalog.get('/', async (c) => {
     }
     for (const course of courses) course.planRecords = records.get(course.id) ?? [];
   }
-  const programs = new Map<string, (number | null)[]>();
-  for (const row of programRows.results as { name: string; year: number | null }[]) {
-    programs.set(row.name, [...(programs.get(row.name) ?? []), row.year]);
-  }
-  const response: CourseCatalog = {
+  const courseCount = facets?.departments.reduce((sum, item) => sum + item.count, 0) ?? 0;
+  const response: CourseCatalogPage = {
     courses,
     limit,
     offset,
@@ -194,16 +195,19 @@ catalog.get('/', async (c) => {
     program,
     planYear,
     sort,
-    total: (count.results[0] as { total: number }).total,
+    total: (count?.results[0] as { total: number } | undefined)?.total ?? courseCount,
     hasMore: entries.results.length > limit,
-    facets: {
-      departments: departments.results as CourseCatalog['facets']['departments'],
-      programs: [...programs].map(([name, years]) => ({ name, years })),
-    },
-    stats: statistics.results[0] as CourseCatalog['stats'],
   };
   c.header('Cache-Control', 'private, max-age=60');
-  return c.json(response);
+  if (resultsOnly) return c.json(response);
+  return c.json({
+    ...response,
+    facets,
+    stats: {
+      ...(statistics!.results[0] as Pick<CourseCatalog['stats'], 'reviewCount' | 'reviewedCourseCount'>),
+      courseCount,
+    },
+  });
 });
 
 catalog.get('/:id', async (c) => {

@@ -34,7 +34,7 @@ export type CourseSummary = Course & {
     sourceYear: number | null;
   })[];
 };
-export type CourseCatalog = {
+export type CourseCatalogPage = {
   courses: CourseSummary[];
   limit: number;
   offset: number;
@@ -47,6 +47,8 @@ export type CourseCatalog = {
   program: string;
   planYear: string;
   sort: CourseSort;
+};
+export type CourseCatalog = CourseCatalogPage & {
   facets: {
     departments: { name: string; count: number }[];
     programs: { name: string; years: (number | null)[] }[];

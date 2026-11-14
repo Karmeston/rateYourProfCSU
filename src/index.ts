@@ -19,6 +19,16 @@ app.route('/api', reviews);
 app.route('/api', community);
 
 app.onError((error, c) => {
+  if (/D1.*daily row (?:read|write) limit/is.test(error.message)) {
+    const now = new Date();
+    const reset = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1);
+    c.header('Cache-Control', 'no-store');
+    c.header('Retry-After', String(Math.ceil((reset - now.getTime()) / 1000)));
+    return c.json({
+      code: 'D1_DAILY_LIMIT',
+      error: '今日数据库使用额度已用完，请在北京时间早上 8 点额度重置后重试。',
+    }, 503);
+  }
   console.error('Request failed', error);
   return c.json({ error: '服务暂时不可用，请稍后重试' }, 500);
 });

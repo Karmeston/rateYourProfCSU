@@ -7,6 +7,20 @@ import { migrate } from './helpers/database.mjs';
 import { catalogHref, parseRoute } from '../web/routing.ts';
 import { readDraft } from '../web/review-draft.ts';
 
+test('D1 日额度耗尽返回明确的不可缓存错误及重试时间', async () => {
+  const DB = {
+    prepare() {
+      throw new Error("D1_ERROR: Your account has exceeded D1's free tier daily row read limit");
+    },
+  };
+  const response = await app.request('/api/courses/facets', {}, { DB });
+  assert.equal(response.status, 503);
+  assert.equal(response.headers.get('Cache-Control'), 'no-store');
+  const seconds = Number(response.headers.get('Retry-After'));
+  assert.ok(seconds > 0 && seconds <= 86400);
+  assert.equal((await response.json()).code, 'D1_DAILY_LIMIT');
+});
+
 test('课程发现与评价筛选（独立临时 D1）', async (t) => {
   const platform = await getPlatformProxy({ persist: false });
   t.after(() => platform.dispose());
@@ -91,6 +105,27 @@ test('课程发现与评价筛选（独立临时 D1）', async (t) => {
     assert.equal(page.courses.length, 3);
     assert.equal(page.courses.find((course) => course.id === 1).average, 4);
     assert.equal(page.courses.find((course) => course.id === 3).average, null);
+  });
+
+  await t.test('筛选翻页只读取结果，不重复加载全站专业、学院和评价统计', async () => {
+    const facets = await get('/api/courses/facets');
+    assert.deepEqual(facets.departments, [
+      { name: '数学学院', count: 2 },
+      { name: '艺术学院', count: 1 },
+    ]);
+    const db = {
+      batch: (statements) => DB.batch(statements),
+      prepare(sql) {
+        assert.doesNotMatch(sql, /GROUP BY department|AS reviewedCourseCount|AS name, p.source_year/);
+        return DB.prepare(sql);
+      },
+    };
+    const response = await app.request('/api/courses?view=results&category=major&limit=1&offset=1', {}, { DB: db });
+    assert.equal(response.status, 200);
+    const page = await response.json();
+    assert.equal(page.total, 2);
+    assert.equal(page.courses[0].id, 3);
+    assert.ok(!Object.hasOwn(page, 'facets') && !Object.hasOwn(page, 'stats'));
   });
 
   await t.test('搜索和学院筛选不能重新显示隐藏课程', async () => {

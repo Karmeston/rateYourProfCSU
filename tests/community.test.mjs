@@ -26,6 +26,10 @@ test('方案按专业与班型精确筛选，版本和分页可分享，记录�
   assert.equal(all.courses[0].category, null);
   assert.equal((await json(url + '&category=major')).courses[0].id, 1);
   assert.equal(all.courses[0].planRecords.length, 2);
+  const results = await json(url + '&view=results&planYear=2025');
+  assert.equal(results.total, 1);
+  assert.equal(results.courses[0].id, 1);
+  assert.ok(!Object.hasOwn(results.courses[0], 'planRecords'));
   const recent = await json(url + '&planYear=2025');
   assert.equal(recent.courses[0].planRecords[0].credits, 3);
   assert.equal(recent.courses[0].planRecords[0].requirement, '选修');

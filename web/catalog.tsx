@@ -4,6 +4,7 @@ import {
   courseCategoryFilters,
   planVersionLabel,
   type CourseCatalog,
+  type CourseCatalogPage,
   type CourseSummary,
 } from '../shared/catalog';
 import { electiveTypes } from '../shared/electives';
@@ -122,6 +123,7 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
 export function Catalog({ route }: { route: CatalogRoute }) {
   const href = (patch: Partial<CatalogFilters>) => catalogHref(route, patch);
   const params = new URLSearchParams({
+    view: 'results',
     limit: String(pageSize),
     offset: String(route.offset),
     q: route.q,
@@ -132,7 +134,8 @@ export function Catalog({ route }: { route: CatalogRoute }) {
   if (route.department) params.set('department', route.department);
   if (route.program) params.set('program', route.program);
   if (route.planYear) params.set('planYear', route.planYear);
-  const { data, error, retry } = useData<CourseCatalog>(`/api/courses?${params}`);
+  const { data, error, retry } = useData<CourseCatalogPage>(`/api/courses?${params}`);
+  const facets = useData<CourseCatalog['facets']>('/api/courses/facets', 'default');
   const [view, setView] = useState<'grid' | 'list'>(() => {
     try {
       return localStorage.getItem('csu-catalog-view') === 'list' ? 'list' : 'grid';
@@ -188,7 +191,12 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               </button>
             </div>
           </div>
-          <CatalogFiltersPanel route={route} facets={data?.facets} />
+          <CatalogFiltersPanel route={route} facets={facets.data} />
+          {facets.error && data && (
+            <p className="fine-print" role="status">
+              专业和学院选项暂未加载。 <button type="button" onClick={facets.retry}>重试</button>
+            </p>
+          )}
           {filtered && (
             <div className="filter-chips" aria-label="已选筛选条件">
               {route.q && (
