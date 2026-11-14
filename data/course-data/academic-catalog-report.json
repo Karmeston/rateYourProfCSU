@@ -1,12 +1,33 @@
 {
-  "inputRows": 4771,
-  "courses": 4659,
+  "inputRows": 68585,
+  "timetableCourses": 11347,
+  "timetableSemesters": 23,
+  "planCount": 551,
+  "planCourses": 52467,
+  "planWithCourses": 413,
+  "courses": 12624,
   "categories": {
-    "unknown": 2495,
-    "major": 2095,
-    "elective": 69
+    "unknown": 7049,
+    "major": 5438,
+    "elective": 137
   },
   "held": [
+    {
+      "code": "190501Z10",
+      "reason": "code_name_conflict",
+      "names": [
+        "视听语言与剧本创作",
+        "视听语言与剧本创作作"
+      ]
+    },
+    {
+      "code": "190504Z10",
+      "reason": "code_name_conflict",
+      "names": [
+        "非线性编辑与创作设计",
+        "影视特效与后期编辑设计"
+      ]
+    },
     {
       "code": "210101T10",
       "reason": "excluded_course",
@@ -22,6 +43,30 @@
       ]
     },
     {
+      "code": "190414Z10",
+      "reason": "code_name_conflict",
+      "names": [
+        "插画设计",
+        "信息设计"
+      ]
+    },
+    {
+      "code": "190415Z10",
+      "reason": "code_name_conflict",
+      "names": [
+        "印刷工艺设计",
+        "书籍设计"
+      ]
+    },
+    {
+      "code": "190416Z10",
+      "reason": "code_name_conflict",
+      "names": [
+        "装饰画",
+        "包装设计"
+      ]
+    },
+    {
       "code": "210401T10",
       "reason": "excluded_course",
       "names": [
@@ -33,6 +78,46 @@
       "reason": "excluded_course",
       "names": [
         "马克思主义基本原理概论"
+      ]
+    },
+    {
+      "code": "190417Z10",
+      "reason": "code_name_conflict",
+      "names": [
+        "视觉形象识别设计",
+        "广告设计"
+      ]
+    },
+    {
+      "code": "190406Z10",
+      "reason": "code_name_conflict",
+      "names": [
+        "设计思维",
+        "视听语言与剧本创作作"
+      ]
+    },
+    {
+      "code": "190503Z10",
+      "reason": "code_name_conflict",
+      "names": [
+        "影视特效与后期编辑",
+        "二维数字动画设计计"
+      ]
+    },
+    {
+      "code": "190505Z10",
+      "reason": "code_name_conflict",
+      "names": [
+        "电视频道与栏目包装",
+        "电视频道与栏目包装 计"
+      ]
+    },
+    {
+      "code": "190418Z10",
+      "reason": "code_name_conflict",
+      "names": [
+        "包装设计",
+        "视觉形象识别设计"
       ]
     },
     {
@@ -126,6 +211,118 @@
       "reason": "excluded_course",
       "names": [
         "社会主义发展史"
+      ]
+    },
+    {
+      "code": "160010Z10",
+      "reason": "excluded_course",
+      "names": [
+        "习近平经济思想概论"
+      ]
+    },
+    {
+      "code": "2-99",
+      "reason": "excluded_course",
+      "names": [
+        "习近平法治思想概论"
+      ]
+    },
+    {
+      "code": "200122Z10",
+      "reason": "excluded_course",
+      "names": [
+        "习近平法治思想概论"
+      ]
+    },
+    {
+      "code": "21000011",
+      "reason": "excluded_course",
+      "names": [
+        "形势与政策"
+      ]
+    },
+    {
+      "code": "21000011b",
+      "reason": "excluded_course",
+      "names": [
+        "形势与政策-2"
+      ]
+    },
+    {
+      "code": "21000011c",
+      "reason": "excluded_course",
+      "names": [
+        "形势与政策-3"
+      ]
+    },
+    {
+      "code": "210101T1",
+      "reason": "excluded_course",
+      "names": [
+        "思想道德修养与法律基础"
+      ]
+    },
+    {
+      "code": "210201T10",
+      "reason": "excluded_course",
+      "names": [
+        "中国近现代史纲要"
+      ]
+    },
+    {
+      "code": "210402T1",
+      "reason": "excluded_course",
+      "names": [
+        "中国近现代史纲要"
+      ]
+    },
+    {
+      "code": "210403T1",
+      "reason": "excluded_course",
+      "names": [
+        "中国近现代史纲要"
+      ]
+    },
+    {
+      "code": "210404T1",
+      "reason": "excluded_course",
+      "names": [
+        "中国近现代史纲要"
+      ]
+    },
+    {
+      "code": "210501T1",
+      "reason": "excluded_course",
+      "names": [
+        "形势与政策"
+      ]
+    },
+    {
+      "code": "210502T1",
+      "reason": "excluded_course",
+      "names": [
+        "毛泽东思想和中国特色社会主义理论体系概论"
+      ]
+    },
+    {
+      "code": "210801T1",
+      "reason": "excluded_course",
+      "names": [
+        "马克思主义基本原理"
+      ]
+    },
+    {
+      "code": "210802T1",
+      "reason": "excluded_course",
+      "names": [
+        "马克思主义基本原理"
+      ]
+    },
+    {
+      "code": "210303T10",
+      "reason": "excluded_course",
+      "names": [
+        "马克思主义基本原理"
       ]
     }
   ],

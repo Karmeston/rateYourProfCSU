@@ -65,18 +65,17 @@ function checkedCatalog(catalog) {
         !source ||
         !/^[a-f0-9]{64}$/.test(source.sha256) ||
         source.sha256 !== record.source ||
-        !['syllabus', 'curriculum', 'execution'].includes(source.kind) ||
+        !['syllabus', 'curriculum', 'execution', 'timetable'].includes(source.kind) ||
         !/^20\d{2}-\d{2}-\d{2}$/.test(source.date) ||
         !text(source.label, 200) ||
-        !/^http:\/\/csujwc\.its\.csu\.edu\.cn\/jsxsd\/pyfa\/[a-z_]+$/.test(source.url) ||
+        !/^http:\/\/csujwc\.its\.csu\.edu\.cn\/[A-Za-z0-9_/.-]+$/.test(source.url) ||
         !Number.isInteger(record.sequence) ||
         record.sequence < 1 ||
         (record.page !== null && (!Number.isInteger(record.page) || record.page < 1)) ||
         (record.department !== null && !text(record.department, 100)) ||
         (record.kind !== null && !text(record.kind, 100)) ||
-        !Number.isFinite(record.credits) ||
-        record.credits < 0 ||
-        record.credits > 100 ||
+        (record.credits !== null &&
+          (!Number.isFinite(record.credits) || record.credits < 0 || record.credits > 100)) ||
         (record.hours !== null &&
           (!Number.isFinite(record.hours) || record.hours < 0 || record.hours > 10000)) ||
         (record.program !== null && (source.kind !== 'curriculum' || !text(record.program, 100))) ||

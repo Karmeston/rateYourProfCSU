@@ -67,7 +67,11 @@ test('发行目录发现同码冲突时回滚全部规划写入，不遗留先�
 test('教务发行SQL可重放，来源和未标注年份保留；生成过程不改变快照', async (t) => {
   const db = database(t);
   const academic = structuredClone(academicCatalog);
-  const planCourse = academic.courses.find((c) => c.records.some((r) => r.program));
+  const planCourse = academic.courses.find(
+    (c) =>
+      c.records.some((r) => r.program && r.year === null) &&
+      c.records.some((r) => r.program && r.year !== null),
+  );
   academic.courses = [planCourse];
   planCourse.name = "SQL'问号?;课程";
   const sources = { major: { ...majorCatalog, courses: [] }, elective: electiveCatalog, academic };
@@ -78,10 +82,20 @@ test('教务发行SQL可重放，来源和未标注年份保留；生成过程�
     db.prepare('SELECT name FROM courses WHERE code=?').get(planCourse.code).name,
     planCourse.name,
   );
-  assert.equal(
-    db.prepare('SELECT source_year FROM course_catalog_records WHERE program IS NOT NULL').get()
-      .source_year,
-    null,
+  // Unversioned own-plan records keep a null source_year; the other plan records keep their year.
+  assert.ok(
+    db
+      .prepare(
+        'SELECT count(*) AS n FROM course_catalog_records WHERE program IS NOT NULL AND source_year IS NULL',
+      )
+      .get().n >= 1,
+  );
+  assert.ok(
+    db
+      .prepare(
+        'SELECT count(*) AS n FROM course_catalog_records WHERE program IS NOT NULL AND source_year IS NOT NULL',
+      )
+      .get().n >= 1,
   );
   assert.equal((await prepareCatalogSql(db, sources)).report.academic.insertedCourses, 0);
   assert.equal(db.prepare('SELECT course_id FROM course_reviews').get().course_id, 5);

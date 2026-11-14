@@ -15,12 +15,16 @@ import { planVersionLabel } from '../shared/catalog.ts';
 const read = (file) =>
   JSON.parse(readFileSync(new URL('../data/course-data/' + file, import.meta.url), 'utf8'));
 const input = 'pending/academic-20261018/';
+const timetableInput = 'pending/academic-20261107/timetable-course-catalog-20261107.json';
+const plansInput = 'pending/academic-20261107/plan-courses-20261107.json';
 
 test('教务数据按正式类别证据收录，冲突整组留待核对，采集时间不充当版本', () => {
   const { catalog, report } = prepareAcademicCatalog({
     syllabus: read(input + 'academic-syllabus-catalog-20261018.json'),
     curriculum: read(input + 'academic-own-plan-courses-20261018.json'),
     execution: read(input + 'academic-execution-plan-20261018.json'),
+    timetable: read(timetableInput),
+    plans: read(plansInput),
     evidence: read('course-records.json'),
   });
   assert.deepEqual(catalog, academicCatalog);
@@ -40,7 +44,40 @@ test('教务数据按正式类别证据收录，冲突整组留待核对，采�
   );
   const plans = catalog.courses.flatMap((c) => c.records.filter((r) => r.program));
   assert.ok(plans.length > 30);
-  assert.ok(plans.every((r) => r.year === null));
+  const ownPlanSource = Object.entries(catalog.sources).find(
+    ([, source]) => source.label === '统计学培养方案（版本未标注）',
+  )[0];
+  const ownPlanRecords = catalog.courses.flatMap((c) =>
+    c.records.filter((record) => record.source === ownPlanSource),
+  );
+  assert.ok(ownPlanRecords.length > 20);
+  assert.ok(ownPlanRecords.every((record) => record.year === null));
+  // The timetable query contributes code/name only, without inventing credits or categories.
+  const timetableOnly = catalog.courses.find((c) =>
+    c.records.some((r) => catalog.sources[r.source].kind === 'timetable') &&
+    !c.records.some((r) => catalog.sources[r.source].kind !== 'timetable'),
+  );
+  assert.ok(timetableOnly);
+  assert.equal(timetableOnly.category, null);
+  assert.equal(timetableOnly.department, '待核实');
+  assert.ok(timetableOnly.records.every((r) => r.credits === null));
+  // Courses that exist only in the statistics curriculum plan are covered by the timetable catalog.
+  const planCourse = catalog.courses.find((c) => c.code === '130345Z10');
+  assert.ok(planCourse);
+  assert.ok(planCourse.records.some((r) => catalog.sources[r.source].kind === 'timetable'));
+  assert.ok(report.timetableCourses > 10000);
+  // Latest curriculum plan tables provide program/year/module evidence for many majors.
+  assert.ok(report.planCount > 400);
+  assert.ok(report.planWithCourses > 400);
+  assert.ok(report.planCourses > 20000);
+  const geology = catalog.courses.find((c) => c.records.some((r) => r.program === '地质工程'));
+  assert.ok(geology);
+  assert.ok(geology.records.some((r) => r.year === 2026));
+  assert.ok(
+    catalog.courses.some(
+      (c) => c.category === 'major' && c.records.some((r) => r.program && r.program !== '统计学'),
+    ),
+  );
 });
 
 test('最新方案区分主修、辅修专业和辅修学位，同年并列记录保留', () => {
@@ -146,13 +183,22 @@ test('教务目录完整导入、分类筛选和未标注版本的方案查询�
     assert.equal((await get('/api/courses?q=' + dual.code)).courses[0].code, dual.code);
   });
 
-  await t.test('统计学方案可筛选，未知版本保留为空，不冒充2026版', async () => {
+  await t.test('方案筛选包含最新版明细，未标注版本的旧统计方案仍保留', async () => {
     const base = '/api/courses?program=' + encodeURIComponent('统计学');
-    const page = await get(base + '&planYear=unknown');
-    assert.ok(page.total > 20);
-    assert.ok(page.facets.programs.find((p) => p.name === '统计学').years.includes(null));
-    assert.ok(page.courses.every((c) => c.planRecords.every((r) => r.sourceYear === null)));
-    assert.equal((await get(base + '&planYear=2026')).total, 0);
+    const unknownYear = await get(base + '&planYear=unknown');
+    assert.ok(unknownYear.total > 20);
+    assert.ok((await get(base + '&planYear=2026')).total > 0);
+    const statistics = (await get(base + '&planYear=2026')).facets.programs.find(
+      (p) => p.name === '统计学',
+    );
+    assert.ok(statistics.years.includes(2026));
+    const geology = await get(
+      '/api/courses?program=' + encodeURIComponent('地质工程') + '&planYear=2026',
+    );
+    assert.ok(geology.total >= 10);
+    assert.ok(geology.courses.every((c) => c.planRecords.every((r) => r.sourceYear === 2026)));
+    const statistics2026 = await get(base + '&planYear=2026');
+    assert.ok(statistics2026.total > 10);
     for (const query of [
       'category=unknown&program=统计学',
       'category=unknown&electiveType=unknown',

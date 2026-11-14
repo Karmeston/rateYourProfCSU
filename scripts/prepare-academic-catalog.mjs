@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = new URL('../', import.meta.url);
 const intake = 'data/course-data/pending/academic-20261018/';
+const timetableIntake = 'data/course-data/pending/academic-20261107/';
 const read = (path) => JSON.parse(readFileSync(new URL(path, root), 'utf8'));
 export const normalizeName = (value) => value.normalize('NFKC').replace(/\s+/g, '');
 export const excludedCourse = (name) =>
@@ -19,24 +20,27 @@ const departmentName = (value) =>
     .trim();
 const identity = (row) => JSON.stringify([row.code, normalizeName(row.name)]);
 
-export function prepareAcademicCatalog({ syllabus, curriculum, execution, evidence }) {
+export function prepareAcademicCatalog({ syllabus, curriculum, execution, timetable, plans, evidence }) {
   const sources = {};
-  function source(document, name, kind) {
+  function source(document, name, kind, { dir = intake, label } = {}) {
     const hash = digest(document);
     const fetched = new Date(document.source.fetchedAt);
     if (!Number.isFinite(fetched.valueOf())) throw new Error('采集时间无效');
     sources[hash] = {
       kind,
-      file: intake + name,
+      file: dir + name,
       sha256: hash,
       date: new Date(fetched.valueOf() + 8 * 3600000).toISOString().slice(0, 10),
-      url: document.source.listUrl ?? document.source.url,
+      url: document.source.listUrl ?? document.source.detailUrl ?? document.source.url,
       label:
-        kind === 'syllabus'
+        label ??
+        (kind === 'syllabus'
           ? '教务系统课程目录'
           : kind === 'curriculum'
             ? '统计学培养方案（版本未标注）'
-            : '统计学执行计划',
+            : kind === 'timetable'
+              ? '教务系统课表课程目录（多学期按课程查询）'
+              : '统计学执行计划'),
     };
     return hash;
   }
@@ -47,6 +51,16 @@ export function prepareAcademicCatalog({ syllabus, curriculum, execution, eviden
     'curriculum',
   );
   const executionSource = source(execution, 'academic-execution-plan-20261018.json', 'execution');
+  const timetableSource = source(
+    timetable,
+    'timetable-course-catalog-20261107.json',
+    'timetable',
+    { dir: timetableIntake, label: '教务系统课表课程目录（多学期按课程查询）' },
+  );
+  const plansSource = source(plans, 'plan-courses-20261107.json', 'curriculum', {
+    dir: timetableIntake,
+    label: '教务系统培养方案课程（最新版逐条查询）',
+  });
   if (curriculum.planName !== '统计学专业本科培养方案') throw new Error('培养方案专业未核对');
   const classifications = new Map();
   const addEvidence = (row, category, proof) => {
@@ -68,6 +82,12 @@ export function prepareAcademicCatalog({ syllabus, curriculum, execution, eviden
   for (const row of curriculum.courses) {
     if (/^(学科|专业)教育课程/.test(row.category))
       addEvidence(row, 'major', { source: curriculumSource, raw: row.category });
+  }
+  for (const plan of plans.plans) {
+    for (const row of plan.courses) {
+      if (/^(学科|专业)教育课程/.test(row.category ?? ''))
+        addEvidence(row, 'major', { source: plansSource, raw: row.category });
+    }
   }
   const grouped = new Map();
   const add = (row, record) =>
@@ -112,6 +132,58 @@ export function prepareAcademicCatalog({ syllabus, curriculum, execution, eviden
       year: null,
       requirement: row.attribute,
     });
+  // The timetable query exposes course code and name only; it never mints credits or categories.
+  timetable.courses.forEach((row, index) =>
+    add(row, {
+      source: timetableSource,
+      sequence: index + 1,
+      page: null,
+      department: null,
+      kind: null,
+      credits: null,
+      hours: null,
+      program: null,
+      year: null,
+      requirement: null,
+    }),
+  );
+  // Latest curriculum plan course tables provide program/year/module evidence per course.
+  const programLabel = (plan) => {
+    let label = plan.major;
+    const tokens = [...(plan.tracks ?? [])];
+    if (plan.role && plan.role !== '主修') tokens.push(plan.role);
+    for (const token of [...new Set(tokens)]) {
+      if (token && !label.includes(token)) label += `（${token}）`;
+    }
+    return label.length > 100 ? label.slice(0, 100) : label;
+  };
+  let planSequence = 0;
+  for (const plan of plans.plans) {
+    const program = programLabel(plan);
+    const year = /^20\d{2}$/.test(plan.year ?? '') ? Number(plan.year) : null;
+    const seenRows = new Set();
+    for (const row of plan.courses) {
+      const requirement =
+        row.attribute === '必修' ? '必修' : row.attribute === '选修' ? '选修' : null;
+      const kind = row.category ? row.category.slice(0, 100) : null;
+      const key = `${row.code}\u0000${kind}`;
+      if (seenRows.has(key)) continue;
+      seenRows.add(key);
+      planSequence += 1;
+      add(row, {
+        source: plansSource,
+        sequence: planSequence,
+        page: null,
+        department: null,
+        kind,
+        credits: Number.isFinite(row.credits) ? row.credits : null,
+        hours: Number.isFinite(row.hours) ? row.hours : null,
+        program,
+        year,
+        requirement,
+      });
+    }
+  }
   const courses = [],
     held = [],
     categoryConflicts = [];
@@ -150,7 +222,17 @@ export function prepareAcademicCatalog({ syllabus, curriculum, execution, eviden
   return {
     catalog: { schemaVersion: 1, sources, courses },
     report: {
-      inputRows: syllabus.records.length + curriculum.courses.length + execution.courses.length,
+      inputRows:
+        syllabus.records.length +
+        curriculum.courses.length +
+        execution.courses.length +
+        timetable.courses.length +
+        plans.plans.reduce((sum, plan) => sum + plan.courses.length, 0),
+      timetableCourses: timetable.courses.length,
+      timetableSemesters: timetable.perSemester?.length ?? null,
+      planCount: plans.plans.length,
+      planCourses: plans.plans.reduce((sum, plan) => sum + plan.courses.length, 0),
+      planWithCourses: plans.plans.filter((plan) => plan.courses.length > 0).length,
       courses: courses.length,
       categories: Object.fromEntries(
         [null, 'major', 'elective'].map((key) => [
@@ -193,6 +275,8 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     syllabus: read(intake + 'academic-syllabus-catalog-20261018.json'),
     curriculum: read(intake + 'academic-own-plan-courses-20261018.json'),
     execution: read(intake + 'academic-execution-plan-20261018.json'),
+    timetable: read(timetableIntake + 'timetable-course-catalog-20261107.json'),
+    plans: read(timetableIntake + 'plan-courses-20261107.json'),
     evidence: read('data/course-data/course-records.json'),
   });
   const latest = latestAcademicPlans(read(intake + 'academic-plan-index-20261018.json').plans);
@@ -200,7 +284,8 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     'academic-catalog.json': catalog,
     'academic-catalog-report.json': report,
     'academic-latest-plans.json': {
-      scope: '仅方案索引，未取得的课程明细不生成关联；同年并列方案不擅自合并。',
+      scope:
+        '仅保留最新方案索引；课程明细来自逐条查询的方案详细页面，未取得的方案不生成关联；同年并列方案不擅自合并。',
       plans: latest,
     },
   };
