@@ -23,8 +23,10 @@ export type Course = {
   electiveType: ElectiveType | null;
   departmentSourceYear: number | null;
 };
-export type CourseDetail = Course & {
+export type CoursePage = Course & {
   elective: ElectiveDetails | null;
+};
+export type CourseDetail = CoursePage & {
   materials: CourseMaterial[];
 };
 export type CourseSummary = Course & {

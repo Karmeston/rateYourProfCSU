@@ -126,6 +126,41 @@ test('课程发现与评价筛选（独立临时 D1）', async (t) => {
     assert.equal(page.total, 2);
     assert.equal(page.courses[0].id, 3);
     assert.ok(!Object.hasOwn(page, 'facets') && !Object.hasOwn(page, 'stats'));
+    const home = await app.request('/api/courses?view=results&limit=1', {}, { DB: db });
+    assert.equal(home.status, 200);
+    assert.equal((await home.json()).total, 3);
+  });
+
+  await t.test('关键词搜索返回准确总数，缓存复用不混淆筛选，详情可略过材料', async (t) => {
+    const store = new Map();
+    const original = Object.getOwnPropertyDescriptor(globalThis, 'caches');
+    Object.defineProperty(globalThis, 'caches', {
+      configurable: true,
+      value: { default: {
+        match: async (key) => store.get(key)?.clone(),
+        put: async (key, response) => store.set(key, response.clone()),
+      } },
+    });
+    t.after(() => {
+      if (original) Object.defineProperty(globalThis, 'caches', original);
+      else delete globalThis.caches;
+    });
+
+    const page = await get('/api/courses?view=results&q=MATH-&limit=1');
+    assert.equal(page.total, 2);
+    assert.equal(page.courses[0].id, 1);
+    assert.ok(!Object.hasOwn(page.courses[0], 'matchedCount'));
+    const offline = { DB: { prepare() { throw new Error('Unexpected database access'); } } };
+    const same = await app.request('/api/courses?limit=1&q=MATH-&view=results', {}, offline);
+    assert.equal(same.status, 200);
+    assert.deepEqual(await same.json(), page);
+    const beyond = await get('/api/courses?view=results&q=MATH-&offset=100');
+    assert.equal(beyond.total, 2);
+    assert.deepEqual(beyond.courses, []);
+    const other = await get('/api/courses?view=results&q=ART-');
+    assert.equal(other.courses[0].id, 2);
+    assert.ok(!Object.hasOwn((await get('/api/courses/1?view=page')).course, 'materials'));
+    assert.ok(Array.isArray((await get('/api/courses/1')).course.materials));
   });
 
   await t.test('搜索和学院筛选不能重新显示隐藏课程', async () => {

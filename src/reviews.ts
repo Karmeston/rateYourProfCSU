@@ -41,11 +41,9 @@ for (const { kind, reviews: table, foreignKey, votes, replies } of reviewTargets
     }
     const id = Number(rawId);
     const offset = Number(rawOffset);
-    const target = await c.env.DB.prepare(`SELECT id FROM ${kind} WHERE id = ?${visibility}`)
-      .bind(id)
-      .first();
-    if (!target) return c.json({ error: '评价对象不存在' }, 404);
-    const [counts, entries, own] = await c.env.DB.batch([
+    const visitorId = c.get('visitorId');
+    const [target, counts, entries, own] = await c.env.DB.batch([
+      c.env.DB.prepare(`SELECT id FROM ${kind} WHERE id = ?${visibility}`).bind(id),
       c.env.DB.prepare(
         `SELECT rating, count(*) AS count FROM ${table} WHERE ${foreignKey} = ? AND status = 'published' AND withdrawn_at IS NULL GROUP BY rating`,
       ).bind(id),
@@ -59,19 +57,20 @@ for (const { kind, reviews: table, foreignKey, votes, replies } of reviewTargets
         FROM ${table} r WHERE ${foreignKey} = ? AND status = 'published' AND withdrawn_at IS NULL AND (? = '' OR rating = ?)
         ORDER BY ${sort === 'helpful' ? 'likes DESC, dislikes ASC,' : ''} created_at DESC, id DESC LIMIT ? OFFSET ?`,
       ).bind(
-        c.get('visitorId') ?? '',
-        c.get('visitorId') ?? '',
+        visitorId ?? '',
+        visitorId ?? '',
         id,
         rating,
         rating,
         pageSize + 1,
         offset,
       ),
-      c.env.DB.prepare(
+      ...(visitorId ? [c.env.DB.prepare(
         `SELECT id,rating,body,status,revision,withdrawn_at,term,teacher_name AS teacherName
         FROM ${table} WHERE ${foreignKey}=? AND visitor_id=?`,
-      ).bind(id, c.get('visitorId') ?? ''),
+      ).bind(id, visitorId)] : []),
     ]);
+    if (!target.results.length) return c.json({ error: '评价对象不存在' }, 404);
     const histogram = counts.results as RatingCount[];
     const count = histogram.reduce((sum, row) => sum + row.count, 0);
     const total = histogram.reduce((sum, row) => sum + row.rating * row.count, 0);
@@ -81,7 +80,7 @@ for (const { kind, reviews: table, foreignKey, votes, replies } of reviewTargets
     }));
     return c.json({
       reviews: (entries.results as Review[]).slice(0, pageSize),
-      myReview: own.results[0] ?? null,
+      myReview: own?.results[0] ?? null,
       summary: { count, average: count ? total / count : null, distribution },
       total: rating ? distribution.find((row) => row.rating === Number(rating))!.count : count,
       limit: pageSize,

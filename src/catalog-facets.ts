@@ -1,20 +1,15 @@
 import type { CourseCatalog } from '../shared/catalog.ts';
+import { readPublicCache, writePublicCache } from './public-cache.ts';
 
 type Facets = CourseCatalog['facets'];
 
 export async function readCatalogFacets(db: D1Database, requestUrl: string): Promise<Facets> {
   // The options are public and identical for every page and visitor.
-  const cache = (globalThis.caches as CacheStorage & { default?: Cache } | undefined)?.default;
   const key = new URL('/api/courses/facets?v=1', requestUrl).href;
-  const cached = await cache?.match(key).catch(() => undefined);
-  if (cached) return cached.json<Facets>();
+  const cached = await readPublicCache<Facets>(key);
+  if (cached) return cached;
   const facets = await queryFacets(db);
-  if (cache) {
-    const response = Response.json(facets, {
-      headers: { 'Cache-Control': 'public, max-age=3600' },
-    });
-    await cache.put(key, response).catch(() => undefined);
-  }
+  await writePublicCache(key, facets, 3600);
   return facets;
 }
 

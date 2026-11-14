@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { CourseDetail } from '../shared/catalog';
+import type { CoursePage } from '../shared/catalog';
 import {
   academicYear,
   assessCreditModule,
@@ -58,7 +58,7 @@ function readPlanChoice() {
   }
 }
 
-export function ElectiveGuidance({ course }: { course: CourseDetail }) {
+export function ElectiveGuidance({ course }: { course: CoursePage }) {
   const [planId, setPlanId] = useState(readPlanChoice);
   const plan = findElectivePlan(planId);
   const { facts, offerings, creditRules } = course.elective ?? {

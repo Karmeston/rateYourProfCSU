@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { courseCategories, type CourseDetail, type Teacher } from '../shared/catalog';
+import { courseCategories, type CoursePage, type Teacher } from '../shared/catalog';
 import { ElectiveGuidance } from './elective-guidance';
 import { Icon } from './icons';
 import { Reviews } from './reviews';
@@ -25,8 +25,8 @@ export function Detail({
   id: string;
   from: string;
 }) {
-  const { data, error, retry } = useData<{ course?: CourseDetail; teacher?: Teacher }>(
-    `/api/${kind}/${id}`,
+  const { data, error, retry } = useData<{ course?: CoursePage; teacher?: Teacher }>(
+    `/api/${kind}/${id}${kind === 'courses' ? '?view=page' : ''}`,
   );
   const row = kind === 'courses' ? data?.course : data?.teacher;
   const course = data?.course;

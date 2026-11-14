@@ -2,15 +2,17 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 import { Catalog } from './catalog';
-import { Detail } from './detail';
 import { teacherPagesEnabled } from './features';
-import { Guide } from './guide';
 import { parseRoute } from './routing';
 import { EmptyState } from './ui';
-import { TeacherCatalog } from './teacher-catalog';
 import { recordPageView } from './traffic';
 
 const Admin = lazy(() => import('./admin'));
+const Detail = lazy(() => import('./detail').then((module) => ({ default: module.Detail })));
+const Guide = lazy(() => import('./guide').then((module) => ({ default: module.Guide })));
+const TeacherCatalog = lazy(() =>
+  import('./teacher-catalog').then((module) => ({ default: module.TeacherCatalog })),
+);
 
 function App() {
   const [hash, setHash] = useState(() => window.location.hash || '#/');
@@ -105,35 +107,35 @@ function App() {
         </div>
       </header>
       <main id="main-content" ref={main} tabIndex={-1}>
-        {route.page === 'admin' ? (
-          <Suspense fallback={<p role="status">正在加载后台…</p>}>
+        <Suspense fallback={<p role="status">正在加载页面…</p>}>
+          {route.page === 'admin' ? (
             <Admin />
-          </Suspense>
-        ) : route.page === 'catalog' ? (
-          <Catalog route={route} />
-        ) : route.page === 'detail' ? (
-          <Detail
-            key={`${route.kind}/${route.id}`}
-            kind={route.kind}
-            id={route.id}
-            from={route.from}
-          />
-        ) : route.page === 'guide' ? (
-          <Guide />
-        ) : route.page === 'teachers' ? (
-          <TeacherCatalog q={route.q} offset={route.offset} />
-        ) : (
-          <EmptyState
-            title="这个页面暂时找不到"
-            action={
-              <a className="primary-button" href="#/">
-                返回课程广场
-              </a>
-            }
-          >
-            链接可能有误，回到课程广场继续探索。
-          </EmptyState>
-        )}
+          ) : route.page === 'catalog' ? (
+            <Catalog route={route} />
+          ) : route.page === 'detail' ? (
+            <Detail
+              key={`${route.kind}/${route.id}`}
+              kind={route.kind}
+              id={route.id}
+              from={route.from}
+            />
+          ) : route.page === 'guide' ? (
+            <Guide />
+          ) : route.page === 'teachers' ? (
+            <TeacherCatalog q={route.q} offset={route.offset} />
+          ) : (
+            <EmptyState
+              title="这个页面暂时找不到"
+              action={
+                <a className="primary-button" href="#/">
+                  返回课程广场
+                </a>
+              }
+            >
+              链接可能有误，回到课程广场继续探索。
+            </EmptyState>
+          )}
+        </Suspense>
       </main>
     </>
   );

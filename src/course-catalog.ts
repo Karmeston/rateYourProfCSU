@@ -7,6 +7,7 @@ import type {
   CourseSummary,
 } from '../shared/catalog.ts';
 import { readCatalogFacets } from './catalog-facets.ts';
+import { readPublicCache, writePublicCache } from './public-cache.ts';
 import { isElectiveTypeFilter } from '../shared/electives.ts';
 import { readElectiveDetails } from './elective-guidance.ts';
 import { isResourceId } from './validation.ts';
@@ -95,6 +96,19 @@ catalog.get('/', async (c) => {
   const page = parseQuery(c.req.queries());
   if (!page) return c.json({ error: '查询参数不合法' }, 400);
   const { limit, offset, q, category, electiveType, department, sort, program, planYear, resultsOnly } = page;
+  const cacheKey = resultsOnly
+    ? new URL('/api/courses/results-v1?' + new URLSearchParams({
+        limit: String(limit), offset: String(offset), q, category, electiveType,
+        department, sort, program, planYear,
+      }), c.req.url).href
+    : null;
+  if (cacheKey) {
+    const cached = await readPublicCache<CourseCatalogPage>(cacheKey);
+    if (cached) {
+      c.header('Cache-Control', 'private, max-age=15');
+      return c.json(cached);
+    }
+  }
   // SQL fragments only come from fixed sort options.
   const clauses = ['c.is_listed = 1'];
   const bindings: (string | number)[] = [];
@@ -126,11 +140,15 @@ catalog.get('/', async (c) => {
   ) r ON r.course_id = c.id`;
   // Rating sorts need all candidates. Other sorts read ratings and source years only for this page.
   const filtered = clauses.length > 1;
-  const facets = !resultsOnly || !filtered ? await readCatalogFacets(c.env.DB, c.req.url) : undefined;
+  // A text search already needs to scan candidate names. Count its matches in that same pass.
+  const countInPage = resultsOnly && !!q;
+  const separateCount = (filtered || resultsOnly) && !countInPage;
+  const facets = resultsOnly ? undefined : await readCatalogFacets(c.env.DB, c.req.url);
   const [entries, ...aggregates] = await c.env.DB.batch([
     c.env.DB.prepare(
       `WITH page AS (
         SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType
+        ${countInPage ? ', count(*) OVER () AS matchedCount' : ''}
         ${ranked ? ', r.average, coalesce(r.reviewCount, 0) AS reviewCount' : ''}
         FROM courses c ${electiveJoin} ${ranked ? ratingsJoin : ''} WHERE ${where}
         ORDER BY ${ordering[sort]} LIMIT ? OFFSET ?
@@ -147,7 +165,7 @@ catalog.get('/', async (c) => {
         }
       FROM page ORDER BY ${ordering[sort]}`,
     ).bind(...bindings, limit + 1, offset),
-    ...(filtered ? [c.env.DB.prepare(
+    ...(separateCount ? [c.env.DB.prepare(
       `SELECT count(*) AS total FROM courses c ${electiveType ? electiveJoin : ''} WHERE ${where}`,
     ).bind(...bindings)] : []),
     ...(!resultsOnly ? [c.env.DB.prepare(`SELECT
@@ -155,8 +173,16 @@ catalog.get('/', async (c) => {
       FROM course_reviews r JOIN courses c ON c.id=r.course_id
       WHERE c.is_listed=1 AND r.status='published' AND r.withdrawn_at IS NULL`)] : []),
   ]);
-  const [count, statistics] = filtered ? aggregates : [undefined, ...aggregates];
-  const courses = (entries.results as CourseSummary[]).slice(0, limit);
+  const [count, statistics] = separateCount ? aggregates : [undefined, ...aggregates];
+  const rows = entries.results as (CourseSummary & { matchedCount?: number })[];
+  let total = rows[0]?.matchedCount ?? (count?.results[0] as { total: number } | undefined)?.total;
+  if (countInPage && total === undefined) {
+    // An out-of-range shared URL has no row to carry the window count.
+    total = offset ? (await c.env.DB.prepare(
+      `SELECT count(*) AS total FROM courses c ${electiveType ? electiveJoin : ''} WHERE ${where}`,
+    ).bind(...bindings).first<{ total: number }>())?.total : 0;
+  }
+  const courses = rows.slice(0, limit).map(({ matchedCount: _count, ...course }) => course);
   if (!resultsOnly && program && courses.length) {
     type PlanRecord = NonNullable<CourseSummary['planRecords']>[number];
     const planRows = await c.env.DB.prepare(
@@ -195,11 +221,15 @@ catalog.get('/', async (c) => {
     program,
     planYear,
     sort,
-    total: (count?.results[0] as { total: number } | undefined)?.total ?? courseCount,
+    total: total ?? courseCount,
     hasMore: entries.results.length > limit,
   };
+  if (cacheKey) {
+    if (courses.length) await writePublicCache(cacheKey, response, 60);
+    c.header('Cache-Control', 'private, max-age=15');
+    return c.json(response);
+  }
   c.header('Cache-Control', 'private, max-age=60');
-  if (resultsOnly) return c.json(response);
   return c.json({
     ...response,
     facets,
@@ -211,7 +241,12 @@ catalog.get('/', async (c) => {
 });
 
 catalog.get('/:id', async (c) => {
-  if (!isResourceId(c.req.param('id')) || Object.keys(c.req.queries()).length)
+  const query = c.req.queries();
+  const compact = query.view?.[0] === 'page';
+  if (
+    !isResourceId(c.req.param('id')) ||
+    Object.entries(query).some(([key, values]) => key !== 'view' || values.length !== 1 || !compact)
+  )
     return c.json({ error: '查询参数不合法' }, 400);
   const course = await c.env.DB.prepare(
     `SELECT c.id, c.code, c.name, c.department, c.category, e.elective_type AS electiveType,
@@ -226,10 +261,10 @@ catalog.get('/:id', async (c) => {
     course.category === 'elective'
       ? readElectiveDetails(c.env.DB, course.id)
       : Promise.resolve(null),
-    readCourseMaterials(c.env.DB, course.id),
+    compact ? Promise.resolve(undefined) : readCourseMaterials(c.env.DB, course.id),
   ]);
   c.header('Cache-Control', 'private, max-age=60');
-  return c.json({ course: { ...course, elective, materials } });
+  return c.json({ course: { ...course, elective, ...(materials ? { materials } : {}) } });
 });
 
 export default catalog;

@@ -16,7 +16,7 @@ import {
   type CatalogFilters,
   type CatalogRoute,
 } from './routing';
-import { Stars } from './reviews';
+import { Stars } from './stars';
 import { EmptyState, ErrorState, LoadingCards } from './ui';
 import { useData } from './use-data';
 import { CatalogFiltersPanel } from './catalog-filters';
@@ -134,7 +134,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
   if (route.department) params.set('department', route.department);
   if (route.program) params.set('program', route.program);
   if (route.planYear) params.set('planYear', route.planYear);
-  const { data, error, retry } = useData<CourseCatalogPage>(`/api/courses?${params}`);
+  const { data, error, retry } = useData<CourseCatalogPage>(`/api/courses?${params}`, 'default');
   const facets = useData<CourseCatalog['facets']>('/api/courses/facets', 'default');
   const [view, setView] = useState<'grid' | 'list'>(() => {
     try {
