@@ -1,5 +1,6 @@
 import {
   courseCategoryFilters,
+  courseCategories,
   courseSorts,
   planVersionLabel,
   type CourseCatalog,
@@ -19,15 +20,17 @@ export function CatalogFiltersPanel({
     window.location.hash = href(patch);
   };
   const departments = facets?.departments ?? [];
-  const years = facets?.programs.find((item) => item.name === route.program)?.years ?? [];
+  const programs = facets?.programs ?? [];
+  const years = programs.find((item) => item.name === route.program)?.years ?? [];
+  const categories = route.category === 'unknown' ? courseCategoryFilters : courseCategories;
   return (
     <div className="catalog-filters">
       <nav className="category-filter" aria-label="课程类型">
-        {[['', '全部课程'], ...Object.entries(courseCategoryFilters)].map(([value, label]) => (
+        {[['', '全部课程'], ...Object.entries(categories)].map(([value, label]) => (
           <a
             key={value}
             href={href({ category: value as CatalogRoute['category'] })}
-            aria-current={route.category === value ? 'page' : undefined}
+            aria-current={!route.program && route.category === value ? 'page' : undefined}
           >
             {label}
           </a>
@@ -35,23 +38,23 @@ export function CatalogFiltersPanel({
       </nav>
       <div className="catalog-filter-fields">
         <label>
-          学院／教学单位
+          按专业查课
           <select
-            value={route.department}
-            onChange={(event) => change({ department: event.target.value })}
+            value={route.program}
+            onChange={(event) => change({ program: event.target.value })}
           >
-            <option value="">全部教学单位</option>
-            {route.department && !departments.some((item) => item.name === route.department) && (
-              <option>{route.department}</option>
+            <option value="">选择你的专业</option>
+            {route.program && !programs.some((item) => item.name === route.program) && (
+              <option>{route.program}</option>
             )}
-            {departments.map((item) => (
+            {programs.map((item) => (
               <option key={item.name} value={item.name}>
-                {item.name === '待核实' ? '学院待补充' : item.name} · {item.count}
+                {item.name}
               </option>
             ))}
           </select>
         </label>
-        {route.category === 'elective' ? (
+        {route.category === 'elective' && (
           <label>
             公选课类别
             <select
@@ -69,20 +72,21 @@ export function CatalogFiltersPanel({
               <option value="unknown">类别待核实</option>
             </select>
           </label>
-        ) : (
+        )}
+        {!route.program && (
           <label>
-            培养方案专业
+            学院／教学单位
             <select
-              value={route.program}
-              onChange={(event) => change({ program: event.target.value })}
+              value={route.department}
+              onChange={(event) => change({ department: event.target.value })}
             >
-              <option value="">全部专业</option>
-              {route.program && !facets?.programs.some((item) => item.name === route.program) && (
-                <option>{route.program}</option>
+              <option value="">全部教学单位</option>
+              {route.department && !departments.some((item) => item.name === route.department) && (
+                <option>{route.department}</option>
               )}
-              {facets?.programs.map((item) => (
+              {departments.map((item) => (
                 <option key={item.name} value={item.name}>
-                  {item.name}
+                  {item.name === '待核实' ? '学院待补充' : item.name} · {item.count}
                 </option>
               ))}
             </select>
@@ -125,11 +129,6 @@ export function CatalogFiltersPanel({
           </select>
         </label>
       </div>
-      {route.program && (
-        <p className="fine-print catalog-plan-note">
-          按已收录方案记录筛选，可能含辅修表；不代表当期开课或个人选课资格。
-        </p>
-      )}
     </div>
   );
 }

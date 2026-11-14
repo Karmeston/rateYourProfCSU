@@ -69,17 +69,17 @@ function Search({ route }: { route: CatalogRoute }) {
 function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
   return (
     <li className="course-card">
-      <div className="card-top">
-        <span className={`category-badge ${course.category ?? 'unknown'}`}>
-          <i />
-          {course.category ? courseCategories[course.category] : '类别待核实'}
-        </span>
-        {course.category === 'elective' && (
-          <span className="elective-type-label">
-            {course.electiveType ? electiveTypes[course.electiveType] : '类别待核实'}
+      {course.category && (
+        <div className="card-top">
+          <span className={`category-badge ${course.category}`}>
+            <i />
+            {courseCategories[course.category]}
           </span>
-        )}
-      </div>
+          {course.category === 'elective' && course.electiveType && (
+            <span className="elective-type-label">{electiveTypes[course.electiveType]}</span>
+          )}
+        </div>
+      )}
       <div className="card-content">
         <h2>
           <a
@@ -89,9 +89,7 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
             {course.name}
           </a>
         </h2>
-        <p className="metadata">
-          {course.department === '待核实' ? '开课学院待补充' : course.department}
-        </p>
+        {course.department !== '待核实' && <p className="metadata">{course.department}</p>}
         <div className="card-code">
           {course.code ?? '课程代码待补充'}
           {course.id < 0 && <span className="demo-badge">演示</span>}

@@ -73,22 +73,22 @@ export function Detail({
           <section className="detail-heading">
             <div>
               <div className="detail-labels">
-                <span className={`category-badge ${course?.category ?? 'unknown'}`}>
-                  <i />
-                  {course?.category
-                    ? courseCategories[course.category]
-                    : kind === 'teachers'
-                      ? '教师主页'
-                      : '类别待核实'}
-                </span>
+                {(course?.category || kind === 'teachers') && (
+                  <span className={`category-badge ${course?.category ?? 'unknown'}`}>
+                    <i />
+                    {course?.category ? courseCategories[course.category] : '教师主页'}
+                  </span>
+                )}
                 {row.id < 0 && <span className="demo-badge">虚构演示数据</span>}
               </div>
               <h1>{row.name}</h1>
               <div className="detail-meta">
-                <span>
-                  <Icon name="book" size={17} />
-                  {row.department === '待核实' ? '开课学院待补充' : row.department}
-                </span>
+                {row.department !== '待核实' && (
+                  <span>
+                    <Icon name="book" size={17} />
+                    {row.department}
+                  </span>
+                )}
                 {course?.code && <span>课程代码 · {course.code}</span>}
                 {profile && (
                   <a href={profile} target="_blank" rel="noopener noreferrer">

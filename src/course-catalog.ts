@@ -66,7 +66,8 @@ function parseQuery(query: Record<string, string[]>) {
     offset: Number(offset),
     q,
     department,
-    category: program ? 'major' : electiveType ? 'elective' : category,
+    // Older program links include category=major. Membership comes from the plan itself.
+    category: program ? '' : electiveType ? 'elective' : category,
     electiveType,
     program,
     planYear,
@@ -146,9 +147,9 @@ catalog.get('/', async (c) => {
       FROM course_reviews r JOIN courses c ON c.id=r.course_id
       WHERE c.is_listed=1 AND r.status='published' AND r.withdrawn_at IS NULL`),
     c.env.DB.prepare(`SELECT m.program AS name, m.source_year AS year FROM course_materials m
-      JOIN courses c ON c.id=m.course_id WHERE c.is_listed=1 AND c.category='major' AND m.kind='curriculum' AND m.program IS NOT NULL
+      JOIN courses c ON c.id=m.course_id WHERE c.is_listed=1 AND m.kind='curriculum' AND m.program IS NOT NULL
       UNION SELECT p.program AS name, p.source_year AS year FROM course_catalog_records p
-      JOIN courses c ON c.id=p.course_id WHERE c.is_listed=1 AND c.category='major' AND p.program IS NOT NULL
+      JOIN courses c ON c.id=p.course_id WHERE c.is_listed=1 AND p.program IS NOT NULL
       ORDER BY name, year DESC`),
   ]);
   const courses = (entries.results as CourseSummary[]).slice(0, limit);

@@ -34,8 +34,15 @@ export const defaultFilters: CatalogFilters = {
 
 export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilters> = {}) {
   const value = { ...filters, ...patch };
-  if (patch.program !== undefined && patch.planYear === undefined) value.planYear = '';
-  if (patch.category !== undefined && patch.category !== 'major') {
+  if (patch.program !== undefined && patch.program !== filters.program) {
+    if (patch.planYear === undefined) value.planYear = '';
+    if (value.program) {
+      value.category = '';
+      value.electiveType = '';
+      if (patch.department === undefined) value.department = '';
+    }
+  }
+  if (patch.category !== undefined && patch.program === undefined) {
     value.program = '';
     value.planYear = '';
   }
@@ -51,7 +58,7 @@ export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilte
     value.program = '';
     value.planYear = '';
   }
-  if (value.program) value.category = 'major';
+  if (value.program) value.category = '';
   const query = new URLSearchParams();
   if (value.q) query.set('q', value.q);
   if (value.category) query.set('category', value.category);
@@ -143,7 +150,7 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     page: 'catalog',
     home: path === '/',
     q,
-    category: program ? 'major' : electiveType ? 'elective' : (category as CourseCategoryFilter),
+    category: program ? '' : electiveType ? 'elective' : (category as CourseCategoryFilter),
     electiveType,
     department,
     program,

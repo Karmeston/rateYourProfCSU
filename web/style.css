@@ -351,9 +351,6 @@ main:focus {
   width: 100%;
   max-width: 100%;
 }
-.catalog-plan-note {
-  margin-top: 0.65rem;
-}
 .catalog-content {
   min-width: 0;
 }
