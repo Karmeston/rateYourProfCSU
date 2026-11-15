@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { readBody } from './request-body.ts';
-import { checkWriteRequest, limitWrite, type AppEnv } from './visitor.ts';
+import { checkWriteRequest, limitWrite, requireVisitor, type AppEnv } from './visitor.ts';
 import { reviewTargets } from './review-targets.ts';
 import { isResourceId, isUuid } from './validation.ts';
 
@@ -16,6 +16,8 @@ for (const { kind, reviews, foreignKey, votes, replies } of reviewTargets) {
       const rejected = checkWriteRequest(c);
       if (rejected) return rejected;
       if (Object.keys(c.req.queries()).length) return c.json({ error: '参数不合法' }, 400);
+      const anonymous = requireVisitor(c);
+      if (anonymous) return anonymous;
     }
     const parent = await c.env.DB.prepare(
       `SELECT r.id FROM ${reviews} r JOIN ${kind} t ON t.id=r.${foreignKey} WHERE r.id=? AND t.id=? AND r.status='published' AND r.withdrawn_at IS NULL ${kind === 'courses' ? 'AND t.is_listed=1' : ''}`,
@@ -45,7 +47,9 @@ for (const { kind, reviews, foreignKey, votes, replies } of reviewTargets) {
       data.value === 0
         ? c.env.DB.prepare(`DELETE FROM ${votes} WHERE review_id=? AND voter_id=?`).bind(id, voter)
         : c.env.DB.prepare(
-            `INSERT INTO ${votes} (review_id,voter_id,value) VALUES (?,?,?) ON CONFLICT(review_id,voter_id) DO UPDATE SET value=excluded.value`,
+            `INSERT INTO ${votes} (review_id,voter_id,value) VALUES (?,?,?)
+              ON CONFLICT(review_id,voter_id) DO UPDATE SET value=excluded.value
+              WHERE value<>excluded.value`,
           ).bind(id, voter, data.value);
     const result = await c.env.DB.batch([
       mutation,

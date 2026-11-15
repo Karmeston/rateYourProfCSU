@@ -6,6 +6,25 @@ import app from '../src/index.ts';
 import { migrate } from './helpers/database.mjs';
 import { issueCookie, visitorEnv } from './helpers/visitor.mjs';
 
+test('无匿名会话的投票、回复、举报与资料写入不查询 D1', async () => {
+  const id = randomUUID();
+  const env = { VISITOR_SECRET: 'test-secret-with-thirty-two-characters', DB: {
+    prepare() { throw new Error('Unexpected database read'); },
+  } };
+  for (const [method, path] of [
+    ['PUT', `/api/courses/1/reviews/${id}/vote`],
+    ['POST', `/api/courses/1/reviews/${id}/replies`],
+    ['POST', `/api/courses/1/reviews/${id}/reports`],
+    ['POST', '/api/courses/1/supplements'],
+  ]) {
+    const response = await app.request(path, {
+      method, headers: { 'Content-Type': 'application/json' }, body: '{}',
+    }, env);
+    assert.equal(response.status, 401, path);
+    assert.equal((await response.json()).code, 'VISITOR_REQUIRED');
+  }
+});
+
 test('评价投票与单层回复（临时 D1）', async (t) => {
   const platform = await getPlatformProxy({ persist: false });
   t.after(() => platform.dispose());
@@ -15,7 +34,18 @@ test('评价投票与单层回复（临时 D1）', async (t) => {
   const voter = randomUUID();
   const env = visitorEnv(platform);
   const cookies = new Map([[voter, await issueCookie(env)]]);
-  const request = (url, init) => app.request(url, init, env);
+  const writes = [];
+  const request = (url, init) => app.request(url, init, {
+    ...env,
+    DB: {
+      prepare: (sql) => DB.prepare(sql),
+      async batch(statements) {
+        const results = await DB.batch(statements);
+        if (url.endsWith('/vote')) writes.push(results[0].meta.changes);
+        return results;
+      },
+    },
+  });
   const write = async (url, method, data, browser = voter, extra = {}) => {
     if (browser && !cookies.has(browser)) cookies.set(browser, await issueCookie(env));
     return request(url, {
@@ -41,6 +71,7 @@ test('评价投票与单层回复（临时 D1）', async (t) => {
     const base = `/api/${kind}/1/reviews`;
     const path = `${base}/${reviewId}`;
     await t.test(`${kind} 投票可重试、切换和取消，不改变星级`, async () => {
+      writes.length = 0;
       const vote = async (value, browser) => {
         const response = await write(`${path}/vote`, 'PUT', { value }, browser);
         assert.equal(response.status, 200);
@@ -51,6 +82,7 @@ test('评价投票与单层回复（临时 D1）', async (t) => {
       assert.deepEqual(await vote(-1), { likes: 0, dislikes: 1, myVote: -1 });
       assert.deepEqual(await vote(1, randomUUID()), { likes: 1, dislikes: 1, myVote: 1 });
       assert.deepEqual(await vote(0), { likes: 1, dislikes: 0, myVote: 0 });
+      assert.deepEqual(writes, [1, 0, 1, 1, 1, 0]);
       assert.deepEqual(await vote(0), { likes: 1, dislikes: 0, myVote: 0 });
       await vote(-1);
       const data = await (await request(base, { headers: { Cookie: cookies.get(voter) } })).json();

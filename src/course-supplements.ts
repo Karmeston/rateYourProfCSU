@@ -4,7 +4,7 @@ import {
   type OwnSupplement,
   type SupplementContent,
 } from '../shared/community.ts';
-import { checkWriteRequest, limitWrite, type AppEnv } from './visitor.ts';
+import { checkWriteRequest, limitWrite, requireVisitor, type AppEnv } from './visitor.ts';
 import { readBody } from './request-body.ts';
 import { contextInput, objectInput, sourceUrl, textInput } from './community-input.ts';
 import { isResourceId, isUuid } from './validation.ts';
@@ -44,6 +44,10 @@ function sameContent(stored: SupplementContent, content: SupplementContent) {
 
 supplements.use('*', async (c, next) => {
   if (!isResourceId(c.req.param('id') ?? '')) return c.json({ error: '参数不合法' }, 400);
+  if (c.req.method !== 'GET') {
+    const rejected = checkWriteRequest(c) ?? requireVisitor(c);
+    if (rejected) return rejected;
+  }
   const found = await c.env.DB.prepare('SELECT id FROM courses WHERE id=? AND is_listed=1')
     .bind(Number(c.req.param('id')))
     .first();

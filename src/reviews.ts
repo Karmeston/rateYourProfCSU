@@ -42,28 +42,45 @@ for (const { kind, reviews: table, foreignKey, votes, replies } of reviewTargets
     const id = Number(rawId);
     const offset = Number(rawOffset);
     const visitorId = c.get('visitorId');
+    const helpful = sort === 'helpful';
+    const voteCounts = (idColumn: 'r.id' | 'page.id') =>
+      `(SELECT json_array(count(CASE WHEN v.value=1 THEN 1 END), count(CASE WHEN v.value=-1 THEN 1 END))
+        FROM ${votes} v WHERE v.review_id=${idColumn})`;
+    const voteOrder = helpful ? "json_extract(voteCounts, '$[0]') DESC, json_extract(voteCounts, '$[1]') ASC," : '';
     const [target, counts, entries, own] = await c.env.DB.batch([
       c.env.DB.prepare(`SELECT id FROM ${kind} WHERE id = ?${visibility}`).bind(id),
       c.env.DB.prepare(
-        `SELECT rating, count(*) AS count FROM ${table} WHERE ${foreignKey} = ? AND status = 'published' AND withdrawn_at IS NULL GROUP BY rating`,
-      ).bind(id),
+        `SELECT rating, count(*) AS count FROM ${table} WHERE ${foreignKey} = ? AND status = 'published'
+          AND withdrawn_at IS NULL AND EXISTS (SELECT 1 FROM ${kind} WHERE id=?${visibility}) GROUP BY rating`,
+      ).bind(id, id),
       c.env.DB.prepare(
-        `SELECT r.id, r.rating, r.body, r.created_at, r.updated_at, r.term, r.teacher_name AS teacherName,
+        `WITH candidates AS ${helpful ? 'MATERIALIZED' : 'NOT MATERIALIZED'} (
+          SELECT r.id, r.created_at, ${helpful ? voteCounts('r.id') : 'NULL'} AS voteCounts
+          FROM ${table} r WHERE ${foreignKey} = ? AND status = 'published' AND withdrawn_at IS NULL
+          ${rating ? 'AND rating = ?' : ''}
+          AND EXISTS (SELECT 1 FROM ${kind} WHERE id=?${visibility})
+        ), page AS MATERIALIZED (
+          SELECT id, voteCounts FROM candidates
+          ORDER BY ${voteOrder} created_at DESC, id DESC LIMIT ? OFFSET ?
+        ), counted AS MATERIALIZED (
+          SELECT page.id, ${helpful ? 'page.voteCounts' : voteCounts('page.id')} AS voteCounts FROM page
+        )
+        SELECT r.id, r.rating, r.body, r.created_at, r.updated_at, r.term, r.teacher_name AS teacherName,
         coalesce(r.visitor_id=?,0) AS isMine,
-        (SELECT count(*) FROM ${votes} v WHERE v.review_id=r.id AND v.value=1) AS likes,
-        (SELECT count(*) FROM ${votes} v WHERE v.review_id=r.id AND v.value=-1) AS dislikes,
+        json_extract(counted.voteCounts, '$[0]') AS likes,
+        json_extract(counted.voteCounts, '$[1]') AS dislikes,
         coalesce((SELECT value FROM ${votes} v WHERE v.review_id=r.id AND v.voter_id=?),0) AS myVote,
         (SELECT count(*) FROM ${replies} p WHERE p.review_id=r.id AND p.status='published') AS replyCount
-        FROM ${table} r WHERE ${foreignKey} = ? AND status = 'published' AND withdrawn_at IS NULL AND (? = '' OR rating = ?)
-        ORDER BY ${sort === 'helpful' ? 'likes DESC, dislikes ASC,' : ''} created_at DESC, id DESC LIMIT ? OFFSET ?`,
+        FROM counted JOIN ${table} r ON r.id=counted.id
+        ORDER BY ${voteOrder} r.created_at DESC, r.id DESC`,
       ).bind(
-        visitorId ?? '',
-        visitorId ?? '',
         id,
-        rating,
-        rating,
+        ...(rating ? [Number(rating)] : []),
+        id,
         pageSize + 1,
         offset,
+        visitorId ?? '',
+        visitorId ?? '',
       ),
       ...(visitorId ? [c.env.DB.prepare(
         `SELECT id,rating,body,status,revision,withdrawn_at,term,teacher_name AS teacherName

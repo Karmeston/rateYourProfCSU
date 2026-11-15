@@ -1,18 +1,44 @@
 // Prepare insert-only SQL against a production export; this script never connects to a remote database.
 import { DatabaseSync } from 'node:sqlite';
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { isAbsolute, relative, resolve } from 'node:path';
+import { isAbsolute, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { importMajorCatalog, majorCatalog } from './import-major-catalog.mjs';
 import { importElectiveCatalog, electiveCatalog } from './import-elective-catalog.mjs';
 import { importAcademicCatalog, academicCatalog } from './import-academic-catalog.mjs';
+
+const maxWritesPerBatch = 80_000;
+const releaseHeader = '-- Verified catalog additions; existing IDs, visibility and reviews are preserved.\n';
+const renderSql = (statements) => releaseHeader + statements.map((entry) => entry.sql).join('\n') + '\n';
+const sha256 = (text) => createHash('sha256').update(text).digest('hex');
+
+function splitBatches(statements) {
+  const batches = [];
+  let entries = [], estimatedWrites = 0;
+  const flush = () => {
+    if (!entries.length) return;
+    const sql = renderSql(entries);
+    batches.push({ sql, estimatedWrites, statements: entries.length, sha256: sha256(sql) });
+    entries = [];
+    estimatedWrites = 0;
+  };
+  for (const entry of statements) {
+    if (entry.estimatedWrites > maxWritesPerBatch) throw new Error('单条语句超出发布写入预算');
+    if (estimatedWrites + entry.estimatedWrites > maxWritesPerBatch) flush();
+    entries.push(entry);
+    estimatedWrites += entry.estimatedWrites;
+  }
+  flush();
+  return batches;
+}
 
 export async function prepareCatalogSql(
   database,
   sources = { major: majorCatalog, elective: electiveCatalog, academic: academicCatalog },
 ) {
   const statements = [];
+  const writeCosts = new Map();
   function statement(sql, values = []) {
     return {
       bind: (...parameters) => statement(sql, parameters),
@@ -26,16 +52,20 @@ export async function prepareCatalogSql(
   function execute(sql, values) {
     const query = database.prepare(sql);
     if (query.columns().length) return { results: query.all(...values), meta: { changes: 0 } };
-    if (
-      !/^\s*INSERT\s+INTO\s+(courses|course_materials|elective_course_facts|elective_course_offerings|course_catalog_records)\b/i.test(
-        sql,
-      )
-    )
+    const table = /^\s*INSERT\s+INTO\s+(courses|course_materials|elective_course_facts|elective_course_offerings|course_catalog_records)\b/i.exec(sql)?.[1].toLowerCase();
+    if (!table)
       throw new Error('发行目录只允许新增已核对的课程及资料');
     const result = query.run(...values);
     // SQLite expands bound values itself, including quotes, Unicode and literal question marks.
-    statements.push(query.expandedSQL + ';');
-    return { results: [], meta: { changes: Number(result.changes) } };
+    const changes = Number(result.changes);
+    if (changes) {
+      if (!writeCosts.has(table)) {
+        const { n } = database.prepare('SELECT count(*) AS n FROM pragma_index_list(?)').get(table);
+        writeCosts.set(table, 1 + n);
+      }
+      statements.push({ sql: query.expandedSQL + ';', estimatedWrites: changes * writeCosts.get(table) });
+    }
+    return { results: [], meta: { changes } };
   }
   const db = {
     prepare: statement,
@@ -64,19 +94,21 @@ export async function prepareCatalogSql(
       count(CASE WHEN is_listed=1 AND category IS NULL THEN 1 END) AS unknown FROM courses`,
       )
       .get();
-    const sql =
-      '-- Verified catalog additions; existing IDs, visibility and reviews are preserved.\n' +
-      statements.join('\n') +
-      '\n';
+    const sql = renderSql(statements);
+    const batches = splitBatches(statements);
     return {
       sql,
+      batches,
       report: {
         elective,
         major,
         academic,
         counts,
         statements: statements.length,
-        sqlSha256: createHash('sha256').update(sql).digest('hex'),
+        sqlSha256: sha256(sql),
+        estimatedWrites: batches.reduce((sum, batch) => sum + batch.estimatedWrites, 0),
+        maxWritesPerBatch,
+        batches: batches.map(({ sql: _sql, ...batch }) => batch),
       },
     };
   } finally {
@@ -87,14 +119,15 @@ export async function prepareCatalogSql(
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
-  if (args.length !== 4 || args[0] !== '--snapshot' || args[2] !== '--output')
-    throw new Error('用法：--snapshot <线上导出SQL> --output <待审核新增SQL>');
+  const split = args[2] === '--output-dir';
+  if (args.length !== 4 || args[0] !== '--snapshot' || (!split && args[2] !== '--output'))
+    throw new Error('用法：--snapshot <线上导出SQL> --output <待审核新增SQL> 或 --output-dir <分批目录>');
   const root = fileURLToPath(new URL('../', import.meta.url));
-  const paths = [args[1], args[3]].map((value) => {
+  const paths = [args[1], args[3]].map((value, index) => {
     const path = resolve(root, value),
       within = relative(root, path);
-    if (!within || within.startsWith('..') || isAbsolute(within) || !path.endsWith('.sql'))
-      throw new Error('导出与新增SQL必须位于项目内，且使用.sql后缀');
+    if (!within || within.startsWith('..') || isAbsolute(within) || ((!split || !index) && !path.endsWith('.sql')))
+      throw new Error('输出必须位于项目内；SQL 文件使用 .sql 后缀');
     return path;
   });
   const db = new DatabaseSync(':memory:');
@@ -108,15 +141,26 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
         .all()
         .map((row) => row.name),
     );
-    for (const name of readdirSync(directory)
+    const pendingMigrations = readdirSync(directory)
       .filter((name) => name.endsWith('.sql'))
-      .sort()) {
-      if (applied.has(name)) continue;
+      .sort()
+      .filter((name) => !applied.has(name));
+    for (const name of pendingMigrations) {
       db.exec(readFileSync(new URL(name, directory), 'utf8'));
     }
-    const { sql, report } = await prepareCatalogSql(db);
-    writeFileSync(paths[1], sql, { encoding: 'utf8', flag: 'wx' });
-    writeFileSync(paths[1] + '.report.json', JSON.stringify(report, null, 2) + '\n', {
+    const { sql, batches, report } = await prepareCatalogSql(db);
+    report.pendingMigrations = pendingMigrations;
+    if (!split && batches.length > 1)
+      throw new Error(`预计写入 ${report.estimatedWrites} 行，超过单批 ${report.maxWritesPerBatch} 行。请改用 --output-dir 生成 ${batches.length} 个按顺序发布的批次。`);
+    if (split) {
+      mkdirSync(paths[1]);
+      batches.forEach((batch, index) => {
+        const name = `batch-${String(index + 1).padStart(3, '0')}.sql`;
+        writeFileSync(join(paths[1], name), batch.sql, { encoding: 'utf8', flag: 'wx' });
+        report.batches[index].file = name;
+      });
+    } else writeFileSync(paths[1], sql, { encoding: 'utf8', flag: 'wx' });
+    writeFileSync(split ? join(paths[1], 'report.json') : paths[1] + '.report.json', JSON.stringify(report, null, 2) + '\n', {
       flag: 'wx',
     });
     console.log(JSON.stringify(report));

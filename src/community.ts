@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { readVisitor, type AppEnv } from './visitor.ts';
+import { checkWriteRequest, readVisitor, requireVisitor, type AppEnv } from './visitor.ts';
 import { isResourceId, isUuid } from './validation.ts';
 import { reviewTargets } from './review-targets.ts';
 import supplements from './course-supplements.ts';
@@ -28,6 +28,8 @@ for (const { kind, reviews, replies, foreignKey } of reviewTargets) {
         Object.keys(c.req.queries()).length
       )
         return c.json({ error: '参数不合法' }, 400);
+      const rejected = checkWriteRequest(c) ?? requireVisitor(c);
+      if (rejected) return rejected;
       const found = await c.env.DB.prepare(
         `SELECT r.id FROM ${reviews} r JOIN ${kind} t ON t.id=r.${foreignKey}
         ${reply ? `JOIN ${replies} p ON p.review_id=r.id AND p.id=? AND p.status='published'` : ''}

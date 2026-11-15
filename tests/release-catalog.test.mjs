@@ -100,3 +100,26 @@ test('教务发行SQL可重放，来源和未标注年份保留；生成过程�
   assert.equal((await prepareCatalogSql(db, sources)).report.academic.insertedCourses, 0);
   assert.equal(db.prepare('SELECT course_id FROM course_reviews').get().course_id, 5);
 });
+
+test('大批发布按数据行和索引写入分批，每批可按序重放', async (t) => {
+  const db = database(t);
+  const { batches, report } = await prepareCatalogSql(db, {
+    major: { ...majorCatalog, courses: [] },
+    elective: electiveCatalog,
+    academic: academicCatalog,
+  });
+  assert.ok(batches.length > 1);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM courses').get().n, 1);
+  const estimated = (table, rows) =>
+    rows * (1 + db.prepare('SELECT count(*) AS n FROM pragma_index_list(?)').get(table).n);
+  for (const batch of batches) {
+    assert.ok(batch.estimatedWrites > 0 && batch.estimatedWrites <= 80000);
+    db.exec(batch.sql);
+  }
+  assert.equal(db.prepare('SELECT count(*) AS n FROM courses').get().n, report.counts.total);
+  assert.ok(
+    report.estimatedWrites >= estimated('courses', report.counts.total - 1) +
+      estimated('course_catalog_records', report.academic.insertedRecords),
+  );
+  assert.deepEqual(db.prepare('PRAGMA foreign_key_check').all(), []);
+});

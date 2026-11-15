@@ -65,6 +65,8 @@ node scripts/prepare-public-directory.mjs --snapshot tmp/已核验的数据库�
 
 提交生成的 `data/course-data/public-directory.json`；原始数据库导出放在 Git 忽略的 `tmp/`。静态目录只含可见的课程和方案关系，不含评价、原始资料或个人信息。`npm run dev` 默认读取本地 D1 数据，以匹配本地课程 ID。线上默认列表不读取评分；选评分排序时读取短缓存的公开汇总，课程详情与评价接口仍实时读取。
 
+大批目录导入使用 `node scripts/prepare-release-catalog.mjs --snapshot <核验后的导出.sql> --output-dir <新批次目录>`。规划器在本地试跑，按数据行及索引估算写入，每个批次最多 80,000 行。按报告顺序执行，每天执行前先核对账户剩余额度；分批文件不要在同一天连续执行。报告另列待执行迁移，迁移消耗须单独计算。某个批次执行结果不明确时，重新核对线上状态再规划剩余批次。
+
 GitHub Actions的`Project checks`在推送和Pull Request时运行同一检查命令，使用Node.js 24，不执行部署。
 
 ## API
