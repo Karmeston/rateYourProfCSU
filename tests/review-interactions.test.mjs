@@ -82,8 +82,8 @@ test('评价投票与单层回复（临时 D1）', async (t) => {
       assert.deepEqual(await vote(-1), { likes: 0, dislikes: 1, myVote: -1 });
       assert.deepEqual(await vote(1, randomUUID()), { likes: 1, dislikes: 1, myVote: 1 });
       assert.deepEqual(await vote(0), { likes: 1, dislikes: 0, myVote: 0 });
-      assert.deepEqual(writes, [1, 0, 1, 1, 1, 0]);
       assert.deepEqual(await vote(0), { likes: 1, dislikes: 0, myVote: 0 });
+      assert.deepEqual(writes, [1, 0, 1, 1, 1, 0]);
       await vote(-1);
       const data = await (await request(base, { headers: { Cookie: cookies.get(voter) } })).json();
       assert.equal(data.summary.count, 1);
