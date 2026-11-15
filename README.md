@@ -57,6 +57,14 @@ npm run check
 
 check依次执行类型检查、完整测试和构建；也可单独运行`typecheck`、`test`和`build`。类型检查拒绝未使用的局部声明与参数。build仅打包和dry-run，不发布。测试不修改开发数据库。生成的类型、构建产物、依赖和本地配置不提交Git。
 
+线上课程广场使用静态目录，名称、编号、专业筛选和翻页在浏览器完成。课程导入或可见状态变动后，从已核验的最新 D1 导出生成目录并随 Worker 发布：
+
+```powershell
+node scripts/prepare-public-directory.mjs --snapshot tmp/已核验的数据库导出.sql
+```
+
+提交生成的 `data/course-data/public-directory.json`；原始数据库导出放在 Git 忽略的 `tmp/`。静态目录只含可见的课程和方案关系，不含评价、原始资料或个人信息。`npm run dev` 默认读取本地 D1 数据，以匹配本地课程 ID。线上默认列表不读取评分；选评分排序时读取短缓存的公开汇总，课程详情与评价接口仍实时读取。
+
 GitHub Actions的`Project checks`在推送和Pull Request时运行同一检查命令，使用Node.js 24，不执行部署。
 
 ## API

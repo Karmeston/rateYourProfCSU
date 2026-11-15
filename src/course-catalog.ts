@@ -14,6 +14,7 @@ import { isResourceId } from './validation.ts';
 import { readCourseMaterials } from './course-materials.ts';
 import { reserveQuota } from './quota-guard.ts';
 import type { AppEnv } from './visitor.ts';
+import type { CourseRating } from '../shared/course-directory.ts';
 
 const catalog = new Hono<AppEnv>();
 const ordering: Record<CourseSort, string> = {
@@ -94,6 +95,24 @@ catalog.get('/facets', async (c) => {
   if (result instanceof Response) return result;
   c.header('Cache-Control', 'private, max-age=300');
   return c.json(result);
+});
+
+catalog.get('/ratings', async (c) => {
+  if (Object.keys(c.req.queries()).length) return c.json({ error: '查询参数不合法' }, 400);
+  const key = new URL('/api/courses/ratings?v=1', c.req.url).href;
+  let ratings = await readPublicCache<CourseRating[]>(key);
+  if (!ratings) {
+    const blocked = await reserveQuota(c, 'content');
+    if (blocked) return blocked;
+    const { results } = await c.env.DB.prepare(`SELECT r.course_id AS id, avg(r.rating) AS average, count(*) AS count
+      FROM course_reviews r JOIN courses c ON c.id=r.course_id
+      WHERE c.is_listed=1 AND r.status='published' AND r.withdrawn_at IS NULL
+      GROUP BY r.course_id ORDER BY r.course_id`).all<{ id: number; average: number; count: number }>();
+    ratings = results.map(({ id, average, count }) => [id, average, count]);
+    await writePublicCache(key, ratings, 60);
+  }
+  c.header('Cache-Control', 'private, max-age=30');
+  return c.json({ ratings });
 });
 
 catalog.get('/', async (c) => {

@@ -3,8 +3,6 @@ import {
   courseCategories,
   courseCategoryFilters,
   planVersionLabel,
-  type CourseCatalog,
-  type CourseCatalogPage,
   type CourseSummary,
 } from '../shared/catalog';
 import { electiveTypes } from '../shared/electives';
@@ -18,8 +16,8 @@ import {
 } from './routing';
 import { Stars } from './stars';
 import { EmptyState, ErrorState, LoadingCards } from './ui';
-import { useData } from './use-data';
 import { CatalogFiltersPanel } from './catalog-filters';
+import { useDirectory } from './directory-data';
 
 function Search({ route }: { route: CatalogRoute }) {
   const [query, setQuery] = useState(route.q);
@@ -67,7 +65,7 @@ function Search({ route }: { route: CatalogRoute }) {
   );
 }
 
-function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
+function CourseCard({ course, from, showRatings }: { course: CourseSummary; from: string; showRatings: boolean }) {
   return (
     <li className="course-card">
       {course.category && (
@@ -97,7 +95,9 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
         </div>
       </div>
       <div className="card-footer">
-        {course.average === null ? (
+        {!showRatings ? (
+          <span className="metadata">查看课程评价</span>
+        ) : course.average === null ? (
           <div className="unrated">
             <span>—</span>
             <div>暂无评价</div>
@@ -122,20 +122,7 @@ function CourseCard({ course, from }: { course: CourseSummary; from: string }) {
 
 export function Catalog({ route }: { route: CatalogRoute }) {
   const href = (patch: Partial<CatalogFilters>) => catalogHref(route, patch);
-  const params = new URLSearchParams({
-    view: 'results',
-    limit: String(pageSize),
-    offset: String(route.offset),
-    q: route.q,
-    sort: route.sort,
-  });
-  if (route.category) params.set('category', route.category);
-  if (route.electiveType) params.set('electiveType', route.electiveType);
-  if (route.department) params.set('department', route.department);
-  if (route.program) params.set('program', route.program);
-  if (route.planYear) params.set('planYear', route.planYear);
-  const { data, error, retry } = useData<CourseCatalogPage>(`/api/courses?${params}`, 'default');
-  const facets = useData<CourseCatalog['facets']>('/api/courses/facets', 'default');
+  const { data, facets, error, retry, showRatings, ratingsLoading, ratingsError, retryRatings } = useDirectory(route);
   const [view, setView] = useState<'grid' | 'list'>(() => {
     try {
       return localStorage.getItem('csu-catalog-view') === 'list' ? 'list' : 'grid';
@@ -191,10 +178,11 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               </button>
             </div>
           </div>
-          <CatalogFiltersPanel route={route} facets={facets.data} />
-          {facets.error && data && (
+          <CatalogFiltersPanel route={route} facets={facets} />
+          {ratingsLoading && <p className="fine-print" role="status">正在加载评分排序…</p>}
+          {ratingsError && data && (
             <p className="fine-print" role="status">
-              专业和学院选项暂未加载。 <button type="button" onClick={facets.retry}>重试</button>
+              评分排序暂不可用，仍可正常查课。 <button type="button" onClick={retryRatings}>重试</button>
             </p>
           )}
           {filtered && (
@@ -245,7 +233,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
             <>
               <ul className={`course-list ${view === 'grid' ? 'course-grid' : 'course-rows'}`}>
                 {data.courses.map((course) => (
-                  <CourseCard key={course.id} course={course} from={catalogHref(route)} />
+                  <CourseCard key={course.id} course={course} from={catalogHref(route)} showRatings={showRatings} />
                 ))}
               </ul>
               <div className="catalog-bottom">

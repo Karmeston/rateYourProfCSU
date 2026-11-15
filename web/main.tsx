@@ -6,6 +6,7 @@ import { teacherPagesEnabled } from './features';
 import { parseRoute } from './routing';
 import { EmptyState } from './ui';
 import { recordPageView } from './traffic';
+import { staticDirectoryEnabled } from './directory-data';
 
 const Admin = lazy(() => import('./admin'));
 const Detail = lazy(() => import('./detail').then((module) => ({ default: module.Detail })));
@@ -21,7 +22,9 @@ function App() {
   const route = parseRoute(hash, teacherPagesEnabled);
   const path = hash.split('?')[0];
   useEffect(() => {
-    recordPageView(parseRoute(window.location.hash, teacherPagesEnabled));
+    const current = parseRoute(window.location.hash, teacherPagesEnabled);
+    // Keep the static browsing path completely independent of Worker and D1 quotas.
+    if (current.page !== 'catalog' || !staticDirectoryEnabled) recordPageView(current);
   }, [path]);
   useEffect(() => {
     const changed = () => setHash(window.location.hash || '#/');

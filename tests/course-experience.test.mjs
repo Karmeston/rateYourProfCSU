@@ -93,6 +93,8 @@ test('课程发现与评价筛选（独立临时 D1）', async (t) => {
   });
 
   await t.test('排序使用公开评价，并把无评分课程放在评分列表末尾', async () => {
+    assert.deepEqual((await get('/api/courses/ratings')).ratings, [[1, 4, 2], [2, 5, 1]]);
+    assert.equal((await request('/api/courses/ratings?limit=1')).status, 400);
     assert.deepEqual(
       (await get('/api/courses?sort=rating')).courses.map((course) => course.id),
       [2, 1, 3],

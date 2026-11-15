@@ -142,7 +142,7 @@ export const protectPublicData: MiddlewareHandler<AppEnv> = async (c, next) => {
   }
   const path = c.req.path.replace(/\/$/, '');
   // The course directory reserves after its cache lookup, using an estimate for the actual query.
-  if (c.req.method === 'GET' && (path === '/api/courses' || path === '/api/courses/facets'))
+  if (c.req.method === 'GET' && ['/api/courses', '/api/courses/facets', '/api/courses/ratings'].includes(path))
     return next();
   const refused = await reserveQuota(c, 'content');
   if (refused) return refused;
