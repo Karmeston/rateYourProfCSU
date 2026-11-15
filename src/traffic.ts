@@ -4,6 +4,7 @@ import { isResourceId, isUuid } from './validation.ts';
 import { readBody } from './request-body.ts';
 import { checkWriteRequest, type AppEnv } from './visitor.ts';
 import { managementNetworkKey } from './admin-auth.ts';
+import { reserveQuota } from './quota-guard.ts';
 
 export function trafficDay(now = Date.now(), offset = 0) {
   return new Date(now + 8 * 3600000 - offset * 86400000).toISOString().slice(0, 10);
@@ -31,8 +32,12 @@ traffic.post('/', async (c) => {
     Object.keys(c.req.queries()).length
   )
     return c.body(null, 400);
-  if (data.page === 'course' || data.page === 'teacher') {
-    if (!isResourceId(String(data.targetId))) return c.body(null, 400);
+  const isDetail = data.page === 'course' || data.page === 'teacher';
+  if (isDetail ? !isResourceId(String(data.targetId)) : data.targetId !== 0)
+    return c.body(null, 400);
+  const blocked = await reserveQuota(c, 'traffic');
+  if (blocked) return blocked;
+  if (isDetail) {
     const table = data.page === 'course' ? 'courses' : 'teachers';
     const target = await c.env.DB.prepare(
       `SELECT id FROM ${table} WHERE id=?${table === 'courses' ? ' AND is_listed=1' : ''}`,
@@ -40,7 +45,7 @@ traffic.post('/', async (c) => {
       .bind(data.targetId)
       .first();
     if (!target) return c.body(null, 404);
-  } else if (data.targetId !== 0) return c.body(null, 400);
+  }
   const day = trafficDay(),
     token = crypto.randomUUID();
   await c.env.DB.batch([

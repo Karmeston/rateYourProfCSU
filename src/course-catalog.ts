@@ -12,8 +12,10 @@ import { isElectiveTypeFilter } from '../shared/electives.ts';
 import { readElectiveDetails } from './elective-guidance.ts';
 import { isResourceId } from './validation.ts';
 import { readCourseMaterials } from './course-materials.ts';
+import { reserveQuota } from './quota-guard.ts';
+import type { AppEnv } from './visitor.ts';
 
-const catalog = new Hono<{ Bindings: Env }>();
+const catalog = new Hono<AppEnv>();
 const ordering: Record<CourseSort, string> = {
   default: 'id ASC',
   rating: 'average IS NULL ASC, average DESC, reviewCount DESC, id ASC',
@@ -88,8 +90,10 @@ function parseQuery(query: Record<string, string[]>) {
 
 catalog.get('/facets', async (c) => {
   if (Object.keys(c.req.queries()).length) return c.json({ error: '查询参数不合法' }, 400);
+  const result = await readCatalogFacets(c);
+  if (result instanceof Response) return result;
   c.header('Cache-Control', 'private, max-age=300');
-  return c.json(await readCatalogFacets(c.env.DB, c.req.url));
+  return c.json(result);
 });
 
 catalog.get('/', async (c) => {
@@ -109,6 +113,9 @@ catalog.get('/', async (c) => {
       return c.json(cached);
     }
   }
+  const ranked = sort === 'rating' || sort === 'reviews';
+  const blocked = await reserveQuota(c, resultsOnly && program && !ranked ? 'program' : 'catalog');
+  if (blocked) return blocked;
   // SQL fragments only come from fixed sort options.
   const clauses = ['c.is_listed = 1'];
   const bindings: (string | number)[] = [];
@@ -133,7 +140,6 @@ catalog.get('/', async (c) => {
   const where = clauses.join(' AND ');
   const electiveJoin =
     "LEFT JOIN elective_course_facts e ON e.course_id = c.id AND c.category = 'elective'";
-  const ranked = sort === 'rating' || sort === 'reviews';
   const ratingsJoin = `LEFT JOIN (
     SELECT course_id, avg(rating) AS average, count(*) AS reviewCount
     FROM course_reviews WHERE status = 'published' AND withdrawn_at IS NULL GROUP BY course_id
@@ -143,7 +149,8 @@ catalog.get('/', async (c) => {
   // A text search already needs to scan candidate names. Count its matches in that same pass.
   const countInPage = resultsOnly && !!q;
   const separateCount = (filtered || resultsOnly) && !countInPage;
-  const facets = resultsOnly ? undefined : await readCatalogFacets(c.env.DB, c.req.url);
+  const facets = resultsOnly ? undefined : await readCatalogFacets(c);
+  if (facets instanceof Response) return facets;
   const [entries, ...aggregates] = await c.env.DB.batch([
     c.env.DB.prepare(
       `WITH page AS (

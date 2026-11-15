@@ -1,6 +1,7 @@
 import { Hono, type Context } from 'hono';
 import { getSignedCookie, setSignedCookie } from 'hono/cookie';
 import { readBody } from './request-body.ts';
+import { reserveQuota } from './quota-guard.ts';
 
 export type AppEnv = {
   Bindings: Env & {
@@ -86,7 +87,7 @@ export async function limitWrite(c: VisitorContext, action: 'publish' | 'vote') 
   const limiter = action === 'publish' ? c.env.PUBLISH_LIMITER : c.env.VOTE_LIMITER;
   if (!limiter) return unavailable(c);
   if (!(await limiter.limit({ key: `visitor:${c.get('visitorId')}` })).success) return limited(c);
-  return null;
+  return reserveQuota(c, 'interaction');
 }
 
 const visitor = new Hono<AppEnv>();

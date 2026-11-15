@@ -8,9 +8,10 @@
     "run_worker_first": ["/api/*"],
   },
   "ratelimits": [
+    { "name": "PUBLIC_DATA_LIMITER", "namespace_id": "878708", "simple": { "limit": 90, "period": 60 } },
     { "name": "ADMIN_LOGIN_LIMITER", "namespace_id": "878705", "simple": { "limit": 5, "period": 60 } },
     { "name": "ADMIN_WRITE_LIMITER", "namespace_id": "878706", "simple": { "limit": 60, "period": 60 } },
-    { "name": "TRAFFIC_LIMITER", "namespace_id": "878707", "simple": { "limit": 60, "period": 60 } },
+    { "name": "TRAFFIC_LIMITER", "namespace_id": "878707", "simple": { "limit": 20, "period": 60 } },
     {
       "name": "VISITOR_LIMITER",
       "namespace_id": "878701",
@@ -24,6 +25,10 @@
       "simple": { "limit": 120, "period": 60 },
     },
   ],
+  "durable_objects": {
+    "bindings": [{ "name": "QUOTA_GUARD", "class_name": "QuotaGuard" }],
+  },
+  "migrations": [{ "tag": "quota-guard-v1", "new_sqlite_classes": ["QuotaGuard"] }],
   "d1_databases": [
     {
       "binding": "DB",

@@ -29,9 +29,12 @@ export function useData<T>(url: string | null, cache: RequestCache = 'no-store')
         });
         status = response.status;
         if (!response.ok) {
-          if (status === 503) {
+          if (status === 503 || status === 429) {
             const payload = await response.json().catch(() => null);
-            if (payload?.code === 'D1_DAILY_LIMIT' && typeof payload.error === 'string')
+            if (
+              ['D1_DAILY_LIMIT', 'SERVICE_DAILY_BUDGET', 'REQUEST_RATE_LIMIT'].includes(payload?.code) &&
+              typeof payload.error === 'string'
+            )
               throw new Error(payload.error);
           }
           throw new Error(

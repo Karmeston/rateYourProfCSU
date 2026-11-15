@@ -1,14 +1,19 @@
 import type { CourseCatalog } from '../shared/catalog.ts';
+import type { Context } from 'hono';
 import { readPublicCache, writePublicCache } from './public-cache.ts';
+import { reserveQuota } from './quota-guard.ts';
+import type { AppEnv } from './visitor.ts';
 
 type Facets = CourseCatalog['facets'];
 
-export async function readCatalogFacets(db: D1Database, requestUrl: string): Promise<Facets> {
+export async function readCatalogFacets(c: Context<AppEnv>) {
   // The options are public and identical for every page and visitor.
-  const key = new URL('/api/courses/facets?v=1', requestUrl).href;
+  const key = new URL('/api/courses/facets?v=1', c.req.url).href;
   const cached = await readPublicCache<Facets>(key);
   if (cached) return cached;
-  const facets = await queryFacets(db);
+  const blocked = await reserveQuota(c, 'facets');
+  if (blocked) return blocked;
+  const facets = await queryFacets(c.env.DB);
   await writePublicCache(key, facets, 3600);
   return facets;
 }
