@@ -13,14 +13,12 @@ export function ReviewForm({
   close,
   published,
   own,
-  teacher,
 }: {
   endpoint: string;
   name: string;
   close: () => void;
   published: () => void;
   own: OwnReview | null;
-  teacher: boolean;
 }) {
   const storageKey = `csu-review-draft:${endpoint}${own ? `:${own.id}:${own.revision}` : ''}`;
   const [draft, setDraft] = useState<ReviewDraft>(() => {
@@ -203,7 +201,7 @@ export function ReviewForm({
           <p className="fine-print">匿名发布，请分享具体经历，并避免填写个人联系方式。</p>
           <details className="review-context">
             <summary>补充选课背景（选填）</summary>
-            <ContextFields value={draft} change={update} disabled={sending} teacher={teacher} />
+            <ContextFields value={draft} change={update} disabled={sending} />
           </details>
           {error && (
             <p className="form-error" role="alert">

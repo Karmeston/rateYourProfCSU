@@ -2,7 +2,6 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 import { Catalog } from './catalog';
-import { teacherPagesEnabled } from './features';
 import { parseRoute } from './routing';
 import { EmptyState } from './ui';
 import { recordPageView } from './traffic';
@@ -11,18 +10,15 @@ import { staticDirectoryEnabled } from './directory-data';
 const Admin = lazy(() => import('./admin'));
 const Detail = lazy(() => import('./detail').then((module) => ({ default: module.Detail })));
 const Guide = lazy(() => import('./guide').then((module) => ({ default: module.Guide })));
-const TeacherCatalog = lazy(() =>
-  import('./teacher-catalog').then((module) => ({ default: module.TeacherCatalog })),
-);
 
 function App() {
   const [hash, setHash] = useState(() => window.location.hash || '#/');
   const main = useRef<HTMLElement>(null);
   const searchRequested = useRef(false);
-  const route = parseRoute(hash, teacherPagesEnabled);
+  const route = parseRoute(hash);
   const path = hash.split('?')[0];
   useEffect(() => {
-    const current = parseRoute(window.location.hash, teacherPagesEnabled);
+    const current = parseRoute(window.location.hash);
     // Keep the static browsing path completely independent of Worker and D1 quotas.
     if (current.page !== 'catalog' || !staticDirectoryEnabled) recordPageView(current);
   }, [path]);
@@ -66,8 +62,7 @@ function App() {
     if (route.page !== 'detail')
       document.title = `${route.page === 'admin' ? '管理后台' : route.page === 'guide' ? '使用指南' : '课程广场'} · rateMyProfCSU`;
   }, [route.page]);
-  const active =
-    route.page === 'detail' ? (route.kind === 'teachers' ? 'teachers' : 'catalog') : route.page;
+  const active = route.page === 'detail' ? 'catalog' : route.page;
   return (
     <>
       <a
@@ -101,11 +96,6 @@ function App() {
             <a href="#/guide" aria-current={active === 'guide' ? 'page' : undefined}>
               使用指南
             </a>
-            {teacherPagesEnabled && (
-              <a href="#/teachers" aria-current={active === 'teachers' ? 'page' : undefined}>
-                教师
-              </a>
-            )}
           </nav>
         </div>
       </header>
@@ -116,16 +106,9 @@ function App() {
           ) : route.page === 'catalog' ? (
             <Catalog route={route} />
           ) : route.page === 'detail' ? (
-            <Detail
-              key={`${route.kind}/${route.id}`}
-              kind={route.kind}
-              id={route.id}
-              from={route.from}
-            />
+            <Detail key={route.id} id={route.id} from={route.from} />
           ) : route.page === 'guide' ? (
             <Guide />
-          ) : route.page === 'teachers' ? (
-            <TeacherCatalog q={route.q} offset={route.offset} />
           ) : (
             <EmptyState
               title="这个页面暂时找不到"

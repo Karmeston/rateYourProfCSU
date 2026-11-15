@@ -6,7 +6,7 @@ import app from '../src/index.ts';
 import { academicCatalog, importAcademicCatalog } from '../scripts/import-academic-catalog.mjs';
 import {
   latestAcademicPlans,
-  prepareAcademicCatalog,
+  loadAcademicCatalog,
 } from '../scripts/prepare-academic-catalog.mjs';
 import { catalogHref, parseRoute } from '../web/routing.ts';
 import { migrate } from './helpers/database.mjs';
@@ -14,20 +14,9 @@ import { planVersionLabel } from '../shared/catalog.ts';
 
 const read = (file) =>
   JSON.parse(readFileSync(new URL('../data/course-data/' + file, import.meta.url), 'utf8'));
-const input = 'pending/academic-20261018/';
-const timetableInput = 'pending/academic-20261107/timetable-course-catalog-20261107.json';
-const plansInput = 'pending/academic-20261107/plan-courses-20261107.json';
-
 test('教务数据按正式类别证据收录，冲突整组留待核对，采集时间不充当版本', () => {
-  const { catalog, report } = prepareAcademicCatalog({
-    syllabus: read(input + 'academic-syllabus-catalog-20261018.json'),
-    curriculum: read(input + 'academic-own-plan-courses-20261018.json'),
-    execution: read(input + 'academic-execution-plan-20261018.json'),
-    timetable: read(timetableInput),
-    plans: read(plansInput),
-    evidence: read('course-records.json'),
-  });
-  assert.deepEqual(catalog, academicCatalog);
+  const { catalog, report } = loadAcademicCatalog();
+  assert.deepEqual(report, read('academic-catalog-report.json'));
   assert.ok(report.held.some((r) => r.code === '180460ZG10' && r.reason === 'code_name_conflict'));
   assert.equal(
     catalog.courses.some((c) => c.code === '180460ZG10'),

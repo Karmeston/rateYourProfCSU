@@ -36,7 +36,7 @@
 - 新增迁移 `migrations/0012_timetable_catalog_sources.sql`：重建 `course_catalog_records`，允许 `source_type='timetable'`、允许非 `/jsxsd/pyfa/` 的校内来源地址、允许 `credits` 为空；原记录原样保留。
 - 生成器 `scripts/prepare-academic-catalog.mjs` 增加课表来源与培养方案来源（方案记录使用 `curriculum` 类型，带 program/source_year/requirement），`latestAcademicPlans` 仍只保留最新方案索引。
 - 导入器 `scripts/import-academic-catalog.mjs` 同步放宽校验；测试补充课表来源、空学分、方案课程、专业筛选与来源冲突断言。
-- 结构化数据：`data/course-data/pending/academic-20261107/`（课表课程名单、551 个方案的课程明细）；生成结果 `academic-catalog.json`、`academic-catalog-report.json`、`academic-latest-plans.json`。原始页面位于 Git 忽略目录 `data/course-data/raw/academic-20261107/`。
+- 结构化数据：`data/course-data/pending/academic-20261107/`（课表课程名单、551 个方案的课程明细）；生成报告 `academic-catalog-report.json` 和最新索引 `academic-latest-plans.json`。完整候选目录由导入脚本从来源在内存重建，不再提交重复的 `academic-catalog.json`。原始页面位于 Git 忽略目录 `data/course-data/raw/academic-20261107/`。
 
 ## 五、验证与发布
 

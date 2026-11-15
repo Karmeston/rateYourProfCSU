@@ -7,13 +7,9 @@ export function recordPageView(route: Route) {
       ? 'catalog'
       : route.page === 'guide'
         ? 'guide'
-        : route.page === 'teachers'
-          ? 'teacher_catalog'
-          : route.page === 'detail'
-            ? route.kind === 'courses'
-              ? 'course'
-              : 'teacher'
-            : null;
+        : route.page === 'detail'
+          ? 'course'
+          : null;
   if (!page) return;
   const body = JSON.stringify({
     id: crypto.randomUUID(),

@@ -48,12 +48,10 @@ export function ContextFields({
   value,
   change,
   disabled = false,
-  teacher = true,
 }: {
   value: Partial<ReviewContext>;
   change: (patch: Partial<ReviewContext>) => void;
   disabled?: boolean;
-  teacher?: boolean;
 }) {
   const year = new Date().getFullYear();
   const terms = Array.from({ length: 11 }, (_, offset) => [
@@ -78,18 +76,16 @@ export function ContextFields({
           ))}
         </select>
       </label>
-      {teacher && (
-        <label>
-          任课教师（选填）
-          <input
-            value={value.teacherName ?? ''}
-            maxLength={80}
-            disabled={disabled}
-            onChange={(event) => change({ teacherName: event.target.value || null })}
-            placeholder="填写你上课时的教师"
-          />
-        </label>
-      )}
+      <label>
+        任课教师（选填）
+        <input
+          value={value.teacherName ?? ''}
+          maxLength={80}
+          disabled={disabled}
+          onChange={(event) => change({ teacherName: event.target.value || null })}
+          placeholder="填写你上课时的教师"
+        />
+      </label>
     </div>
   );
 }

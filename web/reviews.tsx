@@ -38,11 +38,9 @@ type ReviewPage = {
 };
 
 export function Reviews({
-  kind,
   id,
   name,
 }: {
-  kind: 'teachers' | 'courses';
   id: string;
   name: string;
 }) {
@@ -52,7 +50,7 @@ export function Reviews({
   const [writing, setWriting] = useState(false);
   const [editing, setEditing] = useState<OwnReview | null>(null);
   const writeButton = useRef<HTMLButtonElement>(null);
-  const endpoint = `/api/${kind}/${id}/reviews`;
+  const endpoint = `/api/courses/${id}/reviews`;
   const { data, error, retry } = useData<ReviewPage>(
     `${endpoint}?offset=${offset}&sort=${sort}${rating ? `&rating=${rating}` : ''}`,
   );
@@ -238,7 +236,6 @@ export function Reviews({
           endpoint={endpoint}
           name={name}
           own={editing}
-          teacher={kind === 'courses'}
           published={() => {
             setOffset(0);
             setRating(null);

@@ -270,8 +270,8 @@ export function latestAcademicPlans(plans) {
   return [...groups.values()].flat();
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const { catalog, report } = prepareAcademicCatalog({
+export function loadAcademicCatalog() {
+  return prepareAcademicCatalog({
     syllabus: read(intake + 'academic-syllabus-catalog-20261018.json'),
     curriculum: read(intake + 'academic-own-plan-courses-20261018.json'),
     execution: read(intake + 'academic-execution-plan-20261018.json'),
@@ -279,9 +279,12 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     plans: read(timetableIntake + 'plan-courses-20261107.json'),
     evidence: read('data/course-data/course-records.json'),
   });
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const { report } = loadAcademicCatalog();
   const latest = latestAcademicPlans(read(intake + 'academic-plan-index-20261018.json').plans);
   const outputs = {
-    'academic-catalog.json': catalog,
     'academic-catalog-report.json': report,
     'academic-latest-plans.json': {
       scope:

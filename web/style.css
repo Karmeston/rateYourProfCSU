@@ -512,10 +512,6 @@ select {
 .category-badge.elective i {
   background: #6e9480;
 }
-.category-badge.unknown {
-  color: #7c756a;
-  background: #f3f1ee;
-}
 .card-content {
   padding: 0.4rem 0 1rem;
   flex: 1;
@@ -1200,20 +1196,6 @@ select {
   font-size: 0.8125rem;
   line-height: 1.9;
   margin-top: 0.7rem;
-}
-.teacher-list {
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0 0;
-}
-.teacher-list li {
-  padding: 1rem;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 5px;
-}
-.teacher-list a {
-  text-decoration: none;
 }
 @media (max-width: 1000px) {
   .catalog-filter-fields,

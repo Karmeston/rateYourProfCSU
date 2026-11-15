@@ -13,13 +13,12 @@ export type CatalogFilters = {
   sort: CourseSort;
   offset: number;
 };
-export type CatalogRoute = CatalogFilters & { page: 'catalog'; home: boolean };
+export type CatalogRoute = CatalogFilters & { page: 'catalog' };
 export type Route =
   | CatalogRoute
-  | { page: 'detail'; kind: 'courses' | 'teachers'; id: string; from: string }
+  | { page: 'detail'; id: string; from: string }
   | { page: 'guide' }
   | { page: 'admin' }
-  | { page: 'teachers'; q: string; offset: number }
   | { page: 'not-found' };
 export const defaultFilters: CatalogFilters = {
   q: '',
@@ -71,24 +70,23 @@ export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilte
   return `#/courses${query.size ? `?${query}` : ''}`;
 }
 
-export function parseRoute(hash: string, teachersEnabled = false): Route {
+export function parseRoute(hash: string): Route {
   const fragment = (hash || '#/').slice(1);
   const separator = fragment.indexOf('?');
   const path = separator < 0 ? fragment : fragment.slice(0, separator);
   const query = separator < 0 ? '' : fragment.slice(separator + 1);
-  // Retired bookmark links open the catalog rather than a dead page.
-  if (path === '/saved') return { page: 'catalog', home: true, ...defaultFilters };
-  if (!teachersEnabled && /^\/teachers(?:\/|$)/.test(path))
-    return { page: 'catalog', home: true, ...defaultFilters };
+  // Retired saved and teacher pages still open the course catalog.
+  if (path === '/saved' || /^\/teachers(?:\/|$)/.test(path))
+    return { page: 'catalog', ...defaultFilters };
   const params = new URLSearchParams(query);
   if ([...params.keys()].some((key) => params.getAll(key).length !== 1))
     return { page: 'not-found' };
   if (path === '/guide' && !query) return { page: 'guide' };
   if (path === '/admin' && !query) return { page: 'admin' };
-  const detail = /^\/(courses|teachers)\/(-?[1-9]\d*)$/.exec(path);
+  const detail = /^\/courses\/(-?[1-9]\d*)$/.exec(path);
   if (detail) {
     if (
-      !Number.isSafeInteger(Number(detail[2])) ||
+      !Number.isSafeInteger(Number(detail[1])) ||
       [...params.keys()].some((key) => key !== 'from')
     )
       return { page: 'not-found' };
@@ -97,13 +95,13 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     const from =
       /^#\/(?:courses)?(?:\?|$)/.test(candidate) &&
       candidate.length <= 1000 &&
-      parseRoute(candidate, teachersEnabled).page === 'catalog'
+      parseRoute(candidate).page === 'catalog'
         ? candidate
         : '#/';
-    return { page: 'detail', kind: detail[1] as 'courses' | 'teachers', id: detail[2], from };
+    return { page: 'detail', id: detail[1], from };
   }
   if (
-    !['/', '/courses', '/teachers'].includes(path) ||
+    !['/', '/courses'].includes(path) ||
     [...params.keys()].some(
       (key) =>
         ![
@@ -145,10 +143,8 @@ export function parseRoute(hash: string, teachersEnabled = false): Route {
     (params.has('planYear') && (!program || !/^(20\d{2}|unknown)$/.test(planYear)))
   )
     return { page: 'not-found' };
-  if (path === '/teachers') return { page: 'teachers', q, offset: Number(rawOffset) };
   return {
     page: 'catalog',
-    home: path === '/',
     q,
     category: program ? '' : electiveType ? 'elective' : (category as CourseCategoryFilter),
     electiveType,

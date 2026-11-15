@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { courseCategories, type CoursePage, type Teacher } from '../shared/catalog';
+import { courseCategories, type CoursePage } from '../shared/catalog';
 import { ElectiveGuidance } from './elective-guidance';
 import { Icon } from './icons';
 import { Reviews } from './reviews';
@@ -7,42 +7,23 @@ import { ErrorState } from './ui';
 import { useData } from './use-data';
 import { CourseSupplements } from './course-supplements';
 
-function profileLink(value: string | null | undefined) {
-  try {
-    const url = new URL(value ?? '');
-    return url.protocol === 'https:' ? url.href : null;
-  } catch {
-    return null;
-  }
-}
-
-export function Detail({
-  kind,
-  id,
-  from,
-}: {
-  kind: 'courses' | 'teachers';
-  id: string;
-  from: string;
-}) {
-  const { data, error, retry } = useData<{ course?: CoursePage; teacher?: Teacher }>(
-    `/api/${kind}/${id}${kind === 'courses' ? '?view=page' : ''}`,
+export function Detail({ id, from }: { id: string; from: string }) {
+  const { data, error, retry } = useData<{ course: CoursePage }>(
+    `/api/courses/${id}?view=page`,
   );
-  const row = kind === 'courses' ? data?.course : data?.teacher;
   const course = data?.course;
-  const profile = profileLink(data?.teacher?.profile_url);
   const [shareMessage, setShareMessage] = useState('');
   const [copyUrl, setCopyUrl] = useState('');
   useEffect(() => {
-    if (row) document.title = `${row.name} · rateMyProfCSU`;
-  }, [row]);
+    if (course) document.title = `${course.name} · rateMyProfCSU`;
+  }, [course]);
   useEffect(() => {
     if (!shareMessage) return;
     const timer = window.setTimeout(() => setShareMessage(''), 3000);
     return () => window.clearTimeout(timer);
   }, [shareMessage]);
   async function share() {
-    const url = `${window.location.origin}${window.location.pathname}${window.location.search}#/${kind}/${id}`;
+    const url = `${window.location.origin}${window.location.pathname}${window.location.search}#/courses/${id}`;
     try {
       await navigator.clipboard.writeText(url);
       setShareMessage('链接已复制');
@@ -57,10 +38,9 @@ export function Detail({
         <span className="back-arrow">
           <Icon name="arrow" size={17} />
         </span>{' '}
-        返回
-        {kind === 'teachers' ? '教师搜索' : '课程列表'}
+        返回课程列表
       </a>
-      {!row ? (
+      {!course ? (
         error ? (
           <ErrorState message={error} retry={retry} />
         ) : (
@@ -73,34 +53,29 @@ export function Detail({
           <section className="detail-heading">
             <div>
               <div className="detail-labels">
-                {(course?.category || kind === 'teachers') && (
-                  <span className={`category-badge ${course?.category ?? 'unknown'}`}>
+                {course.category && (
+                  <span className={`category-badge ${course.category}`}>
                     <i />
-                    {course?.category ? courseCategories[course.category] : '教师主页'}
+                    {courseCategories[course.category]}
                   </span>
                 )}
-                {row.id < 0 && <span className="demo-badge">虚构演示数据</span>}
+                {course.id < 0 && <span className="demo-badge">虚构演示数据</span>}
               </div>
-              <h1>{row.name}</h1>
+              <h1>{course.name}</h1>
               <div className="detail-meta">
-                {row.department !== '待核实' && (
+                {course.department !== '待核实' && (
                   <span>
                     <Icon name="book" size={17} />
-                    {row.department}
+                    {course.department}
                   </span>
                 )}
-                {course?.code && <span>课程代码 · {course.code}</span>}
-                {profile && (
-                  <a href={profile} target="_blank" rel="noopener noreferrer">
-                    官网主页 ↗
-                  </a>
-                )}
+                {course.code && <span>课程代码 · {course.code}</span>}
               </div>
             </div>
             <div className="detail-actions">
               <button className="secondary-button" onClick={() => void share()}>
                 <Icon name="share" size={17} />
-                分享{course ? '课程' : '主页'}
+                分享课程
               </button>
               <span className="share-message" role="status">
                 {shareMessage}
@@ -127,9 +102,9 @@ export function Detail({
               </button>
             </div>
           )}
-          {course?.category === 'elective' && <ElectiveGuidance course={course} />}
-          {course && <CourseSupplements id={id} />}
-          <Reviews kind={kind} id={id} name={row.name} />
+          {course.category === 'elective' && <ElectiveGuidance course={course} />}
+          <CourseSupplements id={id} />
+          <Reviews id={id} name={course.name} />
         </>
       )}
     </div>

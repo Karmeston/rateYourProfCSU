@@ -1,12 +1,9 @@
-import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { normalizeName, excludedCourse } from './prepare-academic-catalog.mjs';
+import { normalizeName, excludedCourse, loadAcademicCatalog } from './prepare-academic-catalog.mjs';
 import { withLocalD1 } from './lib/local-d1.mjs';
 
-export const academicCatalog = JSON.parse(
-  readFileSync(new URL('../data/course-data/academic-catalog.json', import.meta.url), 'utf8'),
-);
+export const academicCatalog = loadAcademicCatalog().catalog;
 const text = (v, max) => typeof v === 'string' && v.trim() && v.length <= max && !v.includes('\0');
 const recordColumns = [
   'source_sha256',
