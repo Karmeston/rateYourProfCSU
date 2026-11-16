@@ -10,7 +10,6 @@ export type CatalogFilters = {
   department: string;
   college: string;
   program: string;
-  planYear: string;
   sort: CourseSort;
   offset: number;
 };
@@ -28,7 +27,6 @@ export const defaultFilters: CatalogFilters = {
   department: '',
   college: '',
   program: '',
-  planYear: '',
   sort: 'default',
   offset: 0,
 };
@@ -37,20 +35,18 @@ export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilte
   const value = { ...filters, ...patch };
   if (patch.college !== undefined && patch.college !== filters.college && patch.program === undefined)
     value.program = '';
-  if (value.program !== filters.program || value.college !== filters.college) {
-    if (patch.planYear === undefined) value.planYear = '';
-    if (value.program || value.college) {
-      value.category = '';
-      value.electiveType = '';
-      if (patch.department === undefined) value.department = '';
-    }
+  if (
+    (value.program || value.college) &&
+    (value.program !== filters.program || value.college !== filters.college)
+  ) {
+    value.category = '';
+    value.electiveType = '';
+    if (patch.department === undefined) value.department = '';
   }
   if (patch.category !== undefined && patch.program === undefined) {
     value.college = '';
     value.program = '';
-    value.planYear = '';
   }
-  if (!value.program) value.planYear = '';
   if (
     patch.category !== undefined &&
     patch.category !== 'elective' &&
@@ -61,7 +57,6 @@ export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilte
     value.category = 'elective';
     value.college = '';
     value.program = '';
-    value.planYear = '';
   }
   if (value.program || value.college) value.category = '';
   const query = new URLSearchParams();
@@ -71,7 +66,6 @@ export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilte
   if (value.department) query.set('department', value.department);
   if (value.college) query.set('college', value.college);
   if (value.program) query.set('program', value.program);
-  if (value.planYear) query.set('planYear', value.planYear);
   if (value.sort !== 'default') query.set('sort', value.sort);
   if (value.offset) query.set('offset', String(value.offset));
   return `#/courses${query.size ? `?${query}` : ''}`;
@@ -120,7 +114,7 @@ export function parseRoute(hash: string): Route {
           'sort',
           'offset',
           'program',
-          'planYear',
+          'planYear', // Legacy links now use the latest plan.
         ].includes(key),
     )
   )
@@ -163,7 +157,6 @@ export function parseRoute(hash: string): Route {
     department,
     college,
     program,
-    planYear,
     sort: sort as CourseSort,
     // Old shared links may use a 20-row offset; keep them on a complete current page.
     offset: Math.floor(Number(rawOffset) / pageSize) * pageSize,

@@ -10,7 +10,17 @@ export type DirectorySnapshot = {
 };
 
 export const isMinorProgram = (name: string) => /辅修/.test(name);
-const yearKey = (year: number | null) => year === null ? 'unknown' : String(year);
+
+export function latestPlanYear(years: Iterable<number | null>) {
+  let latest: number | null | undefined;
+  for (const year of years) {
+    if (latest === undefined || (year !== null && (latest === null || year > latest))) {
+      latest = year;
+    }
+  }
+  return latest;
+}
+
 export type CourseRating = [id: number, average: number, count: number];
 type DirectoryCourse = Omit<Course, 'departmentSourceYear'>;
 
@@ -25,12 +35,12 @@ export function openDirectory(snapshot: DirectorySnapshot) {
   const programs = new Map(
     snapshot.programs.map(([name, versions]) => [
       name,
-      new Map(versions.map(([year, ids]) => [yearKey(year), ids])),
+      new Map(versions),
     ]),
   );
   const colleges = new Map(snapshot.colleges.map(([college, members]) => [college, new Map(
     members.map(([name, years]) => [
-      name, new Map(years.map(([year, ids]) => [yearKey(year), ids ?? programs.get(name)?.get(yearKey(year)) ?? []])),
+      name, new Map(years.map(([year, ids]) => [year, ids ?? programs.get(name)?.get(year) ?? []])),
     ]),
   )]));
   const facets: CourseCatalog['facets'] = {
@@ -43,7 +53,7 @@ export function openDirectory(snapshot: DirectorySnapshot) {
   return { courses, programs, colleges, facets: { ...facets, colleges: collegeFacets } };
 }
 
-type SearchFilters = Pick<CourseCatalogPage, 'q' | 'category' | 'electiveType' | 'department' | 'program' | 'planYear' | 'sort' | 'offset'> & { college?: string };
+type SearchFilters = Pick<CourseCatalogPage, 'q' | 'category' | 'electiveType' | 'department' | 'program' | 'sort' | 'offset'> & { college?: string };
 type Directory = ReturnType<typeof openDirectory>;
 const nameOrder = new Intl.Collator('zh-CN', { numeric: true });
 
@@ -53,15 +63,15 @@ export function searchDirectory(
   limit: number,
   ratings: readonly CourseRating[] = [],
 ) {
-  const { q, college, program, planYear, category, department, electiveType, sort, offset } = filters;
+  const { q, college, program, category, department, electiveType, sort, offset } = filters;
   const scoped = college ? colleges.get(college) : programs;
   const members = college || program ? new Set<number>() : null;
   if (members && scoped) {
     for (const [name, years] of scoped) {
       if (program ? name !== program : isMinorProgram(name)) continue;
-      for (const [year, ids] of years) {
-        if (!planYear || year === planYear) for (const id of ids) members.add(id);
-      }
+      const latest = latestPlanYear(years.keys());
+      if (latest === undefined) continue;
+      for (const id of years.get(latest) ?? []) members.add(id);
     }
   }
   const term = q.trim().toLowerCase();

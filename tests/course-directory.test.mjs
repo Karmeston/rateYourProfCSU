@@ -6,10 +6,10 @@ import { readPublicDirectory } from '../scripts/prepare-public-directory.mjs';
 import { isMinorProgram, openDirectory, searchDirectory } from '../shared/course-directory.ts';
 import { catalogHref, defaultFilters, parseRoute } from '../web/routing.ts';
 
-test('静态目录保留真实课程编号和方案版本，筛选及分页不依赖服务接口', () => {
+test('静态目录按最新方案显示真实课程，筛选及分页不依赖服务接口', () => {
   const snapshot = JSON.parse(readFileSync(new URL('../data/course-data/public-directory.json', import.meta.url), 'utf8'));
   const directory = openDirectory(snapshot);
-  const program = { ...defaultFilters, program: '计算机科学与技术', planYear: '2026' };
+  const program = { ...defaultFilters, program: '计算机科学与技术' };
   const first = searchDirectory(directory, program, 24);
   const second = searchDirectory(directory, { ...program, offset: 24 }, 24);
   assert.equal(first.total, 71);
@@ -19,7 +19,6 @@ test('静态目录保留真实课程编号和方案版本，筛选及分页不�
   assert.ok(first.courses.some((item) => item.category === null));
   const result = searchDirectory(directory, { ...program, q: '高级英语' }, 24);
   assert.ok(result.courses.some(({ id, name }) => id === 3634 && name === '高级英语（一）'));
-  assert.deepEqual(searchDirectory(directory, { ...program, planYear: '2099' }, 24).courses, []);
   const [a, b] = first.courses;
   const ratings = [[a.id, 5, 1], [b.id, 4, 2]];
   assert.equal(searchDirectory(directory, { ...program, sort: 'rating' }, 24, ratings).courses[0].id, a.id);
@@ -37,15 +36,38 @@ test('学院按培养方案归组，辅修不混入学院概览，同名同年�
   assert.ok(main.some((entry) => entry.name === '软件工程'));
   const visible = new Set(main.flatMap(({ name }) => find({ college, program: name }).courses.map((row) => row.id)));
   assert.deepEqual(new Set(find({ college }).courses.map((row) => row.id)), visible);
-  const route = parseRoute(catalogHref(defaultFilters, { college, program: '计算机科学与技术', planYear: '2026' }));
+  const route = parseRoute(catalogHref(defaultFilters, { college, program: '计算机科学与技术' }));
   assert.equal(find(route).total, 71);
   assert.equal(parseRoute(catalogHref(route, { college: '自动化学院' })).program, '');
   assert.equal(parseRoute(catalogHref(route, { category: 'elective' })).college, '');
-  const focus = { program: '人工智能', planYear: '2026' };
+  const focus = { program: '人工智能' };
   const a = find({ ...focus, college: '自动化学院' }).courses.map((row) => row.id);
   const b = find({ ...focus, college: '人工智能学院' }).courses.map((row) => row.id);
   assert.ok(a.some((id) => !b.includes(id)) && b.some((id) => !a.includes(id)));
   assert.equal(new Set([...a, ...b]).size, find(focus).total);
+});
+
+test('只选学院时分别取各主修的最新方案，旧链接也按学院取最新', () => {
+  const directory = openDirectory({
+    version: 2,
+    departments: ['甲学院'],
+    courses: Array.from({ length: 7 }, (_, index) => [index + 1, `课程${index + 1}`, null, 0, 'major', null]),
+    programs: [
+      ['数学', [[null, [1]], [2026, [3]], [2024, [2]], [2027, [7]]]],
+      ['统计学', [[2025, [4]]]],
+      ['物理学', [[null, [5]]]],
+      ['数学辅修', [[2026, [6]]]],
+    ],
+    colleges: [
+      ['甲学院', [['数学', [[null], [2026], [2024]]], ['统计学', [[2025]]], ['物理学', [[null]]], ['数学辅修', [[2026]]]]],
+      ['乙学院', [['数学', [[2027]]]]],
+    ],
+  });
+  const ids = (hash) => searchDirectory(directory, parseRoute(hash), 24).courses.map(({ id }) => id);
+  assert.deepEqual(ids('#/courses?college=甲学院'), [3, 4, 5]);
+  assert.deepEqual(ids('#/courses?college=甲学院&program=数学&planYear=2024'), [3]);
+  assert.deepEqual(ids('#/courses?college=乙学院&program=数学'), [7]);
+  assert.deepEqual(ids('#/courses?college=甲学院&program=数学辅修'), [6]);
 });
 
 test('公开快照过滤隐藏课程，不包含来源记录和用户内容', (t) => {
@@ -69,5 +91,5 @@ test('公开快照过滤隐藏课程，不包含来源记录和用户内容', (t
   for (const privateField of ['隐藏课程','评价正文','来源标题','csujwc'])
     assert.ok(!JSON.stringify(snapshot).includes(privateField));
   const directory = openDirectory(snapshot);
-  assert.equal(searchDirectory(directory, { ...defaultFilters, program: '数学', planYear: 'unknown', q: 'math-a' }, 24).total, 1);
+  assert.equal(searchDirectory(directory, { ...defaultFilters, program: '数学', q: 'math-a' }, 24).total, 1);
 });

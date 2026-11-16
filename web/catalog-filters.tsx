@@ -3,7 +3,6 @@ import {
   courseCategoryFilters,
   courseCategories,
   courseSorts,
-  planVersionLabel,
   type CourseCatalog,
 } from '../shared/catalog';
 import { electiveTypes, type ElectiveTypeFilter } from '../shared/electives';
@@ -38,7 +37,6 @@ export function CatalogFiltersPanel({
     ? '全部主修专业'
     : colleges.length ? '请先选择学院' : '选择你的专业';
   const showTeachingUnits = !route.college && !route.program && departments.length > 0;
-  const years = programs.find((item) => item.name === route.program)?.years ?? [];
   const categories = route.category === 'unknown' ? courseCategoryFilters : courseCategories;
   return (
     <div className="catalog-filters">
@@ -101,29 +99,6 @@ export function CatalogFiltersPanel({
                 </option>
               ))}
               <option value="unknown">类别待核实</option>
-            </select>
-          </label>
-        )}
-        {route.program && (
-          <label>
-            方案版本
-            <select
-              value={route.planYear}
-              onChange={(event) => change({ planYear: event.target.value })}
-            >
-              <option value="">全部已收录版本</option>
-              {route.planYear &&
-                !years.includes(route.planYear === 'unknown' ? null : Number(route.planYear)) && (
-                  <option value={route.planYear}>
-                    {planVersionLabel(route.planYear)}
-                    {facets ? '（未收录）' : ''}
-                  </option>
-                )}
-              {years.map((year) => (
-                <option key={year ?? 'unknown'} value={year ?? 'unknown'}>
-                  {planVersionLabel(year)}
-                </option>
-              ))}
             </select>
           </label>
         )}

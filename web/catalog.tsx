@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import {
   courseCategories,
   courseCategoryFilters,
-  planVersionLabel,
   type CourseSummary,
 } from '../shared/catalog';
 import { electiveTypes } from '../shared/electives';
@@ -217,7 +216,6 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               {route.program && (
                 <a href={href({ program: '', offset: 0 })} aria-label="移除专业筛选">
                   {route.program}
-                  {route.planYear && ` · ${planVersionLabel(route.planYear)}`}
                   <Icon name="close" size={13} />
                 </a>
               )}

@@ -10,7 +10,6 @@ import {
 } from '../scripts/prepare-academic-catalog.mjs';
 import { catalogHref, parseRoute } from '../web/routing.ts';
 import { migrate } from './helpers/database.mjs';
-import { planVersionLabel } from '../shared/catalog.ts';
 
 const read = (file) =>
   JSON.parse(readFileSync(new URL('../data/course-data/' + file, import.meta.url), 'utf8'));
@@ -206,15 +205,14 @@ test('教务目录完整导入、分类筛选和未标注版本的方案查询�
   });
 });
 
-test('类别待核实及未知方案版本的分享链接可恢复，切换分类清理隐藏筛选', () => {
+test('类别待核实和旧方案链接可恢复，切换分类清理隐藏筛选', () => {
   const route = parseRoute('#/courses?category=unknown&q=数学&offset=24');
   assert.equal(route.page, 'catalog');
   assert.equal(route.category, 'unknown');
   assert.equal(parseRoute(catalogHref(route)).category, 'unknown');
   const program = parseRoute('#/courses?program=统计学&planYear=unknown');
-  assert.equal(program.planYear, 'unknown');
-  assert.equal(planVersionLabel(program.planYear), '版本未标注');
-  assert.equal(planVersionLabel(null), '版本未标注');
+  assert.equal(program.program, '统计学');
+  assert.ok(!catalogHref(program).includes('planYear'));
   assert.equal(catalogHref(program, { category: 'unknown' }), '#/courses?category=unknown');
   assert.equal(parseRoute('#/courses?category=unknown&program=统计学').page, 'not-found');
 });

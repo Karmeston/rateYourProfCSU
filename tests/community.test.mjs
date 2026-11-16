@@ -5,7 +5,7 @@ import { moderate, inspect, queue } from '../scripts/moderate.mjs';
 import { setupCommunity as setup } from './helpers/community.mjs';
 import { catalogHref, parseRoute } from '../web/routing.ts';
 
-test('方案按专业与班型精确筛选，版本和分页可分享，记录差异不增加课程数', async (t) => {
+test('方案按专业与班型精确筛选，旧分享链接可打开，记录差异不增加课程数', async (t) => {
   const { db, request, json } = await setup(t);
   const insert = async (id, course, program, year, credits, requirement) =>
     db
@@ -47,7 +47,8 @@ test('方案按专业与班型精确筛选，版本和分页可分享，记录�
   assert.equal(route.page, 'catalog');
   const link = catalogHref(route);
   assert.equal(parseRoute(`#/courses/1?from=${encodeURIComponent(link)}`).from, link);
-  assert.equal(parseRoute(catalogHref(route, { program: '生物科学' })).planYear, '');
+  assert.ok(!link.includes('planYear'));
+  assert.equal(parseRoute(catalogHref(route, { program: '生物科学' })).program, '生物科学');
   assert.equal(parseRoute(catalogHref(route, { category: 'elective' })).program, '');
   assert.equal(parseRoute(catalogHref(route, { category: '' })).program, '');
   const elective = parseRoute('#/courses?category=elective&department=其他学院');
