@@ -19,6 +19,15 @@ const departmentName = (value) =>
     .replace(/\(教学\)$/, '')
     .trim();
 const identity = (row) => JSON.stringify([row.code, normalizeName(row.name)]);
+export function academicPlanLabel(plan) {
+  let label = plan.major;
+  const tokens = [...(plan.tracks ?? [])];
+  if (plan.role && plan.role !== '主修') tokens.push(plan.role);
+  for (const token of new Set(tokens)) {
+    if (token && !label.includes(token)) label += `（${token}）`;
+  }
+  return label.slice(0, 100);
+}
 
 export function prepareAcademicCatalog({ syllabus, curriculum, execution, timetable, plans, evidence }) {
   const sources = {};
@@ -148,18 +157,9 @@ export function prepareAcademicCatalog({ syllabus, curriculum, execution, timeta
     }),
   );
   // Latest curriculum plan course tables provide program/year/module evidence per course.
-  const programLabel = (plan) => {
-    let label = plan.major;
-    const tokens = [...(plan.tracks ?? [])];
-    if (plan.role && plan.role !== '主修') tokens.push(plan.role);
-    for (const token of [...new Set(tokens)]) {
-      if (token && !label.includes(token)) label += `（${token}）`;
-    }
-    return label.length > 100 ? label.slice(0, 100) : label;
-  };
   let planSequence = 0;
   for (const plan of plans.plans) {
-    const program = programLabel(plan);
+    const program = academicPlanLabel(plan);
     const year = /^20\d{2}$/.test(plan.year ?? '') ? Number(plan.year) : null;
     const seenRows = new Set();
     for (const row of plan.courses) {

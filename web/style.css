@@ -351,6 +351,14 @@ main:focus {
   width: 100%;
   max-width: 100%;
 }
+.catalog-extra {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.catalog-extra summary { cursor: pointer; }
+.catalog-extra label { display: grid; gap: 0.35rem; margin-top: 0.5rem; max-width: 26rem; }
+.catalog-extra label:has(input) { display: flex; align-items: center; }
 .catalog-content {
   min-width: 0;
 }

@@ -8,6 +8,7 @@ export type CatalogFilters = {
   category: CourseCategoryFilter;
   electiveType: ElectiveTypeFilter;
   department: string;
+  college: string;
   program: string;
   planYear: string;
   sort: CourseSort;
@@ -25,6 +26,7 @@ export const defaultFilters: CatalogFilters = {
   category: '',
   electiveType: '',
   department: '',
+  college: '',
   program: '',
   planYear: '',
   sort: 'default',
@@ -33,15 +35,18 @@ export const defaultFilters: CatalogFilters = {
 
 export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilters> = {}) {
   const value = { ...filters, ...patch };
-  if (patch.program !== undefined && patch.program !== filters.program) {
+  if (patch.college !== undefined && patch.college !== filters.college && patch.program === undefined)
+    value.program = '';
+  if (value.program !== filters.program || value.college !== filters.college) {
     if (patch.planYear === undefined) value.planYear = '';
-    if (value.program) {
+    if (value.program || value.college) {
       value.category = '';
       value.electiveType = '';
       if (patch.department === undefined) value.department = '';
     }
   }
   if (patch.category !== undefined && patch.program === undefined) {
+    value.college = '';
     value.program = '';
     value.planYear = '';
   }
@@ -54,15 +59,17 @@ export function catalogHref(filters: CatalogFilters, patch: Partial<CatalogFilte
     value.electiveType = '';
   if (value.electiveType) {
     value.category = 'elective';
+    value.college = '';
     value.program = '';
     value.planYear = '';
   }
-  if (value.program) value.category = '';
+  if (value.program || value.college) value.category = '';
   const query = new URLSearchParams();
   if (value.q) query.set('q', value.q);
   if (value.category) query.set('category', value.category);
   if (value.electiveType) query.set('electiveType', value.electiveType);
   if (value.department) query.set('department', value.department);
+  if (value.college) query.set('college', value.college);
   if (value.program) query.set('program', value.program);
   if (value.planYear) query.set('planYear', value.planYear);
   if (value.sort !== 'default') query.set('sort', value.sort);
@@ -109,6 +116,7 @@ export function parseRoute(hash: string): Route {
           'category',
           'electiveType',
           'department',
+          'college',
           'sort',
           'offset',
           'program',
@@ -120,6 +128,7 @@ export function parseRoute(hash: string): Route {
   const rawOffset = params.get('offset') ?? '0';
   const q = params.get('q')?.trim() ?? '';
   const department = params.get('department') ?? '';
+  const college = params.get('college')?.trim() ?? '';
   const category = params.get('category') ?? '';
   const electiveType = params.get('electiveType') ?? '';
   const sort = params.get('sort') ?? 'default';
@@ -132,6 +141,9 @@ export function parseRoute(hash: string): Route {
     q.includes('\0') ||
     department.length > 100 ||
     department.includes('\0') ||
+    college.length > 100 ||
+    college.includes('\0') ||
+    (params.has('college') && !college) ||
     !['', 'major', 'elective', 'unknown'].includes(category) ||
     !isElectiveTypeFilter(electiveType) ||
     (electiveType && category && category !== 'elective') ||
@@ -139,16 +151,17 @@ export function parseRoute(hash: string): Route {
     program.length > 100 ||
     program.includes('\0') ||
     (params.has('program') && !program.trim()) ||
-    (program && ((category && category !== 'major') || electiveType)) ||
+    ((program || college) && ((category && category !== 'major') || electiveType)) ||
     (params.has('planYear') && (!program || !/^(20\d{2}|unknown)$/.test(planYear)))
   )
     return { page: 'not-found' };
   return {
     page: 'catalog',
     q,
-    category: program ? '' : electiveType ? 'elective' : (category as CourseCategoryFilter),
+    category: program || college ? '' : electiveType ? 'elective' : (category as CourseCategoryFilter),
     electiveType,
     department,
+    college,
     program,
     planYear,
     sort: sort as CourseSort,

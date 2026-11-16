@@ -54,6 +54,7 @@ export type CourseCatalog = CourseCatalogPage & {
   facets: {
     departments: { name: string; count: number }[];
     programs: { name: string; years: (number | null)[] }[];
+    colleges?: { name: string; programs: { name: string; years: (number | null)[] }[] }[];
   };
   stats: { courseCount: number; reviewCount: number; reviewedCourseCount: number };
 };

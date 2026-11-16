@@ -143,6 +143,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
     route.category ||
     route.electiveType ||
     route.department ||
+    route.college ||
     route.program
   );
   const title = route.q ? `“${route.q}”的搜索结果` : '课程广场';
@@ -217,6 +218,12 @@ export function Catalog({ route }: { route: CatalogRoute }) {
                 <a href={href({ program: '', offset: 0 })} aria-label="移除专业筛选">
                   {route.program}
                   {route.planYear && ` · ${planVersionLabel(route.planYear)}`}
+                  <Icon name="close" size={13} />
+                </a>
+              )}
+              {route.college && (
+                <a href={href({ college: '', program: '', offset: 0 })} aria-label="移除培养学院筛选">
+                  {route.college}
                   <Icon name="close" size={13} />
                 </a>
               )}

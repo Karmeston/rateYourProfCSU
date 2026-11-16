@@ -3,8 +3,8 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import { test } from 'node:test';
 import { readPublicDirectory } from '../scripts/prepare-public-directory.mjs';
-import { openDirectory, searchDirectory } from '../shared/course-directory.ts';
-import { defaultFilters } from '../web/routing.ts';
+import { isMinorProgram, openDirectory, searchDirectory } from '../shared/course-directory.ts';
+import { catalogHref, defaultFilters, parseRoute } from '../web/routing.ts';
 
 test('静态目录保留真实课程编号和方案版本，筛选及分页不依赖服务接口', () => {
   const snapshot = JSON.parse(readFileSync(new URL('../data/course-data/public-directory.json', import.meta.url), 'utf8'));
@@ -24,6 +24,28 @@ test('静态目录保留真实课程编号和方案版本，筛选及分页不�
   const ratings = [[a.id, 5, 1], [b.id, 4, 2]];
   assert.equal(searchDirectory(directory, { ...program, sort: 'rating' }, 24, ratings).courses[0].id, a.id);
   assert.equal(searchDirectory(directory, { ...program, sort: 'reviews' }, 24, ratings).courses[0].id, b.id);
+});
+
+test('学院按培养方案归组，辅修不混入学院概览，同名同年分学院查询', () => {
+  const snapshot = JSON.parse(readFileSync(new URL('../data/course-data/public-directory.json', import.meta.url), 'utf8'));
+  const directory = openDirectory(snapshot);
+  const find = (filters) => searchDirectory(directory, { ...defaultFilters, ...filters }, 1000);
+  const college = '计算机学院';
+  const group = directory.facets.colleges.find((entry) => entry.name === college);
+  const main = group.programs.filter((entry) => !isMinorProgram(entry.name));
+  assert.ok(main.some((entry) => entry.name === '计算机科学与技术'));
+  assert.ok(main.some((entry) => entry.name === '软件工程'));
+  const visible = new Set(main.flatMap(({ name }) => find({ college, program: name }).courses.map((row) => row.id)));
+  assert.deepEqual(new Set(find({ college }).courses.map((row) => row.id)), visible);
+  const route = parseRoute(catalogHref(defaultFilters, { college, program: '计算机科学与技术', planYear: '2026' }));
+  assert.equal(find(route).total, 71);
+  assert.equal(parseRoute(catalogHref(route, { college: '自动化学院' })).program, '');
+  assert.equal(parseRoute(catalogHref(route, { category: 'elective' })).college, '');
+  const focus = { program: '人工智能', planYear: '2026' };
+  const a = find({ ...focus, college: '自动化学院' }).courses.map((row) => row.id);
+  const b = find({ ...focus, college: '人工智能学院' }).courses.map((row) => row.id);
+  assert.ok(a.some((id) => !b.includes(id)) && b.some((id) => !a.includes(id)));
+  assert.equal(new Set([...a, ...b]).size, find(focus).total);
 });
 
 test('公开快照过滤隐藏课程，不包含来源记录和用户内容', (t) => {
