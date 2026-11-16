@@ -16,6 +16,10 @@ const read = (file) =>
 test('教务数据按正式类别证据收录，冲突整组留待核对，采集时间不充当版本', () => {
   const { catalog, report } = loadAcademicCatalog();
   assert.deepEqual(report, read('academic-catalog-report.json'));
+  for (const code of ['210105T10', '210203T10']) {
+    assert.ok(report.held.some((row) => row.code === code && row.reason === 'excluded_course'));
+    assert.ok(catalog.courses.every((course) => course.code !== code));
+  }
   assert.ok(report.held.some((r) => r.code === '180460ZG10' && r.reason === 'code_name_conflict'));
   assert.equal(
     catalog.courses.some((c) => c.code === '180460ZG10'),

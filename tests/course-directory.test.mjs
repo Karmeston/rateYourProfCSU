@@ -12,7 +12,7 @@ test('静态目录按最新方案显示真实课程，筛选及分页不依赖�
   const program = { ...defaultFilters, program: '计算机科学与技术' };
   const first = searchDirectory(directory, program, 24);
   const second = searchDirectory(directory, { ...program, offset: 24 }, 24);
-  assert.equal(first.total, 71);
+  assert.equal(first.total, 69);
   assert.equal(first.courses.length, 24);
   assert.equal(second.courses.length, 24);
   assert.ok(first.courses.every(({ id }) => !second.courses.some((item) => item.id === id)));
@@ -37,7 +37,7 @@ test('学院按培养方案归组，辅修不混入学院概览，同名同年�
   const visible = new Set(main.flatMap(({ name }) => find({ college, program: name }).courses.map((row) => row.id)));
   assert.deepEqual(new Set(find({ college }).courses.map((row) => row.id)), visible);
   const route = parseRoute(catalogHref(defaultFilters, { college, program: '计算机科学与技术' }));
-  assert.equal(find(route).total, 71);
+  assert.equal(find(route).total, 69);
   assert.equal(parseRoute(catalogHref(route, { college: '自动化学院' })).program, '');
   assert.equal(parseRoute(catalogHref(route, { category: 'elective' })).college, '');
   const focus = { program: '人工智能' };
@@ -45,6 +45,26 @@ test('学院按培养方案归组，辅修不混入学院概览，同名同年�
   const b = find({ ...focus, college: '人工智能学院' }).courses.map((row) => row.id);
   assert.ok(a.some((id) => !b.includes(id)) && b.some((id) => !a.includes(id)));
   assert.equal(new Set([...a, ...b]).size, find(focus).total);
+});
+
+test('编号思政方案条目下架后仍保留课程与评价，公开快照不再收录', (t) => {
+  const db = new DatabaseSync(':memory:');
+  t.after(() => db.close());
+  const migrations = new URL('../migrations/', import.meta.url);
+  const hidePlaceholders = '0013_hide_numbered_politics_placeholders.sql';
+  const apply = (file) => db.exec(readFileSync(new URL(file, migrations), 'utf8'));
+  for (const file of readdirSync(migrations).filter((entry) => entry.endsWith('.sql') && entry < hidePlaceholders).sort())
+    apply(file);
+  db.exec(`INSERT INTO courses(id,name,code,department,is_listed)
+    VALUES (10527,'思政课4','210105T10','待核实',1),
+           (10592,'思政课6','210203T10','待核实',1),
+           (10599,'思政实践','211001T11','待核实',1);
+    INSERT INTO course_reviews(id,course_id,rating,body,status)
+    VALUES ('existing',10527,5,'已有评价','published');`);
+  apply(hidePlaceholders);
+  assert.deepEqual(db.prepare('SELECT is_listed FROM courses ORDER BY id').all().map((row) => row.is_listed), [0, 0, 1]);
+  assert.equal(db.prepare("SELECT course_id FROM course_reviews WHERE id='existing'").get().course_id, 10527);
+  assert.deepEqual(readPublicDirectory(db).courses.map(([id]) => id), [10599]);
 });
 
 test('只选学院时分别取各主修的最新方案，旧链接也按学院取最新', () => {

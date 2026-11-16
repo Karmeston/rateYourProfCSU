@@ -9,6 +9,7 @@ const timetableIntake = 'data/course-data/pending/academic-20261107/';
 const read = (path) => JSON.parse(readFileSync(new URL(path, root), 'utf8'));
 export const normalizeName = (value) => value.normalize('NFKC').replace(/\s+/g, '');
 export const excludedCourse = (name) =>
+  /^思政课[46]$/.test(normalizeName(name)) ||
   /形势与政策|改革开放史|毛泽东|思想道德|习近平|马克思主义基本原理|中国近现代史纲要|中国共产党的历史|新中国史|社会主义发展史/.test(
     name,
   );

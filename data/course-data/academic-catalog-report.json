@@ -5,9 +5,9 @@
   "planCount": 551,
   "planCourses": 52467,
   "planWithCourses": 413,
-  "courses": 12624,
+  "courses": 12622,
   "categories": {
-    "unknown": 7049,
+    "unknown": 7047,
     "major": 5438,
     "elective": 137
   },
@@ -316,6 +316,20 @@
       "reason": "excluded_course",
       "names": [
         "马克思主义基本原理"
+      ]
+    },
+    {
+      "code": "210105T10",
+      "reason": "excluded_course",
+      "names": [
+        "思政课4"
+      ]
+    },
+    {
+      "code": "210203T10",
+      "reason": "excluded_course",
+      "names": [
+        "思政课6"
       ]
     },
     {
