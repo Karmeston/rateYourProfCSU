@@ -15,6 +15,10 @@ export function Detail({ id, from }: { id: string; from: string }) {
   const [shareMessage, setShareMessage] = useState('');
   const [copyUrl, setCopyUrl] = useState('');
   useEffect(() => {
+    if (course && String(course.id) !== id)
+      window.location.replace(`#/courses/${course.id}?from=${encodeURIComponent(from)}`);
+  }, [course, id, from]);
+  useEffect(() => {
     if (course) document.title = `${course.name} · rateMyProfCSU`;
   }, [course]);
   useEffect(() => {
@@ -23,7 +27,7 @@ export function Detail({ id, from }: { id: string; from: string }) {
     return () => window.clearTimeout(timer);
   }, [shareMessage]);
   async function share() {
-    const url = `${window.location.origin}${window.location.pathname}${window.location.search}#/courses/${id}`;
+    const url = `${window.location.origin}${window.location.pathname}${window.location.search}#/courses/${course?.id ?? id}`;
     try {
       await navigator.clipboard.writeText(url);
       setShareMessage('链接已复制');
@@ -103,8 +107,8 @@ export function Detail({ id, from }: { id: string; from: string }) {
             </div>
           )}
           {course.category === 'elective' && <ElectiveGuidance course={course} />}
-          <CourseSupplements id={id} />
-          <Reviews id={id} name={course.name} />
+          <CourseSupplements id={String(course.id)} />
+          <Reviews id={String(course.id)} name={course.name} />
         </>
       )}
     </div>

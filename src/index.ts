@@ -8,6 +8,7 @@ import admin from './admin.ts';
 import traffic, { pruneTraffic } from './traffic.ts';
 import { protectPublicData } from './quota-guard.ts';
 import { monitorService } from './service-monitor.ts';
+import { redirectCourseAlias } from './course-aliases.ts';
 export { QuotaGuard } from './quota-guard.ts';
 
 const app = new Hono<AppEnv>();
@@ -16,6 +17,7 @@ app.use('/api/*', monitorService);
 app.get('/api/health', (c) => c.json({ status: 'ok' }));
 app.use('/api/courses/*', protectPublicData);
 app.use('/api/teachers/*', protectPublicData);
+app.use('/api/courses/*', redirectCourseAlias);
 app.route('/api/admin', admin);
 app.route('/api/traffic', traffic);
 app.route('/api/courses', courseCatalog);

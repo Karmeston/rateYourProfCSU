@@ -15,6 +15,7 @@ import { readCourseMaterials } from './course-materials.ts';
 import { reserveQuota } from './quota-guard.ts';
 import type { AppEnv } from './visitor.ts';
 import type { CourseRating } from '../shared/course-directory.ts';
+import { aliasCodesForQuery } from '../shared/course-aliases.ts';
 
 const catalog = new Hono<AppEnv>();
 const ordering: Record<CourseSort, string> = {
@@ -120,7 +121,7 @@ catalog.get('/', async (c) => {
   if (!page) return c.json({ error: '查询参数不合法' }, 400);
   const { limit, offset, q, category, electiveType, department, sort, program, planYear, resultsOnly } = page;
   const cacheKey = resultsOnly
-    ? new URL('/api/courses/results-v1?' + new URLSearchParams({
+    ? new URL('/api/courses/results-v2?' + new URLSearchParams({
         limit: String(limit), offset: String(offset), q, category, electiveType,
         department, sort, program, planYear,
       }), c.req.url).href
@@ -142,7 +143,12 @@ catalog.get('/', async (c) => {
     clauses.push(sql);
     bindings.push(...values);
   };
-  if (q) filter("(instr(lower(c.name), lower(?)) > 0 OR instr(lower(coalesce(c.code, '')), lower(?)) > 0)", q, q);
+  if (q) {
+    const aliases = aliasCodesForQuery(q);
+    filter(`(instr(lower(c.name), lower(?)) > 0 OR instr(lower(coalesce(c.code, '')), lower(?)) > 0
+      ${aliases.length ? 'OR c.code IN (SELECT value FROM json_each(?))' : ''})`,
+    q, q, ...(aliases.length ? [JSON.stringify(aliases)] : []));
+  }
   if (category === 'unknown') filter('c.category IS NULL');
   else if (category) filter('c.category = ?', category);
   if (department) filter('c.department = ?', department);

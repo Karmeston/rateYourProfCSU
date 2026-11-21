@@ -1,5 +1,6 @@
 import type { Course, CourseCatalog, CourseCatalogPage, CourseCategory, CourseSummary } from './catalog.ts';
 import type { ElectiveType } from './electives.ts';
+import { aliasCodesForQuery } from './course-aliases.ts';
 
 export type DirectorySnapshot = {
   version: 2;
@@ -75,12 +76,13 @@ export function searchDirectory(
     }
   }
   const term = q.trim().toLowerCase();
+  const aliases = new Set<string>(aliasCodesForQuery(term));
   const matched = courses.filter((course) =>
     (!members || members.has(course.id)) &&
     (!category || course.category === (category === 'unknown' ? null : category)) &&
     (!department || course.department === department) &&
     (!electiveType || course.electiveType === (electiveType === 'unknown' ? null : electiveType)) &&
-    (!term || course.name.toLowerCase().includes(term) || course.code?.toLowerCase().includes(term)),
+    (!term || course.name.toLowerCase().includes(term) || course.code?.toLowerCase().includes(term) || aliases.has(course.code ?? '')),
   );
   const byId = new Map(ratings.map(([id, average, reviewCount]) => [id, { average, reviewCount }]));
   const average = (course: DirectoryCourse) => byId.get(course.id)?.average ?? -1;

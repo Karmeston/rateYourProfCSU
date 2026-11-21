@@ -3,10 +3,11 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { academicPlanLabel, normalizeName } from './prepare-academic-catalog.mjs';
+import { canonicalCourseCode } from '../shared/course-aliases.ts';
 
 const withoutCollege = '归属未标注';
 const normalizeCollege = (name) => name.trim().replace(/\(([^()]*)\)/g, '（$1）');
-const identity = (code, name) => JSON.stringify([code, normalizeName(name)]);
+const identity = (code, name) => JSON.stringify([canonicalCourseCode(code), normalizeName(name)]);
 
 export function readPublicDirectory(db, { plans = [], official = [] } = {}) {
   // This allowlist is the complete public export. No user, review, or raw source fields.

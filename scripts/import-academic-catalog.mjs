@@ -2,6 +2,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeName, excludedCourse, loadAcademicCatalog } from './prepare-academic-catalog.mjs';
 import { withLocalD1 } from './lib/local-d1.mjs';
+import { canonicalCourseCode } from '../shared/course-aliases.ts';
 
 export const academicCatalog = loadAcademicCatalog().catalog;
 export const academicCategoryUpdateSql = `UPDATE courses SET category='major'
@@ -133,11 +134,12 @@ export async function importAcademicCatalog(db, source = academicCatalog) {
     documents = [],
     skipped = [];
   for (const course of records) {
-    const current = byCode.get(course.code);
+    const code = canonicalCourseCode(course.code);
+    const current = byCode.get(code);
     let reason = null;
     if (current && (current.id <= 0 || normalizeName(current.name) !== normalizeName(course.name)))
       reason = 'existing_identity_conflict';
-    else if (!current && byCase.has(course.code.toUpperCase())) reason = 'code_case_conflict';
+    else if (!current && byCase.has(code.toUpperCase())) reason = 'code_case_conflict';
     else if (!current && uncoded.has(normalizeName(course.name)))
       reason = 'uncoded_identity_needs_review';
     if (reason) {
@@ -145,7 +147,10 @@ export async function importAcademicCatalog(db, source = academicCatalog) {
       continue;
     }
     const id = current?.id ?? nextId++;
-    if (!current) courses.push([id, course.code, course.name, course.department, course.category]);
+    if (!current) {
+      courses.push([id, code, course.name, course.department, course.category]);
+      byCode.set(code, { id, code, name: course.name, department: course.department, category: course.category, is_listed: 1 });
+    }
     if (current?.is_listed === 1 && current.category === null && course.category === 'major')
       categoryUpdates.push([id, current.code, current.name]);
     for (const row of course.records) {
@@ -156,7 +161,7 @@ export async function importAcademicCatalog(db, source = academicCatalog) {
           throw new Error(`课程 ${course.code} 的既有教务记录存在冲突`);
       } else documents.push(row);
     }
-    byCase.set(course.code.toUpperCase(), course.code);
+    byCase.set(code.toUpperCase(), code);
   }
   const statements = [];
   for (const [table, columns, rows] of [

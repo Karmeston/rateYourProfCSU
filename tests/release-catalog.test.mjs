@@ -6,6 +6,7 @@ import { prepareCatalogSql } from '../scripts/prepare-release-catalog.mjs';
 import { majorCatalog } from '../scripts/import-major-catalog.mjs';
 import { electiveCatalog } from '../scripts/import-elective-catalog.mjs';
 import { academicCatalog } from '../scripts/import-academic-catalog.mjs';
+import { courseAliases } from '../shared/course-aliases.ts';
 
 function database(t) {
   const db = new DatabaseSync(':memory:');
@@ -119,6 +120,23 @@ test('发行补齐有证据的空分类，保留已定分类和隐藏状态，�
     [['major',1],['elective',1],[null,0]]);
   assert.equal(db.prepare('SELECT course_id FROM course_reviews').get().course_id, 5);
   assert.equal((await prepareCatalogSql(db, sources)).report.academic.updatedCategories, 0);
+});
+
+test('全新导入把历史代码来源归到主课程，重跑不重建旧课程', async (t) => {
+  const db = database(t);
+  const pair = courseAliases[1];
+  const source = { ...academicCatalog, courses: academicCatalog.courses.filter((c) => [pair.code,pair.alias].includes(c.code)) };
+  assert.equal(source.courses.length, 2);
+  const sources = { major: { ...majorCatalog, courses: [] }, elective: electiveCatalog, academic: source };
+  const first = await prepareCatalogSql(db, sources);
+  assert.equal(first.report.academic.insertedCourses, 1);
+  db.exec(first.sql);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM courses WHERE code=?').get(pair.alias).n, 0);
+  const id = db.prepare('SELECT id FROM courses WHERE code=?').get(pair.code).id;
+  assert.deepEqual(db.prepare('SELECT DISTINCT course_id FROM course_catalog_records').all().map((r) => r.course_id), [id]);
+  const again = await prepareCatalogSql(db, sources);
+  assert.equal(again.report.academic.insertedCourses, 0);
+  assert.equal(again.report.academic.insertedRecords, 0);
 });
 
 test('大批发布按数据行和索引写入分批，每批可按序重放', async (t) => {
