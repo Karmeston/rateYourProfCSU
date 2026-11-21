@@ -4,6 +4,11 @@ import { normalizeName, excludedCourse, loadAcademicCatalog } from './prepare-ac
 import { withLocalD1 } from './lib/local-d1.mjs';
 
 export const academicCatalog = loadAcademicCatalog().catalog;
+export const academicCategoryUpdateSql = `UPDATE courses SET category='major'
+  WHERE category IS NULL AND is_listed=1 AND (id,code,name) IN (
+    SELECT json_extract(value,'$[0]'),json_extract(value,'$[1]'),json_extract(value,'$[2]')
+    FROM json_each(?)
+  )`;
 const text = (v, max) => typeof v === 'string' && v.trim() && v.length <= max && !v.includes('\0');
 const recordColumns = [
   'source_sha256',
@@ -171,9 +176,9 @@ export async function importAcademicCatalog(db, source = academicCatalog) {
       );
     }
   }
-  const updates = categoryUpdates.map((values) => db.prepare(
-    "UPDATE courses SET category='major' WHERE id=? AND code=? AND name=? AND category IS NULL AND is_listed=1",
-  ).bind(...values));
+  const updates = [];
+  for (let i = 0; i < categoryUpdates.length; i += 50)
+    updates.push(db.prepare(academicCategoryUpdateSql).bind(JSON.stringify(categoryUpdates.slice(i, i + 50))));
   const results = statements.length || updates.length ? await db.batch([...statements, ...updates]) : [];
   return {
     courses: records.length,

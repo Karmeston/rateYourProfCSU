@@ -6,7 +6,7 @@ import { isAbsolute, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { importMajorCatalog, majorCatalog } from './import-major-catalog.mjs';
 import { importElectiveCatalog, electiveCatalog } from './import-elective-catalog.mjs';
-import { importAcademicCatalog, academicCatalog } from './import-academic-catalog.mjs';
+import { importAcademicCatalog, academicCatalog, academicCategoryUpdateSql } from './import-academic-catalog.mjs';
 
 const maxWritesPerBatch = 80_000;
 const releaseHeader = '-- Verified catalog additions and category backfills; existing IDs, visibility and reviews are preserved.\n';
@@ -52,7 +52,7 @@ export async function prepareCatalogSql(
   function execute(sql, values) {
     const query = database.prepare(sql);
     if (query.columns().length) return { results: query.all(...values), meta: { changes: 0 } };
-    const categoryUpdate = sql === "UPDATE courses SET category='major' WHERE id=? AND code=? AND name=? AND category IS NULL AND is_listed=1";
+    const categoryUpdate = sql === academicCategoryUpdateSql;
     const table = categoryUpdate ? 'courses' : /^\s*INSERT\s+INTO\s+(courses|course_materials|elective_course_facts|elective_course_offerings|course_catalog_records)\b/i.exec(sql)?.[1].toLowerCase();
     if (!table)
       throw new Error('发行目录只允许新增已核对的课程资料或补齐空白专业课分类');
