@@ -7,9 +7,11 @@ import community from './community.ts';
 import admin from './admin.ts';
 import traffic, { pruneTraffic } from './traffic.ts';
 import { protectPublicData } from './quota-guard.ts';
+import { monitorService } from './service-monitor.ts';
 export { QuotaGuard } from './quota-guard.ts';
 
 const app = new Hono<AppEnv>();
+app.use('/api/*', monitorService);
 
 app.get('/api/health', (c) => c.json({ status: 'ok' }));
 app.use('/api/courses/*', protectPublicData);
@@ -24,6 +26,7 @@ app.route('/api', community);
 
 app.onError((error, c) => {
   if (/D1.*daily row (?:read|write) limit/is.test(error.message)) {
+    c.set('serviceEvent', 'd1_limit');
     const now = new Date();
     const reset = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1);
     c.header('Cache-Control', 'no-store');

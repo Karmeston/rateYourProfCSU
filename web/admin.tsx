@@ -9,11 +9,12 @@ import { useData } from './use-data';
 import { AdminRequestError, AdminFailure, adminRequest } from './admin-api';
 import { AdminOverviewPanel } from './admin-overview';
 import { AdminContent } from './admin-content';
+import { AdminService } from './admin-service';
 import './admin.css';
 
 export default function Admin() {
   const session = useData<{ configured: boolean; authenticated: boolean }>('/api/admin/session');
-  const [tab, setTab] = useState<ModerationKind | 'overview' | 'audit'>('overview');
+  const [tab, setTab] = useState<ModerationKind | 'overview' | 'service' | 'audit'>('overview');
   const [logoutError, setLogoutError] = useState(''),
     [leaving, setLeaving] = useState(false);
   async function logout() {
@@ -71,7 +72,7 @@ export default function Admin() {
             </p>
           )}
           <nav className="admin-tabs" aria-label="后台功能">
-            {[['overview', '概况'], ...Object.entries(moderationKinds), ['audit', '操作日志']].map(
+            {[['overview', '概况'], ['service', '运行状态'], ...Object.entries(moderationKinds), ['audit', '操作日志']].map(
               ([key, name]) => (
                 <button
                   key={key}
@@ -85,6 +86,8 @@ export default function Admin() {
           </nav>
           {tab === 'overview' ? (
             <AdminOverviewPanel relogin={session.retry} />
+          ) : tab === 'service' ? (
+            <AdminService relogin={session.retry} />
           ) : tab === 'audit' ? (
             <Audit relogin={session.retry} />
           ) : (

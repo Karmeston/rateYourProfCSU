@@ -33,6 +33,17 @@ admin.get('/overview', async (c) => {
     return c.json({ error: '参数不合法' }, 400);
   return c.json(await overview(c.env.DB, Number(days)));
 });
+admin.get('/service', async (c) => {
+  const query = c.req.queries();
+  const days = query.days?.[0] ?? '7';
+  if (!pageInput(query, ['days']) || !['7', '30'].includes(days))
+    return c.json({ error: '参数不合法' }, 400);
+  if (!c.env.QUOTA_GUARD) return c.json({ error: '运行统计暂不可用' }, 503);
+  const stub = c.env.QUOTA_GUARD.get(c.env.QUOTA_GUARD.idFromName('public-d1'));
+  const response = await stub.fetch('https://internal/monitor?days=' + days);
+  if (!response.ok) return c.json({ error: '运行统计暂不可用' }, 503);
+  return c.json(await response.json());
+});
 admin.get('/content', async (c) => {
   const query = c.req.queries(),
     kind = query.kind?.[0] ?? 'supplement',

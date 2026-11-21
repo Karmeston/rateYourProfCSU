@@ -2,6 +2,9 @@
   max-width: 1120px;
   margin: auto;
 }
+.admin-table-scroll {
+  overflow-x: auto;
+}
 .admin-toolbar {
   display: flex;
   flex-wrap: wrap;

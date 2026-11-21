@@ -101,6 +101,26 @@ test('教务发行SQL可重放，来源和未标注年份保留；生成过程�
   assert.equal(db.prepare('SELECT course_id FROM course_reviews').get().course_id, 5);
 });
 
+test('发行补齐有证据的空分类，保留已定分类和隐藏状态，重复执行不再写入', async (t) => {
+  const db = database(t);
+  const selected = academicCatalog.courses.filter((course) => course.category === 'major').slice(0, 3);
+  db.prepare('UPDATE courses SET code=?,name=?,category=NULL WHERE id=5').run(selected[0].code, selected[0].name);
+  db.prepare("INSERT INTO courses(id,code,name,department,category,is_listed) VALUES(6,?,?,'学院','elective',1)")
+    .run(selected[1].code, selected[1].name);
+  db.prepare("INSERT INTO courses(id,code,name,department,category,is_listed) VALUES(7,?,?,'学院',NULL,0)")
+    .run(selected[2].code, selected[2].name);
+  const sources = { major: { ...majorCatalog, courses: [] }, elective: electiveCatalog,
+    academic: { ...academicCatalog, courses: selected } };
+  const result = await prepareCatalogSql(db, sources);
+  assert.equal(result.report.academic.updatedCategories, 1);
+  assert.equal(db.prepare('SELECT category FROM courses WHERE id=5').get().category, null);
+  db.exec(result.sql);
+  assert.deepEqual(db.prepare('SELECT category,is_listed FROM courses WHERE id IN (5,6,7) ORDER BY id').all().map((r) => [r.category,r.is_listed]),
+    [['major',1],['elective',1],[null,0]]);
+  assert.equal(db.prepare('SELECT course_id FROM course_reviews').get().course_id, 5);
+  assert.equal((await prepareCatalogSql(db, sources)).report.academic.updatedCategories, 0);
+});
+
 test('大批发布按数据行和索引写入分批，每批可按序重放', async (t) => {
   const db = database(t);
   const { batches, report } = await prepareCatalogSql(db, {

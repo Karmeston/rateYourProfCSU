@@ -44,9 +44,25 @@ test('数据库预算按网络与类别共享，跨日恢复，并发不能超�
   assert.equal(others.filter((r) => r.status === 204).length, 32);
   assert.equal((await reserve('catalog', 200)).status, 429);
   assert.equal((await reserve('traffic', 200)).status, 204);
+  const monitor = await (await guard.fetch(new Request('https://internal/monitor?days=7'))).json();
+  const catalog = monitor.operations.find((row) => row.operation === 'catalog');
+  assert.equal(catalog.allowed, 52);
+  assert.equal(catalog.networkLimited, 4);
+  assert.equal(catalog.budgetLimited, 9);
+  assert.equal(catalog.used, 52 * 35000);
+  assert.equal(monitor.today, '2026-11-16');
+  assert.ok(!JSON.stringify(monitor).includes(token(200)));
+  assert.equal((await guard.fetch(new Request('https://internal/events', {
+    method: 'POST', body: JSON.stringify({ group: 'reviews', event: 'd1_limit' }),
+  }))).status, 204);
+  const signals = await (await guard.fetch(new Request('https://internal/monitor?days=7'))).json();
+  assert.deepEqual(signals.signals, [{ group: 'reviews', event: 'd1_limit', count: 1 }]);
   now += 31_000;
   assert.equal((await reserve('catalog', 1)).status, 204);
   assert.equal(db.prepare('SELECT count(*) AS n FROM quota').get().n, 2);
+  now += 31 * 86400000;
+  await reserve('content', 1);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM service_daily WHERE day<?').get('2026-11-17').n, 0);
 });
 
 test('公开接口在触及 D1 之前拒绝超额，查询样式和来源头不改变网络额度', async () => {

@@ -1,5 +1,7 @@
 import type { Context, MiddlewareHandler } from 'hono';
 import type { AppEnv } from './visitor.ts';
+import { quotaOperations, serviceEvents, serviceGroups, type ServiceStatus } from '../shared/service-monitor.ts';
+import { serviceDay } from './service-monitor.ts';
 
 // Admission weights are conservative estimates at the current catalog size, not billing data.
 const budgets = {
@@ -28,15 +30,60 @@ const dayMs = 86_400_000;
 // D1 is never queried or written by the guard.
 export class QuotaGuard {
   private readonly storage: DurableObjectStorage;
+  private lastPrunedDay = '';
 
   constructor(state: DurableObjectState) {
     this.storage = state.storage;
     this.storage.sql.exec(`CREATE TABLE IF NOT EXISTS quota (
       key TEXT PRIMARY KEY, day INTEGER NOT NULL, used INTEGER NOT NULL
     )`);
+    this.storage.sql.exec(`CREATE TABLE IF NOT EXISTS service_daily (
+      day TEXT NOT NULL, scope TEXT NOT NULL, event TEXT NOT NULL, count INTEGER NOT NULL,
+      PRIMARY KEY(day,scope,event)
+    )`);
   }
 
   async fetch(request: Request) {
+    const url = new URL(request.url);
+    const sql = this.storage.sql;
+    if (url.pathname === '/monitor' && request.method === 'GET') {
+      const days = Number(url.searchParams.get('days') ?? 7);
+      if (![7, 30].includes(days)) return new Response(null, { status: 400 });
+      sql.exec('DELETE FROM service_daily WHERE day<?', serviceDay(Date.now(), 29));
+      const rows = sql.exec<{ scope: string; event: string; count: number }>(
+        'SELECT scope,event,sum(count) AS count FROM service_daily WHERE day BETWEEN ? AND ? GROUP BY scope,event',
+        serviceDay(Date.now(), days - 1), serviceDay(),
+      ).toArray();
+      const counts = new Map(rows.map((r) => [r.scope + ':' + r.event, r.count]));
+      const quotaDay = Math.floor(Date.now() / dayMs);
+      const current = new Map(sql.exec<{ key: string; used: number }>(
+        'SELECT key,used FROM quota WHERE day=? AND instr(key,\':\')=0', quotaDay,
+      ).toArray().map((row) => [row.key, row.used]));
+      const status: ServiceStatus = {
+        days, today: serviceDay(),
+        firstDay: sql.exec<{ day: string | null }>('SELECT min(day) AS day FROM service_daily').toArray()[0]?.day ?? null,
+        operations: Object.keys(quotaOperations).map((operation) => ({
+          operation: operation as Operation,
+          allowed: counts.get(operation + ':allowed') ?? 0,
+          networkLimited: counts.get(operation + ':network_limit') ?? 0,
+          budgetLimited: counts.get(operation + ':budget_limit') ?? 0,
+          used: current.get(operation) ?? 0,
+          budget: budgets[operation as Operation].daily,
+        })),
+        signals: rows.filter((row) => Object.hasOwn(serviceGroups, row.scope) && Object.hasOwn(serviceEvents, row.event))
+          .map((row) => ({ group: row.scope as keyof typeof serviceGroups, event: row.event as keyof typeof serviceEvents, count: row.count })),
+      };
+      return Response.json(status);
+    }
+    if (request.method !== 'POST') return new Response(null, { status: 405 });
+    if (url.pathname === '/events') {
+      const signal = await request.json<{ group: string; event: string }>();
+      if (!signal || !Object.hasOwn(serviceGroups, signal.group) || !Object.hasOwn(serviceEvents, signal.event))
+        return new Response(null, { status: 400 });
+      this.count(signal.group, signal.event);
+      return new Response(null, { status: 204 });
+    }
+    if (url.pathname !== '/quota') return new Response(null, { status: 404 });
     const input = await request.json<{ operation: Operation; network: string }>();
     if (!input || !Object.hasOwn(costs, input.operation) || !/^[a-f0-9]{64}$/.test(input.network))
       return new Response(null, { status: 400 });
@@ -46,8 +93,7 @@ export class QuotaGuard {
     const now = Date.now();
     const day = Math.floor(now / dayMs);
     const storage = this.storage;
-    const sql = storage.sql;
-    const accepted = storage.transactionSync(() => {
+    const outcome = storage.transactionSync(() => {
       const globalKey = lane;
       const networkKey = lane + ':' + input.network;
       const current = (key: string) => sql.exec<{ day: number; used: number }>(
@@ -57,7 +103,8 @@ export class QuotaGuard {
       const individual = current(networkKey);
       const used = global?.day === day ? global.used : 0;
       const own = individual?.day === day ? individual.used : 0;
-      if (used + units > daily || own + units > network) return false;
+      if (used + units > daily) return 'budget_limit';
+      if (own + units > network) return 'network_limit';
       if (global?.day !== day) sql.exec('DELETE FROM quota WHERE day<?', day);
       for (const [key, value] of [[globalKey, used], [networkKey, own]] as const) {
         sql.exec(
@@ -65,12 +112,23 @@ export class QuotaGuard {
           key, day, value + units,
         );
       }
-      return true;
+      return 'allowed';
     });
-    return new Response(null, accepted ? { status: 204 } : {
+    this.count(input.operation, outcome);
+    return new Response(null, outcome === 'allowed' ? { status: 204 } : {
       status: 429,
       headers: { 'Retry-After': String(Math.ceil(((day + 1) * dayMs - now) / 1000)) },
     });
+  }
+
+  private count(scope: string, event: string) {
+    const today = serviceDay();
+    if (today !== this.lastPrunedDay) {
+      this.storage.sql.exec('DELETE FROM service_daily WHERE day<?', serviceDay(Date.now(), 29));
+      this.lastPrunedDay = today;
+    }
+    this.storage.sql.exec(`INSERT INTO service_daily VALUES(?,?,?,1)
+      ON CONFLICT(day,scope,event) DO UPDATE SET count=count+1`, today, scope, event);
   }
 }
 
@@ -123,7 +181,10 @@ export async function reserveQuota(c: AppContext, operation: Operation) {
       body: JSON.stringify({ operation, network }),
     });
     if (response.status === 204) return null;
-    if (response.status === 429) return throttle(c, response.headers.get('Retry-After') ?? '60', true);
+    if (response.status === 429) {
+      c.set('quotaRecorded', true);
+      return throttle(c, response.headers.get('Retry-After') ?? '60', true);
+    }
   } catch {
     // Fail closed so an unavailable quota store cannot send unbounded requests to D1.
   }

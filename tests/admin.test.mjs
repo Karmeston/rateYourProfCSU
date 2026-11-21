@@ -48,7 +48,7 @@ async function setup(t) {
 test('管理身份独立于匿名Cookie，安全会话退出后立即失效，旧签名与配置不能绕过认证', async (t) => {
   const { env, owner, adminRequest: request, login } = await setup(t);
   for (const cookie of [undefined, owner, '__Host-csu-admin=forged'])
-    for (const path of ['/overview', '/content', '/audit'])
+    for (const path of ['/overview', '/service', '/content', '/audit'])
       assert.equal((await request(path, 'GET', undefined, cookie)).status, 401);
   assert.deepEqual(await (await request('/session')).json(), {
     configured: true,
@@ -65,6 +65,12 @@ test('管理身份独立于匿名Cookie，安全会话退出后立即失效，�
     assert.ok(header.includes(flag));
   const cookie = header.split(';')[0];
   assert.equal((await request('/overview', 'GET', undefined, cookie)).status, 200);
+  env.QUOTA_GUARD = {
+    idFromName: (name) => name,
+    get: () => ({ fetch: async (url) => Response.json({ test: new URL(url).searchParams.get('days') }) }),
+  };
+  assert.deepEqual(await (await request('/service?days=30', 'GET', undefined, cookie)).json(), { test: '30' });
+  assert.equal((await request('/service?days=999', 'GET', undefined, cookie)).status, 400);
   assert.equal((await request('/logout', 'POST', {}, cookie)).status, 204);
   assert.equal((await request('/overview', 'GET', undefined, cookie)).status, 401);
   const newer = await login();

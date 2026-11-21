@@ -124,6 +124,7 @@ export async function importAcademicCatalog(db, source = academicCatalog) {
   );
   let nextId = Math.max(0, ...existing.results.map((c) => c.id)) + 1;
   const courses = [],
+    categoryUpdates = [],
     documents = [],
     skipped = [];
   for (const course of records) {
@@ -140,6 +141,8 @@ export async function importAcademicCatalog(db, source = academicCatalog) {
     }
     const id = current?.id ?? nextId++;
     if (!current) courses.push([id, course.code, course.name, course.department, course.category]);
+    if (current?.is_listed === 1 && current.category === null && course.category === 'major')
+      categoryUpdates.push([id, current.code, current.name]);
     for (const row of course.records) {
       row[2] = id;
       const match = stored.get(JSON.stringify(row.slice(0, 2)));
@@ -168,11 +171,15 @@ export async function importAcademicCatalog(db, source = academicCatalog) {
       );
     }
   }
-  if (statements.length) await db.batch(statements);
+  const updates = categoryUpdates.map((values) => db.prepare(
+    "UPDATE courses SET category='major' WHERE id=? AND code=? AND name=? AND category IS NULL AND is_listed=1",
+  ).bind(...values));
+  const results = statements.length || updates.length ? await db.batch([...statements, ...updates]) : [];
   return {
     courses: records.length,
     insertedCourses: courses.length,
     insertedRecords: documents.length,
+    updatedCategories: results.slice(statements.length).reduce((sum, row) => sum + (row.meta?.changes ?? 0), 0),
     skipped,
   };
 }

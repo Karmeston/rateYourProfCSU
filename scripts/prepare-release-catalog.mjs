@@ -1,4 +1,4 @@
-// Prepare insert-only SQL against a production export; this script never connects to a remote database.
+// Plan additions and evidence-backed category updates against an offline production export.
 import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -9,7 +9,7 @@ import { importElectiveCatalog, electiveCatalog } from './import-elective-catalo
 import { importAcademicCatalog, academicCatalog } from './import-academic-catalog.mjs';
 
 const maxWritesPerBatch = 80_000;
-const releaseHeader = '-- Verified catalog additions; existing IDs, visibility and reviews are preserved.\n';
+const releaseHeader = '-- Verified catalog additions and category backfills; existing IDs, visibility and reviews are preserved.\n';
 const renderSql = (statements) => releaseHeader + statements.map((entry) => entry.sql).join('\n') + '\n';
 const sha256 = (text) => createHash('sha256').update(text).digest('hex');
 
@@ -52,9 +52,10 @@ export async function prepareCatalogSql(
   function execute(sql, values) {
     const query = database.prepare(sql);
     if (query.columns().length) return { results: query.all(...values), meta: { changes: 0 } };
-    const table = /^\s*INSERT\s+INTO\s+(courses|course_materials|elective_course_facts|elective_course_offerings|course_catalog_records)\b/i.exec(sql)?.[1].toLowerCase();
+    const categoryUpdate = sql === "UPDATE courses SET category='major' WHERE id=? AND code=? AND name=? AND category IS NULL AND is_listed=1";
+    const table = categoryUpdate ? 'courses' : /^\s*INSERT\s+INTO\s+(courses|course_materials|elective_course_facts|elective_course_offerings|course_catalog_records)\b/i.exec(sql)?.[1].toLowerCase();
     if (!table)
-      throw new Error('发行目录只允许新增已核对的课程及资料');
+      throw new Error('发行目录只允许新增已核对的课程资料或补齐空白专业课分类');
     const result = query.run(...values);
     // SQLite expands bound values itself, including quotes, Unicode and literal question marks.
     const changes = Number(result.changes);

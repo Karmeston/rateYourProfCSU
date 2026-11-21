@@ -35,8 +35,8 @@ export function AdminOverviewPanel({ relogin }: { relogin: () => void }) {
         <>
           <dl className="admin-metrics">
             {[
-              ['今日浏览量', data.todayViews],
-              ['所选期间浏览量', data.views],
+              ['今日已记录浏览量', data.todayViews],
+              ['期间已记录浏览量', data.views],
               ['待审资料', data.content.pendingSupplements],
               ['待审评价', data.content.pendingReviews],
               ['未处理举报', data.content.openReports],
@@ -55,6 +55,7 @@ export function AdminOverviewPanel({ relogin }: { relogin: () => void }) {
               ? `现存记录始于${data.firstDay}。`
               : '尚无流量记录，统计从本版本上线开始。'}{' '}
             浏览量不代表独立人数，浏览器拦截或网络失败可能漏记。
+            当前主要记录课程详情与使用指南，课程广场的静态搜索、筛选和翻页不参与上报；教师页面分布为历史记录。
           </p>
           <div className="admin-columns">
             <section>
