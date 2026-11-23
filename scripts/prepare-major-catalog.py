@@ -61,7 +61,7 @@ def main():
             reason = "multiple_syllabus_departments"
         elif not re.fullmatch(r"\d{6}[A-Z]\d{2}", course.get("code") or ""):
             reason = "invalid_code"
-        elif re.search(r"形势与政策|改革开放史|毛泽东|思想道德|习近平|马克思主义基本原理|中国近现代史纲要", course["name"]):
+        elif re.search(r"形势与政策|改革开放史|毛泽东|思想道德|习近平|马克思主义基本原理|中国近现代史纲要|思想政治理论综合", course["name"]):
             reason = "excluded_political_course"
         if reason:
             excluded[reason] += 1

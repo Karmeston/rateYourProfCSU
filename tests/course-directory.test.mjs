@@ -86,6 +86,28 @@ test('编号思政方案条目下架后仍保留课程与评价，公开快照�
   assert.deepEqual(readPublicDirectory(db).courses.map(([id]) => id), [10599]);
 });
 
+test('思想政治理论综合课下架后保留记录，同类思政专业课与思政实践不受影响', (t) => {
+  const db = new DatabaseSync(':memory:');
+  t.after(() => db.close());
+  const migrations = new URL('../migrations/', import.meta.url);
+  const hide = '0016_hide_politics_theory_course.sql';
+  const apply = (file) => db.exec(readFileSync(new URL(file, migrations), 'utf8'));
+  for (const file of readdirSync(migrations).filter((entry) => entry.endsWith('.sql') && entry < hide).sort())
+    apply(file);
+  db.exec(`INSERT INTO courses(id,name,code,department,is_listed)
+    VALUES (10277,'思想政治理论综合课','2-110','待核实',1),
+           (10599,'思政实践','211001T11','待核实',1),
+           (10543,'思想政治教育史','210109X10','待核实',1);
+    INSERT INTO course_reviews(id,course_id,rating,body,status)
+    VALUES ('kept',10277,4,'已有评价','published');`);
+  apply(hide);
+  assert.deepEqual(readPublicDirectory(db).courses.map(([id]) => id), [10543, 10599]);
+  assert.equal(db.prepare("SELECT course_id FROM course_reviews WHERE id='kept'").get().course_id, 10277);
+  const snapshot = JSON.parse(readFileSync(new URL('../data/course-data/public-directory.json', import.meta.url), 'utf8'));
+  assert.ok(!snapshot.courses.some(([, name]) => name === '思想政治理论综合课'));
+  assert.ok(snapshot.courses.some(([id]) => id === 10599));
+});
+
 test('只选学院时分别取各主修的最新方案，旧链接也按学院取最新', () => {
   const directory = openDirectory({
     version: 2,

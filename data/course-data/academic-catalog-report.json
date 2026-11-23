@@ -5,9 +5,9 @@
   "planCount": 551,
   "planCourses": 52467,
   "planWithCourses": 413,
-  "courses": 12622,
+  "courses": 12621,
   "categories": {
-    "unknown": 7047,
+    "unknown": 7046,
     "major": 5438,
     "elective": 137
   },
@@ -218,6 +218,13 @@
       "reason": "excluded_course",
       "names": [
         "习近平经济思想概论"
+      ]
+    },
+    {
+      "code": "2-110",
+      "reason": "excluded_course",
+      "names": [
+        "思想政治理论综合课"
       ]
     },
     {
