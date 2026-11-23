@@ -25,6 +25,25 @@ test('静态目录按最新方案显示真实课程，筛选及分页不依赖�
   assert.equal(searchDirectory(directory, { ...program, sort: 'reviews' }, 24, ratings).courses[0].id, b.id);
 });
 
+test('公选课类别只列出目录中实际存在的类别，按固定顺序', () => {
+  const snapshot = {
+    version: 2,
+    departments: ['某学院'],
+    courses: [
+      [1, '甲', 'A', 0, 'elective', 'arts_sports'],
+      [2, '乙', 'B', 0, 'elective', null],
+      [3, '丙', 'C', 0, 'elective', 'natural_science'],
+      [4, '丁', 'D', 0, 'major', null],
+    ],
+    programs: [],
+    colleges: [],
+  };
+  assert.deepEqual(openDirectory(snapshot).facets.electiveTypes, ['natural_science', 'arts_sports']);
+  const real = JSON.parse(readFileSync(new URL('../data/course-data/public-directory.json', import.meta.url), 'utf8'));
+  const known = new Set(real.courses.map((row) => row[5]).filter(Boolean));
+  assert.equal(openDirectory(real).facets.electiveTypes.length, known.size);
+});
+
 test('学院按培养方案归组，辅修不混入学院概览，同名同年分学院查询', () => {
   const snapshot = JSON.parse(readFileSync(new URL('../data/course-data/public-directory.json', import.meta.url), 'utf8'));
   const directory = openDirectory(snapshot);

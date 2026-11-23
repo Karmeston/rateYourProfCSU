@@ -1,5 +1,5 @@
 import type { Course, CourseCatalog, CourseCatalogPage, CourseCategory, CourseSummary } from './catalog.ts';
-import type { ElectiveType } from './electives.ts';
+import { electiveTypes, type ElectiveType } from './electives.ts';
 import { aliasCodesForQuery } from './course-aliases.ts';
 
 export type DirectorySnapshot = {
@@ -21,6 +21,10 @@ export function latestPlanYear(years: Iterable<number | null>) {
   }
   return latest;
 }
+
+// Keeps the display order of the type list, whatever order the data arrives in.
+export const listElectiveTypes = (used: ReadonlySet<string | null>) =>
+  (Object.keys(electiveTypes) as ElectiveType[]).filter((type) => used.has(type));
 
 export type CourseRating = [id: number, average: number, count: number];
 export type DirectoryCourse = Omit<Course, 'departmentSourceYear'>;
@@ -44,9 +48,11 @@ export function openDirectory(snapshot: DirectorySnapshot) {
       name, new Map(years.map(([year, ids]) => [year, ids ?? programs.get(name)?.get(year) ?? []])),
     ]),
   )]));
+  const usedTypes = new Set(courses.map((course) => course.electiveType));
   const facets: CourseCatalog['facets'] = {
     departments,
     programs: snapshot.programs.map(([name, versions]) => ({ name, years: versions.map(([year]) => year) })),
+    electiveTypes: listElectiveTypes(usedTypes),
   };
   const collegeFacets = snapshot.colleges.map(([name, members]) => ({
     name, programs: members.map(([name, years]) => ({ name, years: years.map(([year]) => year) })),

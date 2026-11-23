@@ -55,6 +55,8 @@ export type CourseCatalog = CourseCatalogPage & {
     departments: { name: string; count: number }[];
     programs: { name: string; years: (number | null)[] }[];
     colleges?: { name: string; programs: { name: string; years: (number | null)[] }[] }[];
+    // Elective types that at least one listed course has; options without courses stay hidden.
+    electiveTypes: ElectiveType[];
   };
   stats: { courseCount: number; reviewCount: number; reviewedCourseCount: number };
 };

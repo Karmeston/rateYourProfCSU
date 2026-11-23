@@ -85,7 +85,7 @@ GitHub Actions的`Project checks`在推送和Pull Request时运行同一检查�
 
 专业方案筛选使用`program`（原文专业/班型名）与可选的`planYear`（需同时指定专业）。版本与专业精确匹配，多个证据不重复计数，列表所选原表资料返回`planRecords`。如需查询未标明版本的方案，使用`planYear=unknown`。结果不代表当期开课或个人选课资格。新教务目录的离线整理与来源存储见[接入说明](docs/academic-catalog-integration-20261018.md)。
 
-公选课细分类参数 electiveType 接受 natural_science、humanities、economics、arts_sports、unknown；使用时限定公选课，不能与 category=major 组合。unknown 只包含细分类未知的可见公选课。列表课程增加可空 electiveType，详情增加 elective（facts、offerings、creditRules；非公选课为 null）。开课记录包含明确学年学期，不等于每学期持续开设。
+公选课细分类参数 electiveType 接受 natural_science、humanities、economics、arts_sports、unknown；使用时限定公选课，不能与 category=major 组合。unknown 只包含细分类未知的可见公选课。facets.electiveTypes 列出至少有一门可见公选课的细分类，筛选框只显示这些选项；一个都没有时不显示该筛选框。列表课程增加可空 electiveType，详情增加 elective（facts、offerings、creditRules；非公选课为 null）。开课记录包含明确学年学期，不等于每学期持续开设。
 
 课程列表和详情新增可空`departmentSourceYear`，标明学院字段对应的大纲版本；为空时沿用既有学院信息。详情新增`materials`数组，分别保存大纲及方案记录（kind、sourceYear、department、program、credits、requirement和来源定位），单门课程的多个版本不合并为一个学分值。隐藏课程不能读取这些资料。
 

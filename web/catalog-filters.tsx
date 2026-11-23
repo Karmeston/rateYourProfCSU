@@ -21,6 +21,9 @@ export function CatalogFiltersPanel({
     window.location.hash = href(patch);
   };
   const departments = facets?.departments ?? [];
+  const knownTypes = facets?.electiveTypes ?? [];
+  // With no classified elective, the only other choice would match every course.
+  const showElectiveTypes = knownTypes.length > 0 || !!route.electiveType;
   const colleges = facets?.colleges ?? [];
   const college = colleges.find((item) => item.name === route.college);
   const needsCollege = colleges.length > 0 && !route.college && !route.program;
@@ -83,7 +86,7 @@ export function CatalogFiltersPanel({
             </select>
           </label>
         )}
-        {route.category === 'elective' && (
+        {route.category === 'elective' && showElectiveTypes && (
           <label>
             公选课类别
             <select
@@ -93,9 +96,12 @@ export function CatalogFiltersPanel({
               }
             >
               <option value="">全部类别</option>
-              {Object.entries(electiveTypes).map(([value, label]) => (
+              {route.electiveType && route.electiveType !== 'unknown' && !knownTypes.includes(route.electiveType) && (
+                <option value={route.electiveType}>{electiveTypes[route.electiveType]}</option>
+              )}
+              {knownTypes.map((value) => (
                 <option key={value} value={value}>
-                  {label}
+                  {electiveTypes[value]}
                 </option>
               ))}
               <option value="unknown">类别待核实</option>

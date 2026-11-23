@@ -115,6 +115,16 @@ test('课程发现与评价筛选（独立临时 D1）', async (t) => {
       { name: '数学学院', count: 2 },
       { name: '艺术学院', count: 1 },
     ]);
+    // No classified elective yet: the filter has no type to offer.
+    assert.deepEqual(facets.electiveTypes, []);
+    const fact = 'INSERT INTO elective_course_facts (course_id, elective_type, source_url, source_label, source_locator) VALUES (?, ?, ?, ?, ?)';
+    await DB.batch([
+      DB.prepare(fact).bind(2, 'arts_sports', 'https://example.edu/a', '名单', '第1行'),
+      DB.prepare(fact).bind(4, 'humanities', 'https://example.edu/b', '名单', '第2行'),
+    ]);
+    // Unlisted courses do not add options.
+    assert.deepEqual((await get('/api/courses/facets')).electiveTypes, ['arts_sports']);
+    await DB.prepare('DELETE FROM elective_course_facts').run();
     const db = {
       batch: (statements) => DB.batch(statements),
       prepare(sql) {
