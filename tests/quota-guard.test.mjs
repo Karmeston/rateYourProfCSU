@@ -36,20 +36,20 @@ test('数据库预算按网络与类别共享，跨日恢复，并发不能超�
     body: JSON.stringify({ operation, network: token(network) }),
   }));
   const results = await Promise.all(Array.from({ length: 24 }, () => reserve('catalog', 1)));
-  assert.equal(results.filter((r) => r.status === 204).length, 20);
+  assert.equal(results.filter((r) => r.status === 204).length, 10);
   assert.equal(results.find((r) => r.status === 429).headers.get('Retry-After'), '30');
   assert.equal((await reserve('program', 1)).status, 204);
   assert.equal((await reserve('interaction', 1)).status, 204);
   const others = await Promise.all(Array.from({ length: 40 }, (_, i) => reserve('catalog', i + 2)));
-  assert.equal(others.filter((r) => r.status === 204).length, 32);
+  assert.equal(others.filter((r) => r.status === 204).length, 20);
   assert.equal((await reserve('catalog', 200)).status, 429);
   assert.equal((await reserve('traffic', 200)).status, 204);
   const monitor = await (await guard.fetch(new Request('https://internal/monitor?days=7'))).json();
   const catalog = monitor.operations.find((row) => row.operation === 'catalog');
-  assert.equal(catalog.allowed, 52);
-  assert.equal(catalog.networkLimited, 4);
-  assert.equal(catalog.budgetLimited, 9);
-  assert.equal(catalog.used, 52 * 35000);
+  assert.equal(catalog.allowed, 30);
+  assert.equal(catalog.networkLimited, 14);
+  assert.equal(catalog.budgetLimited, 21);
+  assert.equal(catalog.used, 30 * 35000);
   assert.equal(monitor.today, '2026-11-16');
   assert.ok(!JSON.stringify(monitor).includes(token(200)));
   assert.equal((await guard.fetch(new Request('https://internal/events', {
@@ -125,4 +125,43 @@ test('公开接口在触及 D1 之前拒绝超额，查询样式和来源头不�
   }, { ...env, PUBLIC_DATA_LIMITER: undefined });
   assert.equal(unbound.status, 503);
   assert.equal(touchingDb, 0);
+});
+
+test('读取超出估算时补记实际行数，补记计入网络与全站额度且不能用于写入类', async (t) => {
+  const db = new DatabaseSync(':memory:');
+  t.after(() => db.close());
+  const now = Date.UTC(2026, 10, 23, 4);
+  t.mock.method(Date, 'now', () => now);
+  const guard = new QuotaGuard({
+    storage: {
+      sql: {
+        exec(sql, ...args) {
+          if (sql.startsWith('SELECT')) return { toArray: () => db.prepare(sql).all(...args) };
+          db.prepare(sql).run(...args);
+        },
+      },
+      transactionSync(fn) {
+        return fn();
+      },
+    },
+  });
+  const post = (path, body) => guard.fetch(new Request('https://internal' + path, {
+    method: 'POST', body: JSON.stringify(body),
+  }));
+  const used = (key) => db.prepare('SELECT used FROM quota WHERE key=?').get(key)?.used;
+  assert.equal((await post('/quota', { operation: 'content', network: token(1) })).status, 204);
+  assert.equal(used('content'), 50);
+  assert.equal((await post('/charge', { operation: 'content', network: token(1), units: 574_951 })).status, 204);
+  assert.equal(used('content'), 575_001);
+  assert.equal(used('content:' + token(1)), 575_001);
+  // That network has now used its share; another network still has room.
+  assert.equal((await post('/quota', { operation: 'content', network: token(1) })).status, 429);
+  assert.equal((await post('/quota', { operation: 'content', network: token(2) })).status, 204);
+  for (const body of [
+    { operation: 'interaction', network: token(1), units: 10 },
+    { operation: 'content', network: 'not-a-network', units: 10 },
+    { operation: 'content', network: token(1), units: 0 },
+    { operation: 'content', network: token(1), units: 1.5 },
+  ])
+    assert.equal((await post('/charge', body)).status, 400);
 });

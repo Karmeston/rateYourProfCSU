@@ -3,6 +3,7 @@ import { getSignedCookie, setSignedCookie } from 'hono/cookie';
 import { readBody } from './request-body.ts';
 import { reserveQuota } from './quota-guard.ts';
 import type { ServiceEvent } from '../shared/service-monitor.ts';
+import type { ReadReservation } from './quota-guard.ts';
 
 export type AppEnv = {
   Bindings: Env & {
@@ -10,7 +11,13 @@ export type AppEnv = {
     ADMIN_PASSWORD_HASH?: string;
     ADMIN_SESSION_SECRET?: string;
   };
-  Variables: { visitorId: string | undefined; adminId?: string; serviceEvent?: ServiceEvent; quotaRecorded?: boolean };
+  Variables: {
+    visitorId: string | undefined;
+    adminId?: string;
+    serviceEvent?: ServiceEvent;
+    quotaRecorded?: boolean;
+    readReservation?: ReadReservation;
+  };
 };
 type VisitorContext = Context<AppEnv>;
 const lifetime = 180 * 24 * 60 * 60;

@@ -9,12 +9,17 @@ import traffic, { pruneTraffic } from './traffic.ts';
 import { protectPublicData } from './quota-guard.ts';
 import { monitorService } from './service-monitor.ts';
 import { redirectCourseAlias } from './course-aliases.ts';
+import { chargeReads } from './read-meter.ts';
+import { serveCachedReviews } from './review-cache.ts';
 export { QuotaGuard } from './quota-guard.ts';
 
 const app = new Hono<AppEnv>();
 app.use('/api/*', monitorService);
+app.use('/api/*', chargeReads);
 
 app.get('/api/health', (c) => c.json({ status: 'ok' }));
+app.use('/api/courses/*', serveCachedReviews);
+app.use('/api/teachers/*', serveCachedReviews);
 app.use('/api/courses/*', protectPublicData);
 app.use('/api/teachers/*', protectPublicData);
 app.use('/api/courses/*', redirectCourseAlias);

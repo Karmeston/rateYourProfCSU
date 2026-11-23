@@ -6,6 +6,8 @@ import { reviewTargets } from './review-targets.ts';
 import { isResourceId, isUuid } from './validation.ts';
 import { contextInput, objectInput, textInput } from './community-input.ts';
 import type { OwnReview } from '../shared/community.ts';
+import { writePublicCache } from './public-cache.ts';
+import { parseReviewQuery, reviewCacheKey, reviewCacheSeconds } from './review-cache.ts';
 
 const reviews = new Hono<AppEnv>();
 const pageSize = 20;
@@ -22,25 +24,11 @@ for (const { kind, reviews: table, foreignKey, votes, replies } of reviewTargets
   const visibility = kind === 'courses' ? ' AND is_listed = 1' : '';
   // 表名仅来自上面的固定配置，所有外部值都使用参数绑定。
   reviews.get(`/${kind}/:id/reviews`, async (c) => {
-    const rawId = c.req.param('id');
-    const query = c.req.queries();
-    const rawOffset = query.offset?.[0] ?? '0';
-    const sort = query.sort?.[0] ?? 'latest';
-    const rating = query.rating?.[0] ?? '';
-    if (
-      !isResourceId(rawId) ||
-      Object.entries(query).some(
-        ([key, values]) => !['offset', 'sort', 'rating'].includes(key) || values.length !== 1,
-      ) ||
-      !['latest', 'helpful'].includes(sort) ||
-      (query.rating && !/^[1-5]$/.test(rating)) ||
-      !/^(0|[1-9]\d*)$/.test(rawOffset) ||
-      Number(rawOffset) > 100000
-    ) {
-      return c.json({ error: '查询参数不合法' }, 400);
-    }
-    const id = Number(rawId);
-    const offset = Number(rawOffset);
+    const parsed = parseReviewQuery(c.req.param('id'), c.req.queries());
+    if (!parsed) return c.json({ error: '查询参数不合法' }, 400);
+    const { id, offset } = parsed;
+    const sort = parsed.sort;
+    const rating = parsed.rating === null ? '' : String(parsed.rating);
     const visitorId = c.get('visitorId');
     const helpful = sort === 'helpful';
     const voteCounts = (idColumn: 'r.id' | 'page.id') =>
@@ -95,7 +83,7 @@ for (const { kind, reviews: table, foreignKey, votes, replies } of reviewTargets
       rating,
       count: histogram.find((row) => row.rating === rating)?.count ?? 0,
     }));
-    return c.json({
+    const page = {
       reviews: (entries.results as Review[]).slice(0, pageSize),
       myReview: own?.results[0] ?? null,
       summary: { count, average: count ? total / count : null, distribution },
@@ -105,7 +93,9 @@ for (const { kind, reviews: table, foreignKey, votes, replies } of reviewTargets
       sort,
       rating: rating ? Number(rating) : null,
       hasMore: entries.results.length > pageSize,
-    });
+    };
+    if (!visitorId) await writePublicCache(reviewCacheKey(c, kind, parsed), page, reviewCacheSeconds);
+    return c.json(page);
   });
 
   reviews.post(`/${kind}/:id/reviews`, async (c) => {

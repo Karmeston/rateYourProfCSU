@@ -1,7 +1,14 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import snapshotUrl from '../data/course-data/public-directory.json?url';
 import type { CourseCatalog, CourseCatalogPage } from '../shared/catalog';
-import { latestPlanYear, openDirectory, searchDirectory, type CourseRating, type DirectorySnapshot } from '../shared/course-directory';
+import {
+  latestPlanYear,
+  openDirectory,
+  searchDirectory,
+  type CourseRating,
+  type DirectoryCourse,
+  type DirectorySnapshot,
+} from '../shared/course-directory';
 import { pageSize, type CatalogRoute } from './routing';
 import { useData } from './use-data';
 
@@ -63,4 +70,39 @@ export function useDirectory(route: CatalogRoute) {
     ratingsError: ratings.error,
     retryRatings: ratings.retry,
   };
+}
+
+// One parsed copy per page load; the hashed snapshot itself comes from the browser cache.
+let directoryCourses: Promise<Map<number, DirectoryCourse>> | undefined;
+function loadDirectoryCourses() {
+  directoryCourses ??= fetch(snapshotUrl, { signal: AbortSignal.timeout(20000) })
+    .then((response) => {
+      if (!response.ok) throw new Error('Directory unavailable');
+      return response.json() as Promise<DirectorySnapshot>;
+    })
+    .then((snapshot) => new Map(openDirectory(snapshot).courses.map((course) => [course.id, course])));
+  directoryCourses.catch(() => {
+    directoryCourses = undefined;
+  });
+  return directoryCourses;
+}
+
+// Course details without elective guidance come from the static directory, saving an API call.
+// undefined: still loading; null: use the API (not listed here, elective, or snapshot failed).
+export function useDirectoryCourse(id: string): DirectoryCourse | null | undefined {
+  const [state, setState] = useState<{ id: string; course: DirectoryCourse | null }>();
+  useEffect(() => {
+    if (!staticDirectoryEnabled) return;
+    let active = true;
+    void loadDirectoryCourses()
+      .then((courses) => courses.get(Number(id)) ?? null, () => null)
+      .then((course) => {
+        if (active) setState({ id, course: course?.category === 'elective' ? null : course });
+      });
+    return () => {
+      active = false;
+    };
+  }, [id]);
+  if (!staticDirectoryEnabled) return null;
+  return state?.id === id ? state.course : undefined;
 }

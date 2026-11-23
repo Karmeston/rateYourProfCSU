@@ -23,7 +23,7 @@ export function latestPlanYear(years: Iterable<number | null>) {
 }
 
 export type CourseRating = [id: number, average: number, count: number];
-type DirectoryCourse = Omit<Course, 'departmentSourceYear'>;
+export type DirectoryCourse = Omit<Course, 'departmentSourceYear'>;
 
 export function openDirectory(snapshot: DirectorySnapshot) {
   if (snapshot.version !== 2) throw new Error('Unsupported course directory');

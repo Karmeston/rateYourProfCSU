@@ -3,12 +3,15 @@ import type { AppEnv } from './visitor.ts';
 import { quotaOperations, serviceEvents, serviceGroups, type ServiceStatus } from '../shared/service-monitor.ts';
 import { serviceDay } from './service-monitor.ts';
 
-// Admission weights are conservative estimates at the current catalog size, not billing data.
+// Admission weights are estimated D1 rows, not billing data. Read lanes reserve the estimate
+// first; requests that read more rows are charged the difference afterwards (read-meter.ts).
+// The read lanes stay below D1's free 5M daily row reads. The browser catalog is a static
+// snapshot, so the API-only catalog lanes are kept small and most room goes to details/reviews.
 const budgets = {
-  catalog: { daily: 1_850_000, network: 700_000 },
-  program: { daily: 750_000, network: 240_000 },
-  facets: { daily: 1_000_000, network: 350_000 },
-  content: { daily: 750_000, network: 100_000 },
+  catalog: { daily: 1_050_000, network: 350_000 },
+  program: { daily: 400_000, network: 120_000 },
+  facets: { daily: 700_000, network: 350_000 },
+  content: { daily: 2_300_000, network: 575_000 },
   interaction: { daily: 40_000, network: 2_400 },
   traffic: { daily: 12_000, network: 480 },
 } as const;
@@ -17,10 +20,13 @@ const costs = {
   catalog: ['catalog', 35_000],
   program: ['program', 2_000],
   facets: ['facets', 175_000],
-  content: ['content', 500],
+  content: ['content', 50],
   interaction: ['interaction', 12],
   traffic: ['traffic', 6],
 } as const;
+
+const readOperations = new Set<Operation>(['catalog', 'program', 'facets', 'content']);
+export type ReadReservation = { operation: Operation; network: string; estimate: number };
 
 type Operation = keyof typeof costs;
 type AppContext = Context<AppEnv>;
@@ -81,6 +87,31 @@ export class QuotaGuard {
       if (!signal || !Object.hasOwn(serviceGroups, signal.group) || !Object.hasOwn(serviceEvents, signal.event))
         return new Response(null, { status: 400 });
       this.count(signal.group, signal.event);
+      return new Response(null, { status: 204 });
+    }
+    if (url.pathname === '/charge') {
+      const input = await request.json<{ operation: Operation; network: string; units: number }>();
+      if (
+        !input ||
+        !readOperations.has(input.operation) ||
+        !/^[a-f0-9]{64}$/.test(input.network) ||
+        !Number.isSafeInteger(input.units) ||
+        input.units < 1 ||
+        input.units > 10_000_000
+      )
+        return new Response(null, { status: 400 });
+      // Rows already read cannot be refused; they only reduce what later requests may use.
+      const [lane] = costs[input.operation];
+      const day = Math.floor(Date.now() / dayMs);
+      this.storage.transactionSync(() => {
+        for (const key of [lane, lane + ':' + input.network]) {
+          sql.exec(
+            `INSERT INTO quota VALUES (?, ?, ?) ON CONFLICT(key) DO UPDATE SET
+              used=CASE WHEN day=excluded.day THEN used+excluded.used ELSE excluded.used END, day=excluded.day`,
+            key, day, input.units,
+          );
+        }
+      });
       return new Response(null, { status: 204 });
     }
     if (url.pathname !== '/quota') return new Response(null, { status: 404 });
@@ -180,7 +211,14 @@ export async function reserveQuota(c: AppContext, operation: Operation) {
       method: 'POST',
       body: JSON.stringify({ operation, network }),
     });
-    if (response.status === 204) return null;
+    if (response.status === 204) {
+      if (readOperations.has(operation)) {
+        const reserved = c.get('readReservation');
+        if (reserved) reserved.estimate += costs[operation][1];
+        else c.set('readReservation', { operation, network, estimate: costs[operation][1] });
+      }
+      return null;
+    }
     if (response.status === 429) {
       c.set('quotaRecorded', true);
       return throttle(c, response.headers.get('Retry-After') ?? '60', true);
@@ -189,6 +227,20 @@ export async function reserveQuota(c: AppContext, operation: Operation) {
     // Fail closed so an unavailable quota store cannot send unbounded requests to D1.
   }
   return guardUnavailable(c);
+}
+
+// Best effort: a missed correction only under-counts one request and must not fail the response.
+export async function chargeQuota(env: AppEnv['Bindings'], reservation: ReadReservation, units: number) {
+  try {
+    if (!env.QUOTA_GUARD) return;
+    const stub = env.QUOTA_GUARD.get(env.QUOTA_GUARD.idFromName('public-d1'));
+    await stub.fetch('https://internal/charge', {
+      method: 'POST',
+      body: JSON.stringify({ operation: reservation.operation, network: reservation.network, units }),
+    });
+  } catch {
+    // The next admission still sees every correction that did arrive.
+  }
 }
 
 export const protectPublicData: MiddlewareHandler<AppEnv> = async (c, next) => {

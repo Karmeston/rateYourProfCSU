@@ -44,7 +44,7 @@ export function AdminService({ relogin }: { relogin: () => void }) {
             </table>
           </div>
           <p className="fine-print">
-            当前预算使用值为服务内部估算权重，每天北京时间8点重置。Cloudflare实际读写用量需在其控制台核对。
+            当前预算使用值以D1读取行数为单位：读取类请求先按估算放行，实际读取超出估算时补记差额；提交与浏览量上报仍为估算权重。每天北京时间8点重置，Cloudflare实际读写用量需在其控制台核对。
           </p>
           <h3>已记录的接口异常</h3>
           <p className="fine-print">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { courseCategories, type CoursePage } from '../shared/catalog';
 import { ElectiveGuidance } from './elective-guidance';
 import { Icon } from './icons';
@@ -6,12 +6,18 @@ import { Reviews } from './reviews';
 import { ErrorState } from './ui';
 import { useData } from './use-data';
 import { CourseSupplements } from './course-supplements';
+import { useDirectoryCourse } from './directory-data';
 
 export function Detail({ id, from }: { id: string; from: string }) {
+  const listed = useDirectoryCourse(id);
   const { data, error, retry } = useData<{ course: CoursePage }>(
-    `/api/courses/${id}?view=page`,
+    listed === null ? `/api/courses/${id}?view=page` : null,
   );
-  const course = data?.course;
+  const staticCourse = useMemo<CoursePage | undefined>(
+    () => (listed ? { ...listed, departmentSourceYear: null, elective: null } : undefined),
+    [listed],
+  );
+  const course = staticCourse ?? data?.course;
   const [shareMessage, setShareMessage] = useState('');
   const [copyUrl, setCopyUrl] = useState('');
   useEffect(() => {

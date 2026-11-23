@@ -21,3 +21,11 @@ export async function writePublicCache<T>(key: string, data: T, seconds: number)
     // A cache outage must not break a successful database read.
   }
 }
+
+export async function deletePublicCache(key: string) {
+  try {
+    await edgeCache()?.delete(key);
+  } catch {
+    // Entries still expire on their own short lifetime.
+  }
+}
