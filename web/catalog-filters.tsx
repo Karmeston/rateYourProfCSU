@@ -6,19 +6,29 @@ import {
   type CourseCatalog,
 } from '../shared/catalog';
 import { electiveTypes, type ElectiveTypeFilter } from '../shared/electives';
-import { isMinorProgram } from '../shared/course-directory';
+import { isMinorProgram, type MyPlan } from '../shared/course-directory';
 import { catalogHref, type CatalogRoute, type CatalogFilters } from './routing';
 
 export function CatalogFiltersPanel({
   route,
   facets,
+  myPlan,
+  planStored,
+  rememberPlan,
 }: {
   route: CatalogRoute;
   facets?: CourseCatalog['facets'];
+  myPlan: MyPlan | null;
+  planStored: boolean;
+  rememberPlan: (plan: MyPlan | null) => void;
 }) {
   const href = (patch: Partial<CatalogFilters>) => catalogHref(route, { ...patch, offset: 0 });
   const change = (patch: Partial<CatalogFilters>) => {
     window.location.hash = href(patch);
+  };
+  const choosePlan = (plan: MyPlan) => {
+    rememberPlan(plan.college || plan.program ? plan : null);
+    change(plan);
   };
   const departments = facets?.departments ?? [];
   const knownTypes = facets?.electiveTypes ?? [];
@@ -60,7 +70,7 @@ export function CatalogFiltersPanel({
             培养学院
             <select
               value={route.college}
-              onChange={(event) => change({ college: event.target.value, program: '' })}
+              onChange={(event) => choosePlan({ college: event.target.value, program: '' })}
             >
               <option value="">全部学院</option>
               {route.college && !college && <option>{route.college}</option>}
@@ -73,7 +83,7 @@ export function CatalogFiltersPanel({
             专业／班型
             <select
               value={route.program}
-              onChange={(event) => change({ program: event.target.value })}
+              onChange={(event) => choosePlan({ college: route.college, program: event.target.value })}
               disabled={needsCollege}
             >
               <option value="">{programPlaceholder}</option>
@@ -122,6 +132,19 @@ export function CatalogFiltersPanel({
           </select>
         </label>
       </div>
+      {route.category !== 'elective' && (route.college || route.program) &&
+        (myPlan?.college !== route.college || myPlan?.program !== route.program) && (
+          <button type="button" className="text-button" onClick={() => choosePlan({ college: route.college, program: route.program })}>
+            设为我的专业
+          </button>
+        )}
+      {myPlan && (
+        <div className="saved-plan">
+          <span>{planStored ? '已记住' : '本次优先'} · {myPlan.college}{myPlan.college && myPlan.program ? ' / ' : ''}{myPlan.program}</span>
+          <button type="button" className="text-button" aria-label="清除已记住的学院和专业" onClick={() => { rememberPlan(null); change({}); }}>清除</button>
+          <small>默认搜索中，同等匹配的{myPlan.program ? '本专业' : '本学院'}课程优先。</small>
+        </div>
+      )}
       {(hasMinorOptions || showTeachingUnits) && (
         <details className="catalog-extra" open={route.department ? true : undefined}>
           <summary>更多筛选</summary>

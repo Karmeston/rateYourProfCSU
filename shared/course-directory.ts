@@ -66,15 +66,10 @@ export function openDirectory(snapshot: DirectorySnapshot) {
 
 type SearchFilters = Pick<CourseCatalogPage, 'q' | 'category' | 'electiveType' | 'department' | 'program' | 'sort' | 'offset'> & { college?: string };
 type Directory = ReturnType<typeof openDirectory>;
+export type MyPlan = { college: string; program: string };
 const nameOrder = new Intl.Collator('zh-CN', { numeric: true });
 
-export function searchDirectory(
-  { courses, programs, colleges, searchTerms }: Directory,
-  filters: SearchFilters,
-  limit: number,
-  ratings: readonly CourseRating[] = [],
-) {
-  const { q, college, program, category, department, electiveType, sort, offset } = filters;
+function planCourseIds({ programs, colleges }: Directory, { college, program }: MyPlan) {
   const scoped = college ? colleges.get(college) : programs;
   const members = college || program ? new Set<number>() : null;
   if (members && scoped) {
@@ -85,6 +80,19 @@ export function searchDirectory(
       for (const id of years.get(latest) ?? []) members.add(id);
     }
   }
+  return members;
+}
+
+export function searchDirectory(
+  directory: Directory,
+  filters: SearchFilters,
+  limit: number,
+  ratings: readonly CourseRating[] = [],
+  myPlan: MyPlan | null = null,
+) {
+  const { courses, searchTerms } = directory;
+  const { q, college = '', program, category, department, electiveType, sort, offset } = filters;
+  const members = planCourseIds(directory, { college, program });
   const term = searchText(q);
   const aliases = new Set<string>(aliasCodesForQuery(term));
   const matched = courses.filter((course) =>
@@ -98,6 +106,7 @@ export function searchDirectory(
   const average = (course: DirectoryCourse) => byId.get(course.id)?.average ?? -1;
   const count = (course: DirectoryCourse) => byId.get(course.id)?.reviewCount ?? 0;
   if (sort === 'default' && term) {
+    const preferred = myPlan ? planCourseIds(directory, myPlan) : null;
     const relevance = (course: DirectoryCourse) => {
       const { name, code } = searchTerms.get(course.id)!;
       if (name === term || code === term || aliases.has(course.code ?? '')) return 0;
@@ -105,6 +114,7 @@ export function searchDirectory(
       return name.includes(term) ? 2 : 3;
     };
     matched.sort((a, b) => relevance(a) - relevance(b) ||
+      Number(preferred?.has(b.id) ?? false) - Number(preferred?.has(a.id) ?? false) ||
       count(b) - count(a) ||
       Number(a.department === '待核实') - Number(b.department === '待核实') ||
       searchTerms.get(a.id)!.name.length - searchTerms.get(b.id)!.name.length || a.id - b.id);

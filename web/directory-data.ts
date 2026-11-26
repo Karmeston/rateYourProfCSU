@@ -8,6 +8,7 @@ import {
   type CourseRating,
   type DirectoryCourse,
   type DirectorySnapshot,
+  type MyPlan,
 } from '../shared/course-directory';
 import { pageSize, type CatalogRoute } from './routing';
 import { useData } from './use-data';
@@ -32,7 +33,7 @@ function localCatalogUrl(route: CatalogRoute, plans: CourseCatalog['facets']['pr
   return `/api/courses?${params}`;
 }
 
-export function useDirectory(route: CatalogRoute) {
+export function useDirectory(route: CatalogRoute, myPlan: MyPlan | null = null) {
   const snapshot = useData<DirectorySnapshot>(staticDirectoryEnabled ? snapshotUrl : null, 'default');
   const localFacets = useData<CourseCatalog['facets']>(
     staticDirectoryEnabled ? null : '/api/courses/facets', 'default',
@@ -54,8 +55,8 @@ export function useDirectory(route: CatalogRoute) {
     }
   }, [snapshot.data]);
   const results = useMemo(
-    () => directory && searchDirectory(directory, route, pageSize, ratings.data?.ratings),
-    [directory, route, ratings.data],
+    () => directory && searchDirectory(directory, route, pageSize, ratings.data?.ratings, myPlan),
+    [directory, route, ratings.data, myPlan],
   );
 
   return {

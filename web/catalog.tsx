@@ -17,6 +17,7 @@ import { Stars } from './stars';
 import { EmptyState, ErrorState, LoadingCards } from './ui';
 import { CatalogFiltersPanel } from './catalog-filters';
 import { useDirectory } from './directory-data';
+import { useMyPlan } from './my-plan';
 
 function Search({ route }: { route: CatalogRoute }) {
   const [query, setQuery] = useState(route.q);
@@ -121,7 +122,8 @@ function CourseCard({ course, from, showRatings }: { course: CourseSummary; from
 
 export function Catalog({ route }: { route: CatalogRoute }) {
   const href = (patch: Partial<CatalogFilters>) => catalogHref(route, patch);
-  const { data, facets, error, retry, showRatings, ratingsLoading, ratingsError, retryRatings } = useDirectory(route);
+  const savedPlan = useMyPlan();
+  const { data, facets, error, retry, showRatings, ratingsLoading, ratingsError, retryRatings } = useDirectory(route, savedPlan.myPlan);
   const [view, setView] = useState<'grid' | 'list'>(() => {
     try {
       return localStorage.getItem('csu-catalog-view') === 'list' ? 'list' : 'grid';
@@ -178,7 +180,7 @@ export function Catalog({ route }: { route: CatalogRoute }) {
               </button>
             </div>
           </div>
-          <CatalogFiltersPanel route={route} facets={facets} />
+          <CatalogFiltersPanel route={route} facets={facets} {...savedPlan} />
           {ratingsLoading && <p className="fine-print" role="status">正在加载评分排序…</p>}
           {ratingsError && data && (
             <p className="fine-print" role="status">
