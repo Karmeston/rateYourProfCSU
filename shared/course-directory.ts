@@ -28,6 +28,7 @@ export const listElectiveTypes = (used: ReadonlySet<string | null>) =>
 
 export type CourseRating = [id: number, average: number, count: number];
 export type DirectoryCourse = Omit<Course, 'departmentSourceYear'>;
+const searchText = (value: string) => value.normalize('NFKC').replace(/\s+/g, '').toLowerCase();
 
 export function openDirectory(snapshot: DirectorySnapshot) {
   if (snapshot.version !== 2) throw new Error('Unsupported course directory');
@@ -57,7 +58,10 @@ export function openDirectory(snapshot: DirectorySnapshot) {
   const collegeFacets = snapshot.colleges.map(([name, members]) => ({
     name, programs: members.map(([name, years]) => ({ name, years: years.map(([year]) => year) })),
   }));
-  return { courses, programs, colleges, facets: { ...facets, colleges: collegeFacets } };
+  const searchTerms = new Map(courses.map((course) => [
+    course.id, { name: searchText(course.name), code: searchText(course.code ?? '') },
+  ]));
+  return { courses, programs, colleges, searchTerms, facets: { ...facets, colleges: collegeFacets } };
 }
 
 type SearchFilters = Pick<CourseCatalogPage, 'q' | 'category' | 'electiveType' | 'department' | 'program' | 'sort' | 'offset'> & { college?: string };
@@ -65,7 +69,7 @@ type Directory = ReturnType<typeof openDirectory>;
 const nameOrder = new Intl.Collator('zh-CN', { numeric: true });
 
 export function searchDirectory(
-  { courses, programs, colleges }: Directory,
+  { courses, programs, colleges, searchTerms }: Directory,
   filters: SearchFilters,
   limit: number,
   ratings: readonly CourseRating[] = [],
@@ -81,18 +85,30 @@ export function searchDirectory(
       for (const id of years.get(latest) ?? []) members.add(id);
     }
   }
-  const term = q.trim().toLowerCase();
+  const term = searchText(q);
   const aliases = new Set<string>(aliasCodesForQuery(term));
   const matched = courses.filter((course) =>
     (!members || members.has(course.id)) &&
     (!category || course.category === (category === 'unknown' ? null : category)) &&
     (!department || course.department === department) &&
     (!electiveType || course.electiveType === (electiveType === 'unknown' ? null : electiveType)) &&
-    (!term || course.name.toLowerCase().includes(term) || course.code?.toLowerCase().includes(term) || aliases.has(course.code ?? '')),
+    (!term || searchTerms.get(course.id)!.name.includes(term) || searchTerms.get(course.id)!.code.includes(term) || aliases.has(course.code ?? '')),
   );
   const byId = new Map(ratings.map(([id, average, reviewCount]) => [id, { average, reviewCount }]));
   const average = (course: DirectoryCourse) => byId.get(course.id)?.average ?? -1;
   const count = (course: DirectoryCourse) => byId.get(course.id)?.reviewCount ?? 0;
+  if (sort === 'default' && term) {
+    const relevance = (course: DirectoryCourse) => {
+      const { name, code } = searchTerms.get(course.id)!;
+      if (name === term || code === term || aliases.has(course.code ?? '')) return 0;
+      if (name.startsWith(term)) return 1;
+      return name.includes(term) ? 2 : 3;
+    };
+    matched.sort((a, b) => relevance(a) - relevance(b) ||
+      count(b) - count(a) ||
+      Number(a.department === '待核实') - Number(b.department === '待核实') ||
+      searchTerms.get(a.id)!.name.length - searchTerms.get(b.id)!.name.length || a.id - b.id);
+  }
   if (sort === 'name') matched.sort((a, b) => nameOrder.compare(a.name, b.name) || a.id - b.id);
   if (sort === 'rating') matched.sort((a, b) => average(b) - average(a) || count(b) - count(a) || a.id - b.id);
   if (sort === 'reviews') matched.sort((a, b) => count(b) - count(a) || average(b) - average(a) || a.id - b.id);
