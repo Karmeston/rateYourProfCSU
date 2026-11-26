@@ -65,6 +65,8 @@ node scripts/prepare-public-directory.mjs --snapshot tmp/已核验的数据库�
 
 提交生成的 `data/course-data/public-directory.json`；原始数据库导出放在 Git 忽略的 `tmp/`。静态目录只含可见的课程和方案关系，不含评价、原始资料或个人信息。`npm run dev` 默认读取本地 D1 数据，以匹配本地课程 ID。线上默认列表不读取评分；选评分排序时读取短缓存的公开汇总。非公选课详情直接使用静态目录信息；未带访客 Cookie 的评价分页使用60秒边缘缓存，本人视图和提交后实时读取。
 
+静态课程广场的默认搜索按精确名称/代码、名称前缀、名称包含、代码包含排序，兼容全半角、空白和大小写。选择学院/专业会在本机记住；同档搜索结果优先显示该学院或专业最新方案中的课程，记忆可清除。存储不可用时仅当前页面生效。实现与验收进度见[前端改进清单](docs/frontend-improvement-plan-20261126.md)。
+
 大批目录导入使用 `node scripts/prepare-release-catalog.mjs --snapshot <核验后的导出.sql> --output-dir <新批次目录>`。规划器在本地试跑，按数据行及索引估算写入，每个批次最多 80,000 行。按报告顺序执行，每天执行前先核对账户剩余额度；分批文件不要在同一天连续执行。报告另列待执行迁移，迁移消耗须单独计算。某个批次执行结果不明确时，重新核对线上状态再规划剩余批次。
 
 GitHub Actions的`Project checks`在推送和Pull Request时运行同一检查命令，使用Node.js 24，不执行部署。
